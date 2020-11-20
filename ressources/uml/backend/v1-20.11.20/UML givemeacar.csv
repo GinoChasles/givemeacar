@@ -1,0 +1,174 @@
+Id,Nom,Bibliothèque de formes,ID de page,Contenu par,Groupe,Source de la ligne,Destination de la ligne,Source de la flèche,Destination de la flèche,Zone de texte 1,Zone de texte 2,Zone de texte 3
+1,Page,,,,,,,,,Page 1,,
+2,Classe,UML,1,,,,,,,"<<interface>>
+Administrator",,"+ createAgency() : void
++ readAgency() : Agency
++ updateAgency() : void
++ deleteAgency() : void
+
++ createUser() : void
++ readUser() : Agency
++ updateUser() : void
++ deleteUser() : void"
+3,Classe,UML,1,,,,,,,"<<interface>>
+Client",,"+ refillCar() : void
+
++ startRent() : void
++ endRent() : void
+
++ readProfile() : User
++ updateProfile() : void
++ deleteProfile() : void
+
++ listRents() : Rent[
+
++ sendPicture() : void
++ sendPriceBill() : void
+
++ signUp() :  void
++ signout() : void+ "
+4,Classe,UML,1,,,,,,,BaseCar,"- km : Integer
+- price : Integer
+- year : Integer
+- availability : Boolean
+- onrent: Boolean",
+5,Classe,UML,1,,,,,,,BaseAddress,- number : Integer ,
+6,Classe,UML,1,,,,,,,BaseAgency,- name : String,
+7,Classe,UML,1,,,,,,,"<<interface>>
+Manager",,
+8,Classe,UML,1,,,,,,,BasecreditCard,"- expirationDate : Date
+
+- lastName : String = 32
+- firstName : String = 32
+
+- cardNumber : Integer = 16",
+9,Classe,UML,1,,,,,,,BaseLocalization,"- latitude : Double
+- longitude : Double",
+10,Classe,UML,1,,,,,,,BaseCity,"- name : String = 32
+
+- zipCode : String =  5
+
+",
+11,Classe,UML,1,,,,,,,BaseCountry,"- name : String = 32
+
+
+",
+12,Classe,UML,1,,,,,,,BaseStreet,- name : String = 32,
+13,Classe,UML,1,,,,,,,BaseSuffix,- name : String = 8,
+14,Classe,UML,1,,,,,,,BaseBrand,- name : String = 32,
+15,Classe,UML,1,,,,,,,BaseModel,- name : String = 32,
+16,Classe,UML,1,,,,,,,BaseColor,- name : String = 32,
+17,Classe,UML,1,,,,,,,BaseEnergy,"- max :  Integer
+- current : Integer",
+18,Classe,UML,1,,,,,,,BaseEnergyType,- name : String : 32,
+19,Classe,UML,1,,,,,,,BaseUserStatus,name : String,
+20,Classe,UML,1,,,,,,,BaseRent,"- startDate Time: DateTime
+- endDateTime : DateTime",
+21,Classe,UML,1,,,,,,,BaseBill,"- price : Double
+- date : Date",
+22,Classe,UML,1,,,,,,,BaseClient,,
+23,Classe,UML,1,,,,,,,BaseAdministrator,,
+24,Classe,UML,1,,,,,,,BaseManager,,
+25,Classe,UML,1,,,,,,,BaseUser,"- lastName : String = 32
+- firstName : String = 32
+
+- mail : String = 64
+- password : String = 64
+
+- phoneNumber : String = [10-12]
+
+status : UserStatus",
+26,Classe,UML,1,,,,,,,"<<interface>>
+User",,"+ login() : void
++ logout() : void"
+27,Classe,UML,1,,,,,,,"<<interface>>
+CrediCard",,+ connectToAPI() : void
+28,Classe,UML,1,,,,,,,<<interface>> Car,,"+ alertRevision() : void
+
++ overhaulCar() : void
++ sellCar() : void
++ exitCar() : void
+
++ list() : Car[]
++ listAvailable() : Car[]
++ listNonAvailable() : Car[]
++ listOverhaulNeeded() : Car[]
++ listOverhaulInProgress() : Car[]"
+29,Classe,UML,1,,,,,,,<<interface>> Localization,,
+30,Classe,UML,1,,,,,,,"<<interface>>
+Address",,
+31,Classe,UML,1,,,,,,,"<<interface>>
+EnergyType",,
+32,Classe,UML,1,,,,,,,"<<interface>>
+Suffix",,
+33,Classe,UML,1,,,,,,,"<<interface>>
+Street",,
+34,Classe,UML,1,,,,,,,"<<interface>>
+City",,
+35,Classe,UML,1,,,,,,,"<<interface>>
+Country",,
+36,Classe,UML,1,,,,,,,"<<interface>>
+Color",,
+37,Classe,UML,1,,,,,,,"<<interface>>
+UserStatus",,
+38,Classe,UML,1,,,,,,,"<<interface>>
+Bill",,
+39,Classe,UML,1,,,,,,,"<<interface>>
+Agency",,
+40,Classe,UML,1,,,,,,,"<<interface>>
+Energy",,+ alertLevel() : void
+41,Classe,UML,1,,,,,,,"<<interface>>
+Brand",,
+42,Classe,UML,1,,,,,,,"<<interface>>
+Model",,
+43,Classe,UML,1,,,,,,,<<interface>> Rent,,
+44,Ligne,,1,,,22,8,Composition,None,Composition,,
+45,Ligne,,1,,,3,5,None,None,,,
+46,Ligne,,1,,,5,12,None,Aggregation,,,
+47,Ligne,,1,,,10,11,None,Composition,,,
+48,Ligne,,1,,,12,10,CFN ERD Many Arrow,CFN ERD Many Arrow,,,
+49,Ligne,,1,,,5,10,None,Aggregation,,,
+50,Ligne,,1,,,12,13,None,None,,,
+51,Ligne,,1,,,24,6,None,None,,,
+52,Ligne,,1,,,3,26,None,Generalization,,,
+53,Ligne,,1,,,7,26,None,Generalization,,,
+54,Ligne,,1,,,4,6,CFN ERD Many Arrow,None,,,
+55,Ligne,,1,,,15,4,None,Aggregation,,,
+56,Ligne,,1,,,14,4,None,Aggregation,,,
+57,Ligne,,1,,,16,4,None,Aggregation,,,
+58,Ligne,,1,,,17,18,Aggregation,None,,,
+59,Ligne,,1,,,22,5,None,None,,,
+60,Ligne,,1,,,6,5,None,None,,,
+61,Ligne,,1,,,4,9,None,None,,,
+62,Ligne,,1,,,26,19,None,None,,,
+63,Ligne,,1,,,3,20,None,None,,,
+64,Ligne,,1,,,20,4,None,None,,,
+65,Ligne,,1,,,21,4,None,Aggregation,,,
+66,Ligne,,1,,,21,6,None,Aggregation,,,
+67,Ligne,,1,,,21,22,Arrow,None,,,
+68,Ligne,,1,,,23,25,None,Generalization,,,
+69,Ligne,,1,,,22,25,None,Generalization,,,
+70,Ligne,,1,,,2,26,None,Generalization,,,
+71,Ligne,,1,,,24,25,None,Generalization,,,
+72,Ligne,,1,,,35,11,None,Arrow,,,
+73,Ligne,,1,,,5,30,Arrow,None,,,
+74,Ligne,,1,,,32,13,None,Arrow,,,
+75,Ligne,,1,,,33,12,None,Arrow,,,
+76,Ligne,,1,,,34,10,None,Arrow,,,
+77,Ligne,,1,,,7,24,None,Arrow,,,
+78,Ligne,,1,,,4,17,Composition,None,,,
+79,Ligne,,1,,,37,19,None,Arrow,,,
+80,Ligne,,1,,,6,39,None,Arrow,,,
+81,Ligne,,1,,,27,8,None,Arrow,,,
+82,Ligne,,1,,,41,14,None,Arrow,Texte,,
+83,Ligne,,1,,,42,15,None,Hollow Arrow,Texte,,
+84,Ligne,,1,,,28,4,None,Arrow,,,
+85,Ligne,,1,,,36,16,None,Arrow,,,
+86,Ligne,,1,,,40,17,None,Arrow,,,
+87,Ligne,,1,,,31,18,None,Arrow,,,
+88,Ligne,,1,,,43,20,None,Arrow,Texte,,
+89,Ligne,,1,,,3,22,None,Arrow,,,
+90,Ligne,,1,,,29,9,None,Arrow,,,
+91,Ligne,,1,,,38,21,None,Arrow,,,
+92,Ligne,,1,,,23,2,None,Arrow,,,
+93,Page,,,,,,,,,Page 2,,
