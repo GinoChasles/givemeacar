@@ -1,9 +1,8 @@
-package fr.givemeacar.app.controllers;
+package fr.givemeacar.app.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
-import java.nio.file.Files;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,38 +13,32 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import org.springframework.core.io.ResourceLoader;
-import org.springframework.core.io.ClassPathResource;
-
 @RestController
-public class AgencyController {
-    ResourceLoader resourceLoader;
+@RequestMapping("/api")
+public class EnergyController {
 
-    // new String(Files.readAllBytes(new
-    // ClassPathResource("data.json").getFile().toPath()))
-
-    @GetMapping("/api/agencies")
+    @GetMapping("/energies")
     public @ResponseBody String list() throws IOException {
-        return "Un liste d'agences!!!!";
+        return "liste energies";
     }
 
-    @GetMapping("/api/agencies/{id}")
+    @GetMapping("/energies/{id}")
     public @ResponseBody String get(@PathVariable int id) {
-        return " Get Agence " + Integer.toString(id);
+        return "energy id : " + Integer.toString(id);
     }
 
-    @PostMapping("/api/agencies")
+    @PostMapping("/energies")
     public @ResponseBody String post(@RequestBody String data) {
-        return "Post Agence " + data;
+        return "Post energy";
     }
 
-    @PutMapping("/api/agencies/{id}")
+    @PutMapping("/energies/{id}")
     public @ResponseBody String put(@RequestBody String data, @PathVariable int id) {
-        return "Put Agence " + Integer.toString(id);
+        return "Put energy : " + Integer.toString(id);
     }
 
-    @DeleteMapping("/api/agencies/{id}")
+    @DeleteMapping("/energies/{id}")
     public @ResponseBody String delete(@PathVariable int id) {
-        return "Delete Agence " + Integer.toString(id);
+        return "Delete energy id : " + Integer.toString(id);
     }
 }

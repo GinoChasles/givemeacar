@@ -1,4 +1,4 @@
-package fr.givemeacar.app.controllers;
+package fr.givemeacar.app.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @RestController
+@RequestMapping("/api")
 public class IndexController {
 
     @RequestMapping("/")
