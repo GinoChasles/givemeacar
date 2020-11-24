@@ -10,12 +10,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @RestController
-@RequestMapping("/api")
 public class IndexController {
 
     @RequestMapping("/")
     public @ResponseBody String list() throws IOException {
-        return new String(Files.readAllBytes(new ClassPathResource("givemeacar/build/index.html").getFile().toPath()));
+        return new String(Files.readAllBytes(new ClassPathResource("public/givemeacar/public/index.html").getFile().toPath()));
     }
 
 }
