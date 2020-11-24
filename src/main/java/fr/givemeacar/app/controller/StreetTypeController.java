@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 @RestController
 @RequestMapping("/api")
-public class BillController {
+public class StreetTypeController {
 
     @GetMapping("/streettypes")
     public @ResponseBody String list() throws IOException {
