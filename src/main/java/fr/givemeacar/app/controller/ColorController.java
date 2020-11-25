@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RestController
 @RequestMapping("/api")
 public class ColorController {
+    ColorService colorService;
 
     @GetMapping("/colors")
     public @ResponseBody String list() throws IOException {
+        System.out.println(colorService.findAll());
         return "liste colors";
     }
 
