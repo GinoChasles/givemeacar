@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-@Table(name = "credit_card", schema = "givemeacar"/*, catalog = ""*/)
+@Table(name = "credit_card", schema = "givemeacar", catalog = "")
 public class CreditCard {
     private int id;
     private String number;

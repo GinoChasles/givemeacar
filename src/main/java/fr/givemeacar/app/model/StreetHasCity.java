@@ -3,7 +3,7 @@ package fr.givemeacar.app.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "street_has_city", schema = "givemeacar")
+@Table(name = "street_has_city", schema = "givemeacar", catalog = "")
 @IdClass(StreetHasCityPK.class)
 public class StreetHasCity {
     private int streetId;
