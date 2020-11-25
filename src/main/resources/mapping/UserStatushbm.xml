@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="fr.givemeacar.app.model.UserStatus" table="user_status" schema="givemeacar">
+        <id name="id">
+            <column name="id" sql-type="int"/>
+        </id>
+        <property name="name">
+            <column name="name" sql-type="varchar(32)" length="32"/>
+        </property>
+        <set name="administratorsById" inverse="true">
+            <key>
+                <column name="user_status_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="fr.givemeacar.app.model.Administrator"/>
+        </set>
+        <set name="clientsById" inverse="true">
+            <key>
+                <column name="user_status_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="fr.givemeacar.app.model.Client"/>
+        </set>
+        <set name="managersById" inverse="true">
+            <key>
+                <column name="user_status_id"/>
+            </key>
+            <one-to-many not-found="ignore" class="fr.givemeacar.app.model.Manager"/>
+        </set>
+    </class>
+</hibernate-mapping>
