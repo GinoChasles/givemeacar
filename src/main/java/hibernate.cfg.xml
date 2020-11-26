@@ -1,81 +1,34 @@
 <?xml version='1.0' encoding='utf-8'?>
 <!DOCTYPE hibernate-configuration PUBLIC
-        "-//Hibernate/Hibernate Configuration DTD//EN"
-        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:mysql://localhost:3306/givemeacar</property>
-        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <mapping resource="mapping/Addresshbm.xml"/>
-        <mapping class="fr.givemeacar.app.model.Address"/>
-        <mapping resource="mapping/Administratorhbm.xml"/>
-        <mapping class="fr.givemeacar.app.model.Administrator"/>
-        <mapping resource="mapping/Agencyhbm.xml"/>
-        <mapping class="fr.givemeacar.app.model.Agency"/>
-        <mapping resource="mapping/Billhbm.xml"/>
-        <mapping class="fr.givemeacar.app.model.Bill"/>
-        <mapping resource="mapping/Brandhbm.xml"/>
-        <mapping class="fr.givemeacar.app.model.Brand"/>
-        <mapping resource="mapping/Carhbm.xml"/>
-        <mapping class="fr.givemeacar.app.model.Car"/>
-        <mapping resource="mapping/Cityhbm.xml"/>
-        <mapping class="fr.givemeacar.app.model.City"/>
-        <mapping resource="mapping/Clienthbm.xml"/>
-        <mapping class="fr.givemeacar.app.model.Client"/>
-        <mapping resource="mapping/Colorhbm.xml"/>
-        <mapping class="fr.givemeacar.app.model.Color"/>
-        <mapping resource="mapping/Countryhbm.xml"/>
-        <mapping class="fr.givemeacar.app.model.Country"/>
-        <mapping resource="mapping/CreditCardhbm.xml"/>
-        <mapping class="fr.givemeacar.app.model.CreditCard"/>
-        <mapping resource="mapping/Energyhbm.xml"/>
-        <mapping class="fr.givemeacar.app.model.Energy"/>
-        <mapping resource="mapping/EnergyTypehbm.xml"/>
-        <mapping class="fr.givemeacar.app.model.EnergyType"/>
-        <mapping resource="mapping/Geolocationhbm.xml"/>
-        <mapping class="fr.givemeacar.app.model.Geolocation"/>
-        <mapping resource="mapping/Managerhbm.xml"/>
-        <mapping class="fr.givemeacar.app.model.Manager"/>
-        <mapping resource="mapping/Modelhbm.xml"/>
-        <mapping class="fr.givemeacar.app.model.Model"/>
-        <mapping resource="mapping/Renthbm.xml"/>
-        <mapping class="fr.givemeacar.app.model.Rent"/>
-        <mapping resource="mapping/Streethbm.xml"/>
-        <mapping class="fr.givemeacar.app.model.Street"/>
-        <mapping resource="mapping/StreetHasCityhbm.xml"/>
-        <mapping class="fr.givemeacar.app.model.StreetHasCity"/>
-        <mapping resource="mapping/StreetSuffixhbm.xml"/>
-        <mapping class="fr.givemeacar.app.model.StreetSuffix"/>
-        <mapping resource="mapping/StreetTypehbm.xml"/>
-        <mapping class="fr.givemeacar.app.model.StreetType"/>
-        <mapping resource="mapping/UserStatushbm.xml"/>
-        <mapping class="fr.givemeacar.app.model.UserStatus"/>
-        <mapping resource="mapping/Addresshbm.xml"/>
-        <mapping resource="mapping/Administratorhbm.xml"/>
-        <mapping resource="mapping/Agencyhbm.xml"/>
-        <mapping resource="mapping/Billhbm.xml"/>
-        <mapping resource="mapping/Brandhbm.xml"/>
-        <mapping resource="mapping/Carhbm.xml"/>
-        <mapping resource="mapping/Cityhbm.xml"/>
-        <mapping resource="mapping/Clienthbm.xml"/>
-        <mapping resource="mapping/Colorhbm.xml"/>
-        <mapping resource="mapping/Countryhbm.xml"/>
-        <mapping resource="mapping/CreditCardhbm.xml"/>
-        <mapping resource="mapping/Energyhbm.xml"/>
-        <mapping resource="mapping/EnergyTypehbm.xml"/>
-        <mapping resource="mapping/Geolocationhbm.xml"/>
-        <mapping resource="mapping/Managerhbm.xml"/>
-        <mapping resource="mapping/Modelhbm.xml"/>
-        <mapping resource="mapping/Renthbm.xml"/>
-        <mapping resource="mapping/Streethbm.xml"/>
-        <mapping resource="mapping/StreetHasCityhbm.xml"/>
-        <mapping resource="mapping/StreetSuffixhbm.xml"/>
-        <mapping resource="mapping/StreetTypehbm.xml"/>
-        <mapping resource="mapping/UserStatushbm.xml"/>
-        <!-- <property name="connection.username"/> -->
-        <!-- <property name="connection.password"/> -->
+        <!-- Database connection settings -->
+        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/givemeacar2?serverTimezone=UTC</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">Ilovepython29</property>
 
-        <!-- DB schema will be updated if needed -->
-        <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
+        <!-- JDBC connection pool (use the built-in) -->
+        <property name="connection.pool_size">1</property>
+
+        <!-- SQL dialect -->
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+
+        <!-- Enable Hibernate's automatic session context management -->
+        <property name="current_session_context_class">thread</property>
+
+        <!-- Disable the second-level cache  -->
+        <property name="cache.provider_class">org.hibernate.cache.internal.NoCacheProvider</property>
+
+        <!-- Echo all executed SQL to stdout -->
+        <property name="show_sql">true</property>
+
+        <mapping class="fr.givemeacar.app.model.Color" />
+        <mapping class="fr.givemeacar.app.model.Manager" />
+
     </session-factory>
+
 </hibernate-configuration>

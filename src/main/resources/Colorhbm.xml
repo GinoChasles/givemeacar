@@ -13,7 +13,7 @@
         </property>
         <set name="carsById" inverse="true">
             <key>
-                <column name="color_id1"/>
+                <column name="color_id"/>
             </key>
             <one-to-many not-found="ignore" class="fr.givemeacar.app.model.Car"/>
         </set>

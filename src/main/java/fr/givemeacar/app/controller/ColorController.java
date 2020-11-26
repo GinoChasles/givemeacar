@@ -1,46 +1,51 @@
 package fr.givemeacar.app.controller;
 
-import org.springframework.web.bind.annotation.RestController;
+import fr.givemeacar.app.model.Color;
+import fr.givemeacar.app.service.ColorService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import javax.validation.Valid;
+import java.util.Optional;
 
 @RestController
-@RequestMapping("/api")
-public class ColorController {
-    ColorService colorService;
+@RequestMapping("api")
+public class ColorController{
 
-    @GetMapping("/colors")
-    public @ResponseBody String list() throws IOException {
-        System.out.println(colorService.findAll());
-        return "liste colors";
+    @Autowired
+    ColorService service;
+
+    @CrossOrigin
+    @RequestMapping("colors/count")
+    public Long count() {
+        return service.count();
     }
 
     @GetMapping("/colors/{id}")
-    public @ResponseBody String get(@PathVariable int id) {
-        return "color id : " + Integer.toString(id);
+    public ResponseEntity<Color> findById(@PathVariable int id) {
+        Optional<Color> color = service.findById(id);
+        if (color.isPresent()) {
+            return ResponseEntity.ok().body(color.get());
+        }
+        return ResponseEntity.notFound().build();
     }
 
-    @PostMapping("/colors")
-    public @ResponseBody String post(@RequestBody String data) {
-        return "Post color";
+    @CrossOrigin
+    @PostMapping("colors")
+    public ResponseEntity<String> create(@Valid @RequestBody Color color) {
+        return service.create(color);
     }
 
-    @PutMapping("/colors/{id}")
-    public @ResponseBody String put(@RequestBody String data, @PathVariable int id) {
-        return "Put color : " + Integer.toString(id);
+    @CrossOrigin
+    @PutMapping("colors/{id}")
+    public ResponseEntity<String> update(@PathVariable int id,@RequestBody Color color) {
+        return service.update(id,color);
     }
 
-    @DeleteMapping("/colors/{id}")
-    public @ResponseBody String delete(@PathVariable int id) {
-        return "Delete color id : " + Integer.toString(id);
+    @CrossOrigin
+    @DeleteMapping("colors/{id}")
+    public ResponseEntity<String> delete(@PathVariable int id) {
+        return service.delete(id);
     }
 }
