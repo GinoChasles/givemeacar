@@ -24,9 +24,9 @@ public class CityController {
 
     @GetMapping("/cities/{id}")
     public ResponseEntity<City> findById(@PathVariable int id) {
-        Optional<City> manager = service.findById(id);
-        if (manager.isPresent()) {
-            return ResponseEntity.ok().body(manager.get());
+        Optional<City> model = service.findById(id);
+        if (model.isPresent()) {
+            return ResponseEntity.ok().body(model.get());
         }
         return ResponseEntity.notFound().build();
     }

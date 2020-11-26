@@ -1,7 +1,7 @@
 package fr.givemeacar.app.controller;
 
-import fr.givemeacar.app.model.Manager;
-import fr.givemeacar.app.service.ManagerService;
+import fr.givemeacar.app.model.UserStatus;
+import fr.givemeacar.app.service.UserStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,10 +11,10 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api")
-public class ManagerController{
+public class UserStatusController {
 
     @Autowired
-    ManagerService service;
+    UserStatusService service;
 
     @CrossOrigin
     @RequestMapping("managers/count")
@@ -23,24 +23,24 @@ public class ManagerController{
     }
 
     @GetMapping("/managers/{id}")
-    public ResponseEntity<Manager> findById(@PathVariable int id) {
-        Optional<Manager> model = service.findById(id);
-        if  (model.isPresent()) {
-            return ResponseEntity.ok().body (model.get());
+    public ResponseEntity<UserStatus> findById(@PathVariable int id) {
+        Optional<UserStatus> model = service.findById(id);
+        if (model.isPresent()) {
+            return ResponseEntity.ok().body(model.get());
         }
         return ResponseEntity.notFound().build();
     }
 
     @CrossOrigin
     @PostMapping("/managers")
-    public ResponseEntity<String> create(@Valid @RequestBody Manager model) {
-        return service.create (model);
+    public ResponseEntity<String> create(@Valid @RequestBody UserStatus model) {
+        return service.create(model);
     }
 
     @CrossOrigin
     @PutMapping("/managers/{id}")
-    public ResponseEntity<String> update(@PathVariable int id,@RequestBody Manager model) {
-        return service.update(id,model);
+    public ResponseEntity<String> update(@PathVariable int id, @RequestBody UserStatus model) {
+        return service.update(id, model);
     }
 
     @CrossOrigin

@@ -1,7 +1,7 @@
 package fr.givemeacar.app.controller;
 
-import fr.givemeacar.app.model.Client;
-import fr.givemeacar.app.service.ClientService;
+import fr.givemeacar.app.model.Country;
+import fr.givemeacar.app.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,20 +11,20 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api")
-public class ClientController {
+public class CountryController {
 
     @Autowired
-    ClientService service;
+    CountryService service;
 
     @CrossOrigin
-    @RequestMapping("clients/count")
+    @RequestMapping("countries/count")
     public Long count() {
         return service.count();
     }
 
-    @GetMapping("/clients/{id}")
-    public ResponseEntity<Client> findById(@PathVariable int id) {
-        Optional<Client> model = service.findById(id);
+    @GetMapping("/countries/{id}")
+    public ResponseEntity<Country> findById(@PathVariable int id) {
+        Optional<Country> model = service.findById(id);
         if (model.isPresent()) {
             return ResponseEntity.ok().body(model.get());
         }
@@ -32,19 +32,19 @@ public class ClientController {
     }
 
     @CrossOrigin
-    @PostMapping("/clients")
-    public ResponseEntity<String> create(@Valid @RequestBody Client model) {
+    @PostMapping("/countries")
+    public ResponseEntity<String> create(@Valid @RequestBody Country model) {
         return service.create(model);
     }
 
     @CrossOrigin
-    @PutMapping("/clients/{id}")
-    public ResponseEntity<String> update(@PathVariable int id, @RequestBody Client model) {
+    @PutMapping("/countries/{id}")
+    public ResponseEntity<String> update(@PathVariable int id, @RequestBody Country model) {
         return service.update(id, model);
     }
 
     @CrossOrigin
-    @DeleteMapping("/clients/{id}")
+    @DeleteMapping("/countries/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
         return service.delete(id);
     }

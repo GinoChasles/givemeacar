@@ -1,7 +1,7 @@
 package fr.givemeacar.app.controller;
 
-import fr.givemeacar.app.model.Client;
-import fr.givemeacar.app.service.ClientService;
+import fr.givemeacar.app.model.CreditCard;
+import fr.givemeacar.app.service.CreditCardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,20 +11,20 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("api")
-public class ClientController {
+public class CreditCardController {
 
     @Autowired
-    ClientService service;
+    CreditCardService service;
 
     @CrossOrigin
-    @RequestMapping("clients/count")
+    @RequestMapping("creditcads/count")
     public Long count() {
         return service.count();
     }
 
-    @GetMapping("/clients/{id}")
-    public ResponseEntity<Client> findById(@PathVariable int id) {
-        Optional<Client> model = service.findById(id);
+    @GetMapping("/creditcads/{id}")
+    public ResponseEntity<CreditCard> findById(@PathVariable int id) {
+        Optional<CreditCard> model = service.findById(id);
         if (model.isPresent()) {
             return ResponseEntity.ok().body(model.get());
         }
@@ -32,19 +32,19 @@ public class ClientController {
     }
 
     @CrossOrigin
-    @PostMapping("/clients")
-    public ResponseEntity<String> create(@Valid @RequestBody Client model) {
+    @PostMapping("/creditcads")
+    public ResponseEntity<String> create(@Valid @RequestBody CreditCard model) {
         return service.create(model);
     }
 
     @CrossOrigin
-    @PutMapping("/clients/{id}")
-    public ResponseEntity<String> update(@PathVariable int id, @RequestBody Client model) {
+    @PutMapping("/creditcads/{id}")
+    public ResponseEntity<String> update(@PathVariable int id, @RequestBody CreditCard model) {
         return service.update(id, model);
     }
 
     @CrossOrigin
-    @DeleteMapping("/clients/{id}")
+    @DeleteMapping("/creditcads/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
         return service.delete(id);
     }
