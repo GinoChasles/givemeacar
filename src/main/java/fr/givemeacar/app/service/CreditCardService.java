@@ -1,7 +1,7 @@
 package fr.givemeacar.app.service;
 
-import fr.givemeacar.app.model.Manager;
-import fr.givemeacar.app.repository.ManagerRepository;
+import fr.givemeacar.app.model.CreditCard;
+import fr.givemeacar.app.repository.CreditCardRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -12,21 +12,21 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.Optional;
 
 @Service
-public class ManagerService {
+public class CreditCardService {
     @Autowired
-    ManagerRepository repo;
+    CreditCardRepository repo;
 
     public Long count() {
         return repo.count();
     }
 
-    public Optional<Manager> findById(int id) {
+    public Optional<CreditCard> findById(int id) {
 
         System.out.println(id);
         return repo.findById(id);
     }
 
-    public ResponseEntity<String> create(Manager model) {
+    public ResponseEntity<String> create(CreditCard model) {
         try {
             repo.save(model);
             return new ResponseEntity<>(HttpStatus.CREATED);
@@ -36,13 +36,13 @@ public class ManagerService {
         }        
     }
 
-    public ResponseEntity<String> update(int id, Manager model) {
-        Optional<Manager> optionalManager = repo.findById(id);
-        Manager oldManager;
+    public ResponseEntity<String> update(int id, CreditCard model) {
+        Optional<CreditCard> optionalCreditCard = repo.findById(id);
+        CreditCard oldCreditCard;
 
-        if (optionalManager.isPresent()) {
-            oldManager = optionalManager.get();
-            model.setId(oldManager.getId());
+        if (optionalCreditCard.isPresent()) {
+            oldCreditCard = optionalCreditCard.get();
+            model.setId(oldCreditCard.getId());
             try {
                 repo.save(model);
             } catch (DataIntegrityViolationException e) {

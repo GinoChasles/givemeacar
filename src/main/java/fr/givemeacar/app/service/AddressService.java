@@ -1,7 +1,7 @@
 package fr.givemeacar.app.service;
 
-import fr.givemeacar.app.model.Manager;
-import fr.givemeacar.app.repository.ManagerRepository;
+import fr.givemeacar.app.model.Address;
+import fr.givemeacar.app.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -12,37 +12,34 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.Optional;
 
 @Service
-public class ManagerService {
+public class AddressService {
     @Autowired
-    ManagerRepository repo;
+    AddressRepository repo;
 
     public Long count() {
         return repo.count();
     }
 
-    public Optional<Manager> findById(int id) {
-
-        System.out.println(id);
+    public Optional<Address> findById(int id) {
         return repo.findById(id);
     }
 
-    public ResponseEntity<String> create(Manager model) {
+    public ResponseEntity<String> create(Address model) {
         try {
             repo.save(model);
             return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch (Exception e) {
-            String constraint = e.getMessage().split(";")[2].replace(" constraint [", "").replace("]", "");
-            return ResponseEntity.status(HttpStatus.CONFLICT).body("{\"message\":\"" + constraint + "\"}");
-        }        
+        } catch (Exception exception) {
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
     }
 
-    public ResponseEntity<String> update(int id, Manager model) {
-        Optional<Manager> optionalManager = repo.findById(id);
-        Manager oldManager;
+    public ResponseEntity<String> update(int id, Address model) {
+        Optional<Address> optionalAddress = repo.findById(id);
+        Address oldAddress;
 
-        if (optionalManager.isPresent()) {
-            oldManager = optionalManager.get();
-            model.setId(oldManager.getId());
+        if (optionalAddress.isPresent()) {
+            oldAddress = optionalAddress.get();
+            model.setId(oldAddress.getId());
             try {
                 repo.save(model);
             } catch (DataIntegrityViolationException e) {

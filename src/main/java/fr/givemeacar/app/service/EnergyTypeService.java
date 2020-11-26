@@ -1,7 +1,7 @@
 package fr.givemeacar.app.service;
 
-import fr.givemeacar.app.model.Manager;
-import fr.givemeacar.app.repository.ManagerRepository;
+import fr.givemeacar.app.model.EnergyType;
+import fr.givemeacar.app.repository.EnergyTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -12,37 +12,37 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.Optional;
 
 @Service
-public class ManagerService {
+public class EnergyTypeService {
     @Autowired
-    ManagerRepository repo;
+    EnergyTypeRepository repo;
 
     public Long count() {
         return repo.count();
     }
 
-    public Optional<Manager> findById(int id) {
+    public Optional<EnergyType> findById(int id) {
 
         System.out.println(id);
         return repo.findById(id);
     }
 
-    public ResponseEntity<String> create(Manager model) {
+    public ResponseEntity<String> create(EnergyType model) {
         try {
             repo.save(model);
             return new ResponseEntity<>(HttpStatus.CREATED);
         } catch (Exception e) {
             String constraint = e.getMessage().split(";")[2].replace(" constraint [", "").replace("]", "");
             return ResponseEntity.status(HttpStatus.CONFLICT).body("{\"message\":\"" + constraint + "\"}");
-        }        
+        }
     }
 
-    public ResponseEntity<String> update(int id, Manager model) {
-        Optional<Manager> optionalManager = repo.findById(id);
-        Manager oldManager;
+    public ResponseEntity<String> update(int id, EnergyType model) {
+        Optional<EnergyType> optionalEnergyType = repo.findById(id);
+        EnergyType oldEnergyType;
 
-        if (optionalManager.isPresent()) {
-            oldManager = optionalManager.get();
-            model.setId(oldManager.getId());
+        if (optionalEnergyType.isPresent()) {
+            oldEnergyType = optionalEnergyType.get();
+            model.setId(oldEnergyType.getId());
             try {
                 repo.save(model);
             } catch (DataIntegrityViolationException e) {

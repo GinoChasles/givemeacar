@@ -1,7 +1,7 @@
 package fr.givemeacar.app.service;
 
-import fr.givemeacar.app.model.Manager;
-import fr.givemeacar.app.repository.ManagerRepository;
+import fr.givemeacar.app.model.Street;
+import fr.givemeacar.app.repository.StreetRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -12,21 +12,21 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import java.util.Optional;
 
 @Service
-public class ManagerService {
+public class StreetService {
     @Autowired
-    ManagerRepository repo;
+    StreetRepository repo;
 
     public Long count() {
         return repo.count();
     }
 
-    public Optional<Manager> findById(int id) {
+    public Optional<Street> findById(int id) {
 
         System.out.println(id);
         return repo.findById(id);
     }
 
-    public ResponseEntity<String> create(Manager model) {
+    public ResponseEntity<String> create(Street model) {
         try {
             repo.save(model);
             return new ResponseEntity<>(HttpStatus.CREATED);
@@ -36,13 +36,13 @@ public class ManagerService {
         }        
     }
 
-    public ResponseEntity<String> update(int id, Manager model) {
-        Optional<Manager> optionalManager = repo.findById(id);
-        Manager oldManager;
+    public ResponseEntity<String> update(int id, Street model) {
+        Optional<Street> optionalStreet = repo.findById(id);
+        Street oldStreet;
 
-        if (optionalManager.isPresent()) {
-            oldManager = optionalManager.get();
-            model.setId(oldManager.getId());
+        if (optionalStreet.isPresent()) {
+            oldStreet = optionalStreet.get();
+            model.setId(oldStreet.getId());
             try {
                 repo.save(model);
             } catch (DataIntegrityViolationException e) {

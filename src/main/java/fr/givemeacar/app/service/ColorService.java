@@ -24,24 +24,24 @@ public class ColorService{
             return repo.findById(id);
     }
 
-    public ResponseEntity<String> create(Color color){
+    public ResponseEntity<String> create(Color model){
         try{
-            repo.save(color);
+            repo.save(model);
             return new ResponseEntity<>(HttpStatus.CREATED);
         }catch(Exception exception){
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
     }
 
-    public ResponseEntity<String> update(int id, Color color){
+    public ResponseEntity<String> update(int id, Color model){
         Optional<Color> optionalColor = repo.findById(id);
         Color oldColor;
 
         if(optionalColor.isPresent()){
             oldColor = optionalColor.get();
-            color.setId(oldColor.getId());
+            model.setId(oldColor.getId());
             try{
-                repo.save(color);
+                repo.save(model);
             }catch(DataIntegrityViolationException e){
                 String constraint = e.getMessage().split(";")[2].replace(" constraint [","").replace("]","");
                 return ResponseEntity.status(HttpStatus.CONFLICT).body("{\"message\":\""+constraint+"\"}");
