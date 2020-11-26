@@ -7,6 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface CreditCardRepository extends JpaRepository<Country, Integer> {
+public interface CreditCardRepository extends JpaRepository<CreditCard, Integer> {
 
 }
