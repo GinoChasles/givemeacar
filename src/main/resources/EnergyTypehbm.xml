@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="fr.givemeacar.app.model.Color" table="color" schema="givemeacar2">
+    <class name="fr.givemeacar.app.model.EnergyType" table="energy_type" schema="givemeacar2">
         <id name="id">
             <column name="id" sql-type="int"/>
         </id>

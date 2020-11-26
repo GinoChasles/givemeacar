@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="fr.givemeacar.app.model.Agency" table="agency" schema="givemeacar2">
+        <id name="id">
+            <column name="id" sql-type="int"/>
+        </id>
+        <property name="name">
+            <column name="name" sql-type="varchar(32)" length="32"/>
+        </property>
+        <property name="managerId">
+            <column name="manager_id" sql-type="int"/>
+        </property>
+        <property name="addressId">
+            <column name="address_id" sql-type="int"/>
+        </property>
+        <property name="billId">
+            <column name="bill_id" sql-type="int"/>
+        </property>
+        <property name="clientId">
+            <column name="client_id" sql-type="int"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+
+    <class name="fr.givemeacar.app.model.Car" table="car" schema="givemeacar2">
+        <id name="id">
+            <column name="id" sql-type="int"/>
+        </id>
+        <property name="kilometers">
+            <column name="kilometers" sql-type="int"/>
+        </property>
+        <property name="price">
+            <column name="price" sql-type="double" precision="-1"/>
+        </property>
+        <property name="year">
+            <column name="year" sql-type="int"/>
+        </property>
+        <property name="availability">
+            <column name="availability" sql-type="int"/>
+        </property>
+        <property name="onRent">
+            <column name="onRent" sql-type="int"/>
+        </property>
+        <property name="modelId">
+            <column name="model_id" sql-type="int"/>
+        </property>
+        <property name="energyId">
+            <column name="energy_id" sql-type="int"/>
+        </property>
+        <property name="rentId">
+            <column name="rent_id" sql-type="int"/>
+        </property>
+        <property name="colorId">
+            <column name="color_id" sql-type="int"/>
+        </property>
+        <property name="geolocationId">
+            <column name="geolocation_id" sql-type="int"/>
+        </property>
+    </class>
+</hibernate-mapping>

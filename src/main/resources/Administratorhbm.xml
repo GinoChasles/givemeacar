@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="fr.givemeacar.app.model.Manager" table="manager" schema="givemeacar2">
+    <class name="fr.givemeacar.app.model.Administrator" table="administrator" schema="givemeacar2">
         <id name="id">
             <column name="id" sql-type="int"/>
         </id>
@@ -18,16 +18,13 @@
             <column name="mail" sql-type="varchar(64)" length="64"/>
         </property>
         <property name="password">
-            <column name="password" sql-type="varchar(64)" length="64"/>
+            <column name="password" sql-type="varchar(45)" length="45"/>
         </property>
         <property name="phone">
             <column name="phone" sql-type="varchar(12)" length="12"/>
         </property>
         <property name="userStatusId">
             <column name="user_status_id" sql-type="int"/>
-        </property>
-        <property name="agencyId">
-            <column name="agency_id" sql-type="int"/>
         </property>
     </class>
 </hibernate-mapping>

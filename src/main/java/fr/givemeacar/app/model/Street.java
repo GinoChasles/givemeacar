@@ -6,9 +6,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Color {
+public class Street {
     private int id;
     private String name;
+    private int streetTypeId;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -30,15 +31,26 @@ public class Color {
         this.name = name;
     }
 
+    @Basic
+    @Column(name = "street_type_id", nullable = false)
+    public int getStreetTypeId() {
+        return streetTypeId;
+    }
+
+    public void setStreetTypeId(int streetTypeId) {
+        this.streetTypeId = streetTypeId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Color color = (Color) o;
+        Street street = (Street) o;
 
-        if (id != color.id) return false;
-        if (name != null ? !name.equals(color.name) : color.name != null) return false;
+        if (id != street.id) return false;
+        if (streetTypeId != street.streetTypeId) return false;
+        if (name != null ? !name.equals(street.name) : street.name != null) return false;
 
         return true;
     }
@@ -47,6 +59,7 @@ public class Color {
     public int hashCode() {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + streetTypeId;
         return result;
     }
 }

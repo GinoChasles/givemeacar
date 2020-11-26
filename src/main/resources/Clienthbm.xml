@@ -4,7 +4,7 @@
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
 
-    <class name="fr.givemeacar.app.model.Manager" table="manager" schema="givemeacar2">
+    <class name="fr.givemeacar.app.model.Client" table="client" schema="givemeacar2">
         <id name="id">
             <column name="id" sql-type="int"/>
         </id>
@@ -23,11 +23,20 @@
         <property name="phone">
             <column name="phone" sql-type="varchar(12)" length="12"/>
         </property>
+        <property name="addressId">
+            <column name="address_id" sql-type="int"/>
+        </property>
         <property name="userStatusId">
             <column name="user_status_id" sql-type="int"/>
         </property>
+        <property name="billId">
+            <column name="bill_id" sql-type="int"/>
+        </property>
         <property name="agencyId">
             <column name="agency_id" sql-type="int"/>
+        </property>
+        <property name="creditCardId">
+            <column name="credit_card_id" sql-type="int"/>
         </property>
     </class>
 </hibernate-mapping>

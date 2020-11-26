@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-public class Color {
+public class Country {
     private int id;
     private String name;
 
@@ -21,7 +21,7 @@ public class Color {
     }
 
     @Basic
-    @Column(name = "name", nullable = true, length = 45)
+    @Column(name = "name", nullable = false, length = 42)
     public String getName() {
         return name;
     }
@@ -35,10 +35,10 @@ public class Color {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Color color = (Color) o;
+        Country country = (Country) o;
 
-        if (id != color.id) return false;
-        if (name != null ? !name.equals(color.name) : color.name != null) return false;
+        if (id != country.id) return false;
+        if (name != null ? !name.equals(country.name) : country.name != null) return false;
 
         return true;
     }

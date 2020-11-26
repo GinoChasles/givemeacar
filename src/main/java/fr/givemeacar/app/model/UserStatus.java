@@ -1,12 +1,10 @@
 package fr.givemeacar.app.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
-public class Color {
+@Table(name = "user_status", schema = "givemeacar2", catalog = "")
+public class UserStatus {
     private int id;
     private String name;
 
@@ -21,7 +19,7 @@ public class Color {
     }
 
     @Basic
-    @Column(name = "name", nullable = true, length = 45)
+    @Column(name = "name", nullable = false, length = 32)
     public String getName() {
         return name;
     }
@@ -35,10 +33,10 @@ public class Color {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Color color = (Color) o;
+        UserStatus that = (UserStatus) o;
 
-        if (id != color.id) return false;
-        if (name != null ? !name.equals(color.name) : color.name != null) return false;
+        if (id != that.id) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
 
         return true;
     }
