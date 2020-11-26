@@ -17,12 +17,12 @@ public class RentController {
     RentService service;
 
     @CrossOrigin
-    @RequestMapping("managers/count")
+    @RequestMapping("rents/count")
     public Long count() {
         return service.count();
     }
 
-    @GetMapping("/managers/{id}")
+    @GetMapping("/rents/{id}")
     public ResponseEntity<Rent> findById(@PathVariable int id) {
         Optional<Rent> model = service.findById(id);
         if (model.isPresent()) {
@@ -32,19 +32,19 @@ public class RentController {
     }
 
     @CrossOrigin
-    @PostMapping("/managers")
+    @PostMapping("/rents")
     public ResponseEntity<String> create(@Valid @RequestBody Rent model) {
         return service.create(model);
     }
 
     @CrossOrigin
-    @PutMapping("/managers/{id}")
+    @PutMapping("/rents/{id}")
     public ResponseEntity<String> update(@PathVariable int id, @RequestBody Rent model) {
         return service.update(id, model);
     }
 
     @CrossOrigin
-    @DeleteMapping("/managers/{id}")
+    @DeleteMapping("/rents/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
         return service.delete(id);
     }

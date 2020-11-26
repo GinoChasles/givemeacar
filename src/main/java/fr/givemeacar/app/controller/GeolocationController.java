@@ -17,12 +17,12 @@ public class GeolocationController {
     GeolocationService service;
 
     @CrossOrigin
-    @RequestMapping("managers/count")
+    @RequestMapping("geolocations/count")
     public Long count() {
         return service.count();
     }
 
-    @GetMapping("/managers/{id}")
+    @GetMapping("/geolocations/{id}")
     public ResponseEntity<Geolocation> findById(@PathVariable int id) {
         Optional<Geolocation> model = service.findById(id);
         if (model.isPresent()) {
@@ -32,19 +32,19 @@ public class GeolocationController {
     }
 
     @CrossOrigin
-    @PostMapping("/managers")
+    @PostMapping("/geolocations")
     public ResponseEntity<String> create(@Valid @RequestBody Geolocation model) {
         return service.create(model);
     }
 
     @CrossOrigin
-    @PutMapping("/managers/{id}")
+    @PutMapping("/geolocations/{id}")
     public ResponseEntity<String> update(@PathVariable int id, @RequestBody Geolocation model) {
         return service.update(id, model);
     }
 
     @CrossOrigin
-    @DeleteMapping("/managers/{id}")
+    @DeleteMapping("/geolocations/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
         return service.delete(id);
     }

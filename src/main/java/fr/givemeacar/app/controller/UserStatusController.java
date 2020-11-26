@@ -17,12 +17,12 @@ public class UserStatusController {
     UserStatusService service;
 
     @CrossOrigin
-    @RequestMapping("managers/count")
+    @RequestMapping("userstatuses/count")
     public Long count() {
         return service.count();
     }
 
-    @GetMapping("/managers/{id}")
+    @GetMapping("/userstatuses/{id}")
     public ResponseEntity<UserStatus> findById(@PathVariable int id) {
         Optional<UserStatus> model = service.findById(id);
         if (model.isPresent()) {
@@ -32,19 +32,19 @@ public class UserStatusController {
     }
 
     @CrossOrigin
-    @PostMapping("/managers")
+    @PostMapping("/userstatuses")
     public ResponseEntity<String> create(@Valid @RequestBody UserStatus model) {
         return service.create(model);
     }
 
     @CrossOrigin
-    @PutMapping("/managers/{id}")
+    @PutMapping("/userstatuses/{id}")
     public ResponseEntity<String> update(@PathVariable int id, @RequestBody UserStatus model) {
         return service.update(id, model);
     }
 
     @CrossOrigin
-    @DeleteMapping("/managers/{id}")
+    @DeleteMapping("/userstatuses/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
         return service.delete(id);
     }

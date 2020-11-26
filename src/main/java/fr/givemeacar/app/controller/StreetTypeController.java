@@ -17,12 +17,12 @@ public class StreetTypeController {
     StreetTypeService service;
 
     @CrossOrigin
-    @RequestMapping("managers/count")
+    @RequestMapping("streettypes/count")
     public Long count() {
         return service.count();
     }
 
-    @GetMapping("/managers/{id}")
+    @GetMapping("/streettypes/{id}")
     public ResponseEntity<StreetType> findById(@PathVariable int id) {
         Optional<StreetType> model = service.findById(id);
         if (model.isPresent()) {
@@ -32,19 +32,19 @@ public class StreetTypeController {
     }
 
     @CrossOrigin
-    @PostMapping("/managers")
+    @PostMapping("/streettypes")
     public ResponseEntity<String> create(@Valid @RequestBody StreetType model) {
         return service.create(model);
     }
 
     @CrossOrigin
-    @PutMapping("/managers/{id}")
+    @PutMapping("/streettypes/{id}")
     public ResponseEntity<String> update(@PathVariable int id, @RequestBody StreetType model) {
         return service.update(id, model);
     }
 
     @CrossOrigin
-    @DeleteMapping("/managers/{id}")
+    @DeleteMapping("/streettypes/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
         return service.delete(id);
     }

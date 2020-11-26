@@ -17,12 +17,12 @@ public class ModelController {
     ModelService service;
 
     @CrossOrigin
-    @RequestMapping("managers/count")
+    @RequestMapping("models/count")
     public Long count() {
         return service.count();
     }
 
-    @GetMapping("/managers/{id}")
+    @GetMapping("/models/{id}")
     public ResponseEntity<Model> findById(@PathVariable int id) {
         Optional<Model> model = service.findById(id);
         if (model.isPresent()) {
@@ -32,19 +32,19 @@ public class ModelController {
     }
 
     @CrossOrigin
-    @PostMapping("/managers")
+    @PostMapping("/models")
     public ResponseEntity<String> create(@Valid @RequestBody Model model) {
         return service.create(model);
     }
 
     @CrossOrigin
-    @PutMapping("/managers/{id}")
+    @PutMapping("/models/{id}")
     public ResponseEntity<String> update(@PathVariable int id, @RequestBody Model model) {
         return service.update(id, model);
     }
 
     @CrossOrigin
-    @DeleteMapping("/managers/{id}")
+    @DeleteMapping("/models/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
         return service.delete(id);
     }

@@ -17,12 +17,12 @@ public class EnergyController {
     EnergyService service;
 
     @CrossOrigin
-    @RequestMapping("managers/count")
+    @RequestMapping("energies/count")
     public Long count() {
         return service.count();
     }
 
-    @GetMapping("/managers/{id}")
+    @GetMapping("/energies/{id}")
     public ResponseEntity<Energy> findById(@PathVariable int id) {
         Optional<Energy> model = service.findById(id);
         if (model.isPresent()) {
@@ -32,19 +32,19 @@ public class EnergyController {
     }
 
     @CrossOrigin
-    @PostMapping("/managers")
+    @PostMapping("/energies")
     public ResponseEntity<String> create(@Valid @RequestBody Energy model) {
         return service.create(model);
     }
 
     @CrossOrigin
-    @PutMapping("/managers/{id}")
+    @PutMapping("/energies/{id}")
     public ResponseEntity<String> update(@PathVariable int id, @RequestBody Energy model) {
         return service.update(id, model);
     }
 
     @CrossOrigin
-    @DeleteMapping("/managers/{id}")
+    @DeleteMapping("/energies/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
         return service.delete(id);
     }
