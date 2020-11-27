@@ -10,8 +10,8 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api")
-public class ManagerController{
+@RequestMapping("/api")
+public class ManagerController {
 
     @Autowired
     ManagerService service;
@@ -25,8 +25,8 @@ public class ManagerController{
     @GetMapping("/managers/{id}")
     public ResponseEntity<Manager> findById(@PathVariable int id) {
         Optional<Manager> model = service.findById(id);
-        if  (model.isPresent()) {
-            return ResponseEntity.ok().body (model.get());
+        if (model.isPresent()) {
+            return ResponseEntity.ok().body(model.get());
         }
         return ResponseEntity.notFound().build();
     }
@@ -34,13 +34,13 @@ public class ManagerController{
     @CrossOrigin
     @PostMapping("/managers")
     public ResponseEntity<String> create(@Valid @RequestBody Manager model) {
-        return service.create (model);
+        return service.create(model);
     }
 
     @CrossOrigin
     @PutMapping("/managers/{id}")
-    public ResponseEntity<String> update(@PathVariable int id,@RequestBody Manager model) {
-        return service.update(id,model);
+    public ResponseEntity<String> update(@PathVariable int id, @RequestBody Manager model) {
+        return service.update(id, model);
     }
 
     @CrossOrigin
