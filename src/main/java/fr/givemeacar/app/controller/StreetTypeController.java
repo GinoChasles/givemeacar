@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("/api")
 public class StreetTypeController {
 
     @Autowired
