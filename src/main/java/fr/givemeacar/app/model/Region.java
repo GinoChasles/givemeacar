@@ -11,6 +11,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
+@Table(name = "region", schema = "givemeacar", catalog = "")
 public class Region {
     @Id
     @Column(name = "id", nullable = false)

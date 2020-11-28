@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @Entity
+@Table(name = "address", schema = "givemeacar", catalog = "")
 public class Address {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,10 +29,10 @@ public class Address {
     @Column(name = "lattitude", nullable = false, precision = 8)
     private BigDecimal lattitude;
     @OneToOne
-    @JoinColumn(name = "street_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "street_id", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
     private Street streetByStreetId;
     @OneToOne
-    @JoinColumn(name = "street_suffix_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "street_suffix_id", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
     private StreetSuffix streetSuffixByStreetSuffixId1;
 
 }

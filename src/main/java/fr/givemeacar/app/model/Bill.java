@@ -12,6 +12,7 @@ import java.util.Date;
 @Getter
 @Setter
 @Entity
+@Table(name = "bill", schema = "givemeacar", catalog = "")
 public class Bill {
     @Id
     @Column(name = "id", nullable = false)

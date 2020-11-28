@@ -12,6 +12,7 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @Entity
+@Table(name = "street", schema = "givemeacar", catalog = "")
 public class Street {
     @Id
     @Column(name = "id", nullable = false)

@@ -12,6 +12,7 @@ import java.util.Collection;
 @Getter
 @Setter
 @Entity
+@Table(name = "agency", schema = "givemeacar", catalog = "")
 public class Agency {
     @Id
     @Column(name = "id", nullable = false)
