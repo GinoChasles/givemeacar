@@ -17,6 +17,4 @@ public class Country {
     private int id;
     @Column(name = "name", nullable = false, length = 42)
     private String name;
-    @OneToMany(mappedBy = "countryByCountryId")
-    private Collection<Region> regionsById;
 }
