@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -27,6 +28,16 @@ public class ManagerController{
         Optional<Manager> model = service.findById(id);
         if  (model.isPresent()) {
             return ResponseEntity.ok().body (model.get());
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/managers")
+    public ResponseEntity<List<Manager>> findAll() {
+        List<Manager> models = service.findAll();
+
+        if  (models.size() != 0) {
+            return ResponseEntity.ok().body(models);
         }
         return ResponseEntity.notFound().build();
     }

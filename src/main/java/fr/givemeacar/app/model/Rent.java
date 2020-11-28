@@ -1,10 +1,8 @@
 package fr.givemeacar.app.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Collection;
 
 @Entity
 public class Rent {
@@ -13,6 +11,9 @@ public class Rent {
     private Timestamp end;
     private int carId;
     private int clientId;
+    private Collection<Bill> billsById;
+    private Car carByCarId;
+    private Client clientByClientId;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -24,7 +25,7 @@ public class Rent {
         this.id = id;
     }
 
-    @Basic
+    
     @Column(name = "start", nullable = false)
     public Timestamp getStart() {
         return start;
@@ -34,7 +35,7 @@ public class Rent {
         this.start = start;
     }
 
-    @Basic
+    
     @Column(name = "end", nullable = true)
     public Timestamp getEnd() {
         return end;
@@ -44,7 +45,7 @@ public class Rent {
         this.end = end;
     }
 
-    @Basic
+    
     @Column(name = "car_id", nullable = false)
     public int getCarId() {
         return carId;
@@ -54,7 +55,7 @@ public class Rent {
         this.carId = carId;
     }
 
-    @Basic
+    
     @Column(name = "client_id", nullable = false)
     public int getClientId() {
         return clientId;
@@ -88,5 +89,34 @@ public class Rent {
         result = 31 * result + carId;
         result = 31 * result + clientId;
         return result;
+    }
+
+    @OneToMany(mappedBy = "rentByRentId")
+    public Collection<Bill> getBillsById() {
+        return billsById;
+    }
+
+    public void setBillsById(Collection<Bill> billsById) {
+        this.billsById = billsById;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "car_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    public Car getCarByCarId() {
+        return carByCarId;
+    }
+
+    public void setCarByCarId(Car carByCarId) {
+        this.carByCarId = carByCarId;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "client_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    public Client getClientByClientId() {
+        return clientByClientId;
+    }
+
+    public void setClientByClientId(Client clientByClientId) {
+        this.clientByClientId = clientByClientId;
     }
 }

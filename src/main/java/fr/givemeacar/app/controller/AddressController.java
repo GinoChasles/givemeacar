@@ -10,14 +10,14 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("/api")
 public class AddressController {
 
     @Autowired
     AddressService service;
 
     @CrossOrigin
-    @RequestMapping("addresses/count")
+    @RequestMapping("/addresses/count")
     public Long count() {
         return service.count();
     }

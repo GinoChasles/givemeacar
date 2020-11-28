@@ -1,12 +1,16 @@
 package fr.givemeacar.app.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
-@Table(name = "user_status", schema = "givemeacar2", catalog = "")
+@Table(name = "user_status", schema = "givemeacar", catalog = "")
 public class UserStatus {
     private int id;
     private String name;
+    private Collection<Administrator> administratorsById;
+    private Collection<Client> clientsById;
+    private Collection<Manager> managersById;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -18,7 +22,7 @@ public class UserStatus {
         this.id = id;
     }
 
-    @Basic
+    
     @Column(name = "name", nullable = false, length = 32)
     public String getName() {
         return name;
@@ -46,5 +50,32 @@ public class UserStatus {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "userStatusByUserStatusId")
+    public Collection<Administrator> getAdministratorsById() {
+        return administratorsById;
+    }
+
+    public void setAdministratorsById(Collection<Administrator> administratorsById) {
+        this.administratorsById = administratorsById;
+    }
+
+    @OneToMany(mappedBy = "userStatusByUserStatusId")
+    public Collection<Client> getClientsById() {
+        return clientsById;
+    }
+
+    public void setClientsById(Collection<Client> clientsById) {
+        this.clientsById = clientsById;
+    }
+
+    @OneToMany(mappedBy = "userStatusByUserStatusId")
+    public Collection<Manager> getManagersById() {
+        return managersById;
+    }
+
+    public void setManagersById(Collection<Manager> managersById) {
+        this.managersById = managersById;
     }
 }

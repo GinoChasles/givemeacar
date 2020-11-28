@@ -1,12 +1,14 @@
 package fr.givemeacar.app.model;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
-@Table(name = "street_suffix", schema = "givemeacar2", catalog = "")
+@Table(name = "street_suffix", schema = "givemeacar", catalog = "")
 public class StreetSuffix {
     private int id;
     private String name;
+    private Collection<Address> addressesById;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -18,8 +20,8 @@ public class StreetSuffix {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "name", nullable = true, length = 8)
+    
+    @Column(name = "name", nullable = true, length = 12)
     public String getName() {
         return name;
     }
@@ -46,5 +48,14 @@ public class StreetSuffix {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "streetSuffixByStreetSuffixId1")
+    public Collection<Address> getAddressesById() {
+        return addressesById;
+    }
+
+    public void setAddressesById(Collection<Address> addressesById) {
+        this.addressesById = addressesById;
     }
 }

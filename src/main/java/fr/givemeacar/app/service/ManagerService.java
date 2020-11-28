@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,6 +21,9 @@ public class ManagerService {
         return repo.count();
     }
 
+    public List<Manager> findAll(){
+        return repo.findAll();
+    }
     public Optional<Manager> findById(int id) {
 
         System.out.println(id);

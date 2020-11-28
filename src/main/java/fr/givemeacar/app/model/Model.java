@@ -1,15 +1,15 @@
 package fr.givemeacar.app.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
 public class Model {
     private int id;
     private String name;
     private int brandId;
+    private Collection<Car> carsById;
+    private Brand brandByBrandId;
 
     @Id
     @Column(name = "id", nullable = false)
@@ -21,7 +21,7 @@ public class Model {
         this.id = id;
     }
 
-    @Basic
+    
     @Column(name = "name", nullable = false, length = 45)
     public String getName() {
         return name;
@@ -31,7 +31,7 @@ public class Model {
         this.name = name;
     }
 
-    @Basic
+    
     @Column(name = "brand_id", nullable = false)
     public int getBrandId() {
         return brandId;
@@ -61,5 +61,24 @@ public class Model {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + brandId;
         return result;
+    }
+
+    @OneToMany(mappedBy = "modelByModelId")
+    public Collection<Car> getCarsById() {
+        return carsById;
+    }
+
+    public void setCarsById(Collection<Car> carsById) {
+        this.carsById = carsById;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "brand_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    public Brand getBrandByBrandId() {
+        return brandByBrandId;
+    }
+
+    public void setBrandByBrandId(Brand brandByBrandId) {
+        this.brandByBrandId = brandByBrandId;
     }
 }
