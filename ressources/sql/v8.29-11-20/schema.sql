@@ -27,8 +27,8 @@ CREATE TABLE `address` (
   `number` int DEFAULT NULL,
   `street_id` int NOT NULL,
   `street_suffix_id` int NOT NULL,
-  `longitude` decimal(10,8) NOT NULL,
-  `lattitude` decimal(11,8) NOT NULL,
+  `longitude` decimal(16,14) NOT NULL,
+  `latitude` decimal(17,14) NOT NULL,
   `street_suffix_id1` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_address_street1_idx` (`street_id`),
@@ -37,6 +37,26 @@ CREATE TABLE `address` (
   CONSTRAINT `FK76rad0kpw4hq0pch4p5pb42tg` FOREIGN KEY (`street_suffix_id`) REFERENCES `street_suffix` (`id`),
   CONSTRAINT `fk_address_street1` FOREIGN KEY (`street_id`) REFERENCES `street` (`id`),
   CONSTRAINT `fk_address_street_suffix1` FOREIGN KEY (`street_suffix_id1`) REFERENCES `street_suffix` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `addresses`
+--
+
+DROP TABLE IF EXISTS `addresses`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `addresses` (
+  `number` int DEFAULT NULL,
+  `street_name` varchar(120) DEFAULT NULL,
+  `id` int NOT NULL AUTO_INCREMENT,
+  `zipcode` varchar(45) DEFAULT NULL,
+  `ville` varchar(45) DEFAULT NULL,
+  `gps` varchar(10) DEFAULT NULL,
+  `longitude` decimal(10,8) DEFAULT NULL,
+  `latitude` decimal(11,8) DEFAULT NULL,
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -122,7 +142,7 @@ CREATE TABLE `brand` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -167,14 +187,13 @@ DROP TABLE IF EXISTS `city`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `city` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(68) NOT NULL,
-  `zipcode` varchar(5) NOT NULL,
+  `zipcode` varchar(5) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `latitude` double(16,14) NOT NULL,
+  `longitude` double(17,14) NOT NULL,
   `department_id` int NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `name_UNIQUE` (`name`),
-  KEY `fk_city_department1_idx` (`department_id`),
-  CONSTRAINT `fk_city_department1` FOREIGN KEY (`department_id`) REFERENCES `department` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=35854 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -224,7 +243,7 @@ CREATE TABLE `color` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=208 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -239,7 +258,7 @@ CREATE TABLE `country` (
   `name` varchar(42) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name_UNIQUE` (`name`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=241 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -271,13 +290,12 @@ DROP TABLE IF EXISTS `department`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `department` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) DEFAULT NULL,
-  `code` varchar(45) DEFAULT NULL,
+  `code` varchar(3) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `region_id` int NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `fk_department_region1_idx` (`region_id`),
-  CONSTRAINT `fk_department_region1` FOREIGN KEY (`region_id`) REFERENCES `region` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `departments_code_index` (`code`)
+) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -291,7 +309,7 @@ CREATE TABLE `energy_type` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -330,12 +348,12 @@ DROP TABLE IF EXISTS `model`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `model` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) NOT NULL,
   `brand_id` int NOT NULL,
+  `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_model_brand1_idx` (`brand_id`),
   CONSTRAINT `fk_model_brand1` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=1315 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -347,12 +365,9 @@ DROP TABLE IF EXISTS `region`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `region` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(45) DEFAULT NULL,
-  `country_id` int NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_region_country1_idx` (`country_id`),
-  CONSTRAINT `fk_region_country1` FOREIGN KEY (`country_id`) REFERENCES `country` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -447,4 +462,4 @@ CREATE TABLE `user_status` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-29  0:27:17
+-- Dump completed on 2020-11-29 16:57:03
