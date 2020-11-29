@@ -83,7 +83,7 @@ User",,"+ login() : void
 + logout() : void"
 27,Classe,UML,1,,,,,,,"<<interface>>
 CrediCard",,+ connectToAPI() : void
-28,Classe,UML,1,,,,,,,<<interface>> Car,,"+ alertRevision() : void
+28,Classe,UML,1,,,,,,,<<interface>>Car,,"+ alertRevision() : void
 
 + overhaulCar() : void
 + sellCar() : void
@@ -94,7 +94,7 @@ CrediCard",,+ connectToAPI() : void
 + listNonAvailable() : Car[]
 + listOverhaulNeeded() : Car[]
 + listOverhaulInProgress() : Car[]"
-29,Classe,UML,1,,,,,,,<<interface>> Localization,,
+29,Classe,UML,1,,,,,,,<<interface>>Localization,,
 30,Classe,UML,1,,,,,,,"<<interface>>
 Address",,
 31,Classe,UML,1,,,,,,,"<<interface>>
@@ -121,7 +121,7 @@ Energy",,+ alertLevel() : void
 Brand",,
 42,Classe,UML,1,,,,,,,"<<interface>>
 Model",,
-43,Classe,UML,1,,,,,,,<<interface>> Rent,,
+43,Classe,UML,1,,,,,,,<<interface>>Rent,,
 44,Ligne,,1,,,22,8,Composition,None,Composition,,
 45,Ligne,,1,,,3,5,None,None,,,
 46,Ligne,,1,,,5,12,None,Aggregation,,,

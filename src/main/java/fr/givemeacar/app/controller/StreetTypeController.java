@@ -1,7 +1,7 @@
 package fr.givemeacar.app.controller;
 
-import fr.givemeacar.app.model.Rent;
-import fr.givemeacar.app.service.RentService;
+import fr.givemeacar.app.model.StreetType;
+import fr.givemeacar.app.service.StreetTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,20 +11,20 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
-public class RentController {
+public class StreetTypeController {
 
     @Autowired
-    RentService service;
+    StreetTypeService service;
 
     @CrossOrigin
-    @RequestMapping("rents/count")
+    @RequestMapping("streettypes/count")
     public Long count() {
         return service.count();
     }
 
-    @GetMapping("/rents/{id}")
-    public ResponseEntity<Rent> findById(@PathVariable int id) {
-        Optional<Rent> model = service.findById(id);
+    @GetMapping("/streettypes/{id}")
+    public ResponseEntity<StreetType> findById(@PathVariable int id) {
+        Optional<StreetType> model = service.findById(id);
         if (model.isPresent()) {
             return ResponseEntity.ok().body(model.get());
         }
@@ -32,19 +32,19 @@ public class RentController {
     }
 
     @CrossOrigin
-    @PostMapping("/rents")
-    public ResponseEntity<String> create(@Valid @RequestBody Rent model) {
+    @PostMapping("/streettypes")
+    public ResponseEntity<String> create(@Valid @RequestBody StreetType model) {
         return service.create(model);
     }
 
     @CrossOrigin
-    @PutMapping("/rents/{id}")
-    public ResponseEntity<String> update(@PathVariable int id, @RequestBody Rent model) {
+    @PutMapping("/streettypes/{id}")
+    public ResponseEntity<String> update(@PathVariable int id, @RequestBody StreetType model) {
         return service.update(id, model);
     }
 
     @CrossOrigin
-    @DeleteMapping("/rents/{id}")
+    @DeleteMapping("/streettypes/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
         return service.delete(id);
     }
