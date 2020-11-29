@@ -24,10 +24,10 @@ public class Address {
     private int streetId;
     @Column(name = "street_suffix_id", nullable = false)
     private int streetSuffixId;
-    @Column(name = "longitude", nullable = false, precision = 8)
+    @Column(name = "longitude", nullable = false, precision = 14)
     private BigDecimal longitude;
-    @Column(name = "lattitude", nullable = false, precision = 8)
-    private BigDecimal lattitude;
+    @Column(name = "latitude", nullable = false, precision = 14)
+    private BigDecimal latitude;
     @OneToOne
     @JoinColumn(name = "street_id", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
     private Street streetByStreetId;
