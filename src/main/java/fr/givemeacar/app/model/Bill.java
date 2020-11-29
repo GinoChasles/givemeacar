@@ -9,8 +9,7 @@ import java.util.Date;
 @FieldDefaults(level= AccessLevel.PRIVATE)
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "bill", schema = "givemeacar", catalog = "")
 public class Bill {

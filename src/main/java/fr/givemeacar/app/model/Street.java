@@ -9,8 +9,7 @@ import java.sql.Timestamp;
 @FieldDefaults(level= AccessLevel.PRIVATE)
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "street", schema = "givemeacar", catalog = "")
 public class Street {

@@ -8,8 +8,7 @@ import javax.persistence.*;
 @FieldDefaults(level= AccessLevel.PRIVATE)
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "administrator", schema = "givemeacar", catalog = "")
 public class Administrator {

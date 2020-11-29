@@ -9,8 +9,7 @@ import java.util.Collection;
 @FieldDefaults(level= AccessLevel.PRIVATE)
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "car", schema = "givemeacar", catalog = "")
 public class Car {

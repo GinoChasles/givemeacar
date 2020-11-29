@@ -9,8 +9,7 @@ import java.math.BigDecimal;
 @FieldDefaults(level= AccessLevel.PRIVATE)
 @NoArgsConstructor
 @AllArgsConstructor
-@Getter
-@Setter
+@Data
 @Entity
 @Table(name = "address", schema = "givemeacar", catalog = "")
 public class Address {
