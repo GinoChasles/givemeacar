@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -27,6 +28,14 @@ public class ColorController{
         Optional<Color> color = service.findById(id);
         if (color.isPresent()) {
             return ResponseEntity.ok().body(color.get());
+        }
+        return ResponseEntity.notFound().build();
+    }
+    @GetMapping("/colors")
+    public ResponseEntity<List<Color>> findAll() {
+        List<Color> colors = service.findAll();
+        if (colors.size() != 0) {
+            return ResponseEntity.ok().body(colors);
         }
         return ResponseEntity.notFound().build();
     }
