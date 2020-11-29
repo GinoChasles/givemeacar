@@ -18,9 +18,4 @@ public class Region {
     private int id;
     @Column(name = "name", nullable = true, length = 45)
     private String name;
-    @Column(name = "country_id", nullable = false)
-    private int countryId;
-    @ManyToOne
-    @JoinColumn(name = "country_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Country countryByCountryId;
 }
