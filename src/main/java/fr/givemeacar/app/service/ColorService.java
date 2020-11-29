@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -21,7 +22,11 @@ public class ColorService{
     }
 
     public Optional<Color> findById(int id) {
-            return repo.findById(id);
+        return repo.findById(id);
+    }
+
+    public List<Color> findAll() {
+        return repo.findAll();
     }
 
     public ResponseEntity<String> create(Color model){
