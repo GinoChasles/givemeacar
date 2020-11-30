@@ -6,9 +6,7 @@ import lombok.experimental.FieldDefaults;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-@FieldDefaults(level= AccessLevel.PRIVATE)
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Entity
 @Table(name = "rent", schema = "givemeacar", catalog = "")
 public class Rent {

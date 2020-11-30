@@ -40,7 +40,7 @@ public class AdministratorController {
     @CrossOrigin
     @PutMapping("/administrators/{id}")
     public ResponseEntity<String> update(@PathVariable int id, @RequestBody Administrator model) {
-        return service.update(id, model);
+        return service.update(model,id);
     }
 
     @CrossOrigin

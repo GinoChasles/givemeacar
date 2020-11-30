@@ -5,9 +5,7 @@ import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 
-@FieldDefaults(level= AccessLevel.PRIVATE)
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Entity
 @Table(name = "credit_card", schema = "givemeacar", catalog = "")
 public class CreditCard {

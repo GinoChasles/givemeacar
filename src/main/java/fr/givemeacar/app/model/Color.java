@@ -5,9 +5,7 @@ import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 
-@FieldDefaults(level= AccessLevel.PRIVATE)
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Entity
 @Table(name = "color", schema = "givemeacar", catalog = "")
 public class Color {

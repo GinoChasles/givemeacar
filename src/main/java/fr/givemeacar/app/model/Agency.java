@@ -6,9 +6,7 @@ import lombok.experimental.FieldDefaults;
 import javax.persistence.*;
 import java.util.Collection;
 
-@FieldDefaults(level= AccessLevel.PRIVATE)
-@NoArgsConstructor
-@AllArgsConstructor
+
 @Entity
 @Table(name = "agency", schema = "givemeacar", catalog = "")
 public class Agency {

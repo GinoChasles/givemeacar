@@ -6,9 +6,7 @@ import lombok.experimental.FieldDefaults;
 import javax.persistence.*;
 import java.math.BigDecimal;
 
-@FieldDefaults(level= AccessLevel.PRIVATE)
-@NoArgsConstructor
-@AllArgsConstructor
+
 
 @Entity
 @Table(name = "address", schema = "givemeacar", catalog = "")

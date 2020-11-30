@@ -31,14 +31,6 @@ public class ColorController{
         }
         return ResponseEntity.notFound().build();
     }
-    @GetMapping("/colors")
-    public ResponseEntity<List<Color>> findAll() {
-        List<Color> colors = service.findAll();
-        if (colors.size() != 0) {
-            return ResponseEntity.ok().body(colors);
-        }
-        return ResponseEntity.notFound().build();
-    }
 
     @CrossOrigin
     @PostMapping("colors")
@@ -49,7 +41,7 @@ public class ColorController{
     @CrossOrigin
     @PutMapping("colors/{id}")
     public ResponseEntity<String> update(@PathVariable int id,@RequestBody Color color) {
-        return service.update(id,color);
+        return service.update(color,id);
     }
 
     @CrossOrigin

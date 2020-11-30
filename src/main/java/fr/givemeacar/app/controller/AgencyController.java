@@ -31,14 +31,6 @@ public class AgencyController {
         }
         return ResponseEntity.notFound().build();
     }
-    @GetMapping("/agencies/")
-    public ResponseEntity<List<Agency>> findAll() {
-        List<Agency> models = service.findAll();
-        if (models.size() != 0) {
-            return ResponseEntity.ok().body(models);
-        }
-        return ResponseEntity.notFound().build();
-    }
 
     @CrossOrigin
     @PostMapping("/agencies")
@@ -49,7 +41,7 @@ public class AgencyController {
     @CrossOrigin
     @PutMapping("/agencies/{id}")
     public ResponseEntity<String> update(@PathVariable int id, @RequestBody Agency model) {
-        return service.update(id, model);
+        return service.update(model,id);
     }
 
     @CrossOrigin
