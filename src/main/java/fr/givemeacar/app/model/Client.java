@@ -1,7 +1,6 @@
 package fr.givemeacar.app.model;
 
-import lombok.*;
-import lombok.experimental.FieldDefaults;
+
 
 import javax.persistence.*;
 import java.util.Collection;

@@ -34,16 +34,7 @@ public class App {
 		SpringApplication.run(App.class, args);
 
 		try {
-			System.out.println("querying all the managed entities...");
 			final Metamodel metamodel = session.getSessionFactory().getMetamodel();
-			for (EntityType<?> entityType : metamodel.getEntities()) {
-				final String entityName = entityType.getName();
-				final Query query = session.createQuery("from " + entityName);
-				System.out.println("executing: " + query.getQueryString());
-				for (Object o : query.list()) {
-					System.out.println("  " + o);
-				}
-			}
 		} finally {
 			session.close();
 		}
