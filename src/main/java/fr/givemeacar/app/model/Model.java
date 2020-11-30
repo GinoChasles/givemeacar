@@ -15,7 +15,7 @@ public class Model {
     private String name;
     @Column(name = "brand_id", nullable = false)
     private int brandId;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "brand_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
     private Brand brandByBrandId;
 
