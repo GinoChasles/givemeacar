@@ -32,16 +32,6 @@ public class ManagerController{
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/managers")
-    public ResponseEntity<List<Manager>> findAll() {
-        List<Manager> models = service.findAll();
-
-        if  (models.size() != 0) {
-            return ResponseEntity.ok().body(models);
-        }
-        return ResponseEntity.notFound().build();
-    }
-
     @CrossOrigin
     @PostMapping("/managers")
     public ResponseEntity<String> create(@Valid @RequestBody Manager model) {
@@ -51,7 +41,7 @@ public class ManagerController{
     @CrossOrigin
     @PutMapping("/managers/{id}")
     public ResponseEntity<String> update(@PathVariable int id,@RequestBody Manager model) {
-        return service.update(id,model);
+        return service.update(model,id);
     }
 
     @CrossOrigin

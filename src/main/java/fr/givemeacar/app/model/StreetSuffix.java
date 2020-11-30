@@ -5,10 +5,7 @@ import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 
-@FieldDefaults(level= AccessLevel.PRIVATE)
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
+
 @Entity
 @Table(name = "street_suffix", schema = "givemeacar", catalog = "")
 public class StreetSuffix {
@@ -17,4 +14,20 @@ public class StreetSuffix {
     private int id;
     @Column(name = "name", nullable = true, length = 12)
     private String name;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 }

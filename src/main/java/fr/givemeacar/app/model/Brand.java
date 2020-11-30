@@ -6,10 +6,7 @@ import lombok.experimental.FieldDefaults;
 import javax.persistence.*;
 import java.util.Collection;
 
-@FieldDefaults(level= AccessLevel.PRIVATE)
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
+
 @Entity
 @Table(name = "brand", schema = "givemeacar", catalog = "")
 public class Brand {
@@ -20,4 +17,28 @@ public class Brand {
     private String name;
     @OneToMany(mappedBy = "brandByBrandId")
     private Collection<Model> modelsById;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Collection<Model> getModelsById() {
+        return modelsById;
+    }
+
+    public void setModelsById(Collection<Model> modelsById) {
+        this.modelsById = modelsById;
+    }
 }

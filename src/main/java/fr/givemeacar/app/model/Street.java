@@ -6,10 +6,7 @@ import lombok.experimental.FieldDefaults;
 import javax.persistence.*;
 import java.sql.Timestamp;
 
-@FieldDefaults(level= AccessLevel.PRIVATE)
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
+
 @Entity
 @Table(name = "street", schema = "givemeacar", catalog = "")
 public class Street {
@@ -26,4 +23,44 @@ public class Street {
     @OneToOne
     @JoinColumn(name = "street_name_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
     private StreetName streetNameByStreetNameId;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(int cityId) {
+        this.cityId = cityId;
+    }
+
+    public int getStreetNameId() {
+        return streetNameId;
+    }
+
+    public void setStreetNameId(int streetNameId) {
+        this.streetNameId = streetNameId;
+    }
+
+    public City getCityByCityId() {
+        return cityByCityId;
+    }
+
+    public void setCityByCityId(City cityByCityId) {
+        this.cityByCityId = cityByCityId;
+    }
+
+    public StreetName getStreetNameByStreetNameId() {
+        return streetNameByStreetNameId;
+    }
+
+    public void setStreetNameByStreetNameId(StreetName streetNameByStreetNameId) {
+        this.streetNameByStreetNameId = streetNameByStreetNameId;
+    }
 }

@@ -6,10 +6,7 @@ import lombok.experimental.FieldDefaults;
 import javax.persistence.*;
 import java.util.Collection;
 
-@FieldDefaults(level= AccessLevel.PRIVATE)
-@NoArgsConstructor
-@AllArgsConstructor
-@Data
+
 @Entity
 @Table(name = "car", schema = "givemeacar", catalog = "")
 public class Car {
@@ -44,4 +41,108 @@ public class Car {
     @OneToOne
     @JoinColumn(name = "address_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
     private Address addressByAddressId;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getKilometers() {
+        return kilometers;
+    }
+
+    public void setKilometers(int kilometers) {
+        this.kilometers = kilometers;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public int getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(int available) {
+        this.available = available;
+    }
+
+    public int getRented() {
+        return rented;
+    }
+
+    public void setRented(int rented) {
+        this.rented = rented;
+    }
+
+    public int getModelId() {
+        return modelId;
+    }
+
+    public void setModelId(int modelId) {
+        this.modelId = modelId;
+    }
+
+    public int getEnergyId() {
+        return energyId;
+    }
+
+    public void setEnergyId(int energyId) {
+        this.energyId = energyId;
+    }
+
+    public int getColorId() {
+        return colorId;
+    }
+
+    public void setColorId(int colorId) {
+        this.colorId = colorId;
+    }
+
+    public Model getModelByModelId() {
+        return modelByModelId;
+    }
+
+    public void setModelByModelId(Model modelByModelId) {
+        this.modelByModelId = modelByModelId;
+    }
+
+    public Color getColorByColorId() {
+        return colorByColorId;
+    }
+
+    public void setColorByColorId(Color colorByColorId) {
+        this.colorByColorId = colorByColorId;
+    }
+
+    public EnergyType getEnergyTypeByEnergyTypeId() {
+        return energyTypeByEnergyTypeId;
+    }
+
+    public void setEnergyTypeByEnergyTypeId(EnergyType energyTypeByEnergyTypeId) {
+        this.energyTypeByEnergyTypeId = energyTypeByEnergyTypeId;
+    }
+
+    public Address getAddressByAddressId() {
+        return addressByAddressId;
+    }
+
+    public void setAddressByAddressId(Address addressByAddressId) {
+        this.addressByAddressId = addressByAddressId;
+    }
 }
