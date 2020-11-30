@@ -1,13 +1,8 @@
 package fr.givemeacar.app.model;
 
-import lombok.*;
-import lombok.experimental.FieldDefaults;
 
 import javax.persistence.*;
 
-@FieldDefaults(level= AccessLevel.PRIVATE)
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "user_status", schema = "givemeacar", catalog = "")
 public class UserStatus {
