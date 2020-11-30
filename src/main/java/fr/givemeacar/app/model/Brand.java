@@ -3,7 +3,6 @@ package fr.givemeacar.app.model;
 
 
 import javax.persistence.*;
-import java.util.Collection;
 
 
 @Entity
@@ -15,7 +14,6 @@ public class Brand {
     @Column(name = "name", nullable = false, length = 45)
     private String name;
     @OneToMany(mappedBy = "brandByBrandId")
-    private Collection<Model> modelsById;
 
     public int getId() {
         return id;
@@ -31,13 +29,5 @@ public class Brand {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public Collection<Model> getModelsById() {
-        return modelsById;
-    }
-
-    public void setModelsById(Collection<Model> modelsById) {
-        this.modelsById = modelsById;
     }
 }
