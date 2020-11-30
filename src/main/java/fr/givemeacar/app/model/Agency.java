@@ -9,7 +9,6 @@ import java.util.Collection;
 @FieldDefaults(level= AccessLevel.PRIVATE)
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
 @Entity
 @Table(name = "agency", schema = "givemeacar", catalog = "")
 public class Agency {
@@ -36,4 +35,84 @@ public class Agency {
     @OneToOne
     @JoinColumn(name = "manager_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
     private Manager managerByManagerId;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAddressId() {
+        return addressId;
+    }
+
+    public void setAddressId(int addressId) {
+        this.addressId = addressId;
+    }
+
+    public int getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
+    }
+
+    public int getBillId() {
+        return billId;
+    }
+
+    public void setBillId(int billId) {
+        this.billId = billId;
+    }
+
+    public int getManagerId() {
+        return managerId;
+    }
+
+    public void setManagerId(int managerId) {
+        this.managerId = managerId;
+    }
+
+    public Address getAddressByAddressId() {
+        return addressByAddressId;
+    }
+
+    public void setAddressByAddressId(Address addressByAddressId) {
+        this.addressByAddressId = addressByAddressId;
+    }
+
+    public Collection<Client> getClientsById() {
+        return clientsById;
+    }
+
+    public void setClientsById(Collection<Client> clientsById) {
+        this.clientsById = clientsById;
+    }
+
+    public Collection<Client> getBillsById() {
+        return billsById;
+    }
+
+    public void setBillsById(Collection<Client> billsById) {
+        this.billsById = billsById;
+    }
+
+    public Manager getManagerByManagerId() {
+        return managerByManagerId;
+    }
+
+    public void setManagerByManagerId(Manager managerByManagerId) {
+        this.managerByManagerId = managerByManagerId;
+    }
 }
