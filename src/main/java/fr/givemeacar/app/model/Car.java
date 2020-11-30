@@ -3,6 +3,7 @@ package fr.givemeacar.app.model;
 
 
 import javax.persistence.*;
+import java.math.BigDecimal;
 
 
 @Entity
@@ -27,6 +28,10 @@ public class Car {
     private int energyId;
     @Column(name = "color_id", nullable = false)
     private int colorId;
+    @Column(name = "longitude", nullable = false, precision = 14)
+    private BigDecimal longitude;
+    @Column(name = "latitude", nullable = false, precision = 14)
+    private BigDecimal latitude;
     @OneToOne
     @JoinColumn(name = "model_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
     private Model modelByModelId;
@@ -142,5 +147,21 @@ public class Car {
 
     public void setAddressByAddressId(Address addressByAddressId) {
         this.addressByAddressId = addressByAddressId;
+    }
+
+    public BigDecimal getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(BigDecimal longitude) {
+        this.longitude = longitude;
+    }
+
+    public BigDecimal getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(BigDecimal latitude) {
+        this.latitude = latitude;
     }
 }

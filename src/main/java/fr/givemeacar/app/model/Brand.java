@@ -13,13 +13,8 @@ public class Brand {
     private int id;
     @Column(name = "name", nullable = false, length = 45)
     private String name;
-<<<<<<< HEAD
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "brandByBrandId")
-    private Collection<Model> modelsById;
-=======
-    @OneToMany(mappedBy = "brandByBrandId")
->>>>>>> vivien
 
+    @OneToMany(mappedBy = "brandByBrandId")
     public int getId() {
         return id;
     }

@@ -16,12 +16,10 @@ public class Address implements CrudModel{
     private int id;
     @Column(name = "number", nullable = true)
     private Integer number;
+    @Column(name = "number_suffix", length=6, nullable = true)
+    private String numberSuffix;
     @Column(name = "street_id", nullable = false)
     private int streetId;
-    @Column(name = "longitude", nullable = false, precision = 14)
-    private BigDecimal longitude;
-    @Column(name = "latitude", nullable = false, precision = 14)
-    private BigDecimal latitude;
     @OneToOne
     @JoinColumn(name = "street_id", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
     private Street streetByStreetId;
@@ -51,27 +49,19 @@ public class Address implements CrudModel{
         this.streetId = streetId;
     }
 
-    public BigDecimal getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(BigDecimal longitude) {
-        this.longitude = longitude;
-    }
-
-    public BigDecimal getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(BigDecimal latitude) {
-        this.latitude = latitude;
-    }
-
     public Street getStreetByStreetId() {
         return streetByStreetId;
     }
 
     public void setStreetByStreetId(Street streetByStreetId) {
         this.streetByStreetId = streetByStreetId;
+    }
+
+    public String getNumberSuffix() {
+        return numberSuffix;
+    }
+
+    public void setNumberSuffix(String numberSuffix) {
+        this.numberSuffix = numberSuffix;
     }
 }
