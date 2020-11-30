@@ -32,6 +32,8 @@ public class ColorController{
         return ResponseEntity.notFound().build();
     }
 
+
+
     @CrossOrigin
     @PostMapping("colors")
     public ResponseEntity<String> create(@Valid @RequestBody Color color) {

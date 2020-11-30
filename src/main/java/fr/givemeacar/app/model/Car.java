@@ -3,7 +3,6 @@ package fr.givemeacar.app.model;
 
 
 import javax.persistence.*;
-import java.util.Collection;
 
 
 @Entity
