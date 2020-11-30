@@ -18,8 +18,6 @@ public class Address implements CrudModel{
     private Integer number;
     @Column(name = "street_id", nullable = false)
     private int streetId;
-    @Column(name = "street_suffix_id", nullable = false)
-    private int streetSuffixId;
     @Column(name = "longitude", nullable = false, precision = 14)
     private BigDecimal longitude;
     @Column(name = "latitude", nullable = false, precision = 14)
@@ -27,10 +25,6 @@ public class Address implements CrudModel{
     @OneToOne
     @JoinColumn(name = "street_id", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
     private Street streetByStreetId;
-    @OneToOne
-    @JoinColumn(name = "street_suffix_id", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
-    private StreetSuffix streetSuffixByStreetSuffixId1;
-
     @Override
     public void setId(int id) {
         this.id = id;
@@ -57,14 +51,6 @@ public class Address implements CrudModel{
         this.streetId = streetId;
     }
 
-    public int getStreetSuffixId() {
-        return streetSuffixId;
-    }
-
-    public void setStreetSuffixId(int streetSuffixId) {
-        this.streetSuffixId = streetSuffixId;
-    }
-
     public BigDecimal getLongitude() {
         return longitude;
     }
@@ -87,13 +73,5 @@ public class Address implements CrudModel{
 
     public void setStreetByStreetId(Street streetByStreetId) {
         this.streetByStreetId = streetByStreetId;
-    }
-
-    public StreetSuffix getStreetSuffixByStreetSuffixId1() {
-        return streetSuffixByStreetSuffixId1;
-    }
-
-    public void setStreetSuffixByStreetSuffixId1(StreetSuffix streetSuffixByStreetSuffixId1) {
-        this.streetSuffixByStreetSuffixId1 = streetSuffixByStreetSuffixId1;
     }
 }
