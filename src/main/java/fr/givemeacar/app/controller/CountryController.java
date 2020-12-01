@@ -1,5 +1,6 @@
 package fr.givemeacar.app.controller;
 
+import fr.givemeacar.app.config.TableNames;
 import fr.givemeacar.app.model.Country;
 import fr.givemeacar.app.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,45 +8,57 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.lang.reflect.InvocationTargetException;
+import java.math.BigInteger;
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
-public class CountryController {
+public class CountryController{
 
     @Autowired
     CountryService service;
 
     @CrossOrigin
     @RequestMapping("countries/count")
-    public Long count() {
-        return service.count();
+    public BigInteger count() {
+        return service.count(TableNames.countries);
     }
 
-    @GetMapping("/countries/{id}")
-    public ResponseEntity<Country> findById(@PathVariable int id) {
-        Optional<Country> model = service.findById(id);
-        if (model.isPresent()) {
-            return ResponseEntity.ok().body(model.get());
+    @RequestMapping(value = "countries", method = RequestMethod.GET)
+    public Collection<Country> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
+        if(offset != null) {
+            return service.findAll(TableNames.countries, new Country(),offset, limit);
+        }else{
+            return service.findAll(TableNames.countries, new Country(),0,limit);
         }
-        return ResponseEntity.notFound().build();
     }
+
+    @GetMapping("countries/{id}")
+    public Object findById(@PathVariable int id) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        return service.findById(TableNames.countries,new Country(),id);
+
+    }
+
+
 
     @CrossOrigin
-    @PostMapping("/countries")
+    @PostMapping("countries")
     public ResponseEntity<String> create(@Valid @RequestBody Country model) {
         return service.create(model);
     }
 
     @CrossOrigin
-    @PutMapping("/countries/{id}")
-    public ResponseEntity<String> update(@PathVariable int id, @RequestBody Country model) {
+    @PutMapping("countries/{id}")
+    public ResponseEntity<String> update(@PathVariable int id,@RequestBody Country model) {
         return service.update(model,id);
     }
 
     @CrossOrigin
-    @DeleteMapping("/countries/{id}")
+    @DeleteMapping("countries/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
-        return service.delete(id);
+        return service.delete(new Country(),id);
     }
 }

@@ -4,8 +4,8 @@ package fr.givemeacar.app.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user_status", schema = "givemeacar", catalog = "")
-public class UserStatus {
+@Table(name = "user_statuses", schema = "givemeacar", catalog = "")
+public class UserStatus  implements CrudModel{
     @Id
     @Column(name = "id", nullable = false)
     private int id;
