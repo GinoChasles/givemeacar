@@ -20,11 +20,11 @@ public class City  implements CrudModel{
     private BigDecimal longitude;
     @Column(name = "latitude", nullable = false, precision = 14)
     private BigDecimal latitude;
-    @Column(name = "department_id", nullable = false)
-    private int departmentId;
+    @Column(name = "departmentid", nullable = false)
+    private int departmentid;
     @OneToOne
-    @JoinColumn(name = "department_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Department departmentByDepartmentId;
+    @JoinColumn(name = "departmentid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    private Department departmentByDepartmentid;
 
     public int getId() {
         return id;
@@ -66,19 +66,19 @@ public class City  implements CrudModel{
         this.latitude = latitude;
     }
 
-    public int getDepartmentId() {
-        return departmentId;
+    public int getDepartmentid() {
+        return departmentid;
     }
 
-    public void setDepartmentId(int departmentId) {
-        this.departmentId = departmentId;
+    public void setDepartmentid(int departmentid) {
+        this.departmentid = departmentid;
     }
 
-    public Department getDepartmentByDepartmentId() {
-        return departmentByDepartmentId;
+    public Department getDepartmentByDepartmentid() {
+        return departmentByDepartmentid;
     }
 
-    public void setDepartmentByDepartmentId(Department departmentByDepartmentId) {
-        this.departmentByDepartmentId = departmentByDepartmentId;
+    public void setDepartmentByDepartmentid(Department departmentByDepartmentid) {
+        this.departmentByDepartmentid = departmentByDepartmentid;
     }
 }

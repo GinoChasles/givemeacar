@@ -12,16 +12,16 @@ public class Street  implements CrudModel{
     @Id
     @Column(name = "id", nullable = false)
     private int id;
-    @Column(name = "city_id", nullable = false)
-    private int cityId;
-    @Column(name = "street_name_id", nullable = false)
-    private int streetNameId;
+    @Column(name = "cityid", nullable = false)
+    private int cityid;
+    @Column(name = "streetNameid", nullable = false)
+    private int streetNameid;
     @OneToOne
-    @JoinColumn(name = "city_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private City cityByCityId;
+    @JoinColumn(name = "cityid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    private City cityByCityid;
     @OneToOne
-    @JoinColumn(name = "street_name_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private StreetName streetNameByStreetNameId;
+    @JoinColumn(name = "streetNameid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    private StreetName streetNameByStreetNameid;
 
     public int getId() {
         return id;
@@ -31,35 +31,35 @@ public class Street  implements CrudModel{
         this.id = id;
     }
 
-    public int getCityId() {
-        return cityId;
+    public int getCityid() {
+        return cityid;
     }
 
-    public void setCityId(int cityId) {
-        this.cityId = cityId;
+    public void setCityid(int cityid) {
+        this.cityid = cityid;
     }
 
-    public int getStreetNameId() {
-        return streetNameId;
+    public int getStreetNameid() {
+        return streetNameid;
     }
 
-    public void setStreetNameId(int streetNameId) {
-        this.streetNameId = streetNameId;
+    public void setStreetNameid(int streetNameid) {
+        this.streetNameid = streetNameid;
     }
 
-    public City getCityByCityId() {
-        return cityByCityId;
+    public City getCityByCityid() {
+        return cityByCityid;
     }
 
-    public void setCityByCityId(City cityByCityId) {
-        this.cityByCityId = cityByCityId;
+    public void setCityByCityid(City cityByCityid) {
+        this.cityByCityid = cityByCityid;
     }
 
-    public StreetName getStreetNameByStreetNameId() {
-        return streetNameByStreetNameId;
+    public StreetName getStreetNameByStreetNameid() {
+        return streetNameByStreetNameid;
     }
 
-    public void setStreetNameByStreetNameId(StreetName streetNameByStreetNameId) {
-        this.streetNameByStreetNameId = streetNameByStreetNameId;
+    public void setStreetNameByStreetNameid(StreetName streetNameByStreetNameid) {
+        this.streetNameByStreetNameid = streetNameByStreetNameid;
     }
 }
