@@ -1,5 +1,6 @@
 package fr.givemeacar.app.controller;
 
+import fr.givemeacar.app.config.TableNames;
 import fr.givemeacar.app.model.City;
 import fr.givemeacar.app.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,45 +8,57 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.lang.reflect.InvocationTargetException;
+import java.math.BigInteger;
+import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
-public class CityController {
+public class CityController{
 
     @Autowired
     CityService service;
 
     @CrossOrigin
     @RequestMapping("cities/count")
-    public Long count() {
-        return service.count();
+    public BigInteger count() {
+        return service.count(TableNames.cities);
     }
 
-    @GetMapping("/cities/{id}")
-    public ResponseEntity<City> findById(@PathVariable int id) {
-        Optional<City> model = service.findById(id);
-        if (model.isPresent()) {
-            return ResponseEntity.ok().body(model.get());
+    @RequestMapping(value = "cities", method = RequestMethod.GET)
+    public Collection<City> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
+        if(offset != null) {
+            return service.findAll(TableNames.cities,new City(), offset, limit);
+        }else{
+            return service.findAll(TableNames.cities,new City(), 0,limit);
         }
-        return ResponseEntity.notFound().build();
     }
+
+    @GetMapping("cities/{id}")
+    public Object findById(@PathVariable int id) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        return service.findById(TableNames.cities,new City(),id);
+
+    }
+
+
 
     @CrossOrigin
-    @PostMapping("/cities")
+    @PostMapping("cities")
     public ResponseEntity<String> create(@Valid @RequestBody City model) {
         return service.create(model);
     }
 
     @CrossOrigin
-    @PutMapping("/cities/{id}")
-    public ResponseEntity<String> update(@PathVariable int id, @RequestBody City model) {
+    @PutMapping("cities/{id}")
+    public ResponseEntity<String> update(@PathVariable int id,@RequestBody City model) {
         return service.update(model,id);
     }
 
     @CrossOrigin
-    @DeleteMapping("/cities/{id}")
+    @DeleteMapping("cities/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
-        return service.delete(id);
+        return service.delete(new City(),id);
     }
 }

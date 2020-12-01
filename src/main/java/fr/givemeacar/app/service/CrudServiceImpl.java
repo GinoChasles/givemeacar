@@ -7,27 +7,48 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import fr.givemeacar.app.model.CrudModel;
+import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
+import java.lang.reflect.InvocationTargetException;
+import java.math.BigInteger;
+import java.util.Collection;
 import java.util.Optional;
 
 @Service
-public abstract class CrudServiceImpl<T> implements CrudService<T> {
+public class CrudServiceImpl<T> implements CrudService<T> {
+    @PersistenceContext
+    EntityManager em;
 
-    public Long count(JpaRepository<T,Integer> repo) {
-        return repo.count();
+    public BigInteger count(String tableName) {
+        Query q = getEntityManager().createNativeQuery("SELECT COUNT(*) FROM "+tableName);
+        return (BigInteger) q.getSingleResult();
     }
 
-    public Optional<T> findById(JpaRepository<T, Integer> repo,int id) {
-        return repo.findById(id);
+    public Collection<T> findAll(String tableName,T t,int offset, int limit){
+        Query q = getEntityManager().createNativeQuery("SELECT * FROM "+tableName,t.getClass());
+
+        return  q.setFirstResult(offset).setMaxResults(limit).getResultList();
+    }
+
+    @Transactional
+    public Object findById(String tableName, T t, int id) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException {
+        CrudModel model = (CrudModel) getEntityManager().find(t.getClass(),id);
+
+        if (model != null) {
+            try{
+                return ResponseEntity.ok().body(model);
+            }catch(Exception e){
+                return exceptionToResponseEntity(e);
+            }
+        }
+        return ResponseEntity.notFound().build();
     }
 
     public ResponseEntity<String> create(JpaRepository<T, Integer> repo,T model) {
-        try {
-            repo.save(model);
-            return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch (Exception exception) {
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
-        }
+       return trySaveOrConflict(repo,model);
     }
 
     public ResponseEntity<String> update(JpaRepository<T, Integer> repo,T model,int id) {
@@ -36,15 +57,18 @@ public abstract class CrudServiceImpl<T> implements CrudService<T> {
         if (optionalT.isPresent()) {
             CrudModel oldT = (CrudModel)optionalT.get();
             ((CrudModel) model).setId(oldT.getId());
-            trySaveOrConflict(repo, model);
+            return trySaveOrConflict(repo, model);
         }
         return ResponseEntity.notFound().build();
     }
 
-    public ResponseEntity<String> delete(JpaRepository<T, Integer> repo,int id) {
-        if (repo.existsById(id)) {
+    @Transactional
+    public ResponseEntity<String> delete(T t,int id) {
+        T del = (T)getEntityManager().find(t.getClass(),id);
+
+        if (del != null) {
             try {
-                repo.deleteById(id);
+                getEntityManager().remove(del);
                 return ResponseEntity.ok().build();
             } catch (DataIntegrityViolationException e) {
                 return exceptionToResponseEntity(e);
@@ -61,10 +85,17 @@ public abstract class CrudServiceImpl<T> implements CrudService<T> {
     public ResponseEntity<String> trySaveOrConflict(JpaRepository<T,Integer> repo,T model) {
         try {
             repo.save(model);
-            return ResponseEntity.ok().build();
+            return ResponseEntity.status(HttpStatus.CREATED).build();
         } catch (DataIntegrityViolationException e) {
             return exceptionToResponseEntity(e);
         }
     }
 
+    public EntityManager getEntityManager() {
+        return em;
+    }
+
+    public void setEntityManager(EntityManager em) {
+        this.em = em;
+    }
 }

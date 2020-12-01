@@ -7,8 +7,8 @@ import java.sql.Timestamp;
 
 
 @Entity
-@Table(name = "rent", schema = "givemeacar", catalog = "")
-public class Rent {
+@Table(name = "rents", schema = "givemeacar", catalog = "")
+public class Rent  implements CrudModel{
     @Id
     @Column(name = "id", nullable = false)
     private int id;

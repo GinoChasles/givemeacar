@@ -6,8 +6,8 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "manager", schema = "givemeacar", catalog = "")
-public class Manager {
+@Table(name = "managers", schema = "givemeacar", catalog = "")
+public class Manager  implements CrudModel{
     @Id
     @Column(name = "id", nullable = false)
     private int id;
@@ -28,9 +28,6 @@ public class Manager {
     @OneToOne
     @JoinColumn(name = "user_status_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
     private UserStatus userStatusByUserStatusId;
-    @OneToOne
-    @JoinColumn(name = "agency_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Agency agencyByAgencyId;
 
     public int getId() {
         return id;
@@ -102,13 +99,5 @@ public class Manager {
 
     public void setUserStatusByUserStatusId(UserStatus userStatusByUserStatusId) {
         this.userStatusByUserStatusId = userStatusByUserStatusId;
-    }
-
-    public Agency getAgencyByAgencyId() {
-        return agencyByAgencyId;
-    }
-
-    public void setAgencyByAgencyId(Agency agencyByAgencyId) {
-        this.agencyByAgencyId = agencyByAgencyId;
     }
 }
