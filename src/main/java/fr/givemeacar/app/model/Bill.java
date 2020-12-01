@@ -16,16 +16,16 @@ public class Bill  implements CrudModel{
     private double price;
     @Column(name = "date", nullable = false)
     private Date date;
-    @Column(name = "rent_id", nullable = false)
-    private int rentId;
-    @Column(name = "agency_id", nullable = false)
-    private int agencyId;
+    @Column(name = "rentid", nullable = false)
+    private int rentid;
+    @Column(name = "agencyid", nullable = false)
+    private int agencyid;
     @OneToOne
-    @JoinColumn(name = "rent_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Rent rentByRentId;
+    @JoinColumn(name = "rentid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    private Rent rentByRentid;
     @OneToOne
-    @JoinColumn(name = "agency_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Agency agencyByAgencyId;
+    @JoinColumn(name = "agencyid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    private Agency agencyByAgencyid;
 
     public int getId() {
         return id;
@@ -51,35 +51,35 @@ public class Bill  implements CrudModel{
         this.date = date;
     }
 
-    public int getRentId() {
-        return rentId;
+    public int getRentid() {
+        return rentid;
     }
 
-    public void setRentId(int rentId) {
-        this.rentId = rentId;
+    public void setRentid(int rentid) {
+        this.rentid = rentid;
     }
 
-    public int getAgencyId() {
-        return agencyId;
+    public int getAgencyid() {
+        return agencyid;
     }
 
-    public void setAgencyId(int agencyId) {
-        this.agencyId = agencyId;
+    public void setAgencyid(int agencyid) {
+        this.agencyid = agencyid;
     }
 
-    public Rent getRentByRentId() {
-        return rentByRentId;
+    public Rent getRentByRentid() {
+        return rentByRentid;
     }
 
-    public void setRentByRentId(Rent rentByRentId) {
-        this.rentByRentId = rentByRentId;
+    public void setRentByRentid(Rent rentByRentid) {
+        this.rentByRentid = rentByRentid;
     }
 
-    public Agency getAgencyByAgencyId() {
-        return agencyByAgencyId;
+    public Agency getAgencyByAgencyid() {
+        return agencyByAgencyid;
     }
 
-    public void setAgencyByAgencyId(Agency agencyByAgencyId) {
-        this.agencyByAgencyId = agencyByAgencyId;
+    public void setAgencyByAgencyid(Agency agencyByAgencyid) {
+        this.agencyByAgencyid = agencyByAgencyid;
     }
 }

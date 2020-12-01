@@ -16,13 +16,21 @@ public class Address implements CrudModel{
     private int id;
     @Column(name = "number", nullable = true)
     private Integer number;
-    @Column(name = "number_suffix", length=6, nullable = true)
+    @Column(name = "numberSuffix", length=6, nullable = true)
     private String numberSuffix;
-    @Column(name = "street_id", nullable = false)
-    private int streetId;
+    @Column(name = "streetid", nullable = false)
+    private int streetid;
     @OneToOne
-    @JoinColumn(name = "street_id", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
-    private Street streetByStreetId;
+    @JoinColumn(name = "streetid", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
+    private Street streetByStreetid;
+
+    @Column(name = "cityid", nullable = false)
+    private int cityid;
+
+    @OneToOne
+    @JoinColumn(name = "cityid", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
+    private Street cityByCityid;
+
     @Override
     public void setId(int id) {
         this.id = id;
@@ -41,20 +49,36 @@ public class Address implements CrudModel{
         this.number = number;
     }
 
-    public int getStreetId() {
-        return streetId;
+    public int getStreetid() {
+        return streetid;
     }
 
-    public void setStreetId(int streetId) {
-        this.streetId = streetId;
+    public void setStreetid(int streetid) {
+        this.streetid = streetid;
     }
 
-    public Street getStreetByStreetId() {
-        return streetByStreetId;
+    public Street getStreetByStreetid() {
+        return streetByStreetid;
     }
 
-    public void setStreetByStreetId(Street streetByStreetId) {
-        this.streetByStreetId = streetByStreetId;
+    public void setStreetByStreetid(Street streetByStreetid) {
+        this.streetByStreetid = streetByStreetid;
+    }
+
+    public int getCityid() {
+        return cityid;
+    }
+
+    public void setCityid(int cityid) {
+        this.cityid = cityid;
+    }
+
+    public Street getCityByCityid() {
+        return cityByCityid;
+    }
+
+    public void setCityByCityid(Street cityByStreetid) {
+        this.cityByCityid = cityByCityid;
     }
 
     public String getNumberSuffix() {

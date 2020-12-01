@@ -13,16 +13,16 @@ public class Agency  implements CrudModel{
     private int id;
     @Column(name = "name", nullable = false, length = 32)
     private String name;
-    @Column(name = "address_id", nullable = false)
-    private int addressId;
-    @Column(name = "manager_id", nullable = false)
-    private int managerId;
+    @Column(name = "addressid", nullable = false)
+    private int addressid;
+    @Column(name = "managerid", nullable = false)
+    private int managerid;
     @OneToOne
-    @JoinColumn(name = "address_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Address addressByAddressId;
+    @JoinColumn(name = "addressid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    private Address addressByAddressid;
     @OneToOne
-    @JoinColumn(name = "manager_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Manager managerByManagerId;
+    @JoinColumn(name = "managerid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    private Manager managerByManagerid;
 
     public int getId() {
         return id;
@@ -40,36 +40,36 @@ public class Agency  implements CrudModel{
         this.name = name;
     }
 
-    public int getAddressId() {
-        return addressId;
+    public int getAddressid() {
+        return addressid;
     }
 
-    public void setAddressId(int addressId) {
-        this.addressId = addressId;
+    public void setAddressid(int addressid) {
+        this.addressid = addressid;
     }
 
-    public int getManagerId() {
-        return managerId;
+    public int getManagerid() {
+        return managerid;
     }
 
-    public void setManagerId(int managerId) {
-        this.managerId = managerId;
+    public void setManagerid(int managerid) {
+        this.managerid = managerid;
     }
 
-    public Address getAddressByAddressId() {
-        return addressByAddressId;
+    public Address getAddressByAddressid() {
+        return addressByAddressid;
     }
 
-    public void setAddressByAddressId(Address addressByAddressId) {
-        this.addressByAddressId = addressByAddressId;
+    public void setAddressByAddressid(Address addressByAddressid) {
+        this.addressByAddressid = addressByAddressid;
     }
 
-    public Manager getManagerByManagerId() {
-        return managerByManagerId;
+    public Manager getManagerByManagerid() {
+        return managerByManagerid;
     }
 
-    public void setManagerByManagerId(Manager managerByManagerId) {
-        this.managerByManagerId = managerByManagerId;
+    public void setManagerByManagerid(Manager managerByManagerid) {
+        this.managerByManagerid = managerByManagerid;
     }
 
 }

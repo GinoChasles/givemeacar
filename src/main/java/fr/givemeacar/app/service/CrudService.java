@@ -29,7 +29,7 @@ public interface CrudService<T> {
      * @param limit     the limit of the research
      * @return a collection of entities
      */
-    public Collection<T> findAll(String tableName, T t,int offset, int limit);
+    public ResponseEntity findAll(String tableName, T t,int offset, int limit,String order,String sort);
 
     /**
      * Returns an optional model instance from its id in the database
@@ -38,7 +38,7 @@ public interface CrudService<T> {
      * @param id the id of the model
      * @return an optional model instance from its id in the database
      */
-    public Object findById(String tableName,T t, int id) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException;
+    public ResponseEntity findById(String tableName,T t, int id) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException;
 
     /**
      * Creates a model in the database
