@@ -27,10 +27,14 @@ public class CrudServiceImpl<T> implements CrudService<T> {
     public BigInteger count(String tableName) {
         Query q = getEntityManager().createNativeQuery("SELECT COUNT(*) FROM "+tableName);
         return (BigInteger) q.getSingleResult();
+
     }
 
-    public ResponseEntity findAll(String tableName,T t,int offset, int limit){
-        Query q = getEntityManager().createNativeQuery("SELECT * FROM "+tableName,t.getClass());
+    public ResponseEntity findAll(String tableName,T t,int offset, int limit,String order,String sort){
+
+        Query q = getEntityManager().createNativeQuery("SELECT * FROM "+tableName+" ORDER BY :order :sort",t.getClass());
+        q.setParameter("sort",sort);
+        q.setParameter("order",order);
 
         Collection list = q.setFirstResult(offset).setMaxResults(limit).getResultList();
 

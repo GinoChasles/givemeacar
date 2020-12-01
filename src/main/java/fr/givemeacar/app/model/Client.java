@@ -12,9 +12,9 @@ public class Client  implements CrudModel{
     @Id
     @Column(name = "id", nullable = false)
     private int id;
-    @Column(name = "first_name", nullable = false, length = 32)
+    @Column(name = "firstname", nullable = false, length = 32)
     private String firstName;
-    @Column(name = "last_name", nullable = false, length = 32)
+    @Column(name = "lastname", nullable = false, length = 32)
     private String lastName;
     @Column(name = "mail", nullable = false, length = 64)
     private String mail;
@@ -22,33 +22,33 @@ public class Client  implements CrudModel{
     private String password;
     @Column(name = "phone", nullable = false, length = 12)
     private String phone;
-    @Column(name = "address_id", nullable = false)
-    private int addressId;
-    @Column(name = "user_status_id", nullable = false)
-    private int userStatusId;
-    @Column(name = "bill_id", nullable = false)
-    private int billId;
-    @Column(name = "credit_card_id", nullable = false)
-    private int creditCardId;
-    @Column(name = "agency_id", nullable = false)
-    private int agencyId;
+    @Column(name = "addressid", nullable = false)
+    private int addressid;
+    @Column(name = "userstatusid", nullable = false)
+    private int userStatusid;
+    @Column(name = "billid", nullable = false)
+    private int billid;
+    @Column(name = "creditCardid", nullable = false)
+    private int creditCardid;
+    @Column(name = "agencyid", nullable = false)
+    private int agencyid;
     @OneToOne
-    @JoinColumn(name = "agency_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Agency agencyByAgencyId;
+    @JoinColumn(name = "agencyid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    private Agency agencyByAgencyid;
     @OneToOne
-    @JoinColumn(name = "address_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Address addressByAddressId;
+    @JoinColumn(name = "addressid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    private Address addressByAddressid;
     @OneToOne
-    @JoinColumn(name = "user_status_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private UserStatus userStatusByUserStatusId;
+    @JoinColumn(name = "userstatusid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    private UserStatus userStatusByUserStatusid;
     @OneToOne
-    @JoinColumn(name = "bill_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Bill billByBillId;
+    @JoinColumn(name = "billid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    private Bill billByBillid;
     @OneToOne
-    @JoinColumn(name = "credit_card_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private CreditCard creditCardByCreditCardId;
-    @OneToMany(mappedBy = "clientByClientId")
-    private Collection<Rent> rentsById;
+    @JoinColumn(name = "creditCardid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    private CreditCard creditCardByCreditCardid;
+    @OneToMany(mappedBy = "clientByClientid")
+    private Collection<Rent> rentsByid;
 
     public int getId() {
         return id;
@@ -98,91 +98,91 @@ public class Client  implements CrudModel{
         this.phone = phone;
     }
 
-    public int getAddressId() {
-        return addressId;
+    public int getAddressid() {
+        return addressid;
     }
 
-    public void setAddressId(int addressId) {
-        this.addressId = addressId;
+    public void setAddressid(int addressid) {
+        this.addressid = addressid;
     }
 
-    public int getUserStatusId() {
-        return userStatusId;
+    public int getUserStatusid() {
+        return userStatusid;
     }
 
-    public void setUserStatusId(int userStatusId) {
-        this.userStatusId = userStatusId;
+    public void setUserStatusid(int userStatusid) {
+        this.userStatusid = userStatusid;
     }
 
-    public int getBillId() {
-        return billId;
+    public int getBillid() {
+        return billid;
     }
 
-    public void setBillId(int billId) {
-        this.billId = billId;
+    public void setBillid(int billid) {
+        this.billid = billid;
     }
 
-    public int getCreditCardId() {
-        return creditCardId;
+    public int getCreditCardid() {
+        return creditCardid;
     }
 
-    public void setCreditCardId(int creditCardId) {
-        this.creditCardId = creditCardId;
+    public void setCreditCardid(int creditCardid) {
+        this.creditCardid = creditCardid;
     }
 
-    public int getAgencyId() {
-        return agencyId;
+    public int getAgencyid() {
+        return agencyid;
     }
 
-    public void setAgencyId(int agencyId) {
-        this.agencyId = agencyId;
+    public void setAgencyid(int agencyid) {
+        this.agencyid = agencyid;
     }
 
-    public Agency getAgencyByAgencyId() {
-        return agencyByAgencyId;
+    public Agency getAgencyByAgencyid() {
+        return agencyByAgencyid;
     }
 
-    public void setAgencyByAgencyId(Agency agencyByAgencyId) {
-        this.agencyByAgencyId = agencyByAgencyId;
+    public void setAgencyByAgencyid(Agency agencyByAgencyid) {
+        this.agencyByAgencyid = agencyByAgencyid;
     }
 
-    public Address getAddressByAddressId() {
-        return addressByAddressId;
+    public Address getAddressByAddressid() {
+        return addressByAddressid;
     }
 
-    public void setAddressByAddressId(Address addressByAddressId) {
-        this.addressByAddressId = addressByAddressId;
+    public void setAddressByAddressid(Address addressByAddressid) {
+        this.addressByAddressid = addressByAddressid;
     }
 
-    public UserStatus getUserStatusByUserStatusId() {
-        return userStatusByUserStatusId;
+    public UserStatus getUserStatusByUserStatusid() {
+        return userStatusByUserStatusid;
     }
 
-    public void setUserStatusByUserStatusId(UserStatus userStatusByUserStatusId) {
-        this.userStatusByUserStatusId = userStatusByUserStatusId;
+    public void setUserStatusByUserStatusid(UserStatus userStatusByUserStatusid) {
+        this.userStatusByUserStatusid = userStatusByUserStatusid;
     }
 
-    public Bill getBillByBillId() {
-        return billByBillId;
+    public Bill getBillByBillid() {
+        return billByBillid;
     }
 
-    public void setBillByBillId(Bill billByBillId) {
-        this.billByBillId = billByBillId;
+    public void setBillByBillid(Bill billByBillid) {
+        this.billByBillid = billByBillid;
     }
 
-    public CreditCard getCreditCardByCreditCardId() {
-        return creditCardByCreditCardId;
+    public CreditCard getCreditCardByCreditCardid() {
+        return creditCardByCreditCardid;
     }
 
-    public void setCreditCardByCreditCardId(CreditCard creditCardByCreditCardId) {
-        this.creditCardByCreditCardId = creditCardByCreditCardId;
+    public void setCreditCardByCreditCardid(CreditCard creditCardByCreditCardid) {
+        this.creditCardByCreditCardid = creditCardByCreditCardid;
     }
 
-    public Collection<Rent> getRentsById() {
-        return rentsById;
+    public Collection<Rent> getRentsByid() {
+        return rentsByid;
     }
 
-    public void setRentsById(Collection<Rent> rentsById) {
-        this.rentsById = rentsById;
+    public void setRentsByid(Collection<Rent> rentsByid) {
+        this.rentsByid = rentsByid;
     }
 }

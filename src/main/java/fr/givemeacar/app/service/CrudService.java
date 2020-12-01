@@ -29,7 +29,7 @@ public interface CrudService<T> {
      * @param limit     the limit of the research
      * @return a collection of entities
      */
-    public ResponseEntity findAll(String tableName, T t,int offset, int limit);
+    public ResponseEntity findAll(String tableName, T t,int offset, int limit,String order,String sort);
 
     /**
      * Returns an optional model instance from its id in the database
