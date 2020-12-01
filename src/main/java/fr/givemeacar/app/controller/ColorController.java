@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -31,6 +32,8 @@ public class ColorController{
         return ResponseEntity.notFound().build();
     }
 
+
+
     @CrossOrigin
     @PostMapping("colors")
     public ResponseEntity<String> create(@Valid @RequestBody Color color) {
@@ -40,7 +43,7 @@ public class ColorController{
     @CrossOrigin
     @PutMapping("colors/{id}")
     public ResponseEntity<String> update(@PathVariable int id,@RequestBody Color color) {
-        return service.update(id,color);
+        return service.update(color,id);
     }
 
     @CrossOrigin

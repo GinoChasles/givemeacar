@@ -1,4 +1,3 @@
-USE givemeacar2;
 INSERT INTO country (name) VALUES
 ('Afghanistan'),
 ('Albanie'),

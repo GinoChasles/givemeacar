@@ -17,7 +17,7 @@ public class AddressController {
     AddressService service;
 
     @CrossOrigin
-    @RequestMapping("addresses/count")
+    @RequestMapping("/addresses/count")
     public Long count() {
         return service.count();
     }
@@ -40,7 +40,7 @@ public class AddressController {
     @CrossOrigin
     @PutMapping("/addresses/{id}")
     public ResponseEntity<String> update(@PathVariable int id, @RequestBody Address address) {
-        return service.update(id, address);
+        return service.update(address,id);
     }
 
     @CrossOrigin

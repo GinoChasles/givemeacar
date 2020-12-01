@@ -1,17 +1,19 @@
 package fr.givemeacar.app.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
+
+import javax.persistence.*;
+
 
 @Entity
+@Table(name = "country", schema = "givemeacar", catalog = "")
 public class Country {
-    private int id;
-    private String name;
-
     @Id
     @Column(name = "id", nullable = false)
+    private int id;
+    @Column(name = "name", nullable = false, length = 42)
+    private String name;
+
     public int getId() {
         return id;
     }
@@ -20,33 +22,11 @@ public class Country {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "name", nullable = false, length = 42)
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Country country = (Country) o;
-
-        if (id != country.id) return false;
-        if (name != null ? !name.equals(country.name) : country.name != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        return result;
     }
 }

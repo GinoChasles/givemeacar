@@ -40,7 +40,7 @@ public class BillController {
     @CrossOrigin
     @PutMapping("/bills/{id}")
     public ResponseEntity<String> update(@PathVariable int id, @RequestBody Bill model) {
-        return service.update(id, model);
+        return service.update(model,id);
     }
 
     @CrossOrigin

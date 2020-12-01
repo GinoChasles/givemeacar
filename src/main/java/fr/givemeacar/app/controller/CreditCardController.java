@@ -40,7 +40,7 @@ public class CreditCardController {
     @CrossOrigin
     @PutMapping("/creditcads/{id}")
     public ResponseEntity<String> update(@PathVariable int id, @RequestBody CreditCard model) {
-        return service.update(id, model);
+        return service.update(model,id);
     }
 
     @CrossOrigin

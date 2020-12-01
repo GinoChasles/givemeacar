@@ -1,26 +1,50 @@
 package fr.givemeacar.app.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
+
+import javax.persistence.*;
+import java.math.BigDecimal;
+
 
 @Entity
+@Table(name = "car", schema = "givemeacar", catalog = "")
 public class Car {
-    private int id;
-    private int kilometers;
-    private double price;
-    private int year;
-    private int availability;
-    private int onRent;
-    private int modelId;
-    private int energyId;
-    private int rentId;
-    private int colorId;
-    private int geolocationId;
-
     @Id
     @Column(name = "id", nullable = false)
+    private int id;
+    @Column(name = "kilometers", nullable = false)
+    private int kilometers;
+    @Column(name = "price", nullable = false, precision = 0)
+    private double price;
+    @Column(name = "year", nullable = false)
+    private int year;
+    @Column(name = "available", nullable = false)
+    private int available;
+    @Column(name = "rented", nullable = false)
+    private int rented;
+    @Column(name = "model_id", nullable = false)
+    private int modelId;
+    @Column(name = "energy_id", nullable = false)
+    private int energyId;
+    @Column(name = "color_id", nullable = false)
+    private int colorId;
+    @Column(name = "longitude", nullable = false, precision = 14)
+    private BigDecimal longitude;
+    @Column(name = "latitude", nullable = false, precision = 14)
+    private BigDecimal latitude;
+    @OneToOne
+    @JoinColumn(name = "model_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    private Model modelByModelId;
+    @OneToOne
+    @JoinColumn(name = "color_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    private Color colorByColorId;
+    @OneToOne
+    @JoinColumn(name = "energy_type_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    private EnergyType energyTypeByEnergyTypeId;
+    @OneToOne
+    @JoinColumn(name = "address_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    private Address addressByAddressId;
+
     public int getId() {
         return id;
     }
@@ -29,8 +53,6 @@ public class Car {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "kilometers", nullable = false)
     public int getKilometers() {
         return kilometers;
     }
@@ -39,8 +61,6 @@ public class Car {
         this.kilometers = kilometers;
     }
 
-    @Basic
-    @Column(name = "price", nullable = false, precision = 0)
     public double getPrice() {
         return price;
     }
@@ -49,8 +69,6 @@ public class Car {
         this.price = price;
     }
 
-    @Basic
-    @Column(name = "year", nullable = false)
     public int getYear() {
         return year;
     }
@@ -59,28 +77,22 @@ public class Car {
         this.year = year;
     }
 
-    @Basic
-    @Column(name = "availability", nullable = false)
-    public int getAvailability() {
-        return availability;
+    public int getAvailable() {
+        return available;
     }
 
-    public void setAvailability(int availability) {
-        this.availability = availability;
+    public void setAvailable(int available) {
+        this.available = available;
     }
 
-    @Basic
-    @Column(name = "onRent", nullable = false)
-    public int getOnRent() {
-        return onRent;
+    public int getRented() {
+        return rented;
     }
 
-    public void setOnRent(int onRent) {
-        this.onRent = onRent;
+    public void setRented(int rented) {
+        this.rented = rented;
     }
 
-    @Basic
-    @Column(name = "model_id", nullable = false)
     public int getModelId() {
         return modelId;
     }
@@ -89,8 +101,6 @@ public class Car {
         this.modelId = modelId;
     }
 
-    @Basic
-    @Column(name = "energy_id", nullable = false)
     public int getEnergyId() {
         return energyId;
     }
@@ -99,18 +109,6 @@ public class Car {
         this.energyId = energyId;
     }
 
-    @Basic
-    @Column(name = "rent_id", nullable = false)
-    public int getRentId() {
-        return rentId;
-    }
-
-    public void setRentId(int rentId) {
-        this.rentId = rentId;
-    }
-
-    @Basic
-    @Column(name = "color_id", nullable = false)
     public int getColorId() {
         return colorId;
     }
@@ -119,54 +117,51 @@ public class Car {
         this.colorId = colorId;
     }
 
-    @Basic
-    @Column(name = "geolocation_id", nullable = false)
-    public int getGeolocationId() {
-        return geolocationId;
+    public Model getModelByModelId() {
+        return modelByModelId;
     }
 
-    public void setGeolocationId(int geolocationId) {
-        this.geolocationId = geolocationId;
+    public void setModelByModelId(Model modelByModelId) {
+        this.modelByModelId = modelByModelId;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Car car = (Car) o;
-
-        if (id != car.id) return false;
-        if (kilometers != car.kilometers) return false;
-        if (Double.compare(car.price, price) != 0) return false;
-        if (year != car.year) return false;
-        if (availability != car.availability) return false;
-        if (onRent != car.onRent) return false;
-        if (modelId != car.modelId) return false;
-        if (energyId != car.energyId) return false;
-        if (rentId != car.rentId) return false;
-        if (colorId != car.colorId) return false;
-        if (geolocationId != car.geolocationId) return false;
-
-        return true;
+    public Color getColorByColorId() {
+        return colorByColorId;
     }
 
-    @Override
-    public int hashCode() {
-        int result;
-        long temp;
-        result = id;
-        result = 31 * result + kilometers;
-        temp = Double.doubleToLongBits(price);
-        result = 31 * result + (int) (temp ^ (temp >>> 32));
-        result = 31 * result + year;
-        result = 31 * result + availability;
-        result = 31 * result + onRent;
-        result = 31 * result + modelId;
-        result = 31 * result + energyId;
-        result = 31 * result + rentId;
-        result = 31 * result + colorId;
-        result = 31 * result + geolocationId;
-        return result;
+    public void setColorByColorId(Color colorByColorId) {
+        this.colorByColorId = colorByColorId;
+    }
+
+    public EnergyType getEnergyTypeByEnergyTypeId() {
+        return energyTypeByEnergyTypeId;
+    }
+
+    public void setEnergyTypeByEnergyTypeId(EnergyType energyTypeByEnergyTypeId) {
+        this.energyTypeByEnergyTypeId = energyTypeByEnergyTypeId;
+    }
+
+    public Address getAddressByAddressId() {
+        return addressByAddressId;
+    }
+
+    public void setAddressByAddressId(Address addressByAddressId) {
+        this.addressByAddressId = addressByAddressId;
+    }
+
+    public BigDecimal getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(BigDecimal longitude) {
+        this.longitude = longitude;
+    }
+
+    public BigDecimal getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(BigDecimal latitude) {
+        this.latitude = latitude;
     }
 }
