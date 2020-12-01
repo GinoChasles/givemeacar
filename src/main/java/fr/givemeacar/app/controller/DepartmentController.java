@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class DepartmentController{
@@ -21,7 +22,7 @@ public class DepartmentController{
     @Autowired
     DepartmentService service;
 
-    @CrossOrigin
+    
     @RequestMapping("departments/count")
     public BigInteger count() {
         return service.count(TableNames.departments);
@@ -44,19 +45,19 @@ public class DepartmentController{
 
 
 
-    @CrossOrigin
+    
     @PostMapping("departments")
     public ResponseEntity<String> create(@Valid @RequestBody Department model) {
         return service.create(model);
     }
 
-    @CrossOrigin
+    
     @PutMapping("departments/{id}")
     public ResponseEntity<String> update(@PathVariable int id,@RequestBody Department model) {
         return service.update(model,id);
     }
 
-    @CrossOrigin
+    
     @DeleteMapping("departments/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
         return service.delete(new Department(),id);
