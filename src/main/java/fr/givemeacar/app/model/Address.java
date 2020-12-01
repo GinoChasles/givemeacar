@@ -23,6 +23,14 @@ public class Address implements CrudModel{
     @OneToOne
     @JoinColumn(name = "street_id", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
     private Street streetByStreetId;
+
+    @Column(name = "city_id", nullable = false)
+    private int cityId;
+
+    @OneToOne
+    @JoinColumn(name = "city_id", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
+    private Street cityByCityId;
+
     @Override
     public void setId(int id) {
         this.id = id;
@@ -55,6 +63,22 @@ public class Address implements CrudModel{
 
     public void setStreetByStreetId(Street streetByStreetId) {
         this.streetByStreetId = streetByStreetId;
+    }
+
+    public int getCityId() {
+        return cityId;
+    }
+
+    public void setCityId(int cityId) {
+        this.cityId = cityId;
+    }
+
+    public Street getCityByCityId() {
+        return cityByCityId;
+    }
+
+    public void setCityByCityId(Street cityByStreetId) {
+        this.cityByCityId = cityByCityId;
     }
 
     public String getNumberSuffix() {

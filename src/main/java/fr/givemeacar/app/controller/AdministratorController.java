@@ -29,11 +29,11 @@ public class AdministratorController{
     }
 
     @RequestMapping(value = "administrators", method = RequestMethod.GET)
-    public Collection<Administrator> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
-        if(offset != null) {
-            return service.findAll(TableNames.administrators, new Administrator(),offset, limit);
+    public ResponseEntity findAll(@RequestParam(required = false) Integer _start, @RequestParam int _end) {
+        if(_start != null) {
+            return service.findAll(TableNames.administrators, new Administrator(),_start, _end);
         }else{
-            return service.findAll(TableNames.administrators, new Administrator(),0,limit);
+            return service.findAll(TableNames.administrators, new Administrator(),0,_end);
         }
     }
 

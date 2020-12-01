@@ -29,11 +29,11 @@ public class RentController{
     }
 
     @RequestMapping(value = "rents", method = RequestMethod.GET)
-    public Collection<Rent> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
-        if(offset != null) {
-            return service.findAll(TableNames.rents,new Rent(), offset, limit);
+    public ResponseEntity findAll(@RequestParam(required = false) Integer _start, @RequestParam int _end) {
+        if(_start != null) {
+            return service.findAll(TableNames.rents,new Rent(), _start, _end);
         }else{
-            return service.findAll(TableNames.rents,new Rent(), 0,limit);
+            return service.findAll(TableNames.rents,new Rent(), 0,_end);
         }
     }
 

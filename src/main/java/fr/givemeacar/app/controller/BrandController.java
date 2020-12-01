@@ -29,11 +29,11 @@ public class BrandController{
     }
 
     @RequestMapping(value = "brands", method = RequestMethod.GET)
-    public Collection<Brand> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
-        if(offset != null) {
-            return service.findAll(TableNames.brands,new Brand(), offset, limit);
+    public ResponseEntity findAll(@RequestParam(required = false) Integer _start, @RequestParam int _end) {
+        if(_start != null) {
+            return service.findAll(TableNames.brands,new Brand(), _start, _end);
         }else{
-            return service.findAll(TableNames.brands,new Brand(), 0,limit);
+            return service.findAll(TableNames.brands,new Brand(), 0,_end);
         }
     }
 

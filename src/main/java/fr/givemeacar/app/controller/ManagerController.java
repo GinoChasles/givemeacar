@@ -29,11 +29,11 @@ public class ManagerController{
     }
 
     @RequestMapping(value = "managers", method = RequestMethod.GET)
-    public Collection<Manager> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
-        if(offset != null) {
-            return service.findAll(TableNames.managers, new Manager(),offset, limit);
+    public ResponseEntity findAll(@RequestParam(required = false) Integer _start, @RequestParam int _end) {
+        if(_start != null) {
+            return service.findAll(TableNames.managers, new Manager(),_start, _end);
         }else{
-            return service.findAll(TableNames.managers, new Manager(),0,limit);
+            return service.findAll(TableNames.managers, new Manager(),0,_end);
         }
     }
 
