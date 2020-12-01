@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class EnergyTypeController{
@@ -21,7 +22,7 @@ public class EnergyTypeController{
     @Autowired
     EnergyTypeService service;
 
-    @CrossOrigin
+    
     @RequestMapping("energy_types/count")
     public BigInteger count() {
         return service.count(TableNames.energyTypes);
@@ -44,19 +45,19 @@ public class EnergyTypeController{
 
 
 
-    @CrossOrigin
+    
     @PostMapping("energy_types")
     public ResponseEntity<String> create(@Valid @RequestBody EnergyType model) {
         return service.create(model);
     }
 
-    @CrossOrigin
+    
     @PutMapping("energy_types/{id}")
     public ResponseEntity<String> update(@PathVariable int id,@RequestBody EnergyType model) {
         return service.update(model,id);
     }
 
-    @CrossOrigin
+    
     @DeleteMapping("energy_types/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
         return service.delete(new EnergyType(),id);
