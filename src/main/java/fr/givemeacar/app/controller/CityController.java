@@ -29,11 +29,11 @@ public class CityController{
     }
 
     @RequestMapping(value = "cities", method = RequestMethod.GET)
-    public ResponseEntity findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
-        if(offset != null) {
-            return service.findAll(TableNames.cities,new City(), offset, limit);
+    public ResponseEntity findAll(@RequestParam(required = false) Integer _start, @RequestParam int _end) {
+        if(_start != null) {
+            return service.findAll(TableNames.cities,new City(), _start, _end);
         }else{
-            return service.findAll(TableNames.cities,new City(), 0,limit);
+            return service.findAll(TableNames.cities,new City(), 0,_end);
         }
     }
 
