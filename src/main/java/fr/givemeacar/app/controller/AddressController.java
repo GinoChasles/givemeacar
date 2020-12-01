@@ -42,8 +42,6 @@ public class AddressController{
 
     }
 
-
-
     @CrossOrigin
     @PostMapping("addresses")
     public ResponseEntity<String> create(@Valid @RequestBody Address model) {
