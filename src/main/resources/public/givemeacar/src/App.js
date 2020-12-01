@@ -23,6 +23,43 @@ const App = () => (
 
 export default App;
 
+<<<<<<< HEAD
+=======
+function App() {
+  // const [id, setId] = useState();
+  const [manager, setManager] = useState({
+    lastName: "",
+    firstName: "",
+    mail: "",
+    password: "",
+    phone: "",
+  });
+
+  return (
+    <div>
+    <FormManager onSubmit={setManager} />
+    <ManagerCard manager={manager} />
+    </div>
+    // <form  method="get" >
+
+    //   <input type="number" name="id" defaultValue={id} onChange={(e) => {
+    //     setId(e.currentTarget.value);
+    //   }} />
+
+    //   <button type="submit" onClick={(e) => {
+    //     e.preventDefault();
+
+    //     fetch('http://localhost:8080/api/cars/' + id).then(res => {
+    //       if (res.ok) {
+    //         return res.text();
+    //       }
+    //     }).then(text=>console.log(text))
+    //   }}>valider</button>
+
+    // </form>
+  );
+}
+>>>>>>> gino
 
 
 
