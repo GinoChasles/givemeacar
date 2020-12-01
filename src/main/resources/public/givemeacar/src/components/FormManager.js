@@ -12,14 +12,16 @@ export default function FormManager({ onSubmit }) {
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          fetch("http://localhost:8080/api/managers", {
+          fetch("http://localhost:8080/api/managers/", {
             method: "POST",
             body: JSON.stringify({
-              lastName: lastName,
-              firstName: firstName,
-              mail: mail,
-              password: password,
-              phone: phone,
+              "lastName": lastName,
+              "firstName": firstName,
+              "mail": mail,
+              "password": password,
+              "phone": phone,
+              "userStatusId": 2,
+              "agencyId": 1
             }),
           })
             .then(function (response) {

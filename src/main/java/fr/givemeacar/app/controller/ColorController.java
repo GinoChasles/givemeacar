@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
-public class ColorController {
+public class ColorController{
 
     @Autowired
     ColorService service;
@@ -52,8 +52,8 @@ public class ColorController {
 
     @CrossOrigin
     @PutMapping("colors/{id}")
-    public ResponseEntity<String> update(@PathVariable int id, @RequestBody Color color) {
-        return service.update(id, color);
+    public ResponseEntity<String> update(@PathVariable int id,@RequestBody Color color) {
+        return service.update(color,id);
     }
 
     @CrossOrigin
