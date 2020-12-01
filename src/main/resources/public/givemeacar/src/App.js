@@ -2,16 +2,16 @@ import * as React from "react";
 import { Admin, Resource, ListGuesser,ShowGuesser, EditGuesser } from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
 import users from "./users";
-
+import { PostList, PostEdit, PostCreate } from './components/react-admin/components/post';
 const dataProvider = jsonServerProvider('http://localhost:8080/api');
 
 const App = () => (
         <Admin dataProvider= { dataProvider } >
-        <Resource name="colors" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser} />
-        <Resource name="cities" list={users} show={ ShowGuesser} edit={EditGuesser}/>
+        <Resource name="colors" list={users} show={ ShowGuesser} edit={PostEdit} create={PostCreate} />
+        <Resource name="cities" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser} />
         <Resource name="departments" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser} />
-        <Resource options={{ label: 'Doing' }} name="managers" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
-        <Resource name="clients" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
+        <Resource options={{ label: 'Les managers !' }} name="managers" list={ListGuesser} show={ ShowGuesser} edit={PostEdit} create={PostCreate}/>
+        <Resource name="clients" list={users} show={ ShowGuesser} edit={EditGuesser}/>
         <Resource name="cars" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
         <Resource name="brands" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
         <Resource name="models" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
