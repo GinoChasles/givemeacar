@@ -1,5 +1,6 @@
 package fr.givemeacar.app.controller;
 
+import fr.givemeacar.app.config.TableNames;
 import fr.givemeacar.app.model.Color;
 import fr.givemeacar.app.service.ColorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.lang.reflect.InvocationTargetException;
+import java.math.BigInteger;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,17 +23,23 @@ public class ColorController{
 
     @CrossOrigin
     @RequestMapping("colors/count")
-    public Long count() {
-        return service.count();
+    public BigInteger count() {
+        return service.count(TableNames.colors);
     }
 
-    @GetMapping("/colors/{id}")
-    public ResponseEntity<Color> findById(@PathVariable int id) {
-        Optional<Color> color = service.findById(id);
-        if (color.isPresent()) {
-            return ResponseEntity.ok().body(color.get());
+    @RequestMapping(value = "colors", method = RequestMethod.GET)
+    public Collection<Color> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
+        if(offset != null) {
+            return service.findAll(TableNames.colors, new Color(),offset, limit);
+        }else{
+            return service.findAll(TableNames.colors, new Color(),0,limit);
         }
-        return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("colors/{id}")
+    public Object findById(@PathVariable int id) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+       return service.findById(TableNames.colors,new Color(),id);
+
     }
 
 
@@ -49,6 +59,6 @@ public class ColorController{
     @CrossOrigin
     @DeleteMapping("colors/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
-        return service.delete(id);
+        return service.delete(new Color(),id);
     }
 }
