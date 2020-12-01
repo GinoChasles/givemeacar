@@ -4,7 +4,7 @@ package fr.givemeacar.app.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user_status", schema = "givemeacar", catalog = "")
+@Table(name = "user_statuses", schema = "givemeacar", catalog = "")
 public class UserStatus {
     @Id
     @Column(name = "id", nullable = false)

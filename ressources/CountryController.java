@@ -1,5 +1,6 @@
 package fr.givemeacar.app.controller;
 
+import fr.givemeacar.app.config.TableNames;
 import fr.givemeacar.app.model.Country;
 import fr.givemeacar.app.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Optional;
 
 @RestController
@@ -19,12 +21,12 @@ public class CountryController {
     @CrossOrigin
     @RequestMapping("countries/count")
     public Long count() {
-        return service.count();
+        return service.count(TableNames.countries);
     }
 
     @GetMapping("/countries/{id}")
-    public ResponseEntity<Country> findById(@PathVariable int id) {
-        Optional<Country> model = service.findById(id);
+    public ResponseEntity<Country> findById(@PathVariable int id) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        Optional<Country> model = service.findById(TableNames.countries,id);
         if (model.isPresent()) {
             return ResponseEntity.ok().body(model.get());
         }

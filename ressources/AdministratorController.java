@@ -1,5 +1,6 @@
 package fr.givemeacar.app.controller;
 
+import fr.givemeacar.app.config.TableNames;
 import fr.givemeacar.app.model.Administrator;
 import fr.givemeacar.app.service.AdministratorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Optional;
 
 @RestController
@@ -19,12 +21,12 @@ public class AdministratorController {
     @CrossOrigin
     @RequestMapping("administrators/count")
     public Long count() {
-        return service.count();
+        return service.count(TableNames.administrators);
     }
 
     @GetMapping("/administrators/{id}")
-    public ResponseEntity<Administrator> findById(@PathVariable int id) {
-        Optional<Administrator> manager = service.findById(id);
+    public ResponseEntity<Administrator> findById(@PathVariable int id) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        Optional<Administrator> manager = service.findById(TableNames.administrators,id);
         if (manager.isPresent()) {
             return ResponseEntity.ok().body(manager.get());
         }

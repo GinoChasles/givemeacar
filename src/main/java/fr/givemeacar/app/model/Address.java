@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 
 @Entity
-@Table(name = "address", schema = "givemeacar", catalog = "")
+@Table(name = "addresses", schema = "givemeacar", catalog = "")
 public class Address implements CrudModel{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

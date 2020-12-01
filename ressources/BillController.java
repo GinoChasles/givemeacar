@@ -1,5 +1,6 @@
 package fr.givemeacar.app.controller;
 
+import fr.givemeacar.app.config.TableNames;
 import fr.givemeacar.app.model.Bill;
 import fr.givemeacar.app.service.BillService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Optional;
 
 @RestController
@@ -15,16 +17,17 @@ public class BillController {
 
     @Autowired
     BillService service;
+    String route = "bills";
 
     @CrossOrigin
-    @RequestMapping("bills/count")
+    @RequestMapping("/bills/count")
     public Long count() {
-        return service.count();
+        return service.count(TableNames.bills);
     }
 
     @GetMapping("/bills/{id}")
-    public ResponseEntity<Bill> findById(@PathVariable int id) {
-        Optional<Bill> manager = service.findById(id);
+    public ResponseEntity<Bill> findById(@PathVariable int id) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        Optional<Bill> manager = service.findById(TableNames.bills,id);
         if (manager.isPresent()) {
             return ResponseEntity.ok().body(manager.get());
         }

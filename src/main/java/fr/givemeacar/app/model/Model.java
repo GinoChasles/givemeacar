@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "model", schema = "givemeacar", catalog = "")
+@Table(name = "models", schema = "givemeacar", catalog = "")
 public class Model {
     @Id
     @Column(name = "id", nullable = false)

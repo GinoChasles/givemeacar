@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 
 
 @Entity
-@Table(name = "street", schema = "givemeacar", catalog = "")
+@Table(name = "streets", schema = "givemeacar", catalog = "")
 public class Street {
     @Id
     @Column(name = "id", nullable = false)

@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "credit_card", schema = "givemeacar", catalog = "")
+@Table(name = "credit_cards", schema = "givemeacar", catalog = "")
 public class CreditCard {
     @Id
     @Column(name = "id", nullable = false)

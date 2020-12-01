@@ -1,5 +1,6 @@
 package fr.givemeacar.app.controller;
 
+import fr.givemeacar.app.config.TableNames;
 import fr.givemeacar.app.model.UserStatus;
 import fr.givemeacar.app.service.UserStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Optional;
 
 @RestController
@@ -19,12 +21,12 @@ public class UserStatusController {
     @CrossOrigin
     @RequestMapping("userstatuses/count")
     public Long count() {
-        return service.count();
+        return service.count(TableNames.usertStatuses);
     }
 
     @GetMapping("/userstatuses/{id}")
-    public ResponseEntity<UserStatus> findById(@PathVariable int id) {
-        Optional<UserStatus> model = service.findById(id);
+    public ResponseEntity<UserStatus> findById(@PathVariable int id) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        Optional<UserStatus> model = service.findById(TableNames.usertStatuses,id);
         if (model.isPresent()) {
             return ResponseEntity.ok().body(model.get());
         }

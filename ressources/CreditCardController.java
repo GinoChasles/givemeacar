@@ -1,5 +1,6 @@
 package fr.givemeacar.app.controller;
 
+import fr.givemeacar.app.config.TableNames;
 import fr.givemeacar.app.model.CreditCard;
 import fr.givemeacar.app.service.CreditCardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Optional;
 
 @RestController
@@ -19,12 +21,12 @@ public class CreditCardController {
     @CrossOrigin
     @RequestMapping("creditcads/count")
     public Long count() {
-        return service.count();
+        return service.count(TableNames.creditCards);
     }
 
     @GetMapping("/creditcads/{id}")
-    public ResponseEntity<CreditCard> findById(@PathVariable int id) {
-        Optional<CreditCard> model = service.findById(id);
+    public ResponseEntity<CreditCard> findById(@PathVariable int id) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        Optional<CreditCard> model = service.findById(TableNames.creditCards,id);
         if (model.isPresent()) {
             return ResponseEntity.ok().body(model.get());
         }

@@ -1,5 +1,6 @@
 package fr.givemeacar.app.controller;
 
+import fr.givemeacar.app.config.TableNames;
 import fr.givemeacar.app.model.Address;
 import fr.givemeacar.app.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.lang.reflect.InvocationTargetException;
 import java.util.Optional;
 
 @RestController
@@ -19,12 +21,12 @@ public class AddressController {
     @CrossOrigin
     @RequestMapping("/addresses/count")
     public Long count() {
-        return service.count();
+        return service.count(TableNames.addresses);
     }
 
     @GetMapping("/addresses/{id}")
-    public ResponseEntity<Address> findById(@PathVariable int id) {
-        Optional<Address> address = service.findById(id);
+    public ResponseEntity<Address> findById(@PathVariable int id) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+        Optional<Address> address = service.findById(TableNames.addresses,id);
         if (address.isPresent()) {
             return ResponseEntity.ok().body(address.get());
         }
