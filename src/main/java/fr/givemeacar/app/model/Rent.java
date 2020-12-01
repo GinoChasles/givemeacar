@@ -16,16 +16,16 @@ public class Rent  implements CrudModel{
     private Timestamp start;
     @Column(name = "end", nullable = true)
     private Timestamp end;
-    @Column(name = "car_id", nullable = false)
-    private int carId;
-    @Column(name = "client_id", nullable = false)
-    private int clientId;
+    @Column(name = "carid", nullable = false)
+    private int carid;
+    @Column(name = "clientid", nullable = false)
+    private int clientid;
     @OneToOne
-    @JoinColumn(name = "car_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Car carByCarId;
+    @JoinColumn(name = "carid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    private Car carByCarid;
     @OneToOne
-    @JoinColumn(name = "client_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Client clientByClientId;
+    @JoinColumn(name = "clientid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    private Client clientByClientid;
 
     public int getId() {
         return id;
@@ -51,35 +51,35 @@ public class Rent  implements CrudModel{
         this.end = end;
     }
 
-    public int getCarId() {
-        return carId;
+    public int getCarid() {
+        return carid;
     }
 
-    public void setCarId(int carId) {
-        this.carId = carId;
+    public void setCarid(int carid) {
+        this.carid = carid;
     }
 
-    public int getClientId() {
-        return clientId;
+    public int getClientid() {
+        return clientid;
     }
 
-    public void setClientId(int clientId) {
-        this.clientId = clientId;
+    public void setClientid(int clientid) {
+        this.clientid = clientid;
     }
 
-    public Car getCarByCarId() {
-        return carByCarId;
+    public Car getCarByCarid() {
+        return carByCarid;
     }
 
-    public void setCarByCarId(Car carByCarId) {
-        this.carByCarId = carByCarId;
+    public void setCarByCarid(Car carByCarid) {
+        this.carByCarid = carByCarid;
     }
 
-    public Client getClientByClientId() {
-        return clientByClientId;
+    public Client getClientByClientid() {
+        return clientByClientid;
     }
 
-    public void setClientByClientId(Client clientByClientId) {
-        this.clientByClientId = clientByClientId;
+    public void setClientByClientid(Client clientByClientid) {
+        this.clientByClientid = clientByClientid;
     }
 }

@@ -29,11 +29,11 @@ public class DepartmentController{
     }
 
     @RequestMapping(value = "departments", method = RequestMethod.GET)
-    public Collection<Department> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
-        if(offset != null) {
-            return service.findAll(TableNames.departments,new Department(), offset, limit);
+    public ResponseEntity findAll(@RequestParam(required = false) String _order, @RequestParam(required = false) String _sort,@RequestParam(required = false) Integer _start, @RequestParam int _end) {
+        if(_start != null) {
+            return service.findAll(TableNames.departments,new Department(),_start, _end,_order,_sort);
         }else{
-            return service.findAll(TableNames.departments, new Department(),0,limit);
+            return service.findAll(TableNames.departments, new Department(),0, _end,_order,_sort);
         }
     }
 

@@ -12,9 +12,9 @@ public class Administrator  implements CrudModel{
     @Id
     @Column(name = "id", nullable = false)
     private int id;
-    @Column(name = "first_name", nullable = false, length = 32)
+    @Column(name = "firstname", nullable = false, length = 32)
     private String firstName;
-    @Column(name = "last_name", nullable = false, length = 32)
+    @Column(name = "lastname", nullable = false, length = 32)
     private String lastName;
     @Column(name = "mail", nullable = false, length = 64)
     private String mail;
@@ -22,11 +22,11 @@ public class Administrator  implements CrudModel{
     private String password;
     @Column(name = "phone", nullable = false, length = 12)
     private String phone;
-    @Column(name = "user_status_id", nullable = false)
-    private int userStatusId;
+    @Column(name = "userstatusid", nullable = false)
+    private int userStatusid;
     @OneToOne
-    @JoinColumn(name = "user_status_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private UserStatus userStatusByUserStatusId;
+    @JoinColumn(name = "userstatusid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    private UserStatus userStatusByUserStatusid;
 
     public int getId() {
         return id;
@@ -76,19 +76,19 @@ public class Administrator  implements CrudModel{
         this.phone = phone;
     }
 
-    public int getUserStatusId() {
-        return userStatusId;
+    public int getUserStatusid() {
+        return userStatusid;
     }
 
-    public void setUserStatusId(int userStatusId) {
-        this.userStatusId = userStatusId;
+    public void setUserStatusid(int userStatusid) {
+        this.userStatusid = userStatusid;
     }
 
-    public UserStatus getUserStatusByUserStatusId() {
-        return userStatusByUserStatusId;
+    public UserStatus getUserStatusByUserStatusid() {
+        return userStatusByUserStatusid;
     }
 
-    public void setUserStatusByUserStatusId(UserStatus userStatusByUserStatusId) {
-        this.userStatusByUserStatusId = userStatusByUserStatusId;
+    public void setUserStatusByUserStatusid(UserStatus userStatusByUserStatusid) {
+        this.userStatusByUserStatusid = userStatusByUserStatusid;
     }
 }

@@ -29,11 +29,11 @@ public class StreetSuffixController{
     }
 
     @RequestMapping(value = "street_suffices", method = RequestMethod.GET)
-    public Collection<StreetSuffix> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
-        if(offset != null) {
-            return service.findAll(TableNames.streetSuffices,new StreetSuffix(), offset, limit);
+    public ResponseEntity findAll(@RequestParam(required = false) String _order, @RequestParam(required = false) String _sort,@RequestParam(required = false) Integer _start, @RequestParam int _end) {
+        if(_start != null) {
+            return service.findAll(TableNames.streetSuffices,new StreetSuffix(),_start, _end,_order,_sort);
         }else{
-            return service.findAll(TableNames.streetSuffices,new StreetSuffix(), 0,limit);
+            return service.findAll(TableNames.streetSuffices,new StreetSuffix(), 0, _end,_order,_sort);
         }
     }
 

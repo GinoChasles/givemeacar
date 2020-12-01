@@ -2,6 +2,7 @@ package fr.givemeacar.app.service;
 
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -21,20 +22,30 @@ import java.util.Optional;
 public class CrudServiceImpl<T> implements CrudService<T> {
     @PersistenceContext
     EntityManager em;
+    HttpHeaders responseHeaders = new HttpHeaders();
 
     public BigInteger count(String tableName) {
         Query q = getEntityManager().createNativeQuery("SELECT COUNT(*) FROM "+tableName);
         return (BigInteger) q.getSingleResult();
+
     }
 
-    public Collection<T> findAll(String tableName,T t,int offset, int limit){
-        Query q = getEntityManager().createNativeQuery("SELECT * FROM "+tableName,t.getClass());
+    public ResponseEntity findAll(String tableName,T t,int offset, int limit,String order,String sort){
 
-        return  q.setFirstResult(offset).setMaxResults(limit).getResultList();
+        Query q = getEntityManager().createNativeQuery("SELECT * FROM "+tableName+" ORDER BY :order :sort",t.getClass());
+        q.setParameter("sort",sort);
+        q.setParameter("order",order);
+
+        Collection list = q.setFirstResult(offset).setMaxResults(limit).getResultList();
+
+        responseHeaders.set("X-Total-Count",String.valueOf(list.size()));
+        responseHeaders.set("Access-Control-Expose-Headers", "X-Total-Count");
+
+        return  ResponseEntity.ok().headers(responseHeaders).body(list);
     }
 
     @Transactional
-    public Object findById(String tableName, T t, int id) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException {
+    public ResponseEntity findById(String tableName, T t, int id) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException {
         CrudModel model = (CrudModel) getEntityManager().find(t.getClass(),id);
 
         if (model != null) {
