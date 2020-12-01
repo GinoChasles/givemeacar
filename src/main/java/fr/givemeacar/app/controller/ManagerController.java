@@ -12,11 +12,8 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
-<<<<<<< HEAD
+
 public class ManagerController {
-=======
-public class ManagerController{
->>>>>>> gino
 
     @Autowired
     ManagerService service;
@@ -44,13 +41,9 @@ public class ManagerController{
 
     @CrossOrigin
     @PutMapping("/managers/{id}")
-<<<<<<< HEAD
-    public ResponseEntity<String> update(@PathVariable int id, @RequestBody Manager model) {
-        return service.update(id, model);
-=======
+
     public ResponseEntity<String> update(@PathVariable int id,@RequestBody Manager model) {
         return service.update(model,id);
->>>>>>> gino
     }
 
     @CrossOrigin
