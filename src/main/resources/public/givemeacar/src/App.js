@@ -16,7 +16,6 @@ function App() {
   });
 
   return (
-<<<<<<< HEAD
     <div>
     <FormManager onSubmit={setManager} />
     <ManagerCard manager={manager} />
