@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class AgencyController{
@@ -21,7 +22,7 @@ public class AgencyController{
     @Autowired
     AgencyService service;
 
-    @CrossOrigin
+    
     @RequestMapping("agencies/count")
     public BigInteger count() {
         return service.count(TableNames.agencies);
@@ -44,19 +45,19 @@ public class AgencyController{
 
 
 
-    @CrossOrigin
+    
     @PostMapping("agencies")
     public ResponseEntity<String> create(@Valid @RequestBody Agency model) {
         return service.create(model);
     }
 
-    @CrossOrigin
+    
     @PutMapping("agencies/{id}")
     public ResponseEntity<String> update(@PathVariable int id,@RequestBody Agency model) {
         return service.update(model,id);
     }
 
-    @CrossOrigin
+    
     @DeleteMapping("agencies/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
         return service.delete(new Agency(),id);

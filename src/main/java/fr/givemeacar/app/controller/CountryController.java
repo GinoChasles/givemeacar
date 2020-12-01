@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class CountryController{
@@ -21,7 +22,7 @@ public class CountryController{
     @Autowired
     CountryService service;
 
-    @CrossOrigin
+    
     @RequestMapping("countries/count")
     public BigInteger count() {
         return service.count(TableNames.countries);
@@ -44,19 +45,19 @@ public class CountryController{
 
 
 
-    @CrossOrigin
+    
     @PostMapping("countries")
     public ResponseEntity<String> create(@Valid @RequestBody Country model) {
         return service.create(model);
     }
 
-    @CrossOrigin
+    
     @PutMapping("countries/{id}")
     public ResponseEntity<String> update(@PathVariable int id,@RequestBody Country model) {
         return service.update(model,id);
     }
 
-    @CrossOrigin
+    
     @DeleteMapping("countries/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
         return service.delete(new Country(),id);

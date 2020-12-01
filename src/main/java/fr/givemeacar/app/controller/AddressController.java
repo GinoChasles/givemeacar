@@ -14,6 +14,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class AddressController{
@@ -21,7 +23,7 @@ public class AddressController{
     @Autowired
     AddressService service;
 
-    @CrossOrigin
+    
     @RequestMapping("addresses/count")
     public BigInteger count() {
         return service.count(TableNames.addresses);
@@ -42,19 +44,19 @@ public class AddressController{
 
     }
 
-    @CrossOrigin
+    
     @PostMapping("addresses")
     public ResponseEntity<String> create(@Valid @RequestBody Address model) {
         return service.create(model);
     }
 
-    @CrossOrigin
+    
     @PutMapping("addresses/{id}")
     public ResponseEntity<String> update(@PathVariable int id,@RequestBody Address model) {
         return service.update(model,id);
     }
 
-    @CrossOrigin
+    
     @DeleteMapping("addresses/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
         return service.delete(new Address(),id);

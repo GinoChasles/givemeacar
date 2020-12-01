@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class CreditCardController{
@@ -21,7 +22,7 @@ public class CreditCardController{
     @Autowired
     CreditCardService service;
 
-    @CrossOrigin
+    
     @RequestMapping("credit_cards/count")
     public BigInteger count() {
         return service.count(TableNames.creditCards);
@@ -44,19 +45,19 @@ public class CreditCardController{
 
 
 
-    @CrossOrigin
+    
     @PostMapping("credit_cards")
     public ResponseEntity<String> create(@Valid @RequestBody CreditCard model) {
         return service.create(model);
     }
 
-    @CrossOrigin
+    
     @PutMapping("credit_cards/{id}")
     public ResponseEntity<String> update(@PathVariable int id,@RequestBody CreditCard model) {
         return service.update(model,id);
     }
 
-    @CrossOrigin
+    
     @DeleteMapping("credit_cards/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
         return service.delete(new CreditCard(),id);

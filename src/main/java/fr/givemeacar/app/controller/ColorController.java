@@ -14,6 +14,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class ColorController{
@@ -21,7 +23,7 @@ public class ColorController{
     @Autowired
     ColorService service;
 
-    @CrossOrigin
+    
     @RequestMapping("colors/count")
     public BigInteger count() {
         return service.count(TableNames.colors);
@@ -44,19 +46,19 @@ public class ColorController{
 
 
 
-    @CrossOrigin
+    
     @PostMapping("colors")
     public ResponseEntity<String> create(@Valid @RequestBody Color color) {
         return service.create(color);
     }
 
-    @CrossOrigin
+    
     @PutMapping("colors/{id}")
     public ResponseEntity<String> update(@PathVariable int id,@RequestBody Color color) {
         return service.update(color,id);
     }
 
-    @CrossOrigin
+    
     @DeleteMapping("colors/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
         return service.delete(new Color(),id);
