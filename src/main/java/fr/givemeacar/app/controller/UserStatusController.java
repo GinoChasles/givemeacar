@@ -40,7 +40,7 @@ public class UserStatusController {
     @CrossOrigin
     @PutMapping("/userstatuses/{id}")
     public ResponseEntity<String> update(@PathVariable int id, @RequestBody UserStatus model) {
-        return service.update(id, model);
+        return service.update(model,id);
     }
 
     @CrossOrigin

@@ -40,7 +40,7 @@ public class ModelController {
     @CrossOrigin
     @PutMapping("/models/{id}")
     public ResponseEntity<String> update(@PathVariable int id, @RequestBody Model model) {
-        return service.update(id, model);
+        return service.update(model,id);
     }
 
     @CrossOrigin

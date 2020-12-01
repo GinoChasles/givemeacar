@@ -40,7 +40,7 @@ public class EnergyTypeController {
     @CrossOrigin
     @PutMapping("/energytypes/{id}")
     public ResponseEntity<String> update(@PathVariable int id, @RequestBody EnergyType model) {
-        return service.update(id, model);
+        return service.update(model,id);
     }
 
     @CrossOrigin

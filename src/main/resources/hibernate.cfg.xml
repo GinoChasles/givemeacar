@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD//EN"
+        "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <property name="connection.url">jdbc:mysql://localhost:3306/givemeacar?serverTimezone=UTC</property>
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">Ilovepython29</property>
+        <!--<property name="hibernate.hbm2ddl.auto">update</property>-->
+        <mapping class="fr.givemeacar.app.model.Address"/>
+        <mapping class="fr.givemeacar.app.model.Administrator"/>
+        <mapping class="fr.givemeacar.app.model.Agency"/>
+        <mapping class="fr.givemeacar.app.model.Bill"/>
+        <mapping class="fr.givemeacar.app.model.Brand"/>
+        <mapping class="fr.givemeacar.app.model.Car"/>
+        <mapping class="fr.givemeacar.app.model.City"/>
+        <mapping class="fr.givemeacar.app.model.Client"/>
+        <mapping class="fr.givemeacar.app.model.Color"/>
+        <mapping class="fr.givemeacar.app.model.Country"/>
+        <mapping class="fr.givemeacar.app.model.CreditCard"/>
+        <mapping class="fr.givemeacar.app.model.Department"/>
+        <mapping class="fr.givemeacar.app.model.EnergyType"/>
+        <mapping class="fr.givemeacar.app.model.Manager"/>
+        <mapping class="fr.givemeacar.app.model.Model"/>
+        <mapping class="fr.givemeacar.app.model.Region"/>
+        <mapping class="fr.givemeacar.app.model.Rent"/>
+        <mapping class="fr.givemeacar.app.model.Street"/>
+        <mapping class="fr.givemeacar.app.model.StreetName"/>
+        <mapping class="fr.givemeacar.app.model.StreetSuffix"/>
+        <mapping class="fr.givemeacar.app.model.UserStatus"/>
+
+    </session-factory>
+</hibernate-configuration>

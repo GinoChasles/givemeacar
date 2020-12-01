@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -40,7 +41,7 @@ public class AgencyController {
     @CrossOrigin
     @PutMapping("/agencies/{id}")
     public ResponseEntity<String> update(@PathVariable int id, @RequestBody Agency model) {
-        return service.update(id, model);
+        return service.update(model,id);
     }
 
     @CrossOrigin
