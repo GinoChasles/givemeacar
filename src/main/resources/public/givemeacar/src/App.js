@@ -1,43 +1,31 @@
-import './App.css';
+import * as React from "react";
+import { Admin, Resource, ListGuesser,ShowGuesser, EditGuesser } from 'react-admin';
+import jsonServerProvider from 'ra-data-json-server';
+import users from "./users";
 
-import { useState } from 'react';
-import FormManager from "./components/FormManager";
-import ManagerCard from "./components/ManagerCard";
+const dataProvider = jsonServerProvider('http://localhost:8080/api');
 
-
-function App() {
-  // const [id, setId] = useState();
-  const [manager, setManager] = useState({
-    lastName: "",
-    firstName: "",
-    mail: "",
-    password: "",
-    phone: "",
-  });
-
-  return (
-    <div>
-    <FormManager onSubmit={setManager} />
-    <ManagerCard manager={manager} />
-    </div>
-    // <form  method="get" >
-
-    //   <input type="number" name="id" defaultValue={id} onChange={(e) => {
-    //     setId(e.currentTarget.value);
-    //   }} />
-
-    //   <button type="submit" onClick={(e) => {
-    //     e.preventDefault();
-
-    //     fetch('http://localhost:8080/api/cars/' + id).then(res => {
-    //       if (res.ok) {
-    //         return res.text();
-    //       }
-    //     }).then(text=>console.log(text))
-    //   }}>valider</button>
-
-    // </form>
-  );
-}
+const App = () => (
+        <Admin dataProvider= { dataProvider } >
+        <Resource name="colors" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser} />
+        <Resource name="cities" list={users} show={ ShowGuesser} edit={EditGuesser}/>
+        <Resource name="departments" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser} />
+        <Resource options={{ label: 'Doing' }} name="managers" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
+        <Resource name="clients" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
+        <Resource name="cars" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
+        <Resource name="brands" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
+        <Resource name="models" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
+        <Resource name="addresses" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
+        <Resource name="administrators" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
+        <Resource name="agencies" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
+        <Resource name="bills" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
+        <Resource name="rents" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
+        <Resource name="energy_types" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
+        <Resource name="regions" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
+        <Resource name="streets" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
+        <Resource name="street_suffices" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
+        <Resource name="user_statuses" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
+            </Admin>
+);
 
 export default App;
