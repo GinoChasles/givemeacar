@@ -23,18 +23,18 @@ public class ColorController{
     @Autowired
     ColorService service;
 
-    
+
     @RequestMapping("colors/count")
     public BigInteger count() {
         return service.count(TableNames.colors);
     }
 
     @RequestMapping(value = "colors", method = RequestMethod.GET)
-    public Collection<Color> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
-        if(offset != null) {
-            return service.findAll(TableNames.colors, new Color(),offset, limit);
+    public ResponseEntity findAll(@RequestParam(required = false) Integer _start, @RequestParam int _end) {
+        if(_start != null) {
+            return service.findAll(TableNames.colors, new Color(),_start, _end);
         }else{
-            return service.findAll(TableNames.colors, new Color(),0,limit);
+            return service.findAll(TableNames.colors, new Color(),0,_end);
         }
     }
 

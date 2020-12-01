@@ -29,7 +29,7 @@ public class CreditCardController{
     }
 
     @RequestMapping(value = "credit_cards", method = RequestMethod.GET)
-    public Collection<CreditCard> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
+    public ResponseEntity findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
         if(offset != null) {
             return service.findAll(TableNames.creditCards,new CreditCard(), offset, limit);
         }else{

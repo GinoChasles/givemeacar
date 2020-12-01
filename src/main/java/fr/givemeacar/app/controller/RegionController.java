@@ -29,7 +29,7 @@ public class RegionController{
     }
 
     @RequestMapping(value = "regions", method = RequestMethod.GET)
-    public Collection<Region> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
+    public ResponseEntity findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
         if(offset != null) {
             return service.findAll(TableNames.regions,new Region(), offset, limit);
         }else{

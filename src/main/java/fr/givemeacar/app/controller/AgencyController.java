@@ -29,7 +29,7 @@ public class AgencyController{
     }
 
     @RequestMapping(value = "agencies", method = RequestMethod.GET)
-    public Collection<Agency> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
+    public ResponseEntity findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
         if(offset != null) {
             return service.findAll(TableNames.agencies,new Agency(), offset, limit);
         }else{

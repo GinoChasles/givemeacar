@@ -29,7 +29,7 @@ public class DepartmentController{
     }
 
     @RequestMapping(value = "departments", method = RequestMethod.GET)
-    public Collection<Department> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
+    public ResponseEntity findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
         if(offset != null) {
             return service.findAll(TableNames.departments,new Department(), offset, limit);
         }else{

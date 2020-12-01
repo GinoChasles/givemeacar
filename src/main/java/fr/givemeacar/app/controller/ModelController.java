@@ -29,7 +29,7 @@ public class ModelController{
     }
 
     @RequestMapping(value = "models", method = RequestMethod.GET)
-    public Collection<Model> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
+    public ResponseEntity findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
         if(offset != null) {
             return service.findAll(TableNames.models,new Model(), offset, limit);
         }else{

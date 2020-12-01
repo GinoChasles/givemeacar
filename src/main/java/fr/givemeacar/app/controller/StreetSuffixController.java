@@ -29,7 +29,7 @@ public class StreetSuffixController{
     }
 
     @RequestMapping(value = "street_suffices", method = RequestMethod.GET)
-    public Collection<StreetSuffix> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
+    public ResponseEntity findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
         if(offset != null) {
             return service.findAll(TableNames.streetSuffices,new StreetSuffix(), offset, limit);
         }else{

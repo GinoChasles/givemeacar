@@ -29,7 +29,7 @@ public class EnergyTypeController{
     }
 
     @RequestMapping(value = "energy_types", method = RequestMethod.GET)
-    public Collection<EnergyType> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
+    public ResponseEntity findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
         if(offset != null) {
             return service.findAll(TableNames.energyTypes,new EnergyType(), offset, limit);
         }else{

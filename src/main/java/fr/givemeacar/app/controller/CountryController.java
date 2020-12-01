@@ -29,7 +29,7 @@ public class CountryController{
     }
 
     @RequestMapping(value = "countries", method = RequestMethod.GET)
-    public Collection<Country> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
+    public ResponseEntity findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
         if(offset != null) {
             return service.findAll(TableNames.countries, new Country(),offset, limit);
         }else{

@@ -30,7 +30,7 @@ public class AddressController{
     }
 
     @RequestMapping(value = "addresses", method = RequestMethod.GET)
-    public Collection<Address> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
+    public ResponseEntity findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
         if(offset != null) {
             return service.findAll(TableNames.addresses, new Address(),offset, limit);
         }else{

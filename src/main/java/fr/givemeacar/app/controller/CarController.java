@@ -29,7 +29,7 @@ public class CarController{
     }
 
     @RequestMapping(value = "cars", method = RequestMethod.GET)
-    public Collection<Car> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
+    public ResponseEntity findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
         if(offset != null) {
             return service.findAll(TableNames.cars,new Car(), offset, limit);
         }else{

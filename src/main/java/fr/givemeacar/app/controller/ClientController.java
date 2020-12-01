@@ -29,7 +29,7 @@ public class ClientController{
     }
 
     @RequestMapping(value = "clients", method = RequestMethod.GET)
-    public Collection<Client> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
+    public ResponseEntity findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
         if(offset != null) {
             return service.findAll(TableNames.clients,new Client(), offset, limit);
         }else{

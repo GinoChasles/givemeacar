@@ -29,7 +29,7 @@ public class UserStatusController{
     }
 
     @RequestMapping(value = "user_statuses", method = RequestMethod.GET)
-    public Collection<UserStatus> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
+    public ResponseEntity findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
         if(offset != null) {
             return service.findAll(TableNames.userStatuses,new UserStatus(), offset, limit);
         }else{
