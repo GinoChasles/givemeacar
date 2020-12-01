@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "ra-data-json-server": "^3.10.3",
+    "react-admin": "^3.10.3"
+  },
+  "proxy": "http://localhost:8080"
+}
