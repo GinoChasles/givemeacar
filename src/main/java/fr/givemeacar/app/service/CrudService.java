@@ -43,26 +43,26 @@ public interface CrudService<T> {
     /**
      * Creates a model in the database
      *
-     * @param repo the repo for the transaction
-     * @param model the model to save
+     * @param t the model to save
      * @return a 200(ok) or 409(conflict) response with constraint message
      */
-    public ResponseEntity<String> create(JpaRepository<T, Integer> repo,T model);
+    public ResponseEntity<String> create(T t);
     /**
      * Updates a model in the database
      *
-     * @param model the model to update
+     * @param t the model to update
      * @return a 200(ok) or 409(conflict) response with constraint message
      */
-    public ResponseEntity<String> update(JpaRepository<T, Integer> repo, T model, int id);
+    public ResponseEntity<String> update(T t, int id);
 
     /**
      * Deletes a model in the database
      *
+     * @param t the object to delete
      * @param id the id of the model to delete
      * @return a 200(ok) or 409(conflict) response with constraint message
      */
-    public ResponseEntity<String> delete(int id);
+    public ResponseEntity<String> delete(T t,int id);
 
     /**
      * Transforms an Exception into a ResponseEntity

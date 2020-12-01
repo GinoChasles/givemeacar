@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import fr.givemeacar.app.model.CrudModel;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -20,7 +21,6 @@ import java.util.Optional;
 public class CrudServiceImpl<T> implements CrudService<T> {
     @PersistenceContext
     EntityManager em;
-    Class<T> a;
 
     public BigInteger count(String tableName) {
         Query q = getEntityManager().createNativeQuery("SELECT COUNT(*) FROM "+tableName);
@@ -32,32 +32,62 @@ public class CrudServiceImpl<T> implements CrudService<T> {
         return q.setFirstResult(offset).setMaxResults(limit).getResultList();
     }
 
-
+    @Transactional
     public Object findById(String tableName, T t, int id) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException {
-        Query q = getEntityManager().createNativeQuery("SELECT * FROM "+tableName+" WHERE id = :id",t.getClass());
-        q.setParameter("id",id);
-        System.out.println(tableName);
-        return  q.getSingleResult();
-    }
+        CrudModel model = (CrudModel) getEntityManager().find(t.getClass(),id);
 
-    public ResponseEntity<String> create(JpaRepository<T, Integer> repo,T model) {
-        return trySaveOrConflict(repo,model);
-    }
-
-    public ResponseEntity<String> update(JpaRepository<T, Integer> repo,T model,int id) {
-        Optional<T> optionalT = repo.findById(id);
-
-        if (optionalT.isPresent()) {
-            model.setId(id);
-            trySaveOrConflict(repo, model);
-            em.getTransaction().commit();
-            em.close();
+        if (model != null) {
+            try{
+                return ResponseEntity.ok().body(model);
+            }catch(Exception e){
+                return exceptionToResponseEntity(e);
+            }
         }
         return ResponseEntity.notFound().build();
     }
 
-    public ResponseEntity<String> delete(int id) {
-        T del = (T)getEntityManager().find(a.getClass(),id);
+    @Transactional
+    public ResponseEntity<String> create(T model) {
+        try {
+            getEntityManager().persist(model);
+            return ResponseEntity.status(HttpStatus.CREATED).build();
+        }catch(Exception e){
+            System.out.print(e.getMessage());
+            return exceptionToResponseEntity(e);
+        }
+    }
+
+    @Transactional
+    public ResponseEntity<String> update(T t,int id) {
+        CrudModel oldT = (CrudModel) getEntityManager().find(t.getClass(),id);
+
+        if (oldT != null) {
+            ((CrudModel) t).setId(oldT.getId());
+            try{
+                getEntityManager().merge(t);
+                return ResponseEntity.ok().build();
+            }catch(Exception e){
+                return exceptionToResponseEntity(e);
+            }
+        }
+        return ResponseEntity.notFound().build();
+    }
+    /**
+    @Transactional
+    public ResponseEntity<String> update(JpaRepository<T, Integer> repo,T t,int id) {
+        Optional<T> optionalT = repo.findById(id);
+
+        if (optionalT.isPresent()) {
+            CrudModel oldT = (CrudModel)optionalT.get();
+            ((CrudModel) t).setId(oldT.getId());
+            return trySaveOrConflict(repo, t);
+        }
+        return ResponseEntity.notFound().build();
+    }
+**/
+    @Transactional
+    public ResponseEntity<String> delete(T t,int id) {
+        T del = (T)getEntityManager().find(t.getClass(),id);
 
         if (del != null) {
             try {

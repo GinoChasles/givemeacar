@@ -13,13 +13,4 @@ import java.util.Optional;
 public class ColorService extends CrudServiceImpl<Color>{
     @Autowired
     ColorRepository repo;
-
-    public ResponseEntity<String> create(Color model) {
-        return super.create(this.repo, model);
-    }
-
-    public ResponseEntity<String> update(Color model, int id) {
-        return super.update(this.repo, model, id);
-    }
-
 }

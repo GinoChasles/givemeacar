@@ -37,13 +37,9 @@ public class ColorController{
     }
 
     @GetMapping("colors/{id}")
-    public ResponseEntity<Color> findById(@PathVariable int id) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+    public Object findById(@PathVariable int id) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
+       return service.findById(TableNames.colors,new Color(),id);
 
-       Color color = (Color) service.findById(TableNames.colors,new Color(),id);
-        if (color != null) {
-            return ResponseEntity.ok().body(color);
-        }
-        return ResponseEntity.notFound().build();
     }
 
 
@@ -63,6 +59,6 @@ public class ColorController{
     @CrossOrigin
     @DeleteMapping("colors/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
-        return service.delete(id);
+        return service.delete(new Color(),id);
     }
 }
