@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class CarController{
@@ -21,7 +22,7 @@ public class CarController{
     @Autowired
     CarService service;
 
-    @CrossOrigin
+    
     @RequestMapping("cars/count")
     public BigInteger count() {
         return service.count(TableNames.cars);
@@ -44,19 +45,19 @@ public class CarController{
 
 
 
-    @CrossOrigin
+    
     @PostMapping("cars")
     public ResponseEntity<String> create(@Valid @RequestBody Car model) {
         return service.create(model);
     }
 
-    @CrossOrigin
+    
     @PutMapping("cars/{id}")
     public ResponseEntity<String> update(@PathVariable int id,@RequestBody Car model) {
         return service.update(model,id);
     }
 
-    @CrossOrigin
+    
     @DeleteMapping("cars/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
         return service.delete(new Car(),id);
