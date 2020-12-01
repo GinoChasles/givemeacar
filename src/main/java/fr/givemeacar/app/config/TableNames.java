@@ -20,5 +20,5 @@ public class TableNames{
     public static String rents = "rents";
     public static String streets = "streets";
     public static String streetSuffices = "street_suffices";
-    public static String usertStatuses = "user_statuses";
+    public static String userStatuses = "user_statuses";
 }

@@ -46,22 +46,11 @@ public class CrudServiceImpl<T> implements CrudService<T> {
         return ResponseEntity.notFound().build();
     }
 
-    @Transactional
-    public ResponseEntity<String> create(T model) {
-        try {
-            getEntityManager().persist(model);
-            return new ResponseEntity<String>(HttpStatus.CREATED);
-        }catch(Exception e){
-            return new ResponseEntity<String>(e.getMessage(),HttpStatus.CONFLICT);
-        }
-    }
-
     public ResponseEntity<String> create(JpaRepository<T, Integer> repo,T model) {
         try {
             repo.save(model);
             return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch (IllegalArgumentException exception) {
-
+        } catch (Exception exception) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
     }
@@ -72,39 +61,11 @@ public class CrudServiceImpl<T> implements CrudService<T> {
         if (optionalT.isPresent()) {
             CrudModel oldT = (CrudModel)optionalT.get();
             ((CrudModel) model).setId(oldT.getId());
-            trySaveOrConflict(repo, model);
+            return trySaveOrConflict(repo, model);
         }
         return ResponseEntity.notFound().build();
     }
 
-    @Transactional
-    public ResponseEntity<String> update(T t,int id) {
-        CrudModel oldT = (CrudModel) getEntityManager().find(t.getClass(),id);
-
-        if (oldT != null) {
-            ((CrudModel) t).setId(oldT.getId());
-            try{
-                getEntityManager().merge(t);
-                return ResponseEntity.ok().build();
-            }catch(Exception e){
-                return exceptionToResponseEntity(e);
-            }
-        }
-        return ResponseEntity.notFound().build();
-    }
-    /**
-    @Transactional
-    public ResponseEntity<String> update(JpaRepository<T, Integer> repo,T t,int id) {
-        Optional<T> optionalT = repo.findById(id);
-
-        if (optionalT.isPresent()) {
-            CrudModel oldT = (CrudModel)optionalT.get();
-            ((CrudModel) t).setId(oldT.getId());
-            return trySaveOrConflict(repo, t);
-        }
-        return ResponseEntity.notFound().build();
-    }
-**/
     @Transactional
     public ResponseEntity<String> delete(T t,int id) {
         T del = (T)getEntityManager().find(t.getClass(),id);
