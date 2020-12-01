@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class StreetSuffixController{
@@ -21,7 +22,7 @@ public class StreetSuffixController{
     @Autowired
     StreetSuffixService service;
 
-    @CrossOrigin
+    
     @RequestMapping("street_suffices/count")
     public BigInteger count() {
         return service.count(TableNames.streetSuffices);
@@ -44,19 +45,19 @@ public class StreetSuffixController{
 
 
 
-    @CrossOrigin
+    
     @PostMapping("street_suffices")
     public ResponseEntity<String> create(@Valid @RequestBody StreetSuffix model) {
         return service.create(model);
     }
 
-    @CrossOrigin
+    
     @PutMapping("street_suffices/{id}")
     public ResponseEntity<String> update(@PathVariable int id,@RequestBody StreetSuffix model) {
         return service.update(model,id);
     }
 
-    @CrossOrigin
+    
     @DeleteMapping("street_suffices/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
         return service.delete(new StreetSuffix(),id);

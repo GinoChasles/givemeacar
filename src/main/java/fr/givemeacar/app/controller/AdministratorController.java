@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class AdministratorController{
@@ -21,7 +22,7 @@ public class AdministratorController{
     @Autowired
     AdministratorService service;
 
-    @CrossOrigin
+    
     @RequestMapping("administrators/count")
     public BigInteger count() {
         return service.count(TableNames.administrators);
@@ -44,19 +45,19 @@ public class AdministratorController{
 
 
 
-    @CrossOrigin
+    
     @PostMapping("administrators")
     public ResponseEntity<String> create(@Valid @RequestBody Administrator model) {
         return service.create(model);
     }
 
-    @CrossOrigin
+    
     @PutMapping("administrators/{id}")
     public ResponseEntity<String> update(@PathVariable int id,@RequestBody Administrator model) {
         return service.update(model,id);
     }
 
-    @CrossOrigin
+    
     @DeleteMapping("administrators/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
         return service.delete(new Administrator(),id);

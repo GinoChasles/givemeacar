@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 
@@ -22,7 +23,7 @@ public class ManagerController {
     @Autowired
     ManagerService service;
 
-    @CrossOrigin
+    
     @RequestMapping("managers/count")
     public BigInteger count() {
         return service.count(TableNames.managers);
@@ -47,19 +48,19 @@ public class ManagerController {
 
 
 
-    @CrossOrigin
+    
     @PostMapping("managers")
     public ResponseEntity<String> create(@Valid @RequestBody Manager model) {
         return service.create(model);
     }
 
-    @CrossOrigin
+    
     @PutMapping("managers/{id}")
     public ResponseEntity<String> update(@PathVariable int id,@RequestBody Manager model) {
         return service.update(model,id);
     }
 
-    @CrossOrigin
+    
     @DeleteMapping("managers/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
         return service.delete(new Manager(),id);

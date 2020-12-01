@@ -14,6 +14,7 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class BillController{
@@ -21,7 +22,7 @@ public class BillController{
     @Autowired
     BillService service;
 
-    @CrossOrigin
+    
     @RequestMapping("bills/count")
     public BigInteger count() {
         return service.count(TableNames.bills);
@@ -44,19 +45,19 @@ public class BillController{
 
 
 
-    @CrossOrigin
+    
     @PostMapping("bills")
     public ResponseEntity<String> create(@Valid @RequestBody Bill model) {
         return service.create(model);
     }
 
-    @CrossOrigin
+    
     @PutMapping("bills/{id}")
     public ResponseEntity<String> update(@PathVariable int id,@RequestBody Bill model) {
         return service.update(model,id);
     }
 
-    @CrossOrigin
+    
     @DeleteMapping("bills/{id}")
     public ResponseEntity<String> delete(@PathVariable int id) {
         return service.delete(new Bill(),id);
