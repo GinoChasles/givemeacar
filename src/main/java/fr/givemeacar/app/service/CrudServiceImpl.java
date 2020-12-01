@@ -57,6 +57,27 @@ public class CrudServiceImpl<T> implements CrudService<T> {
         }
     }
 
+    public ResponseEntity<String> create(JpaRepository<T, Integer> repo,T model) {
+        try {
+            repo.save(model);
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        } catch (IllegalArgumentException exception) {
+
+            return new ResponseEntity<>(HttpStatus.CONFLICT);
+        }
+    }
+
+    public ResponseEntity<String> update(JpaRepository<T, Integer> repo,T model,int id) {
+        Optional<T> optionalT = repo.findById(id);
+
+        if (optionalT.isPresent()) {
+            CrudModel oldT = (CrudModel)optionalT.get();
+            ((CrudModel) model).setId(oldT.getId());
+            trySaveOrConflict(repo, model);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
     @Transactional
     public ResponseEntity<String> update(T t,int id) {
         CrudModel oldT = (CrudModel) getEntityManager().find(t.getClass(),id);
