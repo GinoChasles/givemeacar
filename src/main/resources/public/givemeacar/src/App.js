@@ -1,4 +1,3 @@
-
 import './App.css';
 
 import { useState } from 'react';
@@ -17,6 +16,7 @@ function App() {
   });
 
   return (
+<<<<<<< HEAD
     <div>
     <FormManager onSubmit={setManager} />
     <ManagerCard manager={manager} />
