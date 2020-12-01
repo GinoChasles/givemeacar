@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 @Entity
 @Table(name = "cities", schema = "givemeacar", catalog = "")
-public class City {
+public class City  implements CrudModel{
     @Id
     @Column(name = "id", nullable = false)
     private int id;

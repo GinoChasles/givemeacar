@@ -27,9 +27,10 @@ public class CrudServiceImpl<T> implements CrudService<T> {
         return (BigInteger) q.getSingleResult();
     }
 
-    public Collection<T> findAll(String tableName,int offset, int limit){
-        Query q = getEntityManager().createNativeQuery("SELECT * FROM "+tableName);
-        return q.setFirstResult(offset).setMaxResults(limit).getResultList();
+    public Collection<T> findAll(String tableName,T t,int offset, int limit){
+        Query q = getEntityManager().createNativeQuery("SELECT * FROM "+tableName,t.getClass());
+
+        return  q.setFirstResult(offset).setMaxResults(limit).getResultList();
     }
 
     @Transactional
@@ -47,12 +48,7 @@ public class CrudServiceImpl<T> implements CrudService<T> {
     }
 
     public ResponseEntity<String> create(JpaRepository<T, Integer> repo,T model) {
-        try {
-            repo.save(model);
-            return new ResponseEntity<>(HttpStatus.CREATED);
-        } catch (Exception exception) {
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
-        }
+       return trySaveOrConflict(repo,model);
     }
 
     public ResponseEntity<String> update(JpaRepository<T, Integer> repo,T model,int id) {
@@ -89,7 +85,7 @@ public class CrudServiceImpl<T> implements CrudService<T> {
     public ResponseEntity<String> trySaveOrConflict(JpaRepository<T,Integer> repo,T model) {
         try {
             repo.save(model);
-            return ResponseEntity.ok().build();
+            return ResponseEntity.status(HttpStatus.CREATED).build();
         } catch (DataIntegrityViolationException e) {
             return exceptionToResponseEntity(e);
         }

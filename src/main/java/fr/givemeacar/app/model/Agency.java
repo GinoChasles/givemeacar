@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "agencies", schema = "givemeacar", catalog = "")
-public class Agency {
+public class Agency  implements CrudModel{
     @Id
     @Column(name = "id", nullable = false)
     private int id;

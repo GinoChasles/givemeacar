@@ -30,9 +30,9 @@ public class BillController{
     @RequestMapping(value = "bills", method = RequestMethod.GET)
     public Collection<Bill> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
         if(offset != null) {
-            return service.findAll(TableNames.bills, offset, limit);
+            return service.findAll(TableNames.bills,new Bill(), offset, limit);
         }else{
-            return service.findAll(TableNames.bills, 0,limit);
+            return service.findAll(TableNames.bills,new Bill(), 0,limit);
         }
     }
 

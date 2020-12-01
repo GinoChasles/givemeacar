@@ -30,9 +30,9 @@ public class AgencyController{
     @RequestMapping(value = "agencies", method = RequestMethod.GET)
     public Collection<Agency> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
         if(offset != null) {
-            return service.findAll(TableNames.agencies, offset, limit);
+            return service.findAll(TableNames.agencies,new Agency(), offset, limit);
         }else{
-            return service.findAll(TableNames.agencies, 0,limit);
+            return service.findAll(TableNames.agencies,new Agency(), 0,limit);
         }
     }
 

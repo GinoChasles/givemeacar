@@ -30,9 +30,9 @@ public class ModelController{
     @RequestMapping(value = "models", method = RequestMethod.GET)
     public Collection<Model> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
         if(offset != null) {
-            return service.findAll(TableNames.models, offset, limit);
+            return service.findAll(TableNames.models,new Model(), offset, limit);
         }else{
-            return service.findAll(TableNames.models, 0,limit);
+            return service.findAll(TableNames.models,new Model(), 0,limit);
         }
     }
 

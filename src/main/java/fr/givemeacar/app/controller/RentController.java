@@ -30,9 +30,9 @@ public class RentController{
     @RequestMapping(value = "rents", method = RequestMethod.GET)
     public Collection<Rent> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
         if(offset != null) {
-            return service.findAll(TableNames.rents, offset, limit);
+            return service.findAll(TableNames.rents,new Rent(), offset, limit);
         }else{
-            return service.findAll(TableNames.rents, 0,limit);
+            return service.findAll(TableNames.rents,new Rent(), 0,limit);
         }
     }
 

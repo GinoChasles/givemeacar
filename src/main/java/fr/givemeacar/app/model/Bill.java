@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Entity
 @Table(name = "bills", schema = "givemeacar", catalog = "")
-public class Bill {
+public class Bill  implements CrudModel{
     @Id
     @Column(name = "id", nullable = false)
     private int id;

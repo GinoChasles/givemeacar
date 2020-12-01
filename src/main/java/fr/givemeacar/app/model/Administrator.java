@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "administrators", schema = "givemeacar", catalog = "")
-public class Administrator {
+public class Administrator  implements CrudModel{
     @Id
     @Column(name = "id", nullable = false)
     private int id;

@@ -30,9 +30,9 @@ public class CityController{
     @RequestMapping(value = "cities", method = RequestMethod.GET)
     public Collection<City> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
         if(offset != null) {
-            return service.findAll(TableNames.cities, offset, limit);
+            return service.findAll(TableNames.cities,new City(), offset, limit);
         }else{
-            return service.findAll(TableNames.cities, 0,limit);
+            return service.findAll(TableNames.cities,new City(), 0,limit);
         }
     }
 

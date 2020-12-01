@@ -8,7 +8,7 @@ import java.util.Collection;
 
 @Entity
 @Table(name = "clients", schema = "givemeacar", catalog = "")
-public class Client {
+public class Client  implements CrudModel{
     @Id
     @Column(name = "id", nullable = false)
     private int id;

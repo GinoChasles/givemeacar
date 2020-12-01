@@ -30,9 +30,9 @@ public class ColorController{
     @RequestMapping(value = "colors", method = RequestMethod.GET)
     public Collection<Color> findAll(@RequestParam(required = false) Integer offset, @RequestParam int limit) {
         if(offset != null) {
-            return service.findAll(TableNames.colors, offset, limit);
+            return service.findAll(TableNames.colors, new Color(),offset, limit);
         }else{
-            return service.findAll(TableNames.colors, 0,limit);
+            return service.findAll(TableNames.colors, new Color(),0,limit);
         }
     }
 
