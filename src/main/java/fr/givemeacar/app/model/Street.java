@@ -1,18 +1,28 @@
 package fr.givemeacar.app.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
+
+import javax.persistence.*;
+import java.sql.Timestamp;
+
 
 @Entity
+@Table(name = "street", schema = "givemeacar", catalog = "")
 public class Street {
-    private int id;
-    private String name;
-    private int streetTypeId;
-
     @Id
     @Column(name = "id", nullable = false)
+    private int id;
+    @Column(name = "city_id", nullable = false)
+    private int cityId;
+    @Column(name = "street_name_id", nullable = false)
+    private int streetNameId;
+    @OneToOne
+    @JoinColumn(name = "city_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    private City cityByCityId;
+    @OneToOne
+    @JoinColumn(name = "street_name_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    private StreetName streetNameByStreetNameId;
+
     public int getId() {
         return id;
     }
@@ -21,45 +31,35 @@ public class Street {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "name", nullable = true, length = 45)
-    public String getName() {
-        return name;
+    public int getCityId() {
+        return cityId;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCityId(int cityId) {
+        this.cityId = cityId;
     }
 
-    @Basic
-    @Column(name = "street_type_id", nullable = false)
-    public int getStreetTypeId() {
-        return streetTypeId;
+    public int getStreetNameId() {
+        return streetNameId;
     }
 
-    public void setStreetTypeId(int streetTypeId) {
-        this.streetTypeId = streetTypeId;
+    public void setStreetNameId(int streetNameId) {
+        this.streetNameId = streetNameId;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Street street = (Street) o;
-
-        if (id != street.id) return false;
-        if (streetTypeId != street.streetTypeId) return false;
-        if (name != null ? !name.equals(street.name) : street.name != null) return false;
-
-        return true;
+    public City getCityByCityId() {
+        return cityByCityId;
     }
 
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + streetTypeId;
-        return result;
+    public void setCityByCityId(City cityByCityId) {
+        this.cityByCityId = cityByCityId;
+    }
+
+    public StreetName getStreetNameByStreetNameId() {
+        return streetNameByStreetNameId;
+    }
+
+    public void setStreetNameByStreetNameId(StreetName streetNameByStreetNameId) {
+        this.streetNameByStreetNameId = streetNameByStreetNameId;
     }
 }

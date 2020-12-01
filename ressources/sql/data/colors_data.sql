@@ -1,207 +1,207 @@
-INSERT INTO color(name) VALUES("Abricot");
-INSERT INTO color(name) VALUES("Acajou");
-INSERT INTO color(name) VALUES("Aigue-marine");
-INSERT INTO color(name) VALUES("Alezan");
-INSERT INTO color(name) VALUES("Amande");
-INSERT INTO color(name) VALUES("Amarante");
-INSERT INTO color(name) VALUES("Ambre");
-INSERT INTO color(name) VALUES("Améthyste");
-INSERT INTO color(name) VALUES("Anthracite");
-INSERT INTO color(name) VALUES("Aquilain");
-INSERT INTO color(name) VALUES("Argent");
-INSERT INTO color(name) VALUES("Aubergine");
-INSERT INTO color(name) VALUES("Auburn");
-INSERT INTO color(name) VALUES("Aurore");
-INSERT INTO color(name) VALUES("Avocat");
-INSERT INTO color(name) VALUES("Azur");
-INSERT INTO color(name) VALUES("Baillet");
-INSERT INTO color(name) VALUES("Basané");
-INSERT INTO color(name) VALUES("Beurre");
-INSERT INTO color(name) VALUES("Bis");
-INSERT INTO color(name) VALUES("Bisque");
-INSERT INTO color(name) VALUES("Bistre");
-INSERT INTO color(name) VALUES("Bitume");
-INSERT INTO color(name) VALUES("Blanc cassé");
-INSERT INTO color(name) VALUES("Blanc lunaire");
-INSERT INTO color(name) VALUES("Blé");
-INSERT INTO color(name) VALUES("Bleu acier");
-INSERT INTO color(name) VALUES("Bleu barbeau ou bleuet");
-INSERT INTO color(name) VALUES("Bleu canard");
-INSERT INTO color(name) VALUES("Bleu céleste");
-INSERT INTO color(name) VALUES("Bleu charrette");
-INSERT INTO color(name) VALUES("Bleu ciel");
-INSERT INTO color(name) VALUES("Bleu de cobalt");
-INSERT INTO color(name) VALUES("Bleu de Prusse");
-INSERT INTO color(name) VALUES("Bleu électrique");
-INSERT INTO color(name) VALUES("Bleu givré");
-INSERT INTO color(name) VALUES("Bleu marine");
-INSERT INTO color(name) VALUES("Bleu nuit");
-INSERT INTO color(name) VALUES("Bleu outremer");
-INSERT INTO color(name) VALUES("Bleu paon");
-INSERT INTO color(name) VALUES("Bleu persan");
-INSERT INTO color(name) VALUES("Bleu pétrole");
-INSERT INTO color(name) VALUES("Bleu roi ou de France");
-INSERT INTO color(name) VALUES("Bleu turquin");
-INSERT INTO color(name) VALUES("Blond vénitien");
-INSERT INTO color(name) VALUES("Blond");
-INSERT INTO color(name) VALUES("Bouton d'or");
-INSERT INTO color(name) VALUES("Brique");
-INSERT INTO color(name) VALUES("Bronze");
-INSERT INTO color(name) VALUES("Brou de noix");
-INSERT INTO color(name) VALUES("Caca d'oie");
-INSERT INTO color(name) VALUES("Cacao");
-INSERT INTO color(name) VALUES("Cachou");
-INSERT INTO color(name) VALUES("Cæruleum");
-INSERT INTO color(name) VALUES("Café");
-INSERT INTO color(name) VALUES("Café au lait");
-INSERT INTO color(name) VALUES("Cannelle");
-INSERT INTO color(name) VALUES("Capucine");
-INSERT INTO color(name) VALUES("Caramel");
-INSERT INTO color(name) VALUES("Carmin");
-INSERT INTO color(name) VALUES("Carotte");
-INSERT INTO color(name) VALUES("Chamois");
-INSERT INTO color(name) VALUES("Chartreuse");
-INSERT INTO color(name) VALUES("Châtain");
-INSERT INTO color(name) VALUES("Chaudron");
-INSERT INTO color(name) VALUES("Chocolat");
-INSERT INTO color(name) VALUES("Cinabre");
-INSERT INTO color(name) VALUES("Citrouille");
-INSERT INTO color(name) VALUES("Coquille d'œuf");
-INSERT INTO color(name) VALUES("Corail");
-INSERT INTO color(name) VALUES("Cramoisi");
-INSERT INTO color(name) VALUES("Cuisse de nymphe");
-INSERT INTO color(name) VALUES("Cuivre");
-INSERT INTO color(name) VALUES("Cyan");
-INSERT INTO color(name) VALUES("Écarlate");
-INSERT INTO color(name) VALUES("Écru");
-INSERT INTO color(name) VALUES("Émeraude");
-INSERT INTO color(name) VALUES("Fauve");
-INSERT INTO color(name) VALUES("Flave");
-INSERT INTO color(name) VALUES("Fraise");
-INSERT INTO color(name) VALUES("Fraise écrasée");
-INSERT INTO color(name) VALUES("Framboise");
-INSERT INTO color(name) VALUES("Fuchsia");
-INSERT INTO color(name) VALUES("Fumée");
-INSERT INTO color(name) VALUES("Garance");
-INSERT INTO color(name) VALUES("Glauque");
-INSERT INTO color(name) VALUES("Glycine");
-INSERT INTO color(name) VALUES("Grège");
-INSERT INTO color(name) VALUES("Grenadine");
-INSERT INTO color(name) VALUES("Grenat");
-INSERT INTO color(name) VALUES("Gris acier");
-INSERT INTO color(name) VALUES("Gris de Payne");
-INSERT INTO color(name) VALUES("Gris fer");
-INSERT INTO color(name) VALUES("Gris perle");
-INSERT INTO color(name) VALUES("Gris souris");
-INSERT INTO color(name) VALUES("Groseille");
-INSERT INTO color(name) VALUES("Gueules");
-INSERT INTO color(name) VALUES("Héliotrope");
-INSERT INTO color(name) VALUES("Incarnat");
-INSERT INTO color(name) VALUES("Indigo");
-INSERT INTO color(name) VALUES("Indigo");
-INSERT INTO color(name) VALUES("Isabelle");
-INSERT INTO color(name) VALUES("Jaune canari");
-INSERT INTO color(name) VALUES("Jaune citron");
-INSERT INTO color(name) VALUES("Jaune d'or");
-INSERT INTO color(name) VALUES("Jaune de cobalt");
-INSERT INTO color(name) VALUES("Jaune de Mars");
-INSERT INTO color(name) VALUES("Jaune de Naples");
-INSERT INTO color(name) VALUES("Jaune impérial");
-INSERT INTO color(name) VALUES("Jaune mimosa");
-INSERT INTO color(name) VALUES("Lapis-lazuli");
-INSERT INTO color(name) VALUES("Lavallière");
-INSERT INTO color(name) VALUES("Lavande");
-INSERT INTO color(name) VALUES("Lie de vin");
-INSERT INTO color(name) VALUES("Lilas");
-INSERT INTO color(name) VALUES("Lime ou vert citron");
-INSERT INTO color(name) VALUES("Lin");
-INSERT INTO color(name) VALUES("Magenta");
-INSERT INTO color(name) VALUES("Maïs");
-INSERT INTO color(name) VALUES("Malachite");
-INSERT INTO color(name) VALUES("Mandarine");
-INSERT INTO color(name) VALUES("Marron");
-INSERT INTO color(name) VALUES("Mastic");
-INSERT INTO color(name) VALUES("Mauve");
-INSERT INTO color(name) VALUES("Menthe");
-INSERT INTO color(name) VALUES("Moutarde");
-INSERT INTO color(name) VALUES("Nacarat");
-INSERT INTO color(name) VALUES("Nankin");
-INSERT INTO color(name) VALUES("Noisette");
-INSERT INTO color(name) VALUES("Ocre jaune");
-INSERT INTO color(name) VALUES("Ocre rouge");
-INSERT INTO color(name) VALUES("Olive");
-INSERT INTO color(name) VALUES("Or");
-INSERT INTO color(name) VALUES("Orange brûlé");
-INSERT INTO color(name) VALUES("Orchidée");
-INSERT INTO color(name) VALUES("Orpiment");
-INSERT INTO color(name) VALUES("Paille");
-INSERT INTO color(name) VALUES("Parme");
-INSERT INTO color(name) VALUES("Pelure d'oignon");
-INSERT INTO color(name) VALUES("Pervenche");
-INSERT INTO color(name) VALUES("Pistache");
-INSERT INTO color(name) VALUES("Poil de chameau");
-INSERT INTO color(name) VALUES("Ponceau ou Coquelicot");
-INSERT INTO color(name) VALUES("Pourpre");
-INSERT INTO color(name) VALUES("Prasin");
-INSERT INTO color(name) VALUES("Prune");
-INSERT INTO color(name) VALUES("Puce");
-INSERT INTO color(name) VALUES("Rose Mountbatten");
-INSERT INTO color(name) VALUES("Rouge anglais");
-INSERT INTO color(name) VALUES("Rouge cardinal");
-INSERT INTO color(name) VALUES("Rouge cerise");
-INSERT INTO color(name) VALUES("Rouge d'Andrinople");
-INSERT INTO color(name) VALUES("Rouge de Falun");
-INSERT INTO color(name) VALUES("Rouge feu");
-INSERT INTO color(name) VALUES("Rouge indien");
-INSERT INTO color(name) VALUES("Rouge sang");
-INSERT INTO color(name) VALUES("Rouge tomette");
-INSERT INTO color(name) VALUES("Rouille");
-INSERT INTO color(name) VALUES("Roux");
-INSERT INTO color(name) VALUES("Rubis");
-INSERT INTO color(name) VALUES("Sable");
-INSERT INTO color(name) VALUES("Sable");
-INSERT INTO color(name) VALUES("Safre");
-INSERT INTO color(name) VALUES("Sang de bœuf");
-INSERT INTO color(name) VALUES("Sanguine");
-INSERT INTO color(name) VALUES("Saphir");
-INSERT INTO color(name) VALUES("Sarcelle");
-INSERT INTO color(name) VALUES("Saumon");
-INSERT INTO color(name) VALUES("Sépia");
-INSERT INTO color(name) VALUES("Sinople");
-INSERT INTO color(name) VALUES("Smalt");
-INSERT INTO color(name) VALUES("Soufre");
-INSERT INTO color(name) VALUES("Tabac");
-INSERT INTO color(name) VALUES("Taupe");
-INSERT INTO color(name) VALUES("Terre d'ombre");
-INSERT INTO color(name) VALUES("Tomate");
-INSERT INTO color(name) VALUES("Topaze");
-INSERT INTO color(name) VALUES("Tourterelle ou Colombin");
-INSERT INTO color(name) VALUES("Turquoise");
-INSERT INTO color(name) VALUES("Vanille");
-INSERT INTO color(name) VALUES("Vermeil");
-INSERT INTO color(name) VALUES("Vermillon");
-INSERT INTO color(name) VALUES("Vert bouteille");
-INSERT INTO color(name) VALUES("Vert céladon");
-INSERT INTO color(name) VALUES("Vert d'eau");
-INSERT INTO color(name) VALUES("Vert de chrome");
-INSERT INTO color(name) VALUES("Vert-de-gris");
-INSERT INTO color(name) VALUES("Vert de Hooker");
-INSERT INTO color(name) VALUES("Vert de vessie");
-INSERT INTO color(name) VALUES("Vert émeraude ou Smaragdin");
-INSERT INTO color(name) VALUES("Vert épinard");
-INSERT INTO color(name) VALUES("Vert impérial");
-INSERT INTO color(name) VALUES("Vert lichen");
-INSERT INTO color(name) VALUES("Vert olive");
-INSERT INTO color(name) VALUES("Vert perroquet");
-INSERT INTO color(name) VALUES("Vert poireau");
-INSERT INTO color(name) VALUES("Vert pomme");
-INSERT INTO color(name) VALUES("Vert prairie");
-INSERT INTO color(name) VALUES("Vert printemps");
-INSERT INTO color(name) VALUES("Vert sapin");
-INSERT INTO color(name) VALUES("Vert sauge");
-INSERT INTO color(name) VALUES("Vert tilleul");
-INSERT INTO color(name) VALUES("Vert Véronèse");
-INSERT INTO color(name) VALUES("Violet");
-INSERT INTO color(name) VALUES("Violet d'évêque");
-INSERT INTO color(name) VALUES("Viride");
-INSERT INTO color(name) VALUES("Zinzolin");
+INSERT INTO color(name) VALUES("Abricot"),
+("Acajou"),
+("Aigue-marine"),
+("Alezan"),
+("Amande"),
+("Amarante"),
+("Ambre"),
+("Améthyste"),
+("Anthracite"),
+("Aquilain"),
+("Argent"),
+("Aubergine"),
+("Auburn"),
+("Aurore"),
+("Avocat"),
+("Azur"),
+("Baillet"),
+("Basané"),
+("Beurre"),
+("Bis"),
+("Bisque"),
+("Bistre"),
+("Bitume"),
+("Blanc cassé"),
+("Blanc lunaire"),
+("Blé"),
+("Bleu acier"),
+("Bleu barbeau ou bleuet"),
+("Bleu canard"),
+("Bleu céleste"),
+("Bleu charrette"),
+("Bleu ciel"),
+("Bleu de cobalt"),
+("Bleu de Prusse"),
+("Bleu électrique"),
+("Bleu givré"),
+("Bleu marine"),
+("Bleu nuit"),
+("Bleu outremer"),
+("Bleu paon"),
+("Bleu persan"),
+("Bleu pétrole"),
+("Bleu roi ou de France"),
+("Bleu turquin"),
+("Blond vénitien"),
+("Blond"),
+("Bouton d'or"),
+("Brique"),
+("Bronze"),
+("Brou de noix"),
+("Caca d'oie"),
+("Cacao"),
+("Cachou"),
+("Cæruleum"),
+("Café"),
+("Café au lait"),
+("Cannelle"),
+("Capucine"),
+("Caramel"),
+("Carmin"),
+("Carotte"),
+("Chamois"),
+("Chartreuse"),
+("Châtain"),
+("Chaudron"),
+("Chocolat"),
+("Cinabre"),
+("Citrouille"),
+("Coquille d'œuf"),
+("Corail"),
+("Cramoisi"),
+("Cuisse de nymphe"),
+("Cuivre"),
+("Cyan"),
+("Écarlate"),
+("Écru"),
+("Émeraude"),
+("Fauve"),
+("Flave"),
+("Fraise"),
+("Fraise écrasée"),
+("Framboise"),
+("Fuchsia"),
+("Fumée"),
+("Garance"),
+("Glauque"),
+("Glycine"),
+("Grège"),
+("Grenadine"),
+("Grenat"),
+("Gris acier"),
+("Gris de Payne"),
+("Gris fer"),
+("Gris perle"),
+("Gris souris"),
+("Groseille"),
+("Gueules"),
+("Héliotrope"),
+("Incarnat"),
+("Indigo"),
+("Indigo"),
+("Isabelle"),
+("Jaune canari"),
+("Jaune citron"),
+("Jaune d'or"),
+("Jaune de cobalt"),
+("Jaune de Mars"),
+("Jaune de Naples"),
+("Jaune impérial"),
+("Jaune mimosa"),
+("Lapis-lazuli"),
+("Lavallière"),
+("Lavande"),
+("Lie de vin"),
+("Lilas"),
+("Lime ou vert citron"),
+("Lin"),
+("Magenta"),
+("Maïs"),
+("Malachite"),
+("Mandarine"),
+("Marron"),
+("Mastic"),
+("Mauve"),
+("Menthe"),
+("Moutarde"),
+("Nacarat"),
+("Nankin"),
+("Noisette"),
+("Ocre jaune"),
+("Ocre rouge"),
+("Olive"),
+("Or"),
+("Orange brûlé"),
+("Orchidée"),
+("Orpiment"),
+("Paille"),
+("Parme"),
+("Pelure d'oignon"),
+("Pervenche"),
+("Pistache"),
+("Poil de chameau"),
+("Ponceau ou Coquelicot"),
+("Pourpre"),
+("Prasin"),
+("Prune"),
+("Puce"),
+("Rose Mountbatten"),
+("Rouge anglais"),
+("Rouge cardinal"),
+("Rouge cerise"),
+("Rouge d'Andrinople"),
+("Rouge de Falun"),
+("Rouge feu"),
+("Rouge indien"),
+("Rouge sang"),
+("Rouge tomette"),
+("Rouille"),
+("Roux"),
+("Rubis"),
+("Sable"),
+("Sable"),
+("Safre"),
+("Sang de bœuf"),
+("Sanguine"),
+("Saphir"),
+("Sarcelle"),
+("Saumon"),
+("Sépia"),
+("Sinople"),
+("Smalt"),
+("Soufre"),
+("Tabac"),
+("Taupe"),
+("Terre d'ombre"),
+("Tomate"),
+("Topaze"),
+("Tourterelle ou Colombin"),
+("Turquoise"),
+("Vanille"),
+("Vermeil"),
+("Vermillon"),
+("Vert bouteille"),
+("Vert céladon"),
+("Vert d'eau"),
+("Vert de chrome"),
+("Vert-de-gris"),
+("Vert de Hooker"),
+("Vert de vessie"),
+("Vert émeraude ou Smaragdin"),
+("Vert épinard"),
+("Vert impérial"),
+("Vert lichen"),
+("Vert olive"),
+("Vert perroquet"),
+("Vert poireau"),
+("Vert pomme"),
+("Vert prairie"),
+("Vert printemps"),
+("Vert sapin"),
+("Vert sauge"),
+("Vert tilleul"),
+("Vert Véronèse"),
+("Violet"),
+("Violet d'évêque"),
+("Viride"),
+("Zinzolin");

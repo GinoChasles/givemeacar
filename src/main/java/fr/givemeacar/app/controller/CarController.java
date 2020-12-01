@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("/api")
 public class CarController {
 
     @Autowired
@@ -40,7 +40,7 @@ public class CarController {
     @CrossOrigin
     @PutMapping("/cars/{id}")
     public ResponseEntity<String> update(@PathVariable int id, @RequestBody Car model) {
-        return service.update(id, model);
+        return service.update(model,id);
     }
 
     @CrossOrigin

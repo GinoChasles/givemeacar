@@ -7,11 +7,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/api")
+<<<<<<< HEAD
 public class ColorController {
+=======
+public class ColorController{
+>>>>>>> gino
 
     @Autowired
     ColorService service;
@@ -31,6 +36,8 @@ public class ColorController {
         return ResponseEntity.notFound().build();
     }
 
+
+
     @CrossOrigin
     @PostMapping("colors")
     public ResponseEntity<String> create(@Valid @RequestBody Color color) {
@@ -39,8 +46,13 @@ public class ColorController {
 
     @CrossOrigin
     @PutMapping("colors/{id}")
+<<<<<<< HEAD
     public ResponseEntity<String> update(@PathVariable int id, @RequestBody Color color) {
         return service.update(id, color);
+=======
+    public ResponseEntity<String> update(@PathVariable int id,@RequestBody Color color) {
+        return service.update(color,id);
+>>>>>>> gino
     }
 
     @CrossOrigin

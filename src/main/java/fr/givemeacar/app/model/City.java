@@ -1,19 +1,31 @@
 package fr.givemeacar.app.model;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+
+
+import javax.persistence.*;
+import java.math.BigDecimal;
+
 
 @Entity
+@Table(name = "city", schema = "givemeacar", catalog = "")
 public class City {
-    private int id;
-    private String name;
-    private String zipcode;
-    private int countryId;
-
     @Id
     @Column(name = "id", nullable = false)
+    private int id;
+    @Column(name = "name", nullable = false, length = 68)
+    private String name;
+    @Column(name = "zipcode", nullable = false, length = 5)
+    private String zipcode;
+    @Column(name = "longitude", nullable = false, precision = 14)
+    private BigDecimal longitude;
+    @Column(name = "latitude", nullable = false, precision = 14)
+    private BigDecimal latitude;
+    @Column(name = "department_id", nullable = false)
+    private int departmentId;
+    @OneToOne
+    @JoinColumn(name = "department_id", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    private Department departmentByDepartmentId;
+
     public int getId() {
         return id;
     }
@@ -22,8 +34,6 @@ public class City {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "name", nullable = false, length = 68)
     public String getName() {
         return name;
     }
@@ -32,8 +42,6 @@ public class City {
         this.name = name;
     }
 
-    @Basic
-    @Column(name = "zipcode", nullable = false, length = 5)
     public String getZipcode() {
         return zipcode;
     }
@@ -42,37 +50,35 @@ public class City {
         this.zipcode = zipcode;
     }
 
-    @Basic
-    @Column(name = "country_id", nullable = false)
-    public int getCountryId() {
-        return countryId;
+    public BigDecimal getLongitude() {
+        return longitude;
     }
 
-    public void setCountryId(int countryId) {
-        this.countryId = countryId;
+    public void setLongitude(BigDecimal longitude) {
+        this.longitude = longitude;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        City city = (City) o;
-
-        if (id != city.id) return false;
-        if (countryId != city.countryId) return false;
-        if (name != null ? !name.equals(city.name) : city.name != null) return false;
-        if (zipcode != null ? !zipcode.equals(city.zipcode) : city.zipcode != null) return false;
-
-        return true;
+    public BigDecimal getLatitude() {
+        return latitude;
     }
 
-    @Override
-    public int hashCode() {
-        int result = id;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (zipcode != null ? zipcode.hashCode() : 0);
-        result = 31 * result + countryId;
-        return result;
+    public void setLatitude(BigDecimal latitude) {
+        this.latitude = latitude;
+    }
+
+    public int getDepartmentId() {
+        return departmentId;
+    }
+
+    public void setDepartmentId(int departmentId) {
+        this.departmentId = departmentId;
+    }
+
+    public Department getDepartmentByDepartmentId() {
+        return departmentByDepartmentId;
+    }
+
+    public void setDepartmentByDepartmentId(Department departmentByDepartmentId) {
+        this.departmentByDepartmentId = departmentByDepartmentId;
     }
 }

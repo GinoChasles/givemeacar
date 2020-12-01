@@ -10,7 +10,7 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("/api")
 public class CreditCardController {
 
     @Autowired
@@ -40,7 +40,7 @@ public class CreditCardController {
     @CrossOrigin
     @PutMapping("/creditcads/{id}")
     public ResponseEntity<String> update(@PathVariable int id, @RequestBody CreditCard model) {
-        return service.update(id, model);
+        return service.update(model,id);
     }
 
     @CrossOrigin
