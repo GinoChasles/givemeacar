@@ -29,11 +29,11 @@ public class RegionController{
     }
 
     @RequestMapping(value = "regions", method = RequestMethod.GET)
-    public ResponseEntity findAll(@RequestParam(required = false) Integer _start, @RequestParam int _end) {
+    public ResponseEntity findAll(@RequestParam(required = false) String _order, @RequestParam(required = false) String _sort,@RequestParam(required = false) Integer _start, @RequestParam int _end) {
         if(_start != null) {
-            return service.findAll(TableNames.regions,new Region(), _start, _end);
+            return service.findAll(TableNames.regions,new Region(),_start, _end,_order,_sort);
         }else{
-            return service.findAll(TableNames.regions,new Region(), 0,_end);
+            return service.findAll(TableNames.regions,new Region(), 0, _end,_order,_sort);
         }
     }
 
