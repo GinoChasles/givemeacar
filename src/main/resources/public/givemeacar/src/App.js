@@ -23,23 +23,21 @@ const App = () => (
 
 export default App;
 
-<<<<<<< HEAD
-=======
-function App() {
-  // const [id, setId] = useState();
-  const [manager, setManager] = useState({
-    lastName: "",
-    firstName: "",
-    mail: "",
-    password: "",
-    phone: "",
-  });
+// function App() {
+//   // const [id, setId] = useState();
+//   const [manager, setManager] = useState({
+//     lastName: "",
+//     firstName: "",
+//     mail: "",
+//     password: "",
+//     phone: "",
+//   });
 
-  return (
-    <div>
-    <FormManager onSubmit={setManager} />
-    <ManagerCard manager={manager} />
-    </div>
+//   return (
+//     <div>
+//     <FormManager onSubmit={setManager} />
+//     <ManagerCard manager={manager} />
+//     </div>
     // <form  method="get" >
 
     //   <input type="number" name="id" defaultValue={id} onChange={(e) => {
@@ -57,9 +55,8 @@ function App() {
     //   }}>valider</button>
 
     // </form>
-  );
-}
->>>>>>> gino
+//   );
+// }
 
 
 
