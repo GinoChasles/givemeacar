@@ -50,10 +50,9 @@ public class CrudServiceImpl<T> implements CrudService<T> {
     public ResponseEntity<String> create(T model) {
         try {
             getEntityManager().persist(model);
-            return ResponseEntity.status(HttpStatus.CREATED).build();
+            return new ResponseEntity<String>(HttpStatus.CREATED);
         }catch(Exception e){
-            System.out.print(e.getMessage());
-            return exceptionToResponseEntity(e);
+            return new ResponseEntity<String>(e.getMessage(),HttpStatus.CONFLICT);
         }
     }
 
