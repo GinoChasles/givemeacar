@@ -11,6 +11,7 @@ import {
     ReferenceInput,
     SelectInput,
     TextInput,
+    PasswordInput
 } from 'react-admin';
 
 export const PostListAdmin = props => (
@@ -48,7 +49,7 @@ export const PostCreateAdmin = props => (
                 <TextInput source="lastName" />
                 <TextInput source="mail" />
                 <TextInput source="phone" />
-                <TextInput source="password" />
+                <PasswordInput source="password" />
             </SimpleForm>
         </Create>
     );
