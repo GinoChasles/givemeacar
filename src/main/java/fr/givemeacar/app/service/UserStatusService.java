@@ -10,14 +10,13 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class UserStatusService extends CrudServiceImpl<UserStatus>{
+public class UserStatusService extends CrudServiceImpl<UserStatus> {
     @Autowired
-    UserStatusRepository repo;
+    UserStatusRepository repository;
 
-    public ResponseEntity<String> create(UserStatus model) {
-        return super.create(this.repo,model);
+    @Override
+    public UserStatusRepository getRepository() {
+        return repository;
     }
 
-    public ResponseEntity<String> update(UserStatus model,int id) {
-        return super.update(this.repo,model,id);
-    }}
+}

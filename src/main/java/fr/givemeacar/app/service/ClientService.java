@@ -10,14 +10,14 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class ClientService extends CrudServiceImpl<Client>{
-    @Autowired
-    ClientRepository repo;
+public class ClientService extends CrudServiceImpl<Client> {
 
-    public ResponseEntity<String> create(Client model) {
-        return super.create(this.repo,model);
+    @Autowired
+    ClientRepository repository;
+
+    @Override
+    public ClientRepository getRepository() {
+        return repository;
     }
 
-    public ResponseEntity<String> update(Client model,int id) {
-        return super.update(this.repo,model,id);
-    }}
+}

@@ -11,14 +11,14 @@ import java.util.Optional;
 
 @Service
 public class ManagerService extends CrudServiceImpl<Manager>{
+
     @Autowired
-    ManagerRepository repo;
+    ManagerRepository repository;
 
-    public ResponseEntity<String> create(Manager model) {
-        return super.create(this.repo,model);
+    @Override
+    public ManagerRepository getRepository() {
+        return repository;
     }
 
-    public ResponseEntity<String> update(Manager model,int id) {
-        return super.update(this.repo,model,id);
-    }
+
 }

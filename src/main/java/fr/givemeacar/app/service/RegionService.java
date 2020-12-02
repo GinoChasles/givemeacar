@@ -11,14 +11,14 @@ import java.util.Optional;
 
 @Service
 public class RegionService extends CrudServiceImpl<Region>{
+
+
     @Autowired
-    RegionRepository repo;
+    RegionRepository repository;
 
-    public ResponseEntity<String> create(Region model) {
-        return super.create(this.repo,model);
+    @Override
+    public RegionRepository getRepository() {
+        return repository;
     }
 
-    public ResponseEntity<String> update(Region model,int id) {
-        return super.update(this.repo,model,id);
-    }
 }

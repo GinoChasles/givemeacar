@@ -11,14 +11,12 @@ import java.util.Optional;
 
 @Service
 public class CityService extends CrudServiceImpl<City>{
+    @Override
+    public CityRepository getRepository() {
+        return repository;
+    }
+
     @Autowired
-    CityRepository repo;
+    CityRepository repository;
 
-    public ResponseEntity<String> create(City model) {
-        return super.create(this.repo,model);
-    }
-
-    public ResponseEntity<String> update(City model,int id) {
-        return super.update(this.repo,model,id);
-    }
 }

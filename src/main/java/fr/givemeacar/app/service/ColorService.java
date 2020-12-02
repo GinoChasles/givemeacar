@@ -12,14 +12,13 @@ import java.util.Optional;
 
 @Service
 public class ColorService extends CrudServiceImpl<Color> {
+
+
     @Autowired
-    ColorRepository repo;
+    ColorRepository repository;
 
-    public ResponseEntity<String> create(Color model) {
-        return super.create(this.repo,model);
-    }
-
-    public ResponseEntity<String> update(Color model,int id) {
-        return super.update(this.repo,model,id);
+    @Override
+    public ColorRepository getRepository() {
+        return repository;
     }
 }

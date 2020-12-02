@@ -11,14 +11,13 @@ import java.util.Optional;
 
 @Service
 public class DepartmentService extends CrudServiceImpl<Department>{
+
+
     @Autowired
-    DepartmentRepository repo;
+    DepartmentRepository repository;
 
-    public ResponseEntity<String> create(Department model) {
-        return super.create(this.repo,model);
-    }
-
-    public ResponseEntity<String> update(Department model,int id) {
-        return super.update(this.repo,model,id);
+    @Override
+    public DepartmentRepository getRepository() {
+        return repository;
     }
 }
