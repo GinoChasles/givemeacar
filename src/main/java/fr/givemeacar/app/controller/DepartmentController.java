@@ -1,6 +1,5 @@
 package fr.givemeacar.app.controller;
 
-import fr.givemeacar.app.config.TableNames;
 import fr.givemeacar.app.model.Department;
 import fr.givemeacar.app.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,58 +7,52 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.lang.reflect.InvocationTargetException;
-import java.math.BigInteger;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+
+
 
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
-public class DepartmentController{
+public class DepartmentController extends CrudControllerImpl<Department>{
 
     @Autowired
     DepartmentService service;
 
-    
     @RequestMapping("departments/count")
-    public BigInteger count() {
-        return service.count(TableNames.departments);
+    public ResponseEntity count() {
+        return tryCount();
     }
 
     @RequestMapping(value = "departments", method = RequestMethod.GET)
     public ResponseEntity findAll(@RequestParam(required = false) String _order, @RequestParam(required = false) String _sort,@RequestParam(required = false) Integer _start, @RequestParam int _end) {
-        if(_start != null) {
-            return service.findAll(TableNames.departments,new Department(),_start, _end,_order,_sort);
-        }else{
-            return service.findAll(TableNames.departments, new Department(),0, _end,_order,_sort);
-        }
+        return tryFindAll(_order,_sort,_start,_end);
     }
 
     @GetMapping("departments/{id}")
-    public Object findById(@PathVariable int id) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
-        return service.findById(TableNames.departments,new Department(),id);
-
+    public ResponseEntity findById(@PathVariable int id) {
+        return tryFindById(id);
     }
 
 
-
-    
     @PostMapping("departments")
-    public ResponseEntity<String> create(@Valid @RequestBody Department model) {
-        return service.create(model);
+    public ResponseEntity create(@Valid @RequestBody Department model) {
+        return tryCreate(model);
     }
 
-    
+
     @PutMapping("departments/{id}")
-    public ResponseEntity<String> update(@PathVariable int id,@RequestBody Department model) {
-        return service.update(model,id);
+    public ResponseEntity update(@PathVariable int id,@RequestBody Department model) {
+        return tryUpdate(id,model);
     }
 
-    
+
     @DeleteMapping("departments/{id}")
-    public ResponseEntity<String> delete(@PathVariable int id) {
-        return service.delete(new Department(),id);
+    public ResponseEntity delete(@PathVariable int id) {
+        return tryDelete(id);
+    }
+
+    @Override
+    public DepartmentService getService() {
+        return service;
     }
 }
