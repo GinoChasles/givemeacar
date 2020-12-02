@@ -2,10 +2,10 @@ import * as React from "react";
 import { Admin, Resource, ListGuesser,ShowGuesser, EditGuesser } from 'react-admin';
 import jsonServerProvider from 'ra-data-json-server';
 import usersList from "./usersList";
-import adminList from "./components/react-admin/components/adminList";
+import managerList from "./components/react-admin/components/managerList";
 import { PostEditAgency, PostCreateAgency } from './components/react-admin/components/postAgency';
 import { PostEditColor, PostCreateColor } from './components/react-admin/components/testPostColor';
-import { PostEditAdmin, PostCreateAdmin } from './components/react-admin/components/postAdmin';
+import { PostEditManager, PostCreateManager } from './components/react-admin/components/postManager';
 const dataProvider = jsonServerProvider('http://localhost:8080/api');
 
 const App = () => (
@@ -13,13 +13,13 @@ const App = () => (
         <Resource name="colors" list={ListGuesser} show={ ShowGuesser} edit={PostEditColor} create={PostCreateColor} />
         <Resource name="cities" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser} />
         <Resource name="departments" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser} />
-        <Resource options={{ label: 'Les managers !' }} name="managers" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser} />
+        <Resource options={{ label: 'Les managers !' }} name="managers" list={managerList} show={ ShowGuesser} edit={PostEditManager} create={PostCreateManager} />
+        <Resource options={{ label: 'créer Les managers !' }} name="managers/create" list={managerList} show={ ShowGuesser} edit={PostEditManager} create={PostCreateManager} />
         <Resource name="clients" list={usersList} show={ ShowGuesser} edit={EditGuesser}/>
         <Resource name="cars" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
         <Resource name="brands" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
         <Resource name="models" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
         <Resource name="addresses" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
-        <Resource name="administrators" list={adminList} show={ ShowGuesser} edit={PostEditAdmin} create={PostCreateAdmin}/>
         <Resource name="agencies" list={ListGuesser} show={ ShowGuesser} edit={PostEditAgency} create={PostCreateAgency}/>
         <Resource name="bills" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
         <Resource name="rents" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>

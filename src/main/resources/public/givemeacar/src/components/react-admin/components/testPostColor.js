@@ -38,7 +38,7 @@ export const PostEditColor = props => (
 export const PostCreateColor = props => (
         <Create {...props}>
             <SimpleForm>
-            <TextInput source="id" />
+            {/* <TextInput source="id" /> */}
            
            <TextInput source="name" />
             </SimpleForm>
