@@ -5,9 +5,9 @@ export const UserList = props => (
     <List {...props} title="les villes de l'eeenfer" >
         <Datagrid rowClick="edit" >
             <TextField source="id"  />
-            <TextField source="name" />
-            <TextField source="username" />
-            <EmailField source="email" />
+            <TextField source="name" title={"nom"}/>
+            <TextField source="username" title={"pseudo"} />
+            <EmailField source="email" title={"adresse mail"}/>
             
         </Datagrid>
     </List>
