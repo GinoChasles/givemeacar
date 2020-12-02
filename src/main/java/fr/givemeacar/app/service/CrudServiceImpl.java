@@ -32,11 +32,10 @@ public class CrudServiceImpl<T> implements CrudService<T> {
 
     public ResponseEntity findAll(String tableName,T t,int offset, int limit,String order,String sort){
 
-        Query q = getEntityManager().createNativeQuery("SELECT * FROM "+tableName+" ORDER BY :order :sort",t.getClass());
-        q.setParameter("sort",sort);
-        q.setParameter("order",order);
+        Query q = getEntityManager().createNativeQuery("SELECT * FROM "+tableName+" ORDER BY "+sort+" "+order,t.getClass());
 
         Collection list = q.setFirstResult(offset).setMaxResults(limit).getResultList();
+        System.out.println(q.toString());
 
         responseHeaders.set("X-Total-Count",String.valueOf(list.size()));
         responseHeaders.set("Access-Control-Expose-Headers", "X-Total-Count");

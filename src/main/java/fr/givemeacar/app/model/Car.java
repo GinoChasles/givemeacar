@@ -22,28 +22,22 @@ public class Car  implements CrudModel{
     private int available;
     @Column(name = "rented", nullable = false)
     private int rented;
-    @Column(name = "modelid", nullable = false)
-    private int modelid;
-    @Column(name = "energyid", nullable = false)
-    private int energyid;
-    @Column(name = "colorid", nullable = false)
-    private int colorid;
     @Column(name = "longitude", nullable = false, precision = 14)
     private BigDecimal longitude;
     @Column(name = "latitude", nullable = false, precision = 14)
     private BigDecimal latitude;
     @OneToOne
     @JoinColumn(name = "modelid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Model modelByModelid;
+    private Model model;
     @OneToOne
     @JoinColumn(name = "colorid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Color colorByColorid;
+    private Color color;
     @OneToOne
     @JoinColumn(name = "energyTypeid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private EnergyType energyTypeByEnergyTypeid;
+    private EnergyType energyType;
     @OneToOne
     @JoinColumn(name = "addressid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Address addressByAddressid;
+    private Address address;
 
     public int getId() {
         return id;
@@ -93,60 +87,36 @@ public class Car  implements CrudModel{
         this.rented = rented;
     }
 
-    public int getModelid() {
-        return modelid;
+    public Model getModel() {
+        return model;
     }
 
-    public void setModelid(int modelid) {
-        this.modelid = modelid;
+    public void setModel(Model modelByModelId) {
+        this.model = model;
     }
 
-    public int getEnergyid() {
-        return energyid;
+    public Color getColor() {
+        return color;
     }
 
-    public void setEnergyid(int energyid) {
-        this.energyid = energyid;
+    public void setColor(Color colorByColorId) {
+        this.color = color;
     }
 
-    public int getColorid() {
-        return colorid;
+    public EnergyType getEnergyType() {
+        return energyType;
     }
 
-    public void setColorid(int colorid) {
-        this.colorid = colorid;
+    public void setEnergyType(EnergyType energyTypeByEnergyTypeId) {
+        this.energyType = energyType;
     }
 
-    public Model getModelByModelid() {
-        return modelByModelid;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setModelByModelid(Model modelByModelid) {
-        this.modelByModelid = modelByModelid;
-    }
-
-    public Color getColorByColorid() {
-        return colorByColorid;
-    }
-
-    public void setColorByColorid(Color colorByColorid) {
-        this.colorByColorid = colorByColorid;
-    }
-
-    public EnergyType getEnergyTypeByEnergyTypeid() {
-        return energyTypeByEnergyTypeid;
-    }
-
-    public void setEnergyTypeByEnergyTypeid(EnergyType energyTypeByEnergyTypeid) {
-        this.energyTypeByEnergyTypeid = energyTypeByEnergyTypeid;
-    }
-
-    public Address getAddressByAddressid() {
-        return addressByAddressid;
-    }
-
-    public void setAddressByAddressid(Address addressByAddressid) {
-        this.addressByAddressid = addressByAddressid;
+    public void setAddress(Address addressByAddressId) {
+        this.address = address;
     }
 
     public BigDecimal getLongitude() {
