@@ -13,11 +13,9 @@ public class Model implements CrudModel {
     private int id;
     @Column(name = "name", nullable = false, length = 45)
     private String name;
-    @Column(name = "brandid", nullable = false)
-    private int brandid;
     @OneToOne
     @JoinColumn(name = "brandid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Brand brandByBrandid;
+    private Brand brand;
 
     public int getId() {
         return id;
@@ -35,19 +33,11 @@ public class Model implements CrudModel {
         this.name = name;
     }
 
-    public int getBrandid() {
-        return brandid;
+    public Brand getBrand() {
+        return brand;
     }
 
-    public void setBrandid(int brandid) {
-        this.brandid = brandid;
-    }
-
-    public Brand getBrandByBrandid() {
-        return brandByBrandid;
-    }
-
-    public void setBrandByBrandid(Brand brandByBrandid) {
-        this.brandByBrandid = brandByBrandid;
+    public void setBrand(Brand brandByBrandId) {
+        this.brand = brand;
     }
 }

@@ -13,16 +13,12 @@ public class Agency  implements CrudModel{
     private int id;
     @Column(name = "name", nullable = false, length = 32)
     private String name;
-    @Column(name = "addressid", nullable = false)
-    private int addressid;
-    @Column(name = "managerid", nullable = false)
-    private int managerid;
     @OneToOne
     @JoinColumn(name = "addressid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Address addressByAddressid;
+    private Address address;
     @OneToOne
     @JoinColumn(name = "managerid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Manager managerByManagerid;
+    private Manager manager;
 
     public int getId() {
         return id;
@@ -40,36 +36,20 @@ public class Agency  implements CrudModel{
         this.name = name;
     }
 
-    public int getAddressid() {
-        return addressid;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAddressid(int addressid) {
-        this.addressid = addressid;
+    public void setAddress(Address addressByAddressId) {
+        this.address = address;
     }
 
-    public int getManagerid() {
-        return managerid;
+    public Manager getManager() {
+        return manager;
     }
 
-    public void setManagerid(int managerid) {
-        this.managerid = managerid;
-    }
-
-    public Address getAddressByAddressid() {
-        return addressByAddressid;
-    }
-
-    public void setAddressByAddressid(Address addressByAddressid) {
-        this.addressByAddressid = addressByAddressid;
-    }
-
-    public Manager getManagerByManagerid() {
-        return managerByManagerid;
-    }
-
-    public void setManagerByManagerid(Manager managerByManagerid) {
-        this.managerByManagerid = managerByManagerid;
+    public void setManager(Manager managerByManagerId) {
+        this.manager = manager;
     }
 
 }

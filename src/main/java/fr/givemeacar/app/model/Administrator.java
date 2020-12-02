@@ -22,11 +22,9 @@ public class Administrator  implements CrudModel{
     private String password;
     @Column(name = "phone", nullable = false, length = 12)
     private String phone;
-    @Column(name = "userstatusid", nullable = false)
-    private int userStatusid;
     @OneToOne
     @JoinColumn(name = "userstatusid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private UserStatus userStatusByUserStatusid;
+    private UserStatus userStatus;
 
     public int getId() {
         return id;
@@ -76,19 +74,11 @@ public class Administrator  implements CrudModel{
         this.phone = phone;
     }
 
-    public int getUserStatusid() {
-        return userStatusid;
+    public UserStatus getUserStatus() {
+        return userStatus;
     }
 
-    public void setUserStatusid(int userStatusid) {
-        this.userStatusid = userStatusid;
-    }
-
-    public UserStatus getUserStatusByUserStatusid() {
-        return userStatusByUserStatusid;
-    }
-
-    public void setUserStatusByUserStatusid(UserStatus userStatusByUserStatusid) {
-        this.userStatusByUserStatusid = userStatusByUserStatusid;
+    public void setUserStatus(UserStatus userStatusByUserStatusId) {
+        this.userStatus = userStatus;
     }
 }

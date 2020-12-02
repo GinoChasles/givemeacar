@@ -16,20 +16,15 @@ public class Address implements CrudModel{
     private int id;
     @Column(name = "number", nullable = true)
     private Integer number;
-    @Column(name = "numberSuffix", length=6, nullable = true)
+    @Column(name = "numbersuffix", length = 6, nullable = true)
     private String numberSuffix;
-    @Column(name = "streetid", nullable = false)
-    private int streetid;
+
     @OneToOne
     @JoinColumn(name = "streetid", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
-    private Street streetByStreetid;
-
-    @Column(name = "cityid", nullable = false)
-    private int cityid;
-
+    private Street street;
     @OneToOne
     @JoinColumn(name = "cityid", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
-    private Street cityByCityid;
+    private Street city;
 
     @Override
     public void setId(int id) {
@@ -49,36 +44,20 @@ public class Address implements CrudModel{
         this.number = number;
     }
 
-    public int getStreetid() {
-        return streetid;
+    public Street getStreet() {
+        return street;
     }
 
-    public void setStreetid(int streetid) {
-        this.streetid = streetid;
+    public void setStreet(Street streetByStreetid) {
+        this.street = street;
     }
 
-    public Street getStreetByStreetid() {
-        return streetByStreetid;
+    public Street getCity() {
+        return city;
     }
 
-    public void setStreetByStreetid(Street streetByStreetid) {
-        this.streetByStreetid = streetByStreetid;
-    }
-
-    public int getCityid() {
-        return cityid;
-    }
-
-    public void setCityid(int cityid) {
-        this.cityid = cityid;
-    }
-
-    public Street getCityByCityid() {
-        return cityByCityid;
-    }
-
-    public void setCityByCityid(Street cityByStreetid) {
-        this.cityByCityid = cityByCityid;
+    public void setCity(Street cityByStreetid) {
+        this.city = city;
     }
 
     public String getNumberSuffix() {

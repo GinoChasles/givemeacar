@@ -16,16 +16,12 @@ public class Rent  implements CrudModel{
     private Timestamp start;
     @Column(name = "end", nullable = true)
     private Timestamp end;
-    @Column(name = "carid", nullable = false)
-    private int carid;
-    @Column(name = "clientid", nullable = false)
-    private int clientid;
     @OneToOne
     @JoinColumn(name = "carid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Car carByCarid;
+    private Car car;
     @OneToOne
     @JoinColumn(name = "clientid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Client clientByClientid;
+    private Client client;
 
     public int getId() {
         return id;
@@ -51,35 +47,19 @@ public class Rent  implements CrudModel{
         this.end = end;
     }
 
-    public int getCarid() {
-        return carid;
+    public Car getCar() {
+        return car;
     }
 
-    public void setCarid(int carid) {
-        this.carid = carid;
+    public void setCar(Car carByCarId) {
+        this.car = car;
     }
 
-    public int getClientid() {
-        return clientid;
+    public Client getClient() {
+        return client;
     }
 
-    public void setClientid(int clientid) {
-        this.clientid = clientid;
-    }
-
-    public Car getCarByCarid() {
-        return carByCarid;
-    }
-
-    public void setCarByCarid(Car carByCarid) {
-        this.carByCarid = carByCarid;
-    }
-
-    public Client getClientByClientid() {
-        return clientByClientid;
-    }
-
-    public void setClientByClientid(Client clientByClientid) {
-        this.clientByClientid = clientByClientid;
+    public void setClient(Client clientByClientId) {
+        this.client = client;
     }
 }
