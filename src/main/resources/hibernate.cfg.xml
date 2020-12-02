@@ -8,7 +8,7 @@
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
         <property name="connection.username">root</property>
-        <property name="connection.password">Ilovepython29</property>
+        <property name="connection.password">admin</property>
         <!--<property name="hibernate.hbm2ddl.auto">update</property>-->
         <mapping class="fr.givemeacar.app.model.Address"/>
         <mapping class="fr.givemeacar.app.model.Administrator"/>
