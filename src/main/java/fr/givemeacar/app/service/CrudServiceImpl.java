@@ -32,11 +32,10 @@ public abstract class CrudServiceImpl<T> implements CrudService<T> {
 
     public List<T> findAll(int offset, int limit, String order, String sort) {
         Sort s = Sort.by(sort);
-        System.out.println(order);
-        System.out.println(sort);
+        System.out.println(limit-offset);
         return getRepository().findAll(
-                PageRequest.of((int) Math.floor(offset / limit),
-                        limit,
+                PageRequest.of((int) Math.floor(offset / (limit-offset)),
+                        limit-offset,
                         "ASC".equals(order) ? s.ascending() : s.descending()
                 )
         ).toList();
