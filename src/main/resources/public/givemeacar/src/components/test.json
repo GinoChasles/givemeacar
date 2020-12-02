@@ -1,0 +1,15 @@
+{
+  "car": [
+    {
+      "color": "kaki",
+      "availability": false,
+      "onRent": true,
+      "model": "éco",
+      "brand": "hamzatesla",
+      "price": "100",
+      "km": 0,
+      "year": 2020,
+      "energy": "éco"
+    }
+  ]
+}
