@@ -13,34 +13,44 @@ import {
     TextInput,
 } from 'react-admin';
 
+<<<<<<< HEAD
 export const PostListColor = props => (
     <List {...props}>
-      <Datagrid>
-           <TextField source="id" />
-            <ReferenceField source="userId" reference="users">
-                <TextField source="name" />
-            </ReferenceField>
-            <TextField source="title" />
-          <EditButton />
+        <Datagrid>
+            <TextField source="id"/>
+            <TextField source="title"/>
+            <EditButton/>
         </Datagrid>
     </List>
 );
+=======
+
+>>>>>>> 22d9dba3c205c3112c97624391217d2cb5a085d7
 
 export const PostEditColor = props => (
     <Edit {...props}>
         <SimpleForm>
-           <TextInput disabled source="id" />
-           
-            <TextInput source="name" />
+            <TextInput disabled source="id"/>
+
+            <TextInput source="name"/>
         </SimpleForm>
     </Edit>
 );
 export const PostCreateColor = props => (
+    <Create {...props}>
+        <SimpleForm>
+
+            <TextInput source="id" label={"ID"} allowNull={true} disabled />
+            <TextInput source="name"/>
+        </SimpleForm>
+    </Create>
+);
+=======
         <Create {...props}>
             <SimpleForm>
-            <TextInput source="id" />
            
            <TextInput source="name" />
             </SimpleForm>
         </Create>
     );
+>>>>>>> 22d9dba3c205c3112c97624391217d2cb5a085d7
