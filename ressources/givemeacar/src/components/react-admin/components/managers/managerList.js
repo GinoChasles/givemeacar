@@ -1,7 +1,7 @@
 import * as React from "react";
 import { List, Datagrid, TextField, EmailField } from 'react-admin';
 // import PostPagination from './components/react-admin/components/pagination'
-export const UserListAdmin = props => (
+export const UserListManager = props => (
     <List {...props} title="les villes de l'eeenfer" >
         <Datagrid rowClick="edit" >
             <TextField source="id"  />
@@ -13,4 +13,4 @@ export const UserListAdmin = props => (
         </Datagrid>
     </List>
 );
-export default UserListAdmin;
+export default UserListManager;

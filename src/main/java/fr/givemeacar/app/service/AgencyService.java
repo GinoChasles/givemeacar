@@ -10,15 +10,14 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class AgencyService extends CrudServiceImpl<Agency>{
+public class AgencyService extends CrudServiceImpl<Agency> {
+
     @Autowired
-    AgencyRepository repo;
+    AgencyRepository repository;
 
-    public ResponseEntity<String> create(Agency model) {
-        return super.create(this.repo,model);
+    @Override
+    public AgencyRepository getRepository() {
+        return repository;
     }
 
-    public ResponseEntity<String> update(Agency model,int id) {
-        return super.update(this.repo,model,id);
-    }
 }

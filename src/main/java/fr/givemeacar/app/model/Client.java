@@ -22,33 +22,24 @@ public class Client  implements CrudModel{
     private String password;
     @Column(name = "phone", nullable = false, length = 12)
     private String phone;
-    @Column(name = "addressid", nullable = false)
-    private int addressid;
-    @Column(name = "userstatusid", nullable = false)
-    private int userStatusid;
-    @Column(name = "billid", nullable = false)
-    private int billid;
-    @Column(name = "creditCardid", nullable = false)
-    private int creditCardid;
-    @Column(name = "agencyid", nullable = false)
-    private int agencyid;
+
     @OneToOne
-    @JoinColumn(name = "agencyid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Agency agencyByAgencyid;
+    @JoinColumn(name = "agencyid", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
+    private Agency agency;
     @OneToOne
-    @JoinColumn(name = "addressid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Address addressByAddressid;
+    @JoinColumn(name = "addressid", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
+    private Address address;
     @OneToOne
     @JoinColumn(name = "userstatusid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private UserStatus userStatusByUserStatusid;
+    private UserStatus userStatus;
     @OneToOne
     @JoinColumn(name = "billid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Bill billByBillid;
+    private Bill bill;
     @OneToOne
-    @JoinColumn(name = "creditCardid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private CreditCard creditCardByCreditCardid;
-    @OneToMany(mappedBy = "clientByClientid")
-    private Collection<Rent> rentsByid;
+    @JoinColumn(name = "creditcardid", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
+    private CreditCard creditCard;
+    @OneToMany(mappedBy = "client")
+    private Collection<Rent> rents;
 
     public int getId() {
         return id;
@@ -98,91 +89,51 @@ public class Client  implements CrudModel{
         this.phone = phone;
     }
 
-    public int getAddressid() {
-        return addressid;
+    public Agency getAgency() {
+        return agency;
     }
 
-    public void setAddressid(int addressid) {
-        this.addressid = addressid;
+    public void setAgency(Agency agencyByAgencyId) {
+        this.agency = agency;
     }
 
-    public int getUserStatusid() {
-        return userStatusid;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setUserStatusid(int userStatusid) {
-        this.userStatusid = userStatusid;
+    public void setAddress(Address addressByAddressId) {
+        this.address = address;
     }
 
-    public int getBillid() {
-        return billid;
+    public UserStatus getUserStatus() {
+        return userStatus;
     }
 
-    public void setBillid(int billid) {
-        this.billid = billid;
+    public void setUserStatus(UserStatus userStatusByUserStatusId) {
+        this.userStatus = userStatus;
     }
 
-    public int getCreditCardid() {
-        return creditCardid;
+    public Bill getBill() {
+        return bill;
     }
 
-    public void setCreditCardid(int creditCardid) {
-        this.creditCardid = creditCardid;
+    public void setBill(Bill billByBillId) {
+        this.bill = bill;
     }
 
-    public int getAgencyid() {
-        return agencyid;
+    public CreditCard getCreditCard() {
+        return creditCard;
     }
 
-    public void setAgencyid(int agencyid) {
-        this.agencyid = agencyid;
+    public void setCreditCard(CreditCard creditCardByCreditCardId) {
+        this.creditCard = creditCard;
     }
 
-    public Agency getAgencyByAgencyid() {
-        return agencyByAgencyid;
+    public Collection<Rent> getRents() {
+        return rents;
     }
 
-    public void setAgencyByAgencyid(Agency agencyByAgencyid) {
-        this.agencyByAgencyid = agencyByAgencyid;
-    }
-
-    public Address getAddressByAddressid() {
-        return addressByAddressid;
-    }
-
-    public void setAddressByAddressid(Address addressByAddressid) {
-        this.addressByAddressid = addressByAddressid;
-    }
-
-    public UserStatus getUserStatusByUserStatusid() {
-        return userStatusByUserStatusid;
-    }
-
-    public void setUserStatusByUserStatusid(UserStatus userStatusByUserStatusid) {
-        this.userStatusByUserStatusid = userStatusByUserStatusid;
-    }
-
-    public Bill getBillByBillid() {
-        return billByBillid;
-    }
-
-    public void setBillByBillid(Bill billByBillid) {
-        this.billByBillid = billByBillid;
-    }
-
-    public CreditCard getCreditCardByCreditCardid() {
-        return creditCardByCreditCardid;
-    }
-
-    public void setCreditCardByCreditCardid(CreditCard creditCardByCreditCardid) {
-        this.creditCardByCreditCardid = creditCardByCreditCardid;
-    }
-
-    public Collection<Rent> getRentsByid() {
-        return rentsByid;
-    }
-
-    public void setRentsByid(Collection<Rent> rentsByid) {
-        this.rentsByid = rentsByid;
+    public void setRents(Collection<Rent> rentsById) {
+        this.rents = rents;
     }
 }

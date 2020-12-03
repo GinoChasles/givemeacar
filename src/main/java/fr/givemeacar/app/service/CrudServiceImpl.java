@@ -1,6 +1,10 @@
 package fr.givemeacar.app.service;
 
+import fr.givemeacar.app.repository.AddressRepository;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -16,97 +20,52 @@ import javax.persistence.Query;
 import java.lang.reflect.InvocationTargetException;
 import java.math.BigInteger;
 import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CrudServiceImpl<T> implements CrudService<T> {
-    @PersistenceContext
-    EntityManager em;
-    HttpHeaders responseHeaders = new HttpHeaders();
+public abstract class CrudServiceImpl<T> implements CrudService<T> {
 
-    public BigInteger count(String tableName) {
-        Query q = getEntityManager().createNativeQuery("SELECT COUNT(*) FROM "+tableName);
-        return (BigInteger) q.getSingleResult();
-
+    public Long count() {
+        return getRepository().count();
     }
 
-    public ResponseEntity findAll(String tableName,T t,int offset, int limit,String order,String sort){
-
-        Query q = getEntityManager().createNativeQuery("SELECT * FROM "+tableName+" ORDER BY :order :sort",t.getClass());
-        q.setParameter("sort",sort);
-        q.setParameter("order",order);
-
-        Collection list = q.setFirstResult(offset).setMaxResults(limit).getResultList();
-
-        responseHeaders.set("X-Total-Count",String.valueOf(list.size()));
-        responseHeaders.set("Access-Control-Expose-Headers", "X-Total-Count");
-
-        return  ResponseEntity.ok().headers(responseHeaders).body(list);
+    public List<T> findAll(int offset, int limit, String order, String sort) {
+        Sort s = Sort.by(sort);
+        System.out.println(limit-offset);
+        return getRepository().findAll(
+                PageRequest.of((int) Math.floor(offset / (limit-offset)),
+                        limit-offset,
+                        "ASC".equals(order) ? s.ascending() : s.descending()
+                )
+        ).toList();
     }
 
-    @Transactional
-    public ResponseEntity findById(String tableName, T t, int id) throws NoSuchMethodException, InvocationTargetException, IllegalAccessException, InstantiationException {
-        CrudModel model = (CrudModel) getEntityManager().find(t.getClass(),id);
-
-        if (model != null) {
-            try{
-                return ResponseEntity.ok().body(model);
-            }catch(Exception e){
-                return exceptionToResponseEntity(e);
-            }
-        }
-        return ResponseEntity.notFound().build();
+    public Optional<T> findById(int id) {
+        return getRepository().findById(id);
     }
 
-    public ResponseEntity<String> create(JpaRepository<T, Integer> repo,T model) {
-       return trySaveOrConflict(repo,model);
+    public T create(T model) {
+        return (T) getRepository().save(model);
     }
 
-    public ResponseEntity<String> update(JpaRepository<T, Integer> repo,T model,int id) {
-        Optional<T> optionalT = repo.findById(id);
+    public T update(T model, int id) {
+        Optional<T> optionalT = getRepository().findById(id);
 
         if (optionalT.isPresent()) {
-            CrudModel oldT = (CrudModel)optionalT.get();
+            CrudModel oldT = (CrudModel) optionalT.get();
             ((CrudModel) model).setId(oldT.getId());
-            return trySaveOrConflict(repo, model);
+            return (T) getRepository().save(model);
         }
-        return ResponseEntity.notFound().build();
+        return null;
     }
 
-    @Transactional
-    public ResponseEntity<String> delete(T t,int id) {
-        T del = (T)getEntityManager().find(t.getClass(),id);
-
-        if (del != null) {
-            try {
-                getEntityManager().remove(del);
-                return ResponseEntity.ok().build();
-            } catch (DataIntegrityViolationException e) {
-                return exceptionToResponseEntity(e);
-            }
+    public boolean delete(int id) {
+        if (getRepository().existsById(id)) {
+            getRepository().deleteById(id);
+            return true;
         }
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        return false;
     }
 
-    public ResponseEntity<String> exceptionToResponseEntity(Exception e) {
-        String constraint = e.getMessage().split(";")[2].replace(" constraint [", "").replace("]", "");
-        return ResponseEntity.status(HttpStatus.CONFLICT).body("{\"message\":\"" + constraint + "\"}");
-    }
-
-    public ResponseEntity<String> trySaveOrConflict(JpaRepository<T,Integer> repo,T model) {
-        try {
-            repo.save(model);
-            return ResponseEntity.status(HttpStatus.CREATED).build();
-        } catch (DataIntegrityViolationException e) {
-            return exceptionToResponseEntity(e);
-        }
-    }
-
-    public EntityManager getEntityManager() {
-        return em;
-    }
-
-    public void setEntityManager(EntityManager em) {
-        this.em = em;
-    }
 }

@@ -14,7 +14,7 @@ import {
     PasswordInput
 } from 'react-admin';
 
-export const PostListAdmin = props => (
+export const PostListManager = props => (
     <List {...props}>
       <Datagrid>
            <TextField source="id" />
@@ -27,7 +27,7 @@ export const PostListAdmin = props => (
     </List>
 );
 
-export const PostEditAdmin = props => (
+export const PostEditManager = props => (
     <Edit {...props}>
         <SimpleForm>
            <TextInput disabled source="id" />
@@ -39,11 +39,10 @@ export const PostEditAdmin = props => (
         </SimpleForm>
     </Edit>
 );
-const postDefaultValue = () => ({userStatusId:1, agencyid:1 });
-export const PostCreateAdmin = props => (
+const postDefaultValue = () => ({userStatusId:2 });
+export const PostCreateManager = props => (
         <Create {...props}>
             <SimpleForm initialValues={postDefaultValue}>
-            <TextInput disabled source="userStatusId" />
             <TextInput source="agencyid" />
                 <TextInput source="firstName" />
                 <TextInput source="lastName" />

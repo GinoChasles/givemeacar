@@ -16,16 +16,12 @@ public class Bill  implements CrudModel{
     private double price;
     @Column(name = "date", nullable = false)
     private Date date;
-    @Column(name = "rentid", nullable = false)
-    private int rentid;
-    @Column(name = "agencyid", nullable = false)
-    private int agencyid;
     @OneToOne
     @JoinColumn(name = "rentid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Rent rentByRentid;
+    private Rent rent;
     @OneToOne
     @JoinColumn(name = "agencyid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Agency agencyByAgencyid;
+    private Agency agency;
 
     public int getId() {
         return id;
@@ -51,35 +47,19 @@ public class Bill  implements CrudModel{
         this.date = date;
     }
 
-    public int getRentid() {
-        return rentid;
+    public Rent getRent() {
+        return rent;
     }
 
-    public void setRentid(int rentid) {
-        this.rentid = rentid;
+    public void setRent(Rent rentByRentId) {
+        this.rent = rent;
     }
 
-    public int getAgencyid() {
-        return agencyid;
+    public Agency getAgency() {
+        return agency;
     }
 
-    public void setAgencyid(int agencyid) {
-        this.agencyid = agencyid;
-    }
-
-    public Rent getRentByRentid() {
-        return rentByRentid;
-    }
-
-    public void setRentByRentid(Rent rentByRentid) {
-        this.rentByRentid = rentByRentid;
-    }
-
-    public Agency getAgencyByAgencyid() {
-        return agencyByAgencyid;
-    }
-
-    public void setAgencyByAgencyid(Agency agencyByAgencyid) {
-        this.agencyByAgencyid = agencyByAgencyid;
+    public void setAgency(Agency agencyByAgencyId) {
+        this.agency = agency;
     }
 }

@@ -11,14 +11,13 @@ import java.util.Optional;
 
 @Service
 public class StreetSuffixService extends CrudServiceImpl<StreetSuffix>{
+
     @Autowired
-    StreetSuffixRepository repo;
+    StreetSuffixRepository repository;
 
-    public ResponseEntity<String> create(StreetSuffix model) {
-        return super.create(this.repo,model);
+    @Override
+    public StreetSuffixRepository getRepository() {
+        return repository;
     }
 
-    public ResponseEntity<String> update(StreetSuffix model,int id) {
-        return super.update(this.repo,model,id);
-    }
 }

@@ -14,7 +14,6 @@ public class Brand implements CrudModel {
     @Column(name = "name", nullable = false, length = 45)
     private String name;
 
-    @OneToMany(mappedBy = "brandByBrandid")
     public int getId() {
         return id;
     }

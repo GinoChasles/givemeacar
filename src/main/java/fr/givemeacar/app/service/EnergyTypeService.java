@@ -11,14 +11,13 @@ import java.util.Optional;
 
 @Service
 public class EnergyTypeService extends CrudServiceImpl<EnergyType>{
+
     @Autowired
-    EnergyTypeRepository repo;
+    EnergyTypeRepository repository;
 
-    public ResponseEntity<String> create(EnergyType model) {
-        return super.create(this.repo,model);
+    @Override
+    public EnergyTypeRepository getRepository() {
+        return repository;
     }
 
-    public ResponseEntity<String> update(EnergyType model,int id) {
-        return super.update(this.repo,model,id);
-    }
 }

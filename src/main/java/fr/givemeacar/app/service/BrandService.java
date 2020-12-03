@@ -12,14 +12,13 @@ import java.util.Optional;
 
 @Service
 public class BrandService extends CrudServiceImpl<Brand>{
+
+
     @Autowired
-    BrandRepository repo;
+    BrandRepository repository;
 
-    public ResponseEntity<String> create(Brand model) {
-        return super.create(this.repo,model);
-    }
-
-    public ResponseEntity<String> update(Brand model,int id) {
-        return super.update(this.repo,model,id);
+    @Override
+    public BrandRepository getRepository() {
+        return repository;
     }
 }

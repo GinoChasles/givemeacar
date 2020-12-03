@@ -1,6 +1,5 @@
 package fr.givemeacar.app.controller;
 
-import fr.givemeacar.app.config.TableNames;
 import fr.givemeacar.app.model.Address;
 import fr.givemeacar.app.service.AddressService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,57 +7,52 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.lang.reflect.InvocationTargetException;
-import java.math.BigInteger;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+
 
 
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
-public class AddressController{
+public class AddressController extends CrudControllerImpl<Address>{
 
     @Autowired
     AddressService service;
 
-    
     @RequestMapping("addresses/count")
-    public BigInteger count() {
-        return service.count(TableNames.addresses);
+    public ResponseEntity count() {
+        return tryCount();
     }
 
     @RequestMapping(value = "addresses", method = RequestMethod.GET)
     public ResponseEntity findAll(@RequestParam(required = false) String _order, @RequestParam(required = false) String _sort,@RequestParam(required = false) Integer _start, @RequestParam int _end) {
-        if(_start != null) {
-            return service.findAll(TableNames.addresses, new Address(),_start, _end,_order,_sort);
-        }else{
-            return service.findAll(TableNames.addresses, new Address(),0,_end,_order,_sort);
-        }
+       return tryFindAll(_order,_sort,_start,_end);
     }
 
     @GetMapping("addresses/{id}")
-    public Object findById(@PathVariable int id) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
-        return service.findById(TableNames.addresses,new Address(),id);
-
+    public ResponseEntity findById(@PathVariable int id) {
+        return tryFindById(id);
     }
 
     
     @PostMapping("addresses")
-    public ResponseEntity<String> create(@Valid @RequestBody Address model) {
-        return service.create(model);
+    public ResponseEntity create(@Valid @RequestBody Address model) {
+        return tryCreate(model);
     }
 
     
     @PutMapping("addresses/{id}")
-    public ResponseEntity<String> update(@PathVariable int id,@RequestBody Address model) {
-        return service.update(model,id);
+    public ResponseEntity update(@PathVariable int id,@RequestBody Address model) {
+        return tryUpdate(id,model);
     }
 
     
     @DeleteMapping("addresses/{id}")
-    public ResponseEntity<String> delete(@PathVariable int id) {
-        return service.delete(new Address(),id);
+    public ResponseEntity delete(@PathVariable int id) {
+        return tryDelete(id);
+    }
+
+    @Override
+    public AddressService getService() {
+        return service;
     }
 }

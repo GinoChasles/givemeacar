@@ -6,16 +6,16 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "creditCards", schema = "givemeacar", catalog = "")
+@Table(name = "credit_cards", schema = "givemeacar", catalog = "")
 public class CreditCard  implements CrudModel{
     @Id
     @Column(name = "id", nullable = false)
     private int id;
     @Column(name = "number", nullable = false, length = 16)
     private String number;
-    @Column(name = "expirationMonth", nullable = false)
+    @Column(name = "expirationmonth", nullable = false)
     private int expirationMonth;
-    @Column(name = "expirationYear", nullable = false)
+    @Column(name = "expirationyear", nullable = false)
     private int expirationYear;
     @Column(name = "firstname", nullable = false, length = 45)
     private String firstName;

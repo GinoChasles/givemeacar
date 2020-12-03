@@ -11,13 +11,13 @@ import java.util.Optional;
 
 @Service
 public class BillService extends CrudServiceImpl<Bill>{
-    @Autowired
-    BillRepository repo;
 
-    public ResponseEntity<String> create(Bill model) {
-        return super.create(this.repo,model);
+    @Autowired
+    BillRepository repository;
+
+    @Override
+    public BillRepository getRepository() {
+        return repository;
     }
 
-    public ResponseEntity<String> update(Bill model,int id) {
-        return super.update(this.repo,model,id);
-    }}
+}

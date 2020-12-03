@@ -1,6 +1,5 @@
 package fr.givemeacar.app.controller;
 
-import fr.givemeacar.app.config.TableNames;
 import fr.givemeacar.app.model.Color;
 import fr.givemeacar.app.service.ColorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,59 +7,52 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.lang.reflect.InvocationTargetException;
-import java.math.BigInteger;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+
 
 
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
-public class ColorController{
+public class ColorController extends CrudControllerImpl<Color>{
 
     @Autowired
     ColorService service;
 
-
     @RequestMapping("colors/count")
-    public BigInteger count() {
-        return service.count(TableNames.colors);
+    public ResponseEntity count() {
+        return tryCount();
     }
 
     @RequestMapping(value = "colors", method = RequestMethod.GET)
     public ResponseEntity findAll(@RequestParam(required = false) String _order, @RequestParam(required = false) String _sort,@RequestParam(required = false) Integer _start, @RequestParam int _end) {
-        if(_start != null) {
-            return service.findAll(TableNames.colors, new Color(),_start, _end,_order,_sort);
-        }else{
-            return service.findAll(TableNames.colors, new Color(),0, _end,_order,_sort);
-        }
+        return tryFindAll(_order,_sort,_start,_end);
     }
 
     @GetMapping("colors/{id}")
-    public Object findById(@PathVariable int id) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
-       return service.findById(TableNames.colors,new Color(),id);
-
+    public ResponseEntity findById(@PathVariable int id) {
+        return tryFindById(id);
     }
 
 
-
-    
     @PostMapping("colors")
-    public ResponseEntity<String> create(@Valid @RequestBody Color color) {
-        return service.create(color);
+    public ResponseEntity create(@Valid @RequestBody Color model) {
+        return tryCreate(model);
     }
 
-    
+
     @PutMapping("colors/{id}")
-    public ResponseEntity<String> update(@PathVariable int id,@RequestBody Color color) {
-        return service.update(color,id);
+    public ResponseEntity update(@PathVariable int id,@RequestBody Color model) {
+        return tryUpdate(id,model);
     }
 
-    
+
     @DeleteMapping("colors/{id}")
-    public ResponseEntity<String> delete(@PathVariable int id) {
-        return service.delete(new Color(),id);
+    public ResponseEntity delete(@PathVariable int id) {
+        return tryDelete(id);
+    }
+
+    @Override
+    public ColorService getService() {
+        return service;
     }
 }

@@ -11,14 +11,13 @@ import java.util.Optional;
 
 @Service
 public class AdministratorService extends CrudServiceImpl<Administrator>{
+
     @Autowired
-    AdministratorRepository repo;
+    AdministratorRepository repository;
 
-    public ResponseEntity<String> create(Administrator model) {
-        return super.create(this.repo,model);
+    @Override
+    public AdministratorRepository getRepository() {
+        return repository;
     }
 
-    public ResponseEntity<String> update(Administrator model,int id) {
-        return super.update(this.repo,model,id);
-    }
 }

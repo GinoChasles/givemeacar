@@ -15,11 +15,9 @@ public class Department  implements CrudModel{
     private String name;
     @Column(name = "code", nullable = true, length = 45)
     private String code;
-    @Column(name = "regionid", nullable = false)
-    private int regionid;
     @OneToOne
     @JoinColumn(name = "regionid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Region regionByRegionid;
+    private Region region;
 
     public int getId() {
         return id;
@@ -45,19 +43,11 @@ public class Department  implements CrudModel{
         this.code = code;
     }
 
-    public int getRegionid() {
-        return regionid;
+    public Region getRegion() {
+        return region;
     }
 
-    public void setRegionid(int regionid) {
-        this.regionid = regionid;
-    }
-
-    public Region getRegionByRegionid() {
-        return regionByRegionid;
-    }
-
-    public void setRegionByRegionid(Region regionByRegionid) {
-        this.regionByRegionid = regionByRegionid;
+    public void setRegion(Region regionByRegionId) {
+        this.region = region;
     }
 }

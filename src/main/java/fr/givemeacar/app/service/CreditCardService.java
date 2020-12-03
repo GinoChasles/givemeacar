@@ -11,14 +11,13 @@ import java.util.Optional;
 
 @Service
 public class CreditCardService extends CrudServiceImpl<CreditCard>{
+
+
     @Autowired
-    CreditCardRepository repo;
+    CreditCardRepository repository;
 
-    public ResponseEntity<String> create(CreditCard model) {
-        return super.create(this.repo,model);
-    }
-
-    public ResponseEntity<String> update(CreditCard model,int id) {
-        return super.update(this.repo,model,id);
+    @Override
+    public CreditCardRepository getRepository() {
+        return repository;
     }
 }
