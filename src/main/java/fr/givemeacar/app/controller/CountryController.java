@@ -8,47 +8,48 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-
-
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
-public class CountryController extends CrudControllerImpl<Country> {
+public class CountryController extends CrudControllerImpl<Country>{
 
     @Autowired
     CountryService service;
 
     @RequestMapping("countries/count")
+    @Override
     public ResponseEntity count() {
-        return count();
+        return super.count();
     }
 
     @RequestMapping(value = "countries", method = RequestMethod.GET)
+    @Override
     public ResponseEntity findAll(@RequestParam(required = false) String _order, @RequestParam(required = false) String _sort,@RequestParam(required = false) Integer _start, @RequestParam int _end) {
-        return findAll(_order, _sort, _start, _end);
+        return super.findAll(_order, _sort, _start, _end);
     }
 
     @GetMapping("countries/{id}")
+    @Override
     public ResponseEntity findById(@PathVariable int id) {
-        return findById(id);
+        return super.findById(id);
     }
 
 
     @PostMapping("countries")
     public ResponseEntity create(@Valid @RequestBody Country model) {
-        return create(model);
+        return super.create(model);
     }
 
 
     @PutMapping("countries/{id}")
-    public ResponseEntity update(@PathVariable int id, @RequestBody Country model) {
-        return update(id, model);
+    public ResponseEntity update(@PathVariable int id,@RequestBody Country model) {
+        return super.update(model);
     }
 
 
     @DeleteMapping("countries/{id}")
-    public ResponseEntity delete(@PathVariable int id) {
-        return delete(id);
+    public ResponseEntity deleteById(@PathVariable int id) {
+        return super.deleteById(id);
     }
 
     @Override

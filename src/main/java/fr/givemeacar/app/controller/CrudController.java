@@ -23,7 +23,7 @@ public interface CrudController<T> {
      * @param id the id of the entity in the table
      * @return the delted entity
      */
-    public ResponseEntity delete(@PathVariable int id);
+    public ResponseEntity deleteById(@PathVariable int id);
 
 
     /**
@@ -57,12 +57,11 @@ public interface CrudController<T> {
      * @param model the entity to update
      * @return the updated entity
      */
-    public ResponseEntity update(@PathVariable int id, @RequestBody T model);
+    public ResponseEntity update(@RequestBody T model);
 
     /**
      * Returns the attached CrudService
      * @return the attached CrudService
      */
     public CrudService<T> getService();
-
 }

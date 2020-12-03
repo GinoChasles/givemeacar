@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-
-
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
@@ -19,36 +17,39 @@ public class UserStatusController extends CrudControllerImpl<UserStatus>{
     UserStatusService service;
 
     @RequestMapping("user_statuses/count")
+    @Override
     public ResponseEntity count() {
-        return count();
+        return super.count();
     }
 
     @RequestMapping(value = "user_statuses", method = RequestMethod.GET)
+    @Override
     public ResponseEntity findAll(@RequestParam(required = false) String _order, @RequestParam(required = false) String _sort,@RequestParam(required = false) Integer _start, @RequestParam int _end) {
-        return findAll(_order, _sort, _start, _end);
+        return super.findAll(_order, _sort, _start, _end);
     }
 
     @GetMapping("user_statuses/{id}")
+    @Override
     public ResponseEntity findById(@PathVariable int id) {
-        return findById(id);
+        return super.findById(id);
     }
 
 
     @PostMapping("user_statuses")
     public ResponseEntity create(@Valid @RequestBody UserStatus model) {
-        return create(model);
+        return super.create(model);
     }
 
 
     @PutMapping("user_statuses/{id}")
     public ResponseEntity update(@PathVariable int id,@RequestBody UserStatus model) {
-        return update(id, model);
+        return super.update(model);
     }
 
 
     @DeleteMapping("user_statuses/{id}")
-    public ResponseEntity delete(@PathVariable int id) {
-        return delete(id);
+    public ResponseEntity deleteById(@PathVariable int id) {
+        return super.deleteById(id);
     }
 
     @Override

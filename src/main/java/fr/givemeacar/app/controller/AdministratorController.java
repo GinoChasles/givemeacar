@@ -8,8 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-
-
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
@@ -19,34 +17,39 @@ public class AdministratorController extends CrudControllerImpl<Administrator>{
     AdministratorService service;
 
     @RequestMapping("administrators/count")
-    public ResponseEntity count() { return count(); }
+    @Override
+    public ResponseEntity count() {
+        return super.count();
+    }
 
     @RequestMapping(value = "administrators", method = RequestMethod.GET)
+    @Override
     public ResponseEntity findAll(@RequestParam(required = false) String _order, @RequestParam(required = false) String _sort,@RequestParam(required = false) Integer _start, @RequestParam int _end) {
-        return findAll(_order, _sort, _start, _end);
+        return super.findAll(_order, _sort, _start, _end);
     }
 
     @GetMapping("administrators/{id}")
+    @Override
     public ResponseEntity findById(@PathVariable int id) {
-        return findById(id);
+        return super.findById(id);
     }
 
 
     @PostMapping("administrators")
     public ResponseEntity create(@Valid @RequestBody Administrator model) {
-        return create(model);
+        return super.create(model);
     }
 
 
     @PutMapping("administrators/{id}")
     public ResponseEntity update(@PathVariable int id,@RequestBody Administrator model) {
-        return update(id, model);
+        return super.update(model);
     }
 
 
     @DeleteMapping("administrators/{id}")
-    public ResponseEntity delete(@PathVariable int id) {
-        return delete(id);
+    public ResponseEntity deleteById(@PathVariable int id) {
+        return super.deleteById(id);
     }
 
     @Override
