@@ -16,38 +16,38 @@ public class CityController extends CrudControllerImpl<City>{
     @Autowired
     CityService service;
 
-    @RequestMapping("city/count")
+    @RequestMapping("cities/count")
     @Override
     public ResponseEntity count() {
         return super.count();
     }
 
-    @RequestMapping(value = "city", method = RequestMethod.GET)
+    @RequestMapping(value = "cities", method = RequestMethod.GET)
     @Override
     public ResponseEntity findAll(@RequestParam(required = false) String _order, @RequestParam(required = false) String _sort,@RequestParam(required = false) Integer _start, @RequestParam int _end) {
         return super.findAll(_order, _sort, _start, _end);
     }
 
-    @GetMapping("city/{id}")
+    @GetMapping("cities/{id}")
     @Override
     public ResponseEntity findById(@PathVariable int id) {
         return super.findById(id);
     }
 
 
-    @PostMapping("city")
+    @PostMapping("cities")
     public ResponseEntity create(@Valid @RequestBody City model) {
         return super.create(model);
     }
 
 
-    @PutMapping("city/{id}")
+    @PutMapping("cities/{id}")
     public ResponseEntity update(@PathVariable int id,@RequestBody City model) {
         return super.update(model);
     }
 
 
-    @DeleteMapping("city/{id}")
+    @DeleteMapping("cities/{id}")
     public ResponseEntity deleteById(@PathVariable int id) {
         return super.deleteById(id);
     }
