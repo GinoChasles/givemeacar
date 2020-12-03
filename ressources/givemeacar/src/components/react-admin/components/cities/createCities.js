@@ -12,7 +12,16 @@ import {
   SelectInput,
   TextInput,
 } from "react-admin";
-
+export const DisplayCities = (props) => (
+  <List {...props} title="Liste des villes">
+    <Datagrid rowClick="edit">
+      <TextField source="number" />
+      <TextField source="city_id" />
+      <TextField source="street_id" />
+      <TextField source="number_suffix" />
+    </Datagrid>
+  </List>
+);
 export const EditCity = (props) => (
   <Edit {...props}>
     <SimpleForm>

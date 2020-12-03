@@ -13,7 +13,17 @@ import {
   TextInput,
   PasswordInput,
 } from "react-admin";
-
+export const DisplayAdministrator = (props) => (
+  <List {...props} title="les villes de l'eeenfer">
+    <Datagrid rowClick="edit">
+      <TextField source="id" />
+      <TextField source="firstName" />
+      <TextField source="lastName" />
+      <EmailField source="mail" />
+      <TextField source="phone" />
+    </Datagrid>
+  </List>
+);
 export const EditAdministrator = (props) => (
   <Edit {...props}>
     <SimpleForm>

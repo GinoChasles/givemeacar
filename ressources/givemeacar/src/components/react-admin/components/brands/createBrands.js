@@ -12,7 +12,13 @@ import {
   SelectInput,
   TextInput,
 } from "react-admin";
-
+export const DisplayBrands = (props) => (
+  <List {...props} title="Le modèle du véhicule">
+    <Datagrid rowClick="edit">
+      <TextField source="name" />
+    </Datagrid>
+  </List>
+);
 export const EditBrand = (props) => (
   <Edit {...props}>
     <SimpleForm>

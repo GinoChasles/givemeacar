@@ -5,42 +5,43 @@ import {
   ListGuesser,
   ShowGuesser,
   EditGuesser,
-  Create,
 } from "react-admin";
 import jsonServerProvider from "ra-data-json-server";
 import usersList from "./usersList";
-import displayManager from "./components/react-admin/components/managers/displayManager";
-import displayBrands from "./components/react-admin/components/brands/displayBrands";
-import displayAdministrator from "./components/react-admin/components/administrators/displayAdministrator";
-import ListAdresses from "./components/react-admin/components/addresses/displayAdresses";
-import displayColor from "./components/react-admin/components/colors/displayColor";
-import displayCities from "./components/react-admin/components/cities/displayCities";
+
 import {
+  DisplayAgency,
   EditAgency,
   CreateAgency,
 } from "./components/react-admin/components/agency/createAgency";
 import {
+  DisplayColor,
   EditColor,
   CreateColor,
 } from "./components/react-admin/components/colors/createColor";
 import {
+  DisplayCity,
   EditCity,
   CreateCity,
 } from "./components/react-admin/components/cities/createCities";
 import {
+  DisplayBrand,
   EditBrand,
   CreateBrand,
 } from "./components/react-admin/components/brands/createBrands";
 import {
+  DisplayAdresses,
   EditAdresses,
   CreateAdresses,
 } from "./components/react-admin/components/addresses/createAdresses";
 
 import {
+  DisplayManager,
   EditManager,
   CreateManager,
 } from "./components/react-admin/components/managers/createManager";
 import {
+  DisplayAdministrator,
   CreateAdministrator,
   EditAdministrator,
 } from "./components/react-admin/components/administrators/createAdministrator";
@@ -51,13 +52,13 @@ const App = () => (
     <Resource
       options={{ label: "Les couleurs" }}
       name="colors"
-      list={displayColor}
+      list={DisplayColor}
       edit={EditColor}
       create={CreateColor}
     />
     <Resource
       name="cities"
-      list={displayCities}
+      list={DisplayCities}
       show={ShowGuesser}
       edit={EditCity}
       create={CreateCity}
@@ -71,7 +72,7 @@ const App = () => (
     <Resource
       options={{ label: "Les managers !" }}
       name="managers"
-      list={displayManager}
+      list={DisplayManager}
       show={ShowGuesser}
       edit={EditManager}
       create={CreateManager}
@@ -84,7 +85,7 @@ const App = () => (
     />
     <Resource
       name="administrators"
-      list={displayAdministrator}
+      list={DisplayAdministrator}
       show={ShowGuesser}
       edit={EditAdministrator}
       create={CreateAdministrator}
@@ -98,7 +99,7 @@ const App = () => (
     <Resource
       name="brands"
       options={{ label: "Les modèles" }}
-      list={displayBrands}
+      list={DisplayBrands}
       show={ShowGuesser}
       edit={EditBrand}
       create={CreateBrand}
