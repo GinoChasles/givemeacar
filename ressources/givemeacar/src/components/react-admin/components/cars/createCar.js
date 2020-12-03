@@ -12,7 +12,7 @@ import {
   SelectInput,
   TextInput,
 } from "react-admin";
-export const DisplayCar = (props) => (
+export const DisplayCars = (props) => (
   <List {...props} title="Liste des véhicules">
     <Datagrid rowClick="edit">
       <TextField source="kilometers" />
@@ -32,7 +32,7 @@ export const DisplayCar = (props) => (
     </Datagrid>
   </List>
 );
-export const EditCar = (props) => (
+export const EditCars = (props) => (
   <Edit {...props}>
     <SimpleForm>
       <TextInput disabled source="id" />
@@ -58,7 +58,7 @@ export const EditCar = (props) => (
     </SimpleForm>
   </Edit>
 );
-export const CreateCar = (props) => (
+export const CreateCars = (props) => (
   <Create {...props}>
     <SimpleForm>
       <TextInput source="kilometers" />

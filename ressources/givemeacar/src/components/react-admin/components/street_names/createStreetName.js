@@ -12,21 +12,21 @@ import {
   SelectInput,
   TextInput,
 } from "react-admin";
-export const DisplayBrand = (props) => (
-  <List {...props} title="Le modèle du véhicule">
+export const DisplayStreetName = (props) => (
+  <List {...props} title="Nom des rues">
     <Datagrid rowClick="edit">
       <TextField source="name" />
     </Datagrid>
   </List>
 );
-export const EditBrand = (props) => (
+export const EditStreetName = (props) => (
   <Edit {...props}>
     <SimpleForm>
       <TextInput source="name" />
     </SimpleForm>
   </Edit>
 );
-export const CreateBrand = (props) => (
+export const CreateStreetName = (props) => (
   <Create {...props}>
     <SimpleForm>
       <TextInput source="name" />
