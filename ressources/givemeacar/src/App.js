@@ -13,11 +13,10 @@ const App = () => (
         <Resource name="colors" list={ListGuesser} show={ ShowGuesser} edit={PostEditColor} create={PostCreateColor} />
         <Resource name="cities" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser} />
         <Resource name="departments" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser} />
-<<<<<<< HEAD
-=======
+
         <Resource options={{ label: 'Les managers !' }} name="managers" list={managerList} show={ ShowGuesser} edit={PostEditManager} create={PostCreateManager} />
         <Resource options={{ label: 'créer Les managers !' }} name="managers/create" list={managerList} show={ ShowGuesser} edit={PostEditManager} create={PostCreateManager} />
->>>>>>> 22d9dba3c205c3112c97624391217d2cb5a085d7
+
         <Resource name="clients" list={usersList} show={ ShowGuesser} edit={EditGuesser}/>
         <Resource options={{ label: 'Les managers !' }} name="managers" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser} />
         <Resource options={{ label: 'Les managers !' }} name="managers/create" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser} />

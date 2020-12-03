@@ -37,7 +37,6 @@ export const PostEditColor = props => (
     </Edit>
 );
 export const PostCreateColor = props => (
-<<<<<<< HEAD
     <Create {...props}>
         <SimpleForm>
 
