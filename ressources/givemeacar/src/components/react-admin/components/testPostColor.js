@@ -13,6 +13,7 @@ import {
     TextInput,
 } from 'react-admin';
 
+<<<<<<< HEAD
 export const PostListColor = props => (
     <List {...props}>
         <Datagrid>
@@ -22,6 +23,9 @@ export const PostListColor = props => (
         </Datagrid>
     </List>
 );
+=======
+
+>>>>>>> 22d9dba3c205c3112c97624391217d2cb5a085d7
 
 export const PostEditColor = props => (
     <Edit {...props}>
@@ -33,6 +37,7 @@ export const PostEditColor = props => (
     </Edit>
 );
 export const PostCreateColor = props => (
+<<<<<<< HEAD
     <Create {...props}>
         <SimpleForm>
 
@@ -41,3 +46,12 @@ export const PostCreateColor = props => (
         </SimpleForm>
     </Create>
 );
+=======
+        <Create {...props}>
+            <SimpleForm>
+           
+           <TextInput source="name" />
+            </SimpleForm>
+        </Create>
+    );
+>>>>>>> 22d9dba3c205c3112c97624391217d2cb5a085d7
