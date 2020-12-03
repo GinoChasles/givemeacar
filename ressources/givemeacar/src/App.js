@@ -13,8 +13,9 @@ const App = () => (
         <Resource name="colors" list={ListGuesser} show={ ShowGuesser} edit={PostEditColor} create={PostCreateColor} />
         <Resource name="cities" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser} />
         <Resource name="departments" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser} />
-        <Resource options={{ label: 'Les managers !' }} name="managers" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser} />
         <Resource name="clients" list={usersList} show={ ShowGuesser} edit={EditGuesser}/>
+        <Resource options={{ label: 'Les managers !' }} name="managers" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser} />
+        <Resource options={{ label: 'Les managers !' }} name="managers/create" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser} />
         <Resource name="cars" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
         <Resource name="brands" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
         <Resource name="models" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>

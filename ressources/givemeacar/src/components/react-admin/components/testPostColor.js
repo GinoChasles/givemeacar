@@ -15,13 +15,10 @@ import {
 
 export const PostListColor = props => (
     <List {...props}>
-      <Datagrid>
-           <TextField source="id" />
-            <ReferenceField source="userId" reference="users">
-                <TextField source="name" />
-            </ReferenceField>
-            <TextField source="title" />
-          <EditButton />
+        <Datagrid>
+            <TextField source="id"/>
+            <TextField source="title"/>
+            <EditButton/>
         </Datagrid>
     </List>
 );
@@ -29,18 +26,18 @@ export const PostListColor = props => (
 export const PostEditColor = props => (
     <Edit {...props}>
         <SimpleForm>
-           <TextInput disabled source="id" />
-           
-            <TextInput source="name" />
+            <TextInput disabled source="id"/>
+
+            <TextInput source="name"/>
         </SimpleForm>
     </Edit>
 );
 export const PostCreateColor = props => (
-        <Create {...props}>
-            <SimpleForm>
-            <TextInput source="id" />
-           
-           <TextInput source="name" />
-            </SimpleForm>
-        </Create>
-    );
+    <Create {...props}>
+        <SimpleForm>
+
+            <TextInput source="id" label={"ID"} allowNull={true} disabled />
+            <TextInput source="name"/>
+        </SimpleForm>
+    </Create>
+);

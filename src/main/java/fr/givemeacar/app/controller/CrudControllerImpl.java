@@ -1,5 +1,6 @@
 package fr.givemeacar.app.controller;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,7 +54,7 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
     public ResponseEntity tryCreate(@Valid @RequestBody T model) {
         try {
             return ResponseEntity.ok(getService().create(model));
-        } catch (Exception e) {
+        } catch (DataIntegrityViolationException e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e);
         }
     }
@@ -61,7 +62,7 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
     public ResponseEntity tryUpdate(@PathVariable int id, @RequestBody T model) {
         try {
             return ResponseEntity.ok(getService().update(model, id));
-        } catch (Exception e) {
+        } catch (DataIntegrityViolationException e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e);
         }
     }

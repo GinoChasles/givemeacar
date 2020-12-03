@@ -46,6 +46,8 @@ public abstract class CrudServiceImpl<T> implements CrudService<T> {
     }
 
     public T create(T model) {
+        T n = getRepository().save(model);
+        System.out.println(n);
         return (T) getRepository().save(model);
     }
 
