@@ -1,9 +1,9 @@
 package fr.givemeacar.app.repository;
 
-public interface CrudRepository<CrudModel> {
+public interface CrudRepository<T> {
+    public T findFirstByOrderByIdDesc();
 
-    public CrudModel findFirstByOrderByIdDesc();
-    public CrudModel findById(int id);
-    public CrudModel deleteById(int id);
-    public Long countById();
+    public T findById(int id);
+
+    public T deleteById(int id);
 }
