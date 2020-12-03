@@ -11,15 +11,9 @@ import javax.validation.Valid;
 public abstract class CrudControllerImpl<T> implements CrudController<T> {
     HttpHeaders responseHeaders;
 
-    public ResponseEntity tryCount() {
-        try {
-            return ResponseEntity.ok(getService().count());
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e);
-        }
-    }
+    public T deleteById(int id){ return getService().getRepository().deleteById(id); }
 
-    public ResponseEntity tryFindAll(@RequestParam(required = false) String _order,
+    public ResponseEntity findAll(@RequestParam(required = false) String _order,
                                      @RequestParam(required = false) String _sort, @RequestParam(required = false) Integer _start,
                                      @RequestParam int _end) {
         if (_start != null) {
@@ -43,15 +37,7 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
         }
     }
 
-    public ResponseEntity tryFindById(@PathVariable int id) {
-        try {
-            return ResponseEntity.ok(getService().findById(id));
-        } catch (Exception e) {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    public ResponseEntity tryCreate(@Valid @RequestBody T model) {
+    public ResponseEntity create(@Valid @RequestBody T model) {
         try {
             return ResponseEntity.ok(getService().create(model));
         } catch (DataIntegrityViolationException e) {
@@ -59,19 +45,12 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
         }
     }
 
-    public ResponseEntity tryUpdate(@PathVariable int id, @RequestBody T model) {
+    public ResponseEntity update(@PathVariable int id, @RequestBody T model) {
         try {
-            return ResponseEntity.ok(getService().update(model, id));
+            return ResponseEntity.ok(getService().update(model));
         } catch (DataIntegrityViolationException e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e);
         }
     }
 
-    public ResponseEntity tryDelete(@PathVariable int id) {
-        try {
-            return ResponseEntity.ok(getService().delete(id));
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e);
-        }
-    }
 }

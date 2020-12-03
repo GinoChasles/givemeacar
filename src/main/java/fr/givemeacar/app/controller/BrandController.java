@@ -20,35 +20,35 @@ public class BrandController extends CrudControllerImpl<Brand>{
 
     @RequestMapping("brands/count")
     public ResponseEntity count() {
-        return tryCount();
+        return count();
     }
 
     @RequestMapping(value = "brands", method = RequestMethod.GET)
     public ResponseEntity findAll(@RequestParam(required = false) String _order, @RequestParam(required = false) String _sort,@RequestParam(required = false) Integer _start, @RequestParam int _end) {
-        return tryFindAll(_order,_sort,_start,_end);
+        return findAll(_order, _sort, _start, _end);
     }
 
     @GetMapping("brands/{id}")
     public ResponseEntity findById(@PathVariable int id) {
-        return tryFindById(id);
+        return findById(id);
     }
 
 
     @PostMapping("brands")
     public ResponseEntity create(@Valid @RequestBody Brand model) {
-        return tryCreate(model);
+        return create(model);
     }
 
 
     @PutMapping("brands/{id}")
     public ResponseEntity update(@PathVariable int id,@RequestBody Brand model) {
-        return tryUpdate(id,model);
+        return update(id, model);
     }
 
 
     @DeleteMapping("brands/{id}")
     public ResponseEntity delete(@PathVariable int id) {
-        return tryDelete(id);
+        return delete(id);
     }
 
     @Override

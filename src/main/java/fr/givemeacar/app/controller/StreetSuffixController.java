@@ -20,35 +20,35 @@ public class StreetSuffixController extends CrudControllerImpl<StreetSuffix>{
 
     @RequestMapping("street_suffices/count")
     public ResponseEntity count() {
-        return tryCount();
+        return count();
     }
 
     @RequestMapping(value = "street_suffices", method = RequestMethod.GET)
     public ResponseEntity findAll(@RequestParam(required = false) String _order, @RequestParam(required = false) String _sort,@RequestParam(required = false) Integer _start, @RequestParam int _end) {
-        return tryFindAll(_order,_sort,_start,_end);
+        return findAll(_order, _sort, _start, _end);
     }
 
     @GetMapping("street_suffices/{id}")
     public ResponseEntity findById(@PathVariable int id) {
-        return tryFindById(id);
+        return findById(id);
     }
 
 
     @PostMapping("street_suffices")
     public ResponseEntity create(@Valid @RequestBody StreetSuffix model) {
-        return tryCreate(model);
+        return create(model);
     }
 
 
     @PutMapping("street_suffices/{id}")
     public ResponseEntity update(@PathVariable int id,@RequestBody StreetSuffix model) {
-        return tryUpdate(id,model);
+        return update(id, model);
     }
 
 
     @DeleteMapping("street_suffices/{id}")
     public ResponseEntity delete(@PathVariable int id) {
-        return tryDelete(id);
+        return delete(id);
     }
 
     @Override

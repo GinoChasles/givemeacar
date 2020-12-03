@@ -20,35 +20,35 @@ public class CreditCardController extends CrudControllerImpl<CreditCard>{
 
     @RequestMapping("credit_cards/count")
     public ResponseEntity count() {
-        return tryCount();
+        return count();
     }
 
     @RequestMapping(value = "credit_cards", method = RequestMethod.GET)
     public ResponseEntity findAll(@RequestParam(required = false) String _order, @RequestParam(required = false) String _sort,@RequestParam(required = false) Integer _start, @RequestParam int _end) {
-        return tryFindAll(_order,_sort,_start,_end);
+        return findAll(_order, _sort, _start, _end);
     }
 
     @GetMapping("credit_cards/{id}")
     public ResponseEntity findById(@PathVariable int id) {
-        return tryFindById(id);
+        return findById(id);
     }
 
 
     @PostMapping("credit_cards")
     public ResponseEntity create(@Valid @RequestBody CreditCard model) {
-        return tryCreate(model);
+        return create(model);
     }
 
 
     @PutMapping("credit_cards/{id}")
     public ResponseEntity update(@PathVariable int id,@RequestBody CreditCard model) {
-        return tryUpdate(id,model);
+        return update(id, model);
     }
 
 
     @DeleteMapping("credit_cards/{id}")
     public ResponseEntity delete(@PathVariable int id) {
-        return tryDelete(id);
+        return delete(id);
     }
 
     @Override
