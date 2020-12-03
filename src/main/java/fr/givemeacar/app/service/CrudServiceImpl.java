@@ -6,6 +6,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.NoRepositoryBean;
 import org.springframework.stereotype.Service;
 
 import fr.givemeacar.app.model.CrudModel;
@@ -13,43 +14,40 @@ import fr.givemeacar.app.model.CrudModel;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@NoRepositoryBean
 public abstract class CrudServiceImpl<T> implements CrudService<T> {
 
-    @Autowired
-    BaseCrudRepository<T> repository;
-
-    public Long count(){
-        return getRepository().countById();
+    public Long count() {
+        return ((BaseCrudRepository)getRepository()).count();
     }
 
-    public T create(T model) { return (T) getRepository().save(model); }
+    public T create(T model) {
+        return (T) ((BaseCrudRepository)getRepository()).save(model);
+    }
 
-    public T update(T model) { return getRepository().existsById(((CrudModel)model).getId()) ? getRepository().save(model) : null; }
+    public T update(T model) {
+        return ((BaseCrudRepository)getRepository()).existsById(((CrudModel) model).getId()) ? (T)((BaseCrudRepository)getRepository()).save(model) : null;
+    }
 
     public T deleteById(int id){
-        return getRepository().deleteById(id);
+        return (T)((BaseCrudRepository)getRepository()).deleteById(id);
     }
 
     public T findLast(){
-        return getRepository().findFirstByOrderByIdDesc();
+        return (T)((BaseCrudRepository)getRepository()).findFirstByOrderByIdDesc();
     }
 
     public T findById(int id){
-        return getRepository().findById(id);
+        return (T)((BaseCrudRepository)getRepository()).findById(id);
     }
 
     public List<T> findAll(int offset, int limit, String order, String sort) {
 
-        return getRepository().findAll(
+        return ((BaseCrudRepository)getRepository()).findAll(
                 PageRequest.of((int) Math.floor(offset / (limit-offset)),
                         limit-offset,
                         "ASC".equals(order) ? Sort.by(sort).ascending() : Sort.by(sort).descending()
                 )
         ).toList();
-    }
-
-    public BaseCrudRepository<T> getRepository() {
-        return repository;
     }
 }

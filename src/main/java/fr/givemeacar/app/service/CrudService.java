@@ -8,6 +8,7 @@ public interface CrudService<T> {
 
     /**
      * Counts the entities in the table
+     *
      * @return the number of entities in the table
      */
     public Long count();
@@ -23,13 +24,14 @@ public interface CrudService<T> {
     /**
      * Updates a model in the database
      *
-     * @param t  the object to update
+     * @param t the object to update
      * @return a 200(ok) or 409(conflict) response with constraint message
      */
     public T update(T t);
 
     /**
      * deletes an entity in the table based on its id
+     *
      * @param id the id of the entity in the table
      * @return the delted entity
      */
@@ -38,6 +40,7 @@ public interface CrudService<T> {
 
     /**
      * finds an entity in the table based on its id
+     *
      * @param id the id of the entity in the table
      * @return the entity in the table with the given id
      */
@@ -45,6 +48,7 @@ public interface CrudService<T> {
 
     /**
      * Returns the last entity in the table based on its id
+     *
      * @return the last entity in the table
      */
     public T findLast();
@@ -53,10 +57,10 @@ public interface CrudService<T> {
     /**
      * Returns a collection of entities
      *
-     * @param offset    the offset of the research
-     * @param limit     the limit of the research
-     * @param order     the ordering od the search
-     * @param sort      the sorting of the research
+     * @param offset the offset of the research
+     * @param limit  the limit of the research
+     * @param order  the ordering od the search
+     * @param sort   the sorting of the research
      * @return a collection of entities
      */
     public List<T> findAll(int offset, int limit, String order, String sort);
@@ -64,8 +68,8 @@ public interface CrudService<T> {
 
     /**
      * Returns the repository of the service
+     *
      * @return the repository of the service
      */
-    public BaseCrudRepository<T> getRepository();
-
+    public BaseCrudRepository getRepository();
 }
