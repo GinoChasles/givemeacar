@@ -7,7 +7,6 @@ import {
   EditGuesser,
 } from "react-admin";
 import jsonServerProvider from "ra-data-json-server";
-import usersList from "./usersList";
 
 import {
   DisplayAgency,
@@ -228,6 +227,20 @@ const App = () => (
       show={ShowGuesser}
       edit={EditSuffices}
       create={CreateSuffices}
+    />
+    <Resource
+      name="street_names"
+      list={DisplayStreetName}
+      show={ShowGuesser}
+      edit={EditStreetName}
+      create={CreateStreetName}
+    />
+    <Resource
+      name="countries"
+      list={DisplayCountries}
+      show={ShowGuesser}
+      edit={EditCountries}
+      create={CreateCountries}
     />
     <Resource
       name="user_statuses"

@@ -4,7 +4,10 @@ import {
   Datagrid,
   TextField,
   ReferenceField,
+  NumberField,
+  NumberInput,
   EditButton,
+  DeleteButton,
   Create,
   Edit,
   SimpleForm,
@@ -15,33 +18,41 @@ import {
 export const DisplayCity = (props) => (
   <List {...props} title="Liste des villes">
     <Datagrid rowClick="edit">
-      <TextField source="number" />
-      <TextField source="city_id" />
-      <TextField source="street_id" />
-      <TextField source="number_suffix" />
+      <TextField source="zipcode" />
+      <TextField source="name" />
+      <NumberField source="latitude" />
+      <NumberField source="longitude" />
+      {/* <ReferenceField source="departmentId" reference="departments" sortBy="departments.name">
+      <TextField source="name" /> //TODO afficher le nom du département 
+      </ReferenceField> */}
+      <EditButton>Edit</EditButton>
+      <DeleteButton>Delete</DeleteButton>
     </Datagrid>
   </List>
 );
 export const EditCity = (props) => (
   <Edit {...props}>
     <SimpleForm>
-      <TextInput disabled source="id" />
-      <ReferenceInput source="userId" reference="users">
+      <TextInput source="zipcode" />
+      <TextInput source="name" />
+      <NumberInput source="latitude" />
+      <NumberInput source="longitude" />
+      <ReferenceInput source="departmentId" reference="departments">
         <SelectInput optionText="name" />
       </ReferenceInput>
-      <TextInput source="title" />
-      <TextInput multiline source="body" />
     </SimpleForm>
   </Edit>
 );
 export const CreateCity = (props) => (
   <Create {...props}>
-    <SimpleForm>
-      <ReferenceInput source="userId" reference="users">
+      <SimpleForm>
+      <TextInput source="zipcode" />
+      <TextInput source="name" />
+      <NumberInput source="latitude" />
+      <NumberInput source="longitude" />
+      <ReferenceInput source="departmentId" reference="departments">
         <SelectInput optionText="name" />
       </ReferenceInput>
-      <TextInput source="title" />
-      <TextInput multiline source="body" />
     </SimpleForm>
   </Create>
 );

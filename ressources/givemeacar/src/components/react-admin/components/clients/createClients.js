@@ -33,20 +33,24 @@ export const DisplayClient = (props) => (
 export const EditClient = (props) => (
   <Edit {...props}>
     <SimpleForm>
-      <TextInput source="first_name" />
-      <TextInput source="last_name" />
+      <TextInput source="firstName" />
+      <TextInput source="lastName" />
       <TextInput source="mail" />
       <PasswordInput source="password" />
       <TextInput source="phone" />
+
       <ReferenceInput source="address_id" reference="addresses">
-        <SelectInput optionText="id" />
+        <SelectInput optionText="name" />
       </ReferenceInput>
+
       <ReferenceInput source="user_status_id" reference="user_statuses">
-        <SelectInput optionText="id" />
+        <SelectInput optionText="name" />
       </ReferenceInput>
+
       <ReferenceInput source="bill_id" reference="bills">
         <SelectInput optionText="id" />
       </ReferenceInput>
+
       <ReferenceInput source="agency_id" reference="agencies">
         <SelectInput optionText="name" />
       </ReferenceInput>
@@ -55,22 +59,28 @@ export const EditClient = (props) => (
 );
 export const CreateClient = (props) => (
   <Create {...props}>
-    <TextInput source="first_name" />
-    <TextInput source="last_name" />
+    <SimpleForm>
+    <TextInput source="firstName" />
+    <TextInput source="lastName" />
     <TextInput source="mail" />
     <PasswordInput source="password" />
     <TextInput source="phone" />
+
     <ReferenceInput source="address_id" reference="addresses">
-      <SelectInput optionText="id" />
+      <SelectInput optionText="name" />
     </ReferenceInput>
+
     <ReferenceInput source="user_status_id" reference="user_statuses">
-      <SelectInput optionText="id" />
+      <SelectInput optionText="name" />
     </ReferenceInput>
-    <ReferenceInput source="bill_id" reference="bills">
-      <SelectInput optionText="id" />
+
+    <ReferenceInput source="bill_id" reference="bills" allowEmpty>
+      <SelectInput optionText="id" allowEmpty/>
     </ReferenceInput>
+
     <ReferenceInput source="agency_id" reference="agencies">
       <SelectInput optionText="name" />
     </ReferenceInput>
+    </SimpleForm>
   </Create>
 );

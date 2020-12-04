@@ -10,6 +10,7 @@ import {
   SimpleForm,
   ReferenceInput,
   SelectInput,
+  ArrayInput,
   TextInput,
 } from "react-admin";
 export const DisplayDepartments = (props) => (

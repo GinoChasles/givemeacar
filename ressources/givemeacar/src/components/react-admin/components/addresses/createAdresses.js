@@ -20,7 +20,7 @@ export const DisplayAdresses = (props) => (
       <TextField source="number" />
       <TextField source="city_id" />
       <TextField source="street_id" />
-      <TextField source="number_suffix" />
+      <TextField source="street_suffices" />
     </Datagrid>
   </List>
 );
@@ -28,11 +28,13 @@ export const EditAdresses = (props) => (
   <Edit {...props}>
     <SimpleForm>
       <TextInput source="number" />
-      <TextInput source="number_suffix" />
+      <ReferenceInput source="street_suffices_id" reference="street_suffices">
+        <SelectInput optionText="name" />
+      </ReferenceInput>
       <ReferenceInput source="street_id" reference="streets">
         <SelectInput optionText="name" />
       </ReferenceInput>
-      <ReferenceInput source="city_id" reference="scities">
+      <ReferenceInput source="city_id" reference="cities">
         <SelectInput optionText="name" />
       </ReferenceInput>
     </SimpleForm>
@@ -42,11 +44,13 @@ export const CreateAdresses = (props) => (
   <Create {...props}>
     <SimpleForm>
       <TextInput source="number" />
-      <TextInput source="number_suffix" />
+      <ReferenceInput source="street_suffices_id" reference="street_suffices">
+        <SelectInput optionText="name" />
+      </ReferenceInput>
       <ReferenceInput source="street_id" reference="streets">
         <SelectInput optionText="name" />
       </ReferenceInput>
-      <ReferenceInput source="city_id" reference="scities">
+      <ReferenceInput source="city_id" reference="cities">
         <SelectInput optionText="name" />
       </ReferenceInput>
     </SimpleForm>
