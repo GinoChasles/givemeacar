@@ -14,6 +14,7 @@ import {
 } from 'react-admin';
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 export const PostListColor = props => (
     <List {...props}>
         <Datagrid>
@@ -26,17 +27,27 @@ export const PostListColor = props => (
 =======
 
 >>>>>>> 22d9dba3c205c3112c97624391217d2cb5a085d7
+=======
+
+>>>>>>> gino
 
 export const PostEditColor = props => (
     <Edit {...props}>
         <SimpleForm>
+<<<<<<< HEAD
             <TextInput disabled source="id"/>
 
             <TextInput source="name"/>
+=======
+           <TextInput disabled source="id" />
+
+            <TextInput source="name" />
+>>>>>>> gino
         </SimpleForm>
     </Edit>
 );
 export const PostCreateColor = props => (
+<<<<<<< HEAD
     <Create {...props}>
         <SimpleForm>
 
@@ -54,3 +65,12 @@ export const PostCreateColor = props => (
         </Create>
     );
 >>>>>>> 22d9dba3c205c3112c97624391217d2cb5a085d7
+=======
+        <Create {...props}>
+            <SimpleForm>
+
+           <TextInput source="name" />
+            </SimpleForm>
+        </Create>
+    );
+>>>>>>> gino

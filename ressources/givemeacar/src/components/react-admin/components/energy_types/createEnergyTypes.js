@@ -12,7 +12,7 @@ import {
   SelectInput,
   TextInput,
 } from "react-admin";
-export const DisplayAgency = (props) => (
+export const DisplayEnergyTypes = (props) => (
   <List {...props} title="Votre adresse">
     <Datagrid rowClick="edit">
       <TextField source="number" />
@@ -22,26 +22,17 @@ export const DisplayAgency = (props) => (
     </Datagrid>
   </List>
 );
-export const EditAgency = (props) => (
+export const EditEnergyTypes = (props) => (
   <Edit {...props}>
     <SimpleForm>
-      <TextInput disabled source="id" />
-      <ReferenceInput source="userId" reference="users">
-        <SelectInput optionText="name" />
-      </ReferenceInput>
-      <TextInput source="title" />
-      <TextInput multiline source="body" />
+      <TextInput source="name" />
     </SimpleForm>
   </Edit>
 );
-export const CreateAgency = (props) => (
+export const CreateEnergyTypes = (props) => (
   <Create {...props}>
     <SimpleForm>
-      <ReferenceInput source="userId" reference="users">
-        <SelectInput optionText="name" />
-      </ReferenceInput>
-      <TextInput source="title" />
-      <TextInput multiline source="body" />
+      <TextInput source="name" />
     </SimpleForm>
   </Create>
 );

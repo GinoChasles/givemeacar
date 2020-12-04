@@ -11,9 +11,20 @@ import {
   ReferenceInput,
   SelectInput,
   TextInput,
+  EmailField,
   PasswordInput,
 } from "react-admin";
-
+export const DisplayManager = (props) => (
+  <List {...props} title="les managers">
+    <Datagrid rowClick="edit">
+      <TextField source="id" />
+      <TextField source="firstName" />
+      <TextField source="lastName" />
+      <EmailField source="mail" />
+      <TextField source="phone" />
+    </Datagrid>
+  </List>
+);
 export const EditManager = (props) => (
   <Edit {...props}>
     <SimpleForm initialValues={postDefaultValue}>

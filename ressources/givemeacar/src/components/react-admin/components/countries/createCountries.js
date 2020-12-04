@@ -11,24 +11,22 @@ import {
   ReferenceInput,
   SelectInput,
   TextInput,
-  PasswordInput,
 } from "react-admin";
-export const DisplayColor = (props) => (
-  <List {...props} title="Liste de couleurs create color">
+export const DisplayCountries = (props) => (
+  <List {...props} title="Votre adresse">
     <Datagrid rowClick="edit">
       <TextField source="name" />
     </Datagrid>
   </List>
 );
-
-export const EditColor = (props) => (
+export const EditCountries = (props) => (
   <Edit {...props}>
     <SimpleForm>
       <TextInput source="name" />
     </SimpleForm>
   </Edit>
 );
-export const CreateColor = (props) => (
+export const CreateCountries = (props) => (
   <Create {...props}>
     <SimpleForm>
       <TextInput source="name" />

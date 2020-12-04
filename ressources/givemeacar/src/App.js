@@ -5,45 +5,106 @@ import {
   ListGuesser,
   ShowGuesser,
   EditGuesser,
-  Create,
 } from "react-admin";
 import jsonServerProvider from "ra-data-json-server";
 import usersList from "./usersList";
-import displayManager from "./components/react-admin/components/managers/displayManager";
-import displayBrands from "./components/react-admin/components/brands/displayBrands";
-import displayAdministrator from "./components/react-admin/components/administrators/displayAdministrator";
-import ListAdresses from "./components/react-admin/components/addresses/displayAdresses";
-import displayColor from "./components/react-admin/components/colors/displayColor";
-import displayCities from "./components/react-admin/components/cities/displayCities";
+
 import {
+  DisplayAgency,
   EditAgency,
   CreateAgency,
 } from "./components/react-admin/components/agency/createAgency";
 import {
+  DisplayColor,
   EditColor,
   CreateColor,
 } from "./components/react-admin/components/colors/createColor";
 import {
+  DisplayCity,
   EditCity,
   CreateCity,
 } from "./components/react-admin/components/cities/createCities";
 import {
+  DisplayBrand,
   EditBrand,
   CreateBrand,
 } from "./components/react-admin/components/brands/createBrands";
 import {
+  DisplayAdresses,
   EditAdresses,
   CreateAdresses,
 } from "./components/react-admin/components/addresses/createAdresses";
 
 import {
+  DisplayManager,
   EditManager,
   CreateManager,
 } from "./components/react-admin/components/managers/createManager";
 import {
-  CreateAdministrator,
-  EditAdministrator,
+  DisplayAdministrators,
+  CreateAdministrators,
+  EditAdministrators,
 } from "./components/react-admin/components/administrators/createAdministrator";
+import {
+  DisplayCountries,
+  CreateCountries,
+  EditCountries,
+} from "./components/react-admin/components/countries/createCountries";
+import {
+  DisplayCars,
+  EditCars,
+  CreateCars,
+} from "./components/react-admin/components/cars/createCar";
+import {
+  DisplayClient,
+  EditClient,
+  CreateClient,
+} from "./components/react-admin/components/clients/createClients";
+import {
+  DisplayDepartments,
+  EditDepartments,
+  CreateDepartments,
+} from "./components/react-admin/components/departments/createDepartments";
+import {
+  DisplayEnergyTypes,
+  EditEnergyTypes,
+  CreateEnergyTypes,
+} from "./components/react-admin/components/energy_types/createEnergyTypes";
+import {
+  DisplayModels,
+  EditModels,
+  CreateModels,
+} from "./components/react-admin/components/models/createModels";
+import {
+  DisplayRegions,
+  EditRegions,
+  CreateRegions,
+} from "./components/react-admin/components/regions/createRegions";
+import {
+  DisplayRents,
+  EditRents,
+  CreateRents,
+} from "./components/react-admin/components/rents/createRents";
+import {
+  DisplayStreetName,
+  EditStreetName,
+  CreateStreetName,
+} from "./components/react-admin/components/street_names/createStreetName";
+import {
+  DisplaySuffices,
+  EditSuffices,
+  CreateSuffices,
+} from "./components/react-admin/components/street_suffices/createSuffices";
+import {
+  DisplayStreets,
+  EditStreets,
+  CreateStreets,
+} from "./components/react-admin/components/streets/createStreets";
+import {
+  DisplayStatuses,
+  EditStatuses,
+  CreateStatuses,
+} from "./components/react-admin/components/user_statuses/createStatuses";
 const dataProvider = jsonServerProvider("http://localhost:8080/api");
 
 const App = () => (
@@ -76,74 +137,78 @@ const App = () => (
     <Resource
       options={{ label: "Les couleurs" }}
       name="colors"
-      list={displayColor}
+      list={DisplayColor}
       edit={EditColor}
       create={CreateColor}
     />
     <Resource
       name="cities"
-      list={displayCities}
+      list={DisplayCity}
       show={ShowGuesser}
       edit={EditCity}
       create={CreateCity}
     />
     <Resource
       name="departments"
-      list={ListGuesser}
+      list={DisplayDepartments}
       show={ShowGuesser}
-      edit={EditGuesser}
+      edit={EditDepartments}
+      create={CreateDepartments}
     />
     <Resource
       options={{ label: "Les managers !" }}
       name="managers"
-      list={displayManager}
+      list={DisplayManager}
       show={ShowGuesser}
       edit={EditManager}
       create={CreateManager}
     />
     <Resource
       name="clients"
-      list={usersList}
+      list={DisplayClient}
       show={ShowGuesser}
-      edit={EditGuesser}
+      edit={EditClient}
+      create={CreateClient}
     />
     <Resource
       name="administrators"
-      list={displayAdministrator}
+      list={DisplayAdministrators}
       show={ShowGuesser}
-      edit={EditAdministrator}
-      create={CreateAdministrator}
+      edit={EditAdministrators}
+      create={CreateAdministrators}
     />
     <Resource
       name="cars"
-      list={ListGuesser}
+      list={DisplayCars}
       show={ShowGuesser}
-      edit={EditGuesser}
+      edit={EditCars}
+      create={CreateCars}
     />
     <Resource
       name="brands"
       options={{ label: "Les modèles" }}
-      list={displayBrands}
+      list={DisplayBrand}
       show={ShowGuesser}
       edit={EditBrand}
       create={CreateBrand}
     />
     <Resource
       name="models"
-      list={ListGuesser}
+      list={DisplayModels}
       show={ShowGuesser}
-      edit={EditGuesser}
+      edit={EditModels}
+      create={CreateModels}
     />
     <Resource
       name="addresses"
-      list={ListAdresses}
+      list={DisplayAdresses}
       show={ShowGuesser}
       edit={EditAdresses}
       create={CreateAdresses}
     />
     <Resource
       name="agencies"
-      list={ListGuesser}
+      list={DisplayAgency}
       show={ShowGuesser}
       edit={EditAgency}
       create={CreateAgency}
@@ -156,39 +221,45 @@ const App = () => (
     />
     <Resource
       name="rents"
-      list={ListGuesser}
+      list={DisplayRents}
       show={ShowGuesser}
-      edit={EditGuesser}
+      edit={EditRents}
+      create={CreateRents}
     />
     <Resource
       name="energy_types"
-      list={ListGuesser}
+      list={DisplayEnergyTypes}
       show={ShowGuesser}
-      edit={EditGuesser}
+      edit={EditEnergyTypes}
+      create={CreateEnergyTypes}
     />
     <Resource
       name="regions"
-      list={ListGuesser}
+      list={DisplayRegions}
       show={ShowGuesser}
-      edit={EditGuesser}
+      edit={EditRegions}
+      create={CreateRegions}
     />
     <Resource
       name="streets"
-      list={ListGuesser}
+      list={DisplayStreets}
       show={ShowGuesser}
-      edit={EditGuesser}
+      edit={EditStreets}
+      create={CreateStreets}
     />
     <Resource
       name="street_suffices"
-      list={ListGuesser}
+      list={DisplaySuffices}
       show={ShowGuesser}
-      edit={EditGuesser}
+      edit={EditSuffices}
+      create={CreateSuffices}
     />
     <Resource
       name="user_statuses"
-      list={ListGuesser}
+      list={DisplayStatuses}
       show={ShowGuesser}
-      edit={EditGuesser}
+      edit={EditStatuses}
+      create={CreateStatuses}
     />
   </Admin>
 </>
