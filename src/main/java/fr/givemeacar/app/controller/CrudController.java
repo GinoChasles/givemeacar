@@ -50,7 +50,7 @@ public interface CrudController<T> {
      * @param model the entity to save
      * @return the saved entity
      */
-    public ResponseEntity create(@Valid @RequestBody T model);
+    //public ResponseEntity create(@Valid @RequestBody T model) throws Exception;
 
     /**
      * Updates an entity in the table
