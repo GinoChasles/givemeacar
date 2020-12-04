@@ -11,6 +11,7 @@ import {
   Edit,
   SimpleForm,
   ReferenceInput,
+  AutocompleteInput,
   SelectInput,
   TextInput,
 } from "react-admin";
@@ -30,10 +31,10 @@ export const EditRents = (props) => (
     <DateTimeInput source="start" />
     <DateTimeInput source="end" />
       <ReferenceInput source="car_id" reference="cars">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
       <ReferenceInput source="client_id" reference="clients">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
     </SimpleForm>
   </Edit>
@@ -44,10 +45,10 @@ export const CreateRents = (props) => (
     <DateTimeInput source="start" />
     <DateTimeInput source="end" />
       <ReferenceInput source="car_id" reference="cars">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
       <ReferenceInput source="client_id" reference="clients">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
     </SimpleForm>
   </Create>

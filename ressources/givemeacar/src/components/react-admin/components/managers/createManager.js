@@ -10,6 +10,7 @@ import {
   SimpleForm,
   ReferenceInput,
   SelectInput,
+  AutocompleteInput,
   TextInput,
   EmailField,
   PasswordInput,
@@ -32,7 +33,7 @@ export const EditManager = (props) => (
   <Edit {...props}>
     <SimpleForm initialValues={postDefaultValue}>
     <ReferenceInput source="agencyId" reference="agencies">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
       <TextInput source="firstName" />
       <TextInput source="lastName" />
@@ -47,7 +48,7 @@ export const CreateManager = (props) => (
   <Create {...props}>
     <SimpleForm initialValues={postDefaultValue}>
       <ReferenceInput source="agencyId" reference="agencies">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
       <TextInput source="firstName" />
       <TextInput source="lastName" />

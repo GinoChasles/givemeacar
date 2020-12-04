@@ -10,6 +10,7 @@ import {
   Edit,
   SimpleForm,
   ReferenceInput,
+  AutocompleteInput,
   SelectInput,
   TextInput,
 } from "react-admin";
@@ -40,19 +41,19 @@ export const EditClient = (props) => (
       <TextInput source="phone" />
 
       <ReferenceInput source="address_id" reference="addresses">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
 
       <ReferenceInput source="user_status_id" reference="user_statuses">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
 
       <ReferenceInput source="bill_id" reference="bills">
-        <SelectInput optionText="id" />
+        <AutocompleteInput optionText="id" />
       </ReferenceInput>
 
       <ReferenceInput source="agency_id" reference="agencies">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
     </SimpleForm>
   </Edit>
@@ -67,19 +68,19 @@ export const CreateClient = (props) => (
     <TextInput source="phone" />
 
     <ReferenceInput source="address_id" reference="addresses">
-      <SelectInput optionText="name" />
+      <AutocompleteInput optionText="name" />
     </ReferenceInput>
 
     <ReferenceInput source="user_status_id" reference="user_statuses">
-      <SelectInput optionText="name" />
+      <AutocompleteInput optionText="name" />
     </ReferenceInput>
 
     <ReferenceInput source="bill_id" reference="bills" allowEmpty>
-      <SelectInput optionText="id" allowEmpty/>
+      <AutocompleteInput optionText="id" allowEmpty/>
     </ReferenceInput>
 
     <ReferenceInput source="agency_id" reference="agencies">
-      <SelectInput optionText="name" />
+      <AutocompleteInput optionText="name" />
     </ReferenceInput>
     </SimpleForm>
   </Create>

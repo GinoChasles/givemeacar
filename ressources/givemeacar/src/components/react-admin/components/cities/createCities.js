@@ -12,6 +12,7 @@ import {
   Edit,
   SimpleForm,
   ReferenceInput,
+  AutocompleteInput,
   SelectInput,
   TextInput,
 } from "react-admin";
@@ -38,7 +39,7 @@ export const EditCity = (props) => (
       <NumberInput source="latitude" />
       <NumberInput source="longitude" />
       <ReferenceInput source="departmentId" reference="departments">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
     </SimpleForm>
   </Edit>
@@ -51,7 +52,7 @@ export const CreateCity = (props) => (
       <NumberInput source="latitude" />
       <NumberInput source="longitude" />
       <ReferenceInput source="departmentId" reference="departments">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
     </SimpleForm>
   </Create>

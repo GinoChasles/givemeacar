@@ -9,7 +9,7 @@ import {
   Edit,
   SimpleForm,
   ReferenceInput,
-  SelectInput,
+  AutocompleteInput,
   TextInput,
   PasswordInput,
 } from "react-admin";
@@ -29,13 +29,13 @@ export const EditAdresses = (props) => (
     <SimpleForm>
       <TextInput source="number" />
       <ReferenceInput source="street_suffices_id" reference="street_suffices">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
       <ReferenceInput source="street_id" reference="streets">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
       <ReferenceInput source="city_id" reference="cities">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
     </SimpleForm>
   </Edit>
@@ -45,13 +45,13 @@ export const CreateAdresses = (props) => (
     <SimpleForm>
       <TextInput source="number" />
       <ReferenceInput source="street_suffices_id" reference="street_suffices">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
       <ReferenceInput source="street_id" reference="streets">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
       <ReferenceInput source="city_id" reference="cities">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
     </SimpleForm>
   </Create>

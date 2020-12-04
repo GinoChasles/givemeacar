@@ -10,6 +10,7 @@ import {
   SimpleForm,
   ReferenceInput,
   SelectInput,
+  AutocompleteInput,
   ArrayInput,
   TextInput,
 } from "react-admin";
@@ -26,7 +27,7 @@ export const EditDepartments = (props) => (
   <Edit {...props}>
     <SimpleForm>
       <ReferenceInput source="region_id" reference="regions">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
       <TextInput source="code" />
       <TextInput source="name" />
@@ -37,7 +38,7 @@ export const CreateDepartments = (props) => (
   <Create {...props}>
     <SimpleForm>
       <ReferenceInput source="region_id" reference="regions">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
       <TextInput source="code" />
       <TextInput source="name" />

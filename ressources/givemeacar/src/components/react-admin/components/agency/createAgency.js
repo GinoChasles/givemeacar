@@ -9,6 +9,7 @@ import {
   Edit,
   SimpleForm,
   ReferenceInput,
+  AutocompleteInput,
   SelectInput,
   TextInput,
 } from "react-admin";
@@ -26,10 +27,10 @@ export const EditAgency = (props) => (
     <SimpleForm>
       <TextInput source="name" />
       <ReferenceInput source="address_id" reference="addresses">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
       <ReferenceInput source="manager_id" reference="managers">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
     </SimpleForm>
   </Edit>
@@ -39,10 +40,10 @@ export const CreateAgency = (props) => (
     <SimpleForm>
       <TextInput source="name" />
       <ReferenceInput source="address_id" reference="addresses">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
       <ReferenceInput source="manager_id" reference="managers">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
     </SimpleForm>
   </Create>

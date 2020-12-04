@@ -14,6 +14,7 @@ import {
   BooleanInput,
   BooleanField,
   SelectInput,
+  AutocompleteInput,
   TextInput,
 } from "react-admin";
 export const DisplayCars = (props) => (
@@ -50,15 +51,15 @@ export const EditCars = (props) => (
       <BooleanInput source="available" valueLabelTrue="La voiture est dispo" valueLabelFalse="la voiture est indisponible"/>
       <BooleanInput source="rented" valueLabelTrue="la voiture est louée" valueLabelFalse="la voiture n'est pas louée" />
       <ReferenceInput source="model_id" reference="models">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
       <ReferenceInput source="color_id" reference="colors">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
       <NumberInput source="energy_max" />
       <NumberInput source="energy_current" />
       <ReferenceInput source="energy_type_id" reference="energy_types">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
       <NumberInput source="latitude" />
       <NumberInput source="longitude" />
@@ -74,15 +75,15 @@ export const CreateCars = (props) => (
       <NumberInput source="available" />
       <NumberInput source="rented"  />
       <ReferenceInput source="model_id" reference="models" >
-        <SelectInput optionText="name"  />
+        <AutocompleteInput optionText="name"  />
       </ReferenceInput>
       <ReferenceInput source="color_id" reference="colors" >
-        <SelectInput optionText="name" sortable={true} />
+        <AutocompleteInput optionText="name" sortable={true} />
       </ReferenceInput>
       <NumberInput source="energy_max" />
       <NumberInput source="energy_current" />
       <ReferenceInput source="energy_type_id" reference="energy_types">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
       <NumberInput source="latitude" />
       <NumberInput source="longitude" />
