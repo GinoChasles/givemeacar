@@ -19,7 +19,7 @@ public interface CrudService<T> {
      * @param t the model to save
      * @return a 200(ok) or 409(conflict) response with constraint message
      */
-    public T create(T t) throws Exception;
+    public T create(T t) ;
 
     /**
      * Updates a model in the database

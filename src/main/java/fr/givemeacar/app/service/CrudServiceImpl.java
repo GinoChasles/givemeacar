@@ -2,6 +2,7 @@ package fr.givemeacar.app.service;
 
 import fr.givemeacar.app.repository.BaseCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
@@ -21,8 +22,8 @@ public abstract class CrudServiceImpl<T> implements CrudService<T> {
         return ((BaseCrudRepository)getRepository()).count();
     }
 
-    public T create(T model) throws Exception{
-        return (T)getRepository().save(model);
+    public T create(T model) {
+            return (T) getRepository().save(model);
     }
 
     public T update(T model) {
@@ -46,7 +47,7 @@ public abstract class CrudServiceImpl<T> implements CrudService<T> {
         return ((BaseCrudRepository)getRepository()).findAll(
                 PageRequest.of((int) Math.floor(offset / (limit-offset)),
                         limit-offset,
-                        "ASC".equals(order) ? Sort.by(sort).ascending() : Sort.by(sort).descending()
+                        "DESC".equals(order) ? Sort.by(sort).descending() : Sort.by(sort).ascending()
                 )
         ).toList();
     }
