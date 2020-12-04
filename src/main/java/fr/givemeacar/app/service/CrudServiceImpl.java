@@ -21,8 +21,8 @@ public abstract class CrudServiceImpl<T> implements CrudService<T> {
         return ((BaseCrudRepository)getRepository()).count();
     }
 
-    public T create(T model) {
-        return (T) ((BaseCrudRepository)getRepository()).save(model);
+    public T create(T model) throws Exception{
+        return (T)getRepository().save(model);
     }
 
     public T update(T model) {

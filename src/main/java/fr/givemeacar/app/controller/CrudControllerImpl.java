@@ -22,9 +22,9 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
 
     public ResponseEntity create(@Valid @RequestBody T model) {
         try {
-            return ResponseEntity.ok(((CrudService<T>)getService()).create(model));
-        } catch (DataIntegrityViolationException e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e);
+            return ResponseEntity.ok(getService().create(model));
+        } catch (Exception exception) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(exception.getCause());
         }
     }
 
