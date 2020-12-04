@@ -108,31 +108,6 @@ import {
 const dataProvider = jsonServerProvider("http://localhost:8080/api");
 
 const App = () => (
-    <>
-        <Admin dataProvider= { dataProvider } >
-        <Resource name="colors" list={ListGuesser} show={ ShowGuesser} edit={EditColor} create={CreateColor} />
-        <Resource name="cities" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser} />
-        <Resource name="departments" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser} />
-
-        <Resource options={{ label: 'Les managers !' }} name="managers" list={ListGuesser} show={ ShowGuesser} edit={EditManager} create={CreateManager} />
-        <Resource options={{ label: 'créer Les managers !' }} name="managers/create" list={ListGuesser} show={ ShowGuesser} edit={EditManager} create={CreateManager} />
-
-        <Resource name="clients" list={usersList} show={ ShowGuesser} edit={EditGuesser}/>
-        <Resource options={{ label: 'Les managers !' }} name="managers" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser} />
-        <Resource options={{ label: 'Les managers !' }} name="managers/create" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser} />
-        <Resource name="cars" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
-        <Resource name="brands" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
-        <Resource name="models" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
-        <Resource name="addresses" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
-        <Resource name="agencies" list={ListGuesser} show={ ShowGuesser} edit={EditAgency} create={CreateAgency}/>
-        <Resource name="bills" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
-        <Resource name="rents" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
-        <Resource name="energy_types" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
-        <Resource name="regions" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
-        <Resource name="streets" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
-        <Resource name="street_suffices" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
-        <Resource name="user_statuses" list={ListGuesser} show={ ShowGuesser} edit={EditGuesser}/>
-            </Admin>
   <Admin dataProvider={dataProvider}>
     <Resource
       options={{ label: "Les couleurs" }}
@@ -262,7 +237,6 @@ const App = () => (
       create={CreateStatuses}
     />
   </Admin>
-</>
 );
 
 export default App;
