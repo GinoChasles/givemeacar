@@ -1,6 +1,5 @@
 package fr.givemeacar.app.controller;
 
-import fr.givemeacar.app.config.TableNames;
 import fr.givemeacar.app.model.StreetSuffix;
 import fr.givemeacar.app.service.StreetSuffixService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,58 +7,53 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.lang.reflect.InvocationTargetException;
-import java.math.BigInteger;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
-public class StreetSuffixController{
+public class StreetSuffixController extends CrudControllerImpl<StreetSuffix>{
 
     @Autowired
     StreetSuffixService service;
 
-    
     @RequestMapping("street_suffices/count")
-    public BigInteger count() {
-        return service.count(TableNames.streetSuffices);
+    @Override
+    public ResponseEntity count() {
+        return super.count();
     }
 
     @RequestMapping(value = "street_suffices", method = RequestMethod.GET)
+    @Override
     public ResponseEntity findAll(@RequestParam(required = false) String _order, @RequestParam(required = false) String _sort,@RequestParam(required = false) Integer _start, @RequestParam int _end) {
-        if(_start != null) {
-            return service.findAll(TableNames.streetSuffices,new StreetSuffix(),_start, _end,_order,_sort);
-        }else{
-            return service.findAll(TableNames.streetSuffices,new StreetSuffix(), 0, _end,_order,_sort);
-        }
+        return super.findAll(_order, _sort, _start, _end);
     }
 
     @GetMapping("street_suffices/{id}")
-    public Object findById(@PathVariable int id) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
-        return service.findById(TableNames.streetSuffices,new StreetSuffix(),id);
-
+    @Override
+    public ResponseEntity findById(@PathVariable int id) {
+        return super.findById(id);
     }
 
 
-
-    
     @PostMapping("street_suffices")
-    public ResponseEntity<String> create(@Valid @RequestBody StreetSuffix model) {
-        return service.create(model);
+    public ResponseEntity create(@Valid @RequestBody StreetSuffix model) {
+        return super.create(model);
     }
 
-    
+
     @PutMapping("street_suffices/{id}")
-    public ResponseEntity<String> update(@PathVariable int id,@RequestBody StreetSuffix model) {
-        return service.update(model,id);
+    public ResponseEntity update(@PathVariable int id,@RequestBody StreetSuffix model) {
+        return super.update(model);
     }
 
-    
+
     @DeleteMapping("street_suffices/{id}")
-    public ResponseEntity<String> delete(@PathVariable int id) {
-        return service.delete(new StreetSuffix(),id);
+    public ResponseEntity deleteById(@PathVariable int id) {
+        return super.deleteById(id);
+    }
+
+    @Override
+    public StreetSuffixService getService() {
+        return service;
     }
 }
