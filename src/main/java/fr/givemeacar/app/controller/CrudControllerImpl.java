@@ -42,7 +42,11 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
 
     public ResponseEntity findAll(@RequestParam(required = false) String _order,
                                      @RequestParam(required = false) String _sort, @RequestParam(required = false) Integer _start,
-                                     @RequestParam int _end) {
+                                     @RequestParam(required = false) Integer _end,@RequestParam(required = false) Integer id) {
+        if(id != null){
+            return findById(id.intValue());
+        }
+
         if (_start != null) {
             try {
                 responseHeaders = new HttpHeaders();

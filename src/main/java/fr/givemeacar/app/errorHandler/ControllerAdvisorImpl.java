@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -38,7 +39,8 @@ public class ControllerAdvisorImpl {
         map.put("table", constraint[0]);
         map.put("field", reason[0]);
         map.put("constraint", reason[1].toLowerCase());
-
+        map.put("message",message);
+        map.put("timestamp",new Date().toString());
         return map;
     }
 }

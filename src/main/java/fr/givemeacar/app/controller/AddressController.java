@@ -24,8 +24,10 @@ public class AddressController extends CrudControllerImpl<Address>{
 
     @RequestMapping(value = "addresses", method = RequestMethod.GET)
     @Override
-    public ResponseEntity findAll(@RequestParam(required = false) String _order, @RequestParam(required = false) String _sort,@RequestParam(required = false) Integer _start, @RequestParam int _end) {
-        return super.findAll(_order, _sort, _start, _end);
+    public ResponseEntity findAll(@RequestParam(required = false) String _order,
+            @RequestParam(required = false) String _sort, @RequestParam(required = false) Integer _start,
+            @RequestParam(required = false) Integer _end, @RequestParam(required = false) Integer id) {
+        return super.findAll(_order, _sort, _start, _end, id);
     }
 
     @GetMapping("addresses/{id}")
