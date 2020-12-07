@@ -9,39 +9,42 @@ import {
   Edit,
   SimpleForm,
   ReferenceInput,
+  AutocompleteInput,
   SelectInput,
   TextInput,
 } from "react-admin";
 export const DisplayAgency = (props) => (
   <List {...props} title="Votre adresse">
     <Datagrid rowClick="edit">
-      <TextField source="number" />
-      <TextField source="city_id" />
-      <TextField source="street_id" />
-      <TextField source="number_suffix" />
+      <TextField source="name" />
+      <TextField source="address_id" />
+      <TextField source="manager_id" />
     </Datagrid>
   </List>
 );
 export const EditAgency = (props) => (
   <Edit {...props}>
     <SimpleForm>
-      <TextInput disabled source="id" />
-      <ReferenceInput source="userId" reference="users">
-        <SelectInput optionText="name" />
+      <TextInput source="name" />
+      <ReferenceInput source="address_id" reference="addresses">
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
-      <TextInput source="title" />
-      <TextInput multiline source="body" />
+      <ReferenceInput source="manager_id" reference="managers">
+        <AutocompleteInput optionText="name" />
+      </ReferenceInput>
     </SimpleForm>
   </Edit>
 );
 export const CreateAgency = (props) => (
   <Create {...props}>
     <SimpleForm>
-      <ReferenceInput source="userId" reference="users">
-        <SelectInput optionText="name" />
+      <TextInput source="name" />
+      <ReferenceInput source="address_id" reference="addresses">
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
-      <TextInput source="title" />
-      <TextInput multiline source="body" />
+      <ReferenceInput source="manager_id" reference="managers">
+        <AutocompleteInput optionText="name" />
+      </ReferenceInput>
     </SimpleForm>
   </Create>
 );

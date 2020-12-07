@@ -14,7 +14,7 @@ import {
   PasswordInput,
 } from "react-admin";
 export const DisplayColor = (props) => (
-  <List {...props} title="Liste de couleurs create color">
+  <List {...props} title="Liste de couleurs create color"> 
     <Datagrid rowClick="edit">
       <TextField source="name" />
     </Datagrid>

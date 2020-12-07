@@ -9,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class CrudControllerImpl<T> implements CrudController<T> {
     HttpHeaders responseHeaders;
@@ -37,7 +39,13 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
 
     public ResponseEntity findById(int id){
         if(id == 0) return ResponseEntity.ok(((CrudService<T>)getService()).findLast());
-        return ResponseEntity.ok(((CrudService<T>)getService()).findById(id));
+
+        T model = ((CrudService<T>)getService()).findById(id);
+
+        List list = new ArrayList<T>();
+        list.add(model);
+
+        return ResponseEntity.ok(list);
     }
 
     public ResponseEntity findAll(@RequestParam(required = false) String _order,
