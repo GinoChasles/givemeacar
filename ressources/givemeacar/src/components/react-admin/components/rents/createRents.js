@@ -5,18 +5,21 @@ import {
   TextField,
   ReferenceField,
   EditButton,
+  DateTimeInput,
+  DateField,
   Create,
   Edit,
   SimpleForm,
   ReferenceInput,
+  AutocompleteInput,
   SelectInput,
   TextInput,
 } from "react-admin";
 export const DisplayRents = (props) => (
   <List {...props} title="Réservation">
     <Datagrid rowClick="edit">
-      <TextField source="start" />
-      <TextField source="end" />
+      <DateField source="start" showTime />
+      <DateField source="end" showTime/>
       <TextField source="car_id" />
       <TextField source="client_id" />
     </Datagrid>
@@ -25,13 +28,13 @@ export const DisplayRents = (props) => (
 export const EditRents = (props) => (
   <Edit {...props}>
     <SimpleForm>
-      <TextInput source="start" />
-      <TextInput source="end" />
+    <DateTimeInput source="start" />
+    <DateTimeInput source="end" />
       <ReferenceInput source="car_id" reference="cars">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
       <ReferenceInput source="client_id" reference="clients">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
     </SimpleForm>
   </Edit>
@@ -39,13 +42,13 @@ export const EditRents = (props) => (
 export const CreateRents = (props) => (
   <Create {...props}>
     <SimpleForm>
-      <TextInput source="start" />
-      <TextInput source="end" />
+    <DateTimeInput source="start" />
+    <DateTimeInput source="end" />
       <ReferenceInput source="car_id" reference="cars">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
       <ReferenceInput source="client_id" reference="clients">
-        <SelectInput optionText="name" />
+        <AutocompleteInput optionText="name" />
       </ReferenceInput>
     </SimpleForm>
   </Create>

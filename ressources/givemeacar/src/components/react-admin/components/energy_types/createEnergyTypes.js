@@ -15,10 +15,7 @@ import {
 export const DisplayEnergyTypes = (props) => (
   <List {...props} title="Votre adresse">
     <Datagrid rowClick="edit">
-      <TextField source="number" />
-      <TextField source="city_id" />
-      <TextField source="street_id" />
-      <TextField source="number_suffix" />
+      <TextField source="name" />
     </Datagrid>
   </List>
 );
