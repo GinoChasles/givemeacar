@@ -24,8 +24,11 @@ public class CarController extends CrudControllerImpl<Car>{
     }
 
     @RequestMapping(value = "cars", method = RequestMethod.GET)
-    public ResponseEntity findAll(@RequestParam(required = false) String _order, @RequestParam(required = false) String _sort,@RequestParam(required = false) Integer _start, @RequestParam int _end) {
-        return super.findAll(_order, _sort, _start, _end);
+    @Override
+    public ResponseEntity findAll(@RequestParam(required = false) String _order,
+            @RequestParam(required = false) String _sort, @RequestParam(required = false) Integer _start,
+            @RequestParam(required = false) Integer _end, @RequestParam(required = false) Integer id) {
+        return super.findAll(_order, _sort, _start, _end, id);
     }
 
     @GetMapping("cars/{id}")
