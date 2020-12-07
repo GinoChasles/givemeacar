@@ -1,5 +1,6 @@
 package fr.givemeacar.app.controller;
 
+import fr.givemeacar.app.model.Color;
 import fr.givemeacar.app.service.CrudService;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
@@ -21,11 +22,7 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
     }
 
     public ResponseEntity create(@Valid @RequestBody T model) {
-        try {
             return ResponseEntity.ok(getService().create(model));
-        } catch (Exception exception) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(exception.getCause());
-        }
     }
 
     public ResponseEntity update(@RequestBody T model) {
@@ -56,7 +53,6 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
                         .headers(responseHeaders)
                         .body(((CrudService<T>)getService()).findAll(_start, _end, _order, _sort));
             } catch (Exception e) {
-                System.out.println(e.getMessage());
                 return ResponseEntity.status(HttpStatus.CONFLICT).body(e);
             }
         } else {
