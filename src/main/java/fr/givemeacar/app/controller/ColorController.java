@@ -3,6 +3,8 @@ package fr.givemeacar.app.controller;
 import fr.givemeacar.app.model.Color;
 import fr.givemeacar.app.service.ColorService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,7 +24,7 @@ public class ColorController extends CrudControllerImpl<Color>{
         return super.count();
     }
 
-    @RequestMapping(value = "colors", method = RequestMethod.GET)
+    @GetMapping("colors")
     @Override
     public ResponseEntity findAll(@RequestParam(required = false) String _order, @RequestParam(required = false) String _sort,@RequestParam(required = false) Integer _start, @RequestParam int _end) {
         return super.findAll(_order, _sort, _start, _end);
@@ -37,7 +39,7 @@ public class ColorController extends CrudControllerImpl<Color>{
 
     @PostMapping("colors")
     public ResponseEntity create(@Valid @RequestBody Color model) {
-        return super.create(model);
+            return super.create(model);
     }
 
 
