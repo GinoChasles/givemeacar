@@ -34,8 +34,8 @@ export const EditModels = (props) => (
 export const CreateModels = (props) => (
   <Create {...props}>
     <SimpleForm>
-      <ReferenceInput source="brand_id" reference="brands">
-        <AutocompleteInput optionText="name" />
+      <ReferenceInput source="brand_id" reference="brands" >
+        <AutocompleteInput optionText={"name"} optionValue={"id"}/>
       </ReferenceInput>
       <TextInput source="name" />
     </SimpleForm>
