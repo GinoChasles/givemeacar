@@ -43,7 +43,7 @@ public interface CrudController<T> {
      */
     public ResponseEntity findAll(@RequestParam(required = false) String _order,
             @RequestParam(required = false) String _sort, @RequestParam(required = false) Integer _start,
-            @RequestParam int _end);
+            @RequestParam(required = false) Integer _end, @RequestParam(required = false) Integer id);
 
     /**
      * Creates an entity in the table
