@@ -37,9 +37,11 @@ export const EditDepartments = (props) => (
 export const CreateDepartments = (props) => (
   <Create {...props}>
     <SimpleForm>
-      <ReferenceInput source="region_id" reference="regions">
+    <ReferenceInput source="region_id" reference="regions">
         <AutocompleteInput optionText="name" />
       </ReferenceInput>
+      
+      <TextInput disabled source="region_id" />
       <TextInput source="code" />
       <TextInput source="name" />
     </SimpleForm>
