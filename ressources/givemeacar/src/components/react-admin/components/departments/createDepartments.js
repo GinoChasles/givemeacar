@@ -19,7 +19,9 @@ export const DisplayDepartments = (props) => (
     <Datagrid rowClick="edit">
       <TextField source="code" />
       <TextField source="name" />
-      <TextField source="region_id" />
+      <ReferenceField source="region_id" reference="regions">
+        <TextField source="name" />
+      </ReferenceField>
     </Datagrid>
   </List>
 );
@@ -40,7 +42,6 @@ export const CreateDepartments = (props) => (
     <ReferenceInput source="region_id" reference="regions">
         <AutocompleteInput optionText="name" />
       </ReferenceInput>
-      
       <TextInput disabled source="region_id" />
       <TextInput source="code" />
       <TextInput source="name" />
