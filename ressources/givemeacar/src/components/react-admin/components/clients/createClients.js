@@ -33,6 +33,7 @@ export const DisplayClient = (props) => (
 
 export const EditClient = (props) => (
   <Edit {...props}>
+    {/* <TabbedShowLayout> */}
     <SimpleForm>
       <TextInput source="firstName" />
       <TextInput source="lastName" />
@@ -56,6 +57,7 @@ export const EditClient = (props) => (
         <AutocompleteInput optionText="name" />
       </ReferenceInput>
     </SimpleForm>
+    {/* </TabbedShowLayout> */}
   </Edit>
 );
 export const CreateClient = (props) => (
