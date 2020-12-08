@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.Entity;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 public interface CrudController<T> {
@@ -64,4 +65,10 @@ public interface CrudController<T> {
      * @return the attached CrudService
      */
     public CrudService<T> getService();
+
+    /**
+     * Returns the attached HttpSession
+     * @return the attached HttpSession
+     */
+    public HttpSession getSession();
 }
