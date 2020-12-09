@@ -25,3 +25,9 @@ form {
   grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
 }
+.MuiAppBar-positionFixed{
+position: relative !important;
+}
+.RaLayout-appFrame-2 {
+margin-top:0 !important;
+}

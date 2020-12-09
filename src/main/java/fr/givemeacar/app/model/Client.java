@@ -38,9 +38,10 @@ public class Client  implements CrudModel{
     @OneToOne
     @JoinColumn(name = "creditcardid", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
     private CreditCard creditCard;
+    /**
     @OneToMany(mappedBy = "client")
     private Collection<Rent> rents;
-
+    **/
     public int getId() {
         return id;
     }
@@ -128,7 +129,7 @@ public class Client  implements CrudModel{
     public void setCreditCard(CreditCard creditCardByCreditCardId) {
         this.creditCard = creditCard;
     }
-
+    /**
     public Collection<Rent> getRents() {
         return rents;
     }
@@ -136,4 +137,5 @@ public class Client  implements CrudModel{
     public void setRents(Collection<Rent> rentsById) {
         this.rents = rents;
     }
+     **/
 }

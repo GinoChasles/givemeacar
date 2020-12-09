@@ -1,76 +1,87 @@
 package fr.givemeacar.app.controller;
 
+import fr.givemeacar.app.model.Color;
+import fr.givemeacar.app.service.CrudService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class CrudControllerImpl<T> implements CrudController<T> {
     HttpHeaders responseHeaders;
+    @Autowired
+    HttpSession session;
 
-    public ResponseEntity tryCount() {
+    public ResponseEntity count() {
         try {
-            return ResponseEntity.ok(getService().count());
-        } catch (Exception e) {
+            return ResponseEntity.ok(((CrudService<T>)getService()).count());
+        } catch (DataIntegrityViolationException e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e);
         }
     }
 
-    public ResponseEntity tryFindAll(@RequestParam(required = false) String _order,
+    public ResponseEntity create(@Valid @RequestBody T model) {
+            return ResponseEntity.ok(getService().create(model));
+    }
+
+    public ResponseEntity update(@RequestBody T model) {
+        try {
+            return ResponseEntity.ok(((CrudService<T>)getService()).update(model));
+        } catch (DataIntegrityViolationException e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e);
+        }
+    }
+
+    public ResponseEntity deleteById(int id){ return ResponseEntity.ok(((CrudService<T>)getService()).deleteById(id)); }
+
+    public ResponseEntity findById(int id){
+        if(id == 0) return ResponseEntity.ok(((CrudService<T>)getService()).findLast());
+
+        T model = ((CrudService<T>)getService()).findById(id);
+
+        List list = new ArrayList<T>();
+        list.add(model);
+
+        return ResponseEntity.ok(list);
+    }
+
+    public ResponseEntity findAll(@RequestParam(required = false) String _order,
                                      @RequestParam(required = false) String _sort, @RequestParam(required = false) Integer _start,
-                                     @RequestParam int _end) {
+                                     @RequestParam(required = false) Integer _end,@RequestParam(required = false) Integer id) {
+        if(id != null){
+            return findById(id.intValue());
+        }
+
         if (_start != null) {
             try {
                 responseHeaders = new HttpHeaders();
-                responseHeaders.set("X-Total-Count", String.valueOf(getService().count()));
+                responseHeaders.set("X-Total-Count", String.valueOf(((CrudService<T>)getService()).count()));
                 responseHeaders.set("Access-Control-Expose-Headers", "X-Total-Count");
 
                 return ResponseEntity.ok()
                         .headers(responseHeaders)
-                        .body(getService().findAll(_start, _end, _order, _sort));
+                        .body(((CrudService<T>)getService()).findAll(_start, _end, _order, _sort));
             } catch (Exception e) {
                 return ResponseEntity.status(HttpStatus.CONFLICT).body(e);
             }
         } else {
             try {
-                return ResponseEntity.ok(getService().findAll(0, _end, _order, _sort));
+                return ResponseEntity.ok(((CrudService<T>)getService()).findAll(0, _end, _order, _sort));
             } catch (Exception e) {
                 return ResponseEntity.status(HttpStatus.CONFLICT).body(e);
             }
         }
     }
 
-    public ResponseEntity tryFindById(@PathVariable int id) {
-        try {
-            return ResponseEntity.ok(getService().findById(id));
-        } catch (Exception e) {
-            return ResponseEntity.notFound().build();
-        }
-    }
-
-    public ResponseEntity tryCreate(@Valid @RequestBody T model) {
-        try {
-            return ResponseEntity.ok(getService().create(model));
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e);
-        }
-    }
-
-    public ResponseEntity tryUpdate(@PathVariable int id, @RequestBody T model) {
-        try {
-            return ResponseEntity.ok(getService().update(model, id));
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e);
-        }
-    }
-
-    public ResponseEntity tryDelete(@PathVariable int id) {
-        try {
-            return ResponseEntity.ok(getService().delete(id));
-        } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).body(e);
-        }
+    public HttpSession getSession(){
+        return session;
     }
 }
