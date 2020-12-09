@@ -14,7 +14,7 @@ public class Model implements CrudModel {
     @Column(name = "name", nullable = false, length = 45)
     private String name;
     @OneToOne
-    @JoinColumn(name = "brandid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    @JoinColumn(name = "brandid", referencedColumnName = "id", nullable = false)
     private Brand brand;
 
     public int getId() {

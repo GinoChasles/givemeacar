@@ -30,10 +30,10 @@ public class Client  implements CrudModel{
     @JoinColumn(name = "addressid", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
     private Address address;
     @OneToOne
-    @JoinColumn(name = "userstatusid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    @JoinColumn(name = "userstatusid", referencedColumnName = "id", nullable = false)
     private UserStatus userStatus;
     @OneToOne
-    @JoinColumn(name = "billid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    @JoinColumn(name = "billid", referencedColumnName = "id", nullable = false)
     private Bill bill;
     @OneToOne
     @JoinColumn(name = "creditcardid", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)

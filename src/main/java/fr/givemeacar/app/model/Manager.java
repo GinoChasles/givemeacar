@@ -22,8 +22,11 @@ public class Manager  implements CrudModel{
     @Column(name = "phone", nullable = false, length = 12)
     private String phone;
     @OneToOne
-    @JoinColumn(name = "userstatusid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    @JoinColumn(name = "userstatusid", referencedColumnName = "id", nullable = false)
     private UserStatus userStatus;
+    @OneToOne
+    @JoinColumn( name = "agencyid", referencedColumnName = "id", nullable = false)
+    private Agency agency;
 
     public int getId() {
         return id;
@@ -77,7 +80,15 @@ public class Manager  implements CrudModel{
         return userStatus;
     }
 
-    public void setUserStatus(UserStatus userStatusByUserStatusId) {
+    public void setUserStatus(UserStatus userStatus) {
         this.userStatus = userStatus;
+    }
+
+    public Agency getAgency() {
+        return agency;
+    }
+
+    public void setAgency(Agency agency) {
+        this.agency = agency;
     }
 }

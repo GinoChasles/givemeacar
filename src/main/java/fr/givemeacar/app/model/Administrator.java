@@ -23,7 +23,7 @@ public class Administrator  implements CrudModel{
     @Column(name = "phone", nullable = false, length = 12)
     private String phone;
     @OneToOne
-    @JoinColumn(name = "userstatusid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    @JoinColumn(name = "userstatusid", referencedColumnName = "id", nullable = false)
     private UserStatus userStatus;
 
     public int getId() {

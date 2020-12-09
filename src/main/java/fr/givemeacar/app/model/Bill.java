@@ -17,10 +17,10 @@ public class Bill  implements CrudModel{
     @Column(name = "date", nullable = false)
     private Date date;
     @OneToOne
-    @JoinColumn(name = "rentid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    @JoinColumn(name = "rentid", referencedColumnName = "id", nullable = false)
     private Rent rent;
     @OneToOne
-    @JoinColumn(name = "agencyid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    @JoinColumn(name = "agencyid", referencedColumnName = "id", nullable = false)
     private Agency agency;
 
     public int getId() {
