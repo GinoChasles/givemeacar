@@ -1,6 +1,7 @@
 import {BrowserRouter as Switch,Route} from "react-router-dom";
+import React from "react";
 
 
-const AppSwitch= ({links}) => <Switch>{links.map((link,i)=><Route key={i} path={link.url}>{link.component}</Route>)}</Switch>
+const AppSwitch= ({links}) => links.map((link, i) => <Route exact key={i} path={link.url} component={link.component}></Route>)
 
-    export default AppSwitch;
+export default AppSwitch;

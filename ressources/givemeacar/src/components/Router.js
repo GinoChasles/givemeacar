@@ -1,18 +1,12 @@
-import {BrowserRouter as Router} from "react-router-dom";
-import AdminDashboard from './dashboards/AdminDashboard'
+import {BrowserRouter as Router,Switch} from "react-router-dom";
 import NavBar from "./NavBar";
 import AppSwitch from "./AppSwitch";
 
-const AppRouter = ({links}) => {
-    return (
-    <Router>
-          <div>
+import React from 'react'
+
+const AppRouter = ({links}) => <Router>
             <NavBar links={links}/>
+            <Switch><AppSwitch links={links}/></Switch>
+        </Router>
 
-            <AppSwitch links={links}/>
-          </div>
-    </Router>
-        )
-    }
-
-    export default AppRouter;
+export default AppRouter;

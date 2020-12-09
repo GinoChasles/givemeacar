@@ -10,16 +10,16 @@ import Map from '../components/map/Map'
 import PrincipalDashboard from '../components/dashboards/PrincipalDashboard'
 
 const links = [
-{url:'/',label:'Home',component:<Home />},
-{url:'/dashboard',label:'Dashboard',component:<PrincipalDashboard />},
-{url:'/signin',label:'connexion',component:<Signin />},
-{url:'/signup',label:'s\'enregistrer',component:<Signup />},
-{url:'/forgot-password',label:'Mot de passe oublié',component:<ForgotPassword />},
-{url:'/map',label:'carte',component:<Map />},
-{url:'/rent',label:'Louer',component:<Rent />},
-{url:'/search',label:'Recherche un véhicule',component:<Search />},
-{url:'/bills',label:'Factures',component:<Bills />},
-{url:'/current',label:'Location en cours',component:<Current />}
+{url:'/home',label:'Home',component:Home},
+{url:'/dashboard',label:'Dashboard',component:PrincipalDashboard},
+{url:'/signin',label:'connexion',component:Signin},
+{url:'/signup',label:'s\'enregistrer',component:Signup},
+{url:'/forgot-password',label:'Mot de passe oublié',component:ForgotPassword},
+{url:'/map',label:'carte',component:Map},
+{url:'/rent',label:'Louer',component:Rent},
+{url:'/search',label:'Recherche un véhicule',component:Search},
+{url:'/bills',label:'Factures',component:Bills},
+{url:'/current',label:'Location en cours',component:Current}
 ]
 
 export default links
