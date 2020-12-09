@@ -1,9 +1,7 @@
 import * as React from "react";
-
+import AdminDashboard from './AdminDashboard'
 const PrincipalDashboard = () => {
-    return (
-    <div>Dashboard principal</div>
-    )
+    return <AdminDashboard />
 }
 
   export default PrincipalDashboard;
