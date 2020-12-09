@@ -3,8 +3,6 @@ import {
   List,
   Datagrid,
   TextField,
-  ReferenceField,
-  EditButton,
   DateTimeInput,
   DateField,
   Create,
@@ -12,8 +10,6 @@ import {
   SimpleForm,
   ReferenceInput,
   AutocompleteInput,
-  SelectInput,
-  TextInput,
 } from "react-admin";
 export const DisplayRents = (props) => (
   <List {...props} title="Réservation">

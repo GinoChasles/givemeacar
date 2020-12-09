@@ -3,7 +3,6 @@ import {
   List,
   Datagrid,
   TextField,
-  ReferenceField,
   NumberField,
   NumberInput,
   EditButton,
@@ -13,22 +12,24 @@ import {
   SimpleForm,
   ReferenceInput,
   AutocompleteInput,
-  SelectInput,
   TextInput,
 } from "react-admin";
 export const DisplayCity = (props) => (
   <List {...props} title="Liste des villes">
+
     <Datagrid rowClick="edit">
       <TextField source="zipcode" />
       <TextField source="name" />
       <NumberField source="latitude" />
       <NumberField source="longitude" />
+
       {/* <ReferenceField source="departmentId" reference="departments" sortBy="departments.name">
-      <TextField source="name" /> //TODO afficher le nom du département 
+      <TextField source="name" /> //TODO afficher le nom du département
       </ReferenceField> */}
       <EditButton>Edit</EditButton>
       <DeleteButton>Delete</DeleteButton>
     </Datagrid>
+
   </List>
 );
 export const EditCity = (props) => (

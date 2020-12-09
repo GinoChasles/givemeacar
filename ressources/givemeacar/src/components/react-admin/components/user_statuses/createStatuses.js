@@ -3,13 +3,9 @@ import {
   List,
   Datagrid,
   TextField,
-  ReferenceField,
-  EditButton,
   Create,
   Edit,
   SimpleForm,
-  ReferenceInput,
-  SelectInput,
   TextInput,
 } from "react-admin";
 export const DisplayStatuses = (props) => (

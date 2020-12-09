@@ -1,17 +1,10 @@
 import * as React from "react";
 import {
-  List,
-  Datagrid,
-  TextField,
-  ReferenceField,
-  EditButton,
   Create,
-  Edit,
   SimpleForm,
   ReferenceInput,
   AutocompleteInput,
-  TextInput,
-  PasswordInput,
+  TextInput
 } from "react-admin";
 
 const CreateAddresses = (props) => (

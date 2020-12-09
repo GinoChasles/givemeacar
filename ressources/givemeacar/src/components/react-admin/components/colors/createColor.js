@@ -3,15 +3,10 @@ import {
   List,
   Datagrid,
   TextField,
-  ReferenceField,
-  EditButton,
   Create,
   Edit,
   SimpleForm,
-  ReferenceInput,
-  SelectInput,
   TextInput,
-  PasswordInput,
 } from "react-admin";
 export const DisplayColor = (props) => (
   <List {...props} title="Liste de couleurs create color"> 

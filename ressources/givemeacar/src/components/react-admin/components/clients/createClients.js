@@ -3,15 +3,12 @@ import {
   List,
   Datagrid,
   TextField,
-  ReferenceField,
-  EditButton,
   PasswordInput,
   Create,
   Edit,
   SimpleForm,
   ReferenceInput,
   AutocompleteInput,
-  SelectInput,
   TextInput,
 } from "react-admin";
 export const DisplayClient = (props) => (

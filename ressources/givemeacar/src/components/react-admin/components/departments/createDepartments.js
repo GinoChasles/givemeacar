@@ -4,14 +4,11 @@ import {
   Datagrid,
   TextField,
   ReferenceField,
-  EditButton,
   Create,
   Edit,
   SimpleForm,
   ReferenceInput,
-  SelectInput,
   AutocompleteInput,
-  ArrayInput,
   TextInput,
 } from "react-admin";
 export const DisplayDepartments = (props) => (

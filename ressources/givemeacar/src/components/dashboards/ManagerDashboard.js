@@ -3,13 +3,11 @@ import {Admin,Resource,ListGuesser,ShowGuesser,EditGuesser} from "react-admin";
 
 import jsonServerProvider from "ra-data-json-server"
 
-import {DisplayAgency,EditAgency,CreateAgency} from '../react-admin/components/agency/createAgency'
 import {DisplayColor,EditColor,CreateColor} from "../react-admin/components/colors/createColor";
 import {DisplayCity,EditCity,CreateCity} from "../react-admin/components/cities/createCities";
 import { DisplayBrand,EditBrand,CreateBrand} from "../react-admin/components/brands/createBrands";
 import { CreateAddresses, EditAddresses, DisplayAddresses } from '../react-admin/components/addresses'
 import {DisplayManager,EditManager,CreateManager} from "../react-admin/components/managers/createManager";
-import {DisplayAdministrators,CreateAdministrators,EditAdministrators} from "../react-admin/components/administrators/createAdministrator";
 import {DisplayCountries,CreateCountries,EditCountries} from "../react-admin/components/countries/createCountries";
 import {DisplayCars,EditCars,CreateCars} from "../react-admin/components/cars/createCar";
 import {DisplayClient,EditClient,CreateClient} from "../react-admin/components/clients/createClients";
@@ -21,7 +19,6 @@ import {DisplayRents,EditRents,CreateRents} from "../react-admin/components/rent
 import {DisplayStreetName,EditStreetName,CreateStreetName} from "../react-admin/components/street_names/createStreetName";
 import {DisplaySuffices,EditSuffices,CreateSuffices} from "../react-admin/components/street_suffices/createSuffices";
 import {DisplayStreets,EditStreets,CreateStreets} from "../react-admin/components/streets/createStreets";
-import {DisplayStatuses,EditStatuses,CreateStatuses} from "../react-admin/components/user_statuses/createStatuses";
 
 
 const dataProvider = jsonServerProvider("http://localhost:8080/api");
@@ -65,13 +62,7 @@ return (
       edit={EditClient}
       create={CreateClient}
     />
-    <Resource
-      name="administrators"
-      list={DisplayAdministrators}
-      show={ShowGuesser}
-      edit={EditAdministrators}
-      create={CreateAdministrators}
-    />
+    
     <Resource
       name="cars"
       list={DisplayCars}
@@ -101,14 +92,6 @@ return (
       show={ShowGuesser}
       edit={EditAddresses}
       create={CreateAddresses}
-    />
-
-    <Resource
-      name="agencies"
-      list={DisplayAgency}
-      show={ShowGuesser}
-      edit={EditAgency}
-      create={CreateAgency}
     />
     <Resource
       name="bills"
@@ -165,13 +148,7 @@ return (
       edit={EditCountries}
       create={CreateCountries}
     />
-    <Resource
-      name="user_statuses"
-      list={DisplayStatuses}
-      show={ShowGuesser}
-      edit={EditStatuses}
-      create={CreateStatuses}
-    />
+    
   </Admin>)}
 
   export default ManagerDashboard;

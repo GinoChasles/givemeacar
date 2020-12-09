@@ -3,13 +3,10 @@ import {
   List,
   Datagrid,
   TextField,
-  ReferenceField,
-  EditButton,
   Create,
   Edit,
   SimpleForm,
   ReferenceInput,
-  SelectInput,
   AutocompleteInput,
   TextInput,
   EmailField,
@@ -31,9 +28,9 @@ export const DisplayManager = (props) => (
 );
 export const EditManager = (props) => (
   <Edit {...props}>
-    <SimpleForm initialValues={postDefaultValue}>
-    <ReferenceInput source="agencyId" reference="agencies">
-        <AutocompleteInput optionText="name" />
+    <SimpleForm>
+    <ReferenceInput label="nom de l'agence" source="agencyId" reference="agencies">
+        <AutocompleteInput optionText="name" optionValue={"id"} />
       </ReferenceInput>
       <TextInput source="firstName" />
       <TextInput source="lastName" />
@@ -43,13 +40,13 @@ export const EditManager = (props) => (
     </SimpleForm>
   </Edit>
 );
-const postDefaultValue = () => ({ userStatusId: 2 });
+/*const postDefaultValue = () => ({ userStatusId: 2 }); initialValues={postDefaultValue*/
 export const CreateManager = (props) => (
   <Create {...props}>
-    <SimpleForm initialValues={postDefaultValue}>
-      <ReferenceInput source="agencyId" reference="agencies">
-        <AutocompleteInput optionText="name" />
-      </ReferenceInput>
+    <SimpleForm >
+      <ReferenceInput label="nom de l'agence" source="agencyId" reference="agencies">
+              <AutocompleteInput optionText="name" optionValue={"id"} /> //TODO optionValue a rajouter dans chaque autocomplete
+            </ReferenceInput>
       <TextInput source="firstName" />
       <TextInput source="lastName" />
       <TextInput source="mail" />

@@ -4,7 +4,6 @@ import {
   Datagrid,
   TextField,
   ReferenceField,
-  EditButton,
   NumberInput,
   NumberField,
   Create,
@@ -13,9 +12,7 @@ import {
   ReferenceInput,
   BooleanInput,
   BooleanField,
-  SelectInput,
   AutocompleteInput,
-  TextInput,
 } from "react-admin";
 export const DisplayCars = (props) => (
   <List {...props} title="Liste des véhicules">
