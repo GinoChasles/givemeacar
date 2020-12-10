@@ -45,7 +45,7 @@ export const CreateManager = (props) => (
   <Create {...props}>
     <SimpleForm >
       <ReferenceInput label="nom de l'agence" source="agencyId" reference="agencies">
-              <AutocompleteInput optionText="name" optionValue={"id"} /> //TODO optionValue a rajouter dans chaque autocomplete
+              <AutocompleteInput optionText="name" optionValue={"id"} />
             </ReferenceInput>
       <TextInput source="firstName" />
       <TextInput source="lastName" />

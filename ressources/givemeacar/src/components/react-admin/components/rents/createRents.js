@@ -27,10 +27,10 @@ export const EditRents = (props) => (
     <DateTimeInput source="start" />
     <DateTimeInput source="end" />
       <ReferenceInput source="car_id" reference="cars">
-        <AutocompleteInput optionText="name" />
+        <AutocompleteInput optionText="name" optionValue={"id"}/>
       </ReferenceInput>
       <ReferenceInput source="client_id" reference="clients">
-        <AutocompleteInput optionText="name" />
+        <AutocompleteInput optionText="name" optionValue={"id"}/>
       </ReferenceInput>
     </SimpleForm>
   </Edit>
@@ -41,10 +41,10 @@ export const CreateRents = (props) => (
     <DateTimeInput source="start" />
     <DateTimeInput source="end" />
       <ReferenceInput source="car_id" reference="cars">
-        <AutocompleteInput optionText="name" />
+        <AutocompleteInput optionText="name" optionValue={"id"}/>
       </ReferenceInput>
       <ReferenceInput source="client_id" reference="clients">
-        <AutocompleteInput optionText="name" />
+        <AutocompleteInput optionText="name" optionValue={"id"}/>
       </ReferenceInput>
     </SimpleForm>
   </Create>

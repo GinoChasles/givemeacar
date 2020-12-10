@@ -21,10 +21,10 @@ export const EditStreets = (props) => (
   <Edit {...props}>
     <SimpleForm>
       <ReferenceInput source="city_id" reference="cities">
-        <AutocompleteInput optionText="name" />
+        <AutocompleteInput optionText="name" optionValue={"id"}/>
       </ReferenceInput>
       <ReferenceInput source="street_name_id" reference="street_names">
-        <AutocompleteInput optionText="name" />
+        <AutocompleteInput optionText="name" optionValue={"id"}/>
       </ReferenceInput>
     </SimpleForm>
   </Edit>
@@ -33,10 +33,10 @@ export const CreateStreets = (props) => (
   <Create {...props}>
     <SimpleForm>
       <ReferenceInput source="city_id" reference="cities">
-        <AutocompleteInput optionText="name" />
+        <AutocompleteInput optionText="name" optionValue={"id"}/>
       </ReferenceInput>
       <ReferenceInput source="street_name_id" reference="street_names">
-        <AutocompleteInput optionText="name" />
+        <AutocompleteInput optionText="name" optionValue={"id"}/>
       </ReferenceInput>
     </SimpleForm>
   </Create>

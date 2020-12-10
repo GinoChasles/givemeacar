@@ -24,10 +24,10 @@ export const EditAgency = (props) => (
     <SimpleForm>
       <TextInput source="name" />
       <ReferenceInput source="address_id" reference="addresses">
-        <AutocompleteInput optionText="name" />
+        <AutocompleteInput optionText="name" optionValue={"id"}/>
       </ReferenceInput>
       <ReferenceInput source="manager_id" reference="managers">
-        <AutocompleteInput optionText="name" />
+        <AutocompleteInput optionText="name" optionValue={"id"}/>
       </ReferenceInput>
     </SimpleForm>
   </Edit>
@@ -37,10 +37,10 @@ export const CreateAgency = (props) => (
     <SimpleForm>
       <TextInput source="name" />
       <ReferenceInput source="address_id" reference="addresses">
-        <AutocompleteInput optionText="name" />
+        <AutocompleteInput optionText="name" optionValue={"id"}/>
       </ReferenceInput>
       <ReferenceInput source="manager_id" reference="managers">
-        <AutocompleteInput optionText="name" />
+        <AutocompleteInput optionText="name" optionValue={"id"}/>
       </ReferenceInput>
     </SimpleForm>
   </Create>

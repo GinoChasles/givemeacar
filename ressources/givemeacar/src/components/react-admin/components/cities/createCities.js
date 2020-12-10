@@ -40,7 +40,7 @@ export const EditCity = (props) => (
       <NumberInput source="latitude" />
       <NumberInput source="longitude" />
       <ReferenceInput source="departmentId" reference="departments">
-        <AutocompleteInput optionText="name" />
+        <AutocompleteInput optionText="name" optionValue={"id"}/>
       </ReferenceInput>
     </SimpleForm>
   </Edit>
@@ -53,7 +53,7 @@ export const CreateCity = (props) => (
       <NumberInput source="latitude" />
       <NumberInput source="longitude" />
       <ReferenceInput source="departmentId" reference="departments">
-        <AutocompleteInput optionText="name" />
+        <AutocompleteInput optionText="name" optionValue={"id"}/>
       </ReferenceInput>
     </SimpleForm>
   </Create>

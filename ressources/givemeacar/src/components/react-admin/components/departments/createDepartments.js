@@ -26,7 +26,7 @@ export const EditDepartments = (props) => (
   <Edit {...props}>
     <SimpleForm>
       <ReferenceInput source="region_id" reference="regions">
-        <AutocompleteInput optionText="name" />
+        <AutocompleteInput optionText="name" optionValue={"id"}/>
       </ReferenceInput>
       <TextInput source="code" />
       <TextInput source="name" />
@@ -37,9 +37,8 @@ export const CreateDepartments = (props) => (
   <Create {...props}>
     <SimpleForm>
     <ReferenceInput source="region_id" reference="regions">
-        <AutocompleteInput optionText="name" />
+        <AutocompleteInput optionText="name" optionValue={"id"}/>
       </ReferenceInput>
-      <TextInput disabled source="region_id" />
       <TextInput source="code" />
       <TextInput source="name" />
     </SimpleForm>

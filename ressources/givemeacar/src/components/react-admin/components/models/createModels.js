@@ -22,7 +22,7 @@ export const EditModels = (props) => (
   <Edit {...props}>
     <SimpleForm>
       <ReferenceInput source="brand_id" reference="brands">
-        <AutocompleteInput optionText="name" />
+        <AutocompleteInput optionText="name" optionValue={"id"}/>
       </ReferenceInput>
       <TextInput source="name" />
     </SimpleForm>
