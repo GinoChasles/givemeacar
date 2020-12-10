@@ -45,7 +45,7 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
 
     public ResponseEntity deleteById(int id){ return ResponseEntity.ok(((CrudService<T>)getService()).deleteById(id)); }
 
-    public ResponseEntity findById(int id){
+    public ResponseEntity listById(int id){
         if(id == 0) return ResponseEntity.ok(((CrudService<T>)getService()).findLast());
 
         Optional<T> model = ((CrudService<T>)getService()).findById(id);
@@ -58,16 +58,27 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
         return ResponseEntity.ok(list);
     }
 
+    public ResponseEntity findById(int id){
+        if(id == 0) return ResponseEntity.ok(((CrudService<T>)getService()).findLast());
+
+        Optional<T> model = ((CrudService<T>)getService()).findById(id);
+
+        if(model.isPresent())
+            return ResponseEntity.ok(model);
+
+        return ResponseEntity.notFound().build();
+    }
+
     public ResponseEntity findByNameStartingBy(String name){
         findByNameStartingWithRepository repo =
                 (findByNameStartingWithRepository) getService().getRepository();
         List res = repo.findByNameStartingWith(name);
 
-        System.out.println("taille : " + res.size());
-        if(res.size() != 0) {
-            return ResponseEntity.ok(res);
-        }
-        return ResponseEntity.notFound().build();
+            responseHeaders = new HttpHeaders();
+            responseHeaders.set("X-Total-Count", String.valueOf(res.size()));
+            responseHeaders.set("Access-Control-Expose-Headers", "X-Total-Count");
+
+            return ResponseEntity.ok().headers(responseHeaders).body(res);
     }
 
     public ResponseEntity findAll(@RequestParam(required = false) String _order,
@@ -81,7 +92,7 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
         }
 
         if(id != null){
-            return findById(id.intValue());
+            return listById(id.intValue());
         }
 
         if (_start != null) {

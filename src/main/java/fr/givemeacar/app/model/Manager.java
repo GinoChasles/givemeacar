@@ -6,11 +6,12 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name = "managers", schema = "givemeacar", catalog = "")
+@Table(name = "managers", schema = "givemeacar")
 public class Manager  implements CrudModel{
     @Id
     @Column(name = "id", nullable = false)
     private int id;
+
     @Column(name = "firstname", nullable = false, length = 32)
     private String firstName;
     @Column(name = "lastname", nullable = false, length = 32)
@@ -21,11 +22,15 @@ public class Manager  implements CrudModel{
     private String password;
     @Column(name = "phone", nullable = false, length = 12)
     private String phone;
+
     @OneToOne
     @JoinColumn(name = "userstatusid", referencedColumnName = "id", nullable = false)
     private UserStatus userStatus;
+
+    @Column(name = "agencyid", nullable = false)
+    private int agencyId;
     @OneToOne
-    @JoinColumn( name = "agencyid", referencedColumnName = "id", nullable = false)
+    @JoinColumn( name = "agencyid", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
     private Agency agency;
 
     public int getId() {
@@ -90,5 +95,13 @@ public class Manager  implements CrudModel{
 
     public void setAgency(Agency agency) {
         this.agency = agency;
+    }
+
+    public int getAgencyId() {
+        return agencyId;
+    }
+
+    public void setAgencyId(int agencyId) {
+        this.agencyId = agencyId;
     }
 }
