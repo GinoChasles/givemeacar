@@ -25,5 +25,5 @@ public class Agency  implements CrudModel{
             nullable = false,insertable = false,updatable = false)
     private Address address;
     @JoinColumn(name = "addressid", referencedColumnName = "id", nullable = false)
-    private int addressId;
+    private int addressById;
 }

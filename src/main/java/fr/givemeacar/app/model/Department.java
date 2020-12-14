@@ -25,6 +25,6 @@ public class Department  implements CrudModel{
     private Region region;
 
     @JoinColumn(name = "regionid", referencedColumnName = "id", nullable = false)
-    private int regionId;
+    private int regionById;
 
 }

@@ -31,7 +31,7 @@ public class Address implements CrudModel{
     @JoinColumn(name = "cityid", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
     private Street city;
     @JoinColumn(name = "streetid", referencedColumnName = "id", nullable = false)
-    private int streetId;
+    private int streetById;
     @JoinColumn(name = "cityid", referencedColumnName = "id", nullable = false)
-    private int cityId;
+    private int cityById;
 }

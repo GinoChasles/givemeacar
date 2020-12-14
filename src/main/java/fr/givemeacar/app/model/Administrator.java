@@ -37,5 +37,5 @@ public class Administrator  implements CrudModel{
             nullable = false,updatable = false,insertable = false)
     private UserStatus userStatus;
     @JoinColumn(name = "userstatusid", referencedColumnName = "id", nullable = false)
-    private int userStatusId;
+    private int userStatusById;
 }

@@ -25,5 +25,5 @@ public class Model implements CrudModel {
             nullable = false,insertable = false,updatable = false)
     private Brand brand;
     @JoinColumn(name = "brandid", referencedColumnName = "id", nullable = false)
-    private int brandId;
+    private int brandById;
 }

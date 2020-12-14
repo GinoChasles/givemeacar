@@ -51,13 +51,13 @@ public class Client  implements CrudModel{
     private CreditCard creditCard;
 
     @JoinColumn(name = "agencyid", referencedColumnName = "id", nullable = false)
-    private int agencyId;
+    private int agencyById;
     @JoinColumn(name = "addressid", referencedColumnName = "id", nullable = false)
-    private int addressId;
+    private int addressById;
     @JoinColumn(name = "userstatusid", referencedColumnName = "id", nullable = false)
-    private int userStatusId;
+    private int userStatusById;
     @JoinColumn(name = "billid", referencedColumnName = "id", nullable = false)
-    private int billId;
+    private int billById;
     @JoinColumn(name = "creditcardid", referencedColumnName = "id", nullable = false)
-    private int creditCardId;
+    private int creditCardById;
 }

@@ -30,8 +30,8 @@ public class Rent  implements CrudModel{
     private Client client;
 
     @JoinColumn(name = "carid", referencedColumnName = "id", nullable = false)
-    private int carId;
+    private int carById;
     @JoinColumn(name = "clientid", referencedColumnName = "id", nullable = false)
-    private int clientId;
+    private int clientById;
 
 }

@@ -38,10 +38,10 @@ public class Manager  implements CrudModel{
     @JoinColumn(name = "userstatusid", referencedColumnName = "id", nullable = false, insertable = false,updatable = false)
     private UserStatus userStatus;
     @JoinColumn(name = "userstatusid", referencedColumnName = "id", nullable = false)
-    private int userStatusId;
+    private int userStatusById;
 
     @Column(name = "agencyid", nullable = false)
-    private int agencyId;
+    private int agencyById;
     @OneToOne
     @JoinColumn( name = "agencyid", referencedColumnName = "id",
             nullable = false, insertable = false,updatable = false)

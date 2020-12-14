@@ -32,6 +32,6 @@ public class City  implements CrudModel{
     @JoinColumn(name = "departmentid", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
     private Department department;
     @JoinColumn(name = "departmentid", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
-    private int departmentId;
+    private int departmentById;
 
 }
