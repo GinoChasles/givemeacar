@@ -1,6 +1,8 @@
 package fr.givemeacar.app.service;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import java.util.Optional;
 
 import fr.givemeacar.app.repository.BaseCrudRepository;
 
@@ -44,7 +46,7 @@ public interface CrudService<T> {
      * @param id the id of the entity in the table
      * @return the entity in the table with the given id
      */
-    public T findById(int id);
+    public Optional<T> findById(int id);
 
     /**
      * Returns the last entity in the table based on its id

@@ -1,14 +1,11 @@
 package fr.givemeacar.app.service;
 
 import fr.givemeacar.app.repository.BaseCrudRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
+import fr.givemeacar.app.repository.findByNameStartingWithRepository;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.NoRepositoryBean;
-import org.springframework.stereotype.Service;
 
 import fr.givemeacar.app.model.CrudModel;
 
@@ -38,8 +35,8 @@ public abstract class CrudServiceImpl<T> implements CrudService<T> {
         return (T)((BaseCrudRepository)getRepository()).findFirstByOrderByIdDesc();
     }
 
-    public T findById(int id){
-        return (T)((BaseCrudRepository)getRepository()).findById(id);
+    public Optional<T> findById(int id){
+        return (Optional<T>)((BaseCrudRepository)getRepository()).findById(id);
     }
 
     public List<T> findAll(int offset, int limit, String order, String sort) {
