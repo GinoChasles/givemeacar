@@ -3,11 +3,11 @@ import {Admin,Resource,ListGuesser,ShowGuesser,EditGuesser} from "react-admin";
 
 import jsonServerProvider from "ra-data-json-server"
 
-import {DisplayAgency} from '../react-admin/components/agency/createAgency'
-import {DisplayManager} from "../react-admin/components/managers/createManager";
-import {DisplayCars} from "../react-admin/components/cars/createCar";
-import {DisplayClient,EditClient} from "../react-admin/components/clients/createClients";
-import {DisplayRents,EditRents,CreateRents} from "../react-admin/components/rents/createRents";
+import {DisplayAgency} from '../react-admin/components/agency/CreateAgency'
+import {DisplayManager} from "../react-admin/components/managers/CreateManager.js";
+import {DisplayCars} from "../react-admin/components/cars/CreateCar";
+import {DisplayClient,EditClient} from "../react-admin/components/clients/CreateClient";
+import {DisplayRents,EditRents,CreateRent} from "../react-admin/components/rents/CreateRent";
 
 
 const dataProvider = jsonServerProvider("http://localhost:8080/api");
@@ -49,7 +49,7 @@ return (
       list={DisplayRents}
       show={ShowGuesser}
       edit={EditRents}
-      create={CreateRents}
+      create={CreateRent}
     />
   </Admin>)}
 

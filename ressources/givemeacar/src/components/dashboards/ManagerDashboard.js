@@ -3,22 +3,22 @@ import {Admin,Resource,ListGuesser,ShowGuesser,EditGuesser} from "react-admin";
 
 import jsonServerProvider from "ra-data-json-server"
 
-import {DisplayColor,EditColor,CreateColor} from "../react-admin/components/colors/createColor";
-import {DisplayCity,EditCity,CreateCity} from "../react-admin/components/cities/createCities";
-import { DisplayBrand,EditBrand,CreateBrand} from "../react-admin/components/brands/createBrands";
+import {DisplayColor,EditColor,CreateColor} from "../react-admin/components/colors/CreateColor";
+import {DisplayCity,EditCity,CreateCity} from "../react-admin/components/cities/CreateCity";
+import { DisplayBrand,EditBrand,CreateBrand} from "../react-admin/components/brands/CreateBrand";
 import { CreateAddresses, EditAddresses, DisplayAddresses } from '../react-admin/components/addresses'
-import {DisplayManager,EditManager,CreateManager} from "../react-admin/components/managers/createManager";
-import {DisplayCountries,CreateCountries,EditCountries} from "../react-admin/components/countries/createCountries";
-import {DisplayCars,EditCars,CreateCars} from "../react-admin/components/cars/createCar";
-import {DisplayClient,EditClient,CreateClient} from "../react-admin/components/clients/createClients";
-import {DisplayDepartments,EditDepartments,CreateDepartments,} from "../react-admin/components/departments/createDepartments";
-import {DisplayEnergyTypes,EditEnergyTypes,CreateEnergyTypes} from "../react-admin/components/energy_types/createEnergyTypes";
-import {DisplayModels,EditModels,CreateModels} from "../react-admin/components/models/createModels";
-import {DisplayRegions,EditRegions,CreateRegions} from "../react-admin/components/regions/createRegions";
-import {DisplayRents,EditRents,CreateRents} from "../react-admin/components/rents/createRents";
-import {DisplayStreetName,EditStreetName,CreateStreetName} from "../react-admin/components/street_names/createStreetName";
-import {DisplaySuffices,EditSuffices,CreateSuffices} from "../react-admin/components/street_suffices/createSuffices";
-import {DisplayStreets,EditStreets,CreateStreets} from "../react-admin/components/streets/createStreets";
+import {DisplayManager,EditManager,CreateManager} from "../react-admin/components/managers/CreateManager.js";
+import {DisplayCountries,CreateCountry,EditCountries} from "../react-admin/components/countries/CreateCountry";
+import {DisplayCars,EditCars,CreateCars} from "../react-admin/components/cars/CreateCar";
+import {DisplayClient,EditClient,CreateClient} from "../react-admin/components/clients/CreateClient";
+import {DisplayDepartments,EditDepartments,CreateDepartment,} from "../react-admin/components/departments/CreateDepartment";
+import {DisplayEnergyTypes,EditEnergyTypes,CreateEnergyType} from "../react-admin/components/energy_types/CreateEnergyType";
+import {DisplayModels,EditModels,CreateModel} from "../react-admin/components/models/CreateModel";
+import {DisplayRegions,EditRegions,CreateRegion} from "../react-admin/components/regions/CreateRegion";
+import {DisplayRents,EditRents,CreateRent} from "../react-admin/components/rents/CreateRent";
+import {DisplayStreetName,EditStreetName,CreateStreetName} from "../react-admin/components/street_names/CreateStreetName";
+import {DisplaySuffices,EditSuffices,CreateSuffix} from "../react-admin/components/street_suffices/CreateSuffix";
+import {DisplayStreets,EditStreets,CreateStreet} from "../react-admin/components/streets/CreateStreet";
 
 
 const dataProvider = jsonServerProvider("http://localhost:8080/api");
@@ -45,7 +45,7 @@ return (
       list={DisplayDepartments}
       show={ShowGuesser}
       edit={EditDepartments}
-      create={CreateDepartments}
+      create={CreateDepartment}
     />
     <Resource
       options={{ label: "Les managers !" }}
@@ -83,7 +83,7 @@ return (
       list={DisplayModels}
       show={ShowGuesser}
       edit={EditModels}
-      create={CreateModels}
+      create={CreateModel}
     />
 
     <Resource
@@ -104,35 +104,35 @@ return (
       list={DisplayRents}
       show={ShowGuesser}
       edit={EditRents}
-      create={CreateRents}
+      create={CreateRent}
     />
     <Resource
       name="energy_types"
       list={DisplayEnergyTypes}
       show={ShowGuesser}
       edit={EditEnergyTypes}
-      create={CreateEnergyTypes}
+      create={CreateEnergyType}
     />
     <Resource
       name="regions"
       list={DisplayRegions}
       show={ShowGuesser}
       edit={EditRegions}
-      create={CreateRegions}
+      create={CreateRegion}
     />
     <Resource
       name="streets"
       list={DisplayStreets}
       show={ShowGuesser}
       edit={EditStreets}
-      create={CreateStreets}
+      create={CreateStreet}
     />
     <Resource
       name="street_suffices"
       list={DisplaySuffices}
       show={ShowGuesser}
       edit={EditSuffices}
-      create={CreateSuffices}
+      create={CreateSuffix}
     />
     <Resource
       name="street_names"
@@ -146,7 +146,7 @@ return (
       list={DisplayCountries}
       show={ShowGuesser}
       edit={EditCountries}
-      create={CreateCountries}
+      create={CreateCountry}
     />
     
   </Admin>)}
