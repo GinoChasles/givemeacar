@@ -146,7 +146,7 @@ return (
       create={CreateStreet}
     />
     <Resource
-      name="street_Suffices"
+      name="street_suffices"
       list={DisplaySuffix}
       show={ShowGuesser}
       edit={EditSuffix}
