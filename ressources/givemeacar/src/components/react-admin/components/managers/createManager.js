@@ -20,6 +20,7 @@ const CreateManager = (props) => (
       <TextInput source="lastName" />
       <TextInput source="mail" />
       <TextInput source="phone" />
+
       <PasswordInput source="password" />
     </SimpleForm>
   </Create>
