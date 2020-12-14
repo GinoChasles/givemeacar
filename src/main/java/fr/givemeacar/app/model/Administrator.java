@@ -10,7 +10,7 @@ import javax.validation.constraints.Pattern;
 
 @Data
 @Entity
-@Table(name = "administrators", schema = "givemeacar", catalog = "")
+@Table(name = "administrators", schema = "givemeacar")
 public class Administrator  implements CrudModel{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -21,7 +21,7 @@ public class Administrator  implements CrudModel{
             "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,32}")
     private String firstName;
     @Column(name = "lastname", nullable = false)
-    @Pattern(regexp = "[a-zA-Z" +
+            @Pattern(regexp = "[a-zA-Z" +
             "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,32}")
     private String lastName;
     @Column(name = "mail", nullable = false)
@@ -36,7 +36,6 @@ public class Administrator  implements CrudModel{
     @JoinColumn(name = "userstatusid", referencedColumnName = "id",
             nullable = false,updatable = false,insertable = false)
     private UserStatus userStatus;
-    @OneToOne
     @JoinColumn(name = "userstatusid", referencedColumnName = "id", nullable = false)
-    private UserStatus userStatusId;
+    private int userStatusId;
 }

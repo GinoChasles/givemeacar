@@ -10,7 +10,7 @@ import java.util.Date;
 
 @Data
 @Entity
-@Table(name = "bills", schema = "givemeacar", catalog = "")
+@Table(name = "bills", schema = "givemeacar")
 public class Bill  implements CrudModel{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -21,10 +21,16 @@ public class Bill  implements CrudModel{
     @Column(name = "date", nullable = false)
     private Date date;
     @OneToOne
-    @JoinColumn(name = "rentid", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "rentid", referencedColumnName = "id",
+            nullable = false, updatable = false,insertable = false)
     private Rent rent;
     @OneToOne
-    @JoinColumn(name = "agencyid", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "agencyid", referencedColumnName = "id",
+            nullable = false, updatable = false,insertable = false)
     private Agency agency;
+    @JoinColumn(name = "rentid", referencedColumnName = "id", nullable = false)
+    private Rent rentId;
+    @JoinColumn(name = "agencyid", referencedColumnName = "id", nullable = false)
+    private Agency agencyId;
 
 }

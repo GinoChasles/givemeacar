@@ -31,16 +31,22 @@ public class Car  implements CrudModel{
     @Column(name = "latitude", nullable = false, precision = 14)
     private BigDecimal latitude;
     @OneToOne
-    @JoinColumn(name = "modelid", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "modelid", referencedColumnName = "id",
+            nullable = false, insertable = false,updatable = false)
     private Model model;
     @OneToOne
-    @JoinColumn(name = "colorid", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "colorid", referencedColumnName = "id",
+            nullable = false, insertable = false,updatable = false)
     private Color color;
     @OneToOne
-    @JoinColumn(name = "energyTypeid", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "energytypeid", referencedColumnName = "id",
+            nullable = false, insertable = false,updatable = false)
     private EnergyType energyType;
-    @OneToOne
-    @JoinColumn(name = "addressid", referencedColumnName = "id", nullable = false)
-    private Address address;
-
+    @JoinColumn(name = "modelid", referencedColumnName = "id", nullable = false)
+    private int modelId;
+    @JoinColumn(name = "colorid", referencedColumnName = "id", nullable = false)
+    private int colorId;
+    @JoinColumn(name = "energytypeid", referencedColumnName = "id",
+            nullable = false)
+    private int energyTypeId;
 }

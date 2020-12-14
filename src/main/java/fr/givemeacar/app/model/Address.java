@@ -30,10 +30,8 @@ public class Address implements CrudModel{
     @OneToOne
     @JoinColumn(name = "cityid", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
     private Street city;
-    @OneToOne
     @JoinColumn(name = "streetid", referencedColumnName = "id", nullable = false)
-    private Street streetId;
-    @OneToOne
+    private int streetId;
     @JoinColumn(name = "cityid", referencedColumnName = "id", nullable = false)
-    private Street cityId;
+    private int cityId;
 }
