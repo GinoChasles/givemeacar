@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.persistence.Entity;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.lang.reflect.InvocationTargetException;
 
 public interface CrudController<T> {
 
@@ -44,7 +45,9 @@ public interface CrudController<T> {
      */
     public ResponseEntity findAll(@RequestParam(required = false) String _order,
             @RequestParam(required = false) String _sort, @RequestParam(required = false) Integer _start,
-            @RequestParam(required = false) Integer _end, @RequestParam(required = false) Integer id);
+            @RequestParam(required = false) Integer _end, @RequestParam(required = false) Integer id,
+                                  @RequestParam(required = false) String q)
+            throws NoSuchMethodException, IllegalAccessException, InvocationTargetException;
 
     /**
      * Creates an entity in the table
