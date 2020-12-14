@@ -1,14 +1,7 @@
 import * as React from "react";
 import {
-  List,
-  Datagrid,
-  TextField,
-  NumberField,
   NumberInput,
-  EditButton,
-  DeleteButton,
   Create,
-  Edit,
   SimpleForm,
   ReferenceInput,
   AutocompleteInput,
