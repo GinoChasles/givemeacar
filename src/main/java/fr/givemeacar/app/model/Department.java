@@ -20,11 +20,11 @@ public class Department  implements CrudModel{
     @Column(name = "code", nullable = true, length = 45)
     private String code;
     @OneToOne
-    @JoinColumn(name = "regionid", referencedColumnName = "id",
+    @JoinColumn(name = "region_id", referencedColumnName = "id",
             nullable = false, insertable = false,updatable = false)
     private Region region;
 
-    @JoinColumn(name = "regionid", referencedColumnName = "id", nullable = false)
-    private int regionById;
+    @Column(name = "region_id", nullable = false)
+    private int region_id;
 
 }

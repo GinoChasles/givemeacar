@@ -29,9 +29,9 @@ public class City  implements CrudModel{
     @Column(name = "latitude", nullable = false, precision = 14)
     private BigDecimal latitude;
     @OneToOne
-    @JoinColumn(name = "departmentid", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
+    @JoinColumn(name = "department_id", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
     private Department department;
-    @JoinColumn(name = "departmentid", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
-    private int departmentById;
+    @Column(name = "department_id", nullable = false)
+    private int department_id;
 
 }

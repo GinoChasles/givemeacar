@@ -25,13 +25,14 @@ public class Address implements CrudModel{
     @Column(name = "numbersuffix", nullable = true)
     private String numberSuffix;
     @OneToOne
-    @JoinColumn(name = "streetid", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
+    @JoinColumn(name = "street_id", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
     private Street street;
     @OneToOne
-    @JoinColumn(name = "cityid", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
+    @JoinColumn(name = "city_id", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
     private Street city;
-    @JoinColumn(name = "streetid", referencedColumnName = "id", nullable = false)
-    private int streetById;
-    @JoinColumn(name = "cityid", referencedColumnName = "id", nullable = false)
-    private int cityById;
+    @Column(name = "street_id", nullable = false)
+    private int street_id;
+    @Column(name = "city_id", nullable =
+            false)
+    private int city_id;
 }

@@ -21,9 +21,9 @@ public class Agency  implements CrudModel{
             "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,32}")
     private String name;
     @OneToOne
-    @JoinColumn(name = "addressid", referencedColumnName = "id",
+    @JoinColumn(name = "address_id", referencedColumnName = "id",
             nullable = false,insertable = false,updatable = false)
     private Address address;
-    @JoinColumn(name = "addressid", referencedColumnName = "id", nullable = false)
-    private int addressById;
+    @Column(name = "address_id", nullable = false)
+    private int address_id;
 }

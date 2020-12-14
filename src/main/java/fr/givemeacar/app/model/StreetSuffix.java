@@ -10,7 +10,7 @@ import javax.validation.constraints.Pattern;
 
 @Data
 @Entity
-@Table(name = "street_suffices", schema = "givemeacar", catalog = "")
+@Table(name = "street_suffices", schema = "givemeacar")
 public class StreetSuffix  implements CrudModel{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)

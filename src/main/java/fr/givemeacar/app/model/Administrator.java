@@ -33,9 +33,9 @@ public class Administrator  implements CrudModel{
     @Column(name = "phone", nullable = false, length = 10)
     private String phone;
     @OneToOne
-    @JoinColumn(name = "userstatusid", referencedColumnName = "id",
+    @JoinColumn(name = "user_status_id", referencedColumnName = "id",
             nullable = false,updatable = false,insertable = false)
     private UserStatus userStatus;
-    @JoinColumn(name = "userstatusid", referencedColumnName = "id", nullable = false)
-    private int userStatusById;
+    @Column(name = "user_status_id", nullable = false)
+    private int user_status_id;
 }
