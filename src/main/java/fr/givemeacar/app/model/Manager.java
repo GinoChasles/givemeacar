@@ -5,6 +5,7 @@ package fr.givemeacar.app.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 
 
 @Data
@@ -16,24 +17,33 @@ public class Manager  implements CrudModel{
     @Column(name = "id", nullable = false)
     private int id;
 
-    @Column(name = "firstname", nullable = false, length = 32)
+    @Column(name = "firstname", nullable = false)
+    @Pattern(regexp = "[a-zA-Z" +
+            "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,32}")
     private String firstName;
-    @Column(name = "lastname", nullable = false, length = 32)
+    @Column(name = "lastname", nullable = false)
+    @Pattern(regexp = "[a-zA-Z" +
+            "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,42}")
     private String lastName;
-    @Column(name = "mail", nullable = false, length = 64)
+    @Column(name = "mail", nullable = false)
+    @Pattern(regexp = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$")
     private String mail;
     @Column(name = "password", nullable = false, length = 64)
     private String password;
-    @Column(name = "phone", nullable = false, length = 12)
+    @Column(name = "phone", nullable = false)
+    @Pattern(regexp = "[0-9]{10}")
     private String phone;
 
     @OneToOne
-    @JoinColumn(name = "userstatusid", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "userstatusid", referencedColumnName = "id", nullable = false, insertable = false,updatable = false)
     private UserStatus userStatus;
+    @JoinColumn(name = "userstatusid", referencedColumnName = "id", nullable = false)
+    private int userStatusId;
 
     @Column(name = "agencyid", nullable = false)
     private int agencyId;
     @OneToOne
-    @JoinColumn( name = "agencyid", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
+    @JoinColumn( name = "agencyid", referencedColumnName = "id",
+            nullable = false, insertable = false,updatable = false)
     private Agency agency;
 }
