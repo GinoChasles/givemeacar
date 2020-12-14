@@ -8,8 +8,6 @@ import {
   PasswordInput,
 } from "react-admin";
 
-
-/*const postDefaultValue = () => ({ userStatusId: 2 }); initialValues={postDefaultValue*/
 const CreateManager = (props) => (
   <Create {...props}>
     <SimpleForm >
@@ -20,7 +18,6 @@ const CreateManager = (props) => (
       <TextInput source="lastName" />
       <TextInput source="mail" />
       <TextInput source="phone" />
-
       <PasswordInput source="password" />
     </SimpleForm>
   </Create>
