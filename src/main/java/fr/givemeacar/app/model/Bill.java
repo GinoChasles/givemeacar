@@ -29,8 +29,8 @@ public class Bill  implements CrudModel{
             nullable = false, updatable = false,insertable = false)
     private Agency agency;
     @JoinColumn(name = "rentid", referencedColumnName = "id", nullable = false)
-    private Rent rentId;
+    private int rentId;
     @JoinColumn(name = "agencyid", referencedColumnName = "id", nullable = false)
-    private Agency agencyId;
+    private int agencyId;
 
 }
