@@ -19,7 +19,7 @@ public class Color implements CrudModel {
     @Column(name = "id", nullable = false)
     private int id;
 
-    @Pattern(regexp = "[a-zA-Z\\-]{0,45}")
+    @Pattern(regexp = "[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{0,45}")
     @NotBlank
     @Column(name = "name", unique = true,nullable=false)
     private String name;

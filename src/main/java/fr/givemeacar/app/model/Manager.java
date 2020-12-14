@@ -2,13 +2,17 @@ package fr.givemeacar.app.model;
 
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 
+@Data
 @Entity
 @Table(name = "managers", schema = "givemeacar")
 public class Manager  implements CrudModel{
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
 
@@ -32,76 +36,4 @@ public class Manager  implements CrudModel{
     @OneToOne
     @JoinColumn( name = "agencyid", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
     private Agency agency;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public UserStatus getUserStatus() {
-        return userStatus;
-    }
-
-    public void setUserStatus(UserStatus userStatus) {
-        this.userStatus = userStatus;
-    }
-
-    public Agency getAgency() {
-        return agency;
-    }
-
-    public void setAgency(Agency agency) {
-        this.agency = agency;
-    }
-
-    public int getAgencyId() {
-        return agencyId;
-    }
-
-    public void setAgencyId(int agencyId) {
-        this.agencyId = agencyId;
-    }
 }

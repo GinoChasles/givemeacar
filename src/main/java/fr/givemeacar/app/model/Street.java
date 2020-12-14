@@ -2,14 +2,18 @@ package fr.givemeacar.app.model;
 
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
 
+@Data
 @Entity
 @Table(name = "streets", schema = "givemeacar", catalog = "")
 public class Street  implements CrudModel{
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
     @OneToOne
@@ -19,27 +23,4 @@ public class Street  implements CrudModel{
     @JoinColumn(name = "streetnameid", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
     private StreetName streetName;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public City getCity() {
-        return city;
-    }
-
-    public void setCity(City cityByCityId) {
-        this.city = city;
-    }
-
-    public StreetName getStreetName() {
-        return streetName;
-    }
-
-    public void setStreetName(StreetName streetNameByStreetNameId) {
-        this.streetName = streetName;
-    }
 }

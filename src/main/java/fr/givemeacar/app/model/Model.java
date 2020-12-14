@@ -2,13 +2,17 @@ package fr.givemeacar.app.model;
 
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 
+@Data
 @Entity
 @Table(name = "models", schema = "givemeacar", catalog = "")
 public class Model implements CrudModel {
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
     @Column(name = "name", nullable = false, length = 45)
@@ -16,28 +20,4 @@ public class Model implements CrudModel {
     @OneToOne
     @JoinColumn(name = "brandid", referencedColumnName = "id", nullable = false)
     private Brand brand;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Brand getBrand() {
-        return brand;
-    }
-
-    public void setBrand(Brand brandByBrandId) {
-        this.brand = brand;
-    }
 }

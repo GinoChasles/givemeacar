@@ -4,9 +4,10 @@ package fr.givemeacar.app.model;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user_statuses", schema = "givemeacar", catalog = "")
+@Table(name = "user_statuses", schema = "givemeacar")
 public class UserStatus  implements CrudModel{
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
     @Column(name = "name", nullable = false, length = 32)
