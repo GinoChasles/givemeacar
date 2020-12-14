@@ -5,6 +5,7 @@ package fr.givemeacar.app.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 
 
 @Data
@@ -15,6 +16,8 @@ public class StreetSuffix  implements CrudModel{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
-    @Column(name = "name", nullable = true, length = 12)
+    @Column(name = "name", nullable = true)
+    @Pattern(regexp = "[a-zA-Z" +
+            "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,12}")
     private String name;
 }

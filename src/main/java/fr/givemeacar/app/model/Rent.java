@@ -21,10 +21,17 @@ public class Rent  implements CrudModel{
     @Column(name = "end", nullable = true)
     private Timestamp end;
     @OneToOne
-    @JoinColumn(name = "carid", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "carid", referencedColumnName = "id",
+            nullable = false,insertable = false,updatable = false)
     private Car car;
     @OneToOne
-    @JoinColumn(name = "clientid", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "clientid", referencedColumnName = "id",
+            nullable = false,insertable = false,updatable = false)
     private Client client;
+
+    @JoinColumn(name = "carid", referencedColumnName = "id", nullable = false)
+    private int carId;
+    @JoinColumn(name = "clientid", referencedColumnName = "id", nullable = false)
+    private int clientId;
 
 }

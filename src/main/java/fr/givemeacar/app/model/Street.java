@@ -17,10 +17,15 @@ public class Street  implements CrudModel{
     @Column(name = "id", nullable = false)
     private int id;
     @OneToOne
-    @JoinColumn(name = "cityid", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "cityid", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
     private City city;
     @OneToOne
     @JoinColumn(name = "streetnameid", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
     private StreetName streetName;
+
+    @JoinColumn(name = "cityid", referencedColumnName = "id", nullable = false)
+    private int cityId;
+    @JoinColumn(name = "streetnameid", referencedColumnName = "id", nullable = false)
+    private int streetNameId;
 
 }
