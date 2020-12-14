@@ -2,14 +2,18 @@ package fr.givemeacar.app.model;
 
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
 
+@Data
 @Entity
-@Table(name = "cars", schema = "givemeacar", catalog = "")
+@Table(name = "cars", schema = "givemeacar")
 public class Car  implements CrudModel{
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
     @Column(name = "kilometers", nullable = false)
@@ -27,111 +31,21 @@ public class Car  implements CrudModel{
     @Column(name = "latitude", nullable = false, precision = 14)
     private BigDecimal latitude;
     @OneToOne
-    @JoinColumn(name = "modelid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    @JoinColumn(name = "model_id", referencedColumnName = "id",
+            nullable = false, insertable = false,updatable = false)
     private Model model;
     @OneToOne
-    @JoinColumn(name = "colorid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    @JoinColumn(name = "color_id", referencedColumnName = "id",
+            nullable = false, insertable = false,updatable = false)
     private Color color;
     @OneToOne
-    @JoinColumn(name = "energyTypeid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
+    @JoinColumn(name = "energy_type_id", referencedColumnName = "id",
+            nullable = false, insertable = false,updatable = false)
     private EnergyType energyType;
-    @OneToOne
-    @JoinColumn(name = "addressid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Address address;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getKilometers() {
-        return kilometers;
-    }
-
-    public void setKilometers(int kilometers) {
-        this.kilometers = kilometers;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public int getYear() {
-        return year;
-    }
-
-    public void setYear(int year) {
-        this.year = year;
-    }
-
-    public int getAvailable() {
-        return available;
-    }
-
-    public void setAvailable(int available) {
-        this.available = available;
-    }
-
-    public int getRented() {
-        return rented;
-    }
-
-    public void setRented(int rented) {
-        this.rented = rented;
-    }
-
-    public Model getModel() {
-        return model;
-    }
-
-    public void setModel(Model modelByModelId) {
-        this.model = model;
-    }
-
-    public Color getColor() {
-        return color;
-    }
-
-    public void setColor(Color colorByColorId) {
-        this.color = color;
-    }
-
-    public EnergyType getEnergyType() {
-        return energyType;
-    }
-
-    public void setEnergyType(EnergyType energyTypeByEnergyTypeId) {
-        this.energyType = energyType;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address addressByAddressId) {
-        this.address = address;
-    }
-
-    public BigDecimal getLongitude() {
-        return longitude;
-    }
-
-    public void setLongitude(BigDecimal longitude) {
-        this.longitude = longitude;
-    }
-
-    public BigDecimal getLatitude() {
-        return latitude;
-    }
-
-    public void setLatitude(BigDecimal latitude) {
-        this.latitude = latitude;
-    }
+    @Column(name = "model_id", nullable = false)
+    private int model_id;
+    @Column(name = "color_id", nullable = false)
+    private int color_id;
+    @Column(name = "energy_type_id",nullable = false)
+    private int energy_type_id;
 }

@@ -4,6 +4,7 @@ import {
   Datagrid,
   TextField,
   ReferenceField,
+  ReferenceArrayInput,
   EditButton,
   Create,
   Edit,
@@ -11,6 +12,7 @@ import {
   ReferenceInput,
   SelectInput,
   AutocompleteInput,
+  AutocompleteArrayInput,
   TextInput,
   EmailField,
   PasswordInput,
@@ -33,7 +35,7 @@ export const EditManager = (props) => (
   <Edit {...props}>
     <SimpleForm initialValues={postDefaultValue}>
     <ReferenceInput source="agencyId" reference="agencies">
-        <AutocompleteInput optionText="name" />
+        <AutocompleteInput optionText="name" optionValue={"id"}/>
       </ReferenceInput>
       <TextInput source="firstName" />
       <TextInput source="lastName" />
@@ -47,8 +49,8 @@ const postDefaultValue = () => ({ userStatusId: 2 });
 export const CreateManager = (props) => (
   <Create {...props}>
     <SimpleForm initialValues={postDefaultValue}>
-      <ReferenceInput source="agencyId" reference="agencies">
-        <AutocompleteInput optionText="name" />
+      <ReferenceInput source="agencyId" reference="agencies" >
+        <AutocompleteInput optionText="name" optionValue={"id"} />
       </ReferenceInput>
       <TextInput source="firstName" />
       <TextInput source="lastName" />
