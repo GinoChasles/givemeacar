@@ -1,15 +1,10 @@
 import * as React from "react";
 import {
-  List,
-  Datagrid,
-  TextField,
   Create,
-  Edit,
   SimpleForm,
   ReferenceInput,
   AutocompleteInput,
   TextInput,
-  EmailField,
   PasswordInput,
 } from "react-admin";
 
