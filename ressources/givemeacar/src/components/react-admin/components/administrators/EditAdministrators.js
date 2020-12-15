@@ -2,7 +2,7 @@ import {Edit, PasswordInput, SimpleForm, TextInput} from "react-admin";
 import * as React from "react";
 
 const EditAdministrators = (props) => (
-    <Edit {...props}>
+    <Edit {...props} undoable={false}>
         <SimpleForm optionValue={"id"}>
             <TextInput source="firstName" />
             <TextInput source="lastName" />

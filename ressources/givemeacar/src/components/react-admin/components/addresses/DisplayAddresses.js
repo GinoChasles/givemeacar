@@ -7,8 +7,8 @@ import {
 
 
 const DisplayAddresses = (props) => (
-    <List {...props} title="Votre adresse">
-        <Datagrid rowClick="edit">
+    <List {...props} title="Votre adresse" >
+        <Datagrid rowClick="edit" >
             <TextField source="number" />
             <TextField source="city_id" />
             <TextField source="street_id" />

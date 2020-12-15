@@ -2,7 +2,7 @@ import {AutocompleteInput, Edit, NumberInput, ReferenceInput, SimpleForm, TextIn
 import * as React from "react";
 
 const EditCity = (props) => (
-    <Edit {...props}>
+    <Edit {...props} undoable={false}>
         <SimpleForm>
             <TextInput source="zipcode" />
             <TextInput source="name" />

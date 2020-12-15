@@ -8,7 +8,7 @@ import {
 } from "react-admin";
 
 const EditAddresses = (props) => (
-    <Edit {...props}>
+    <Edit {...props} undoable={false}>
         <SimpleForm>
             <TextInput source="number" />
             <ReferenceInput source="street_suffices_id" reference="street_suffices">
