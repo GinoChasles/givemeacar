@@ -2,7 +2,7 @@ import {AutocompleteInput, DateTimeInput, Edit, ReferenceInput, SimpleForm} from
 import * as React from "react";
 
 const EditRent = (props) => (
-    <Edit {...props}>
+    <Edit {...props} undoable={false}>
         <SimpleForm>
             <DateTimeInput source="start" />
             <DateTimeInput source="end" />

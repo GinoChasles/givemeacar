@@ -2,7 +2,7 @@ import {AutocompleteInput, Edit, ReferenceInput, SimpleForm, TextInput} from "re
 import * as React from "react";
 
 const EditAgency = (props) => (
-    <Edit {...props}>
+    <Edit {...props} undoable={false}>
         <SimpleForm>
             <TextInput source="name" />
             <ReferenceInput source="address_id" reference="addresses">

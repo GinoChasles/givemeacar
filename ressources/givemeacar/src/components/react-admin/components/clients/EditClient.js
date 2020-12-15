@@ -2,7 +2,7 @@ import {AutocompleteInput, Edit, PasswordInput, ReferenceInput, SimpleForm, Text
 import * as React from "react";
 
 const EditClient = (props) => (
-    <Edit {...props}>
+    <Edit {...props} undoable={false}>
         {/* <TabbedShowLayout> */}
         <SimpleForm>
             <TextInput source="firstName" />

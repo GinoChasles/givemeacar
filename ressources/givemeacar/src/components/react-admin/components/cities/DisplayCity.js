@@ -1,8 +1,20 @@
-import {Datagrid, DeleteButton, EditButton, List, NumberField, TextField} from "react-admin";
+import {
+    Datagrid,
+    List,
+    NumberField,
+    TextField,
+    Filter,
+    SearchInput
+} from "react-admin";
 import * as React from "react";
-
+const PostFilter = (props) => (
+    <Filter {...props}>
+        <SearchInput source="q" alwaysOn />
+        <SearchInput source="zipcode" />
+    </Filter>
+);
 const DisplayCity = (props) => (
-    <List {...props} title="Liste des villes">
+    <List {...props} title="Liste des villes" filters={<PostFilter/>}>
 
         <Datagrid rowClick="edit">
             <TextField source="zipcode" />
@@ -13,10 +25,7 @@ const DisplayCity = (props) => (
             {/* <ReferenceField source="departmentId" reference="departments" sortBy="departments.name">
       <TextField source="name" /> //TODO afficher le nom du département
       </ReferenceField> */}
-            <EditButton>Edit</EditButton>
-            <DeleteButton>Delete</DeleteButton>
         </Datagrid>
-
     </List>
 );
 

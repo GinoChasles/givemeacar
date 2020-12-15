@@ -2,7 +2,7 @@ import {AutocompleteInput, BooleanInput, Edit, NumberInput, ReferenceInput, Simp
 import * as React from "react";
 
 const EditCar = (props) => (
-    <Edit {...props}>
+    <Edit {...props} undoable={false}>
         <SimpleForm>
             <NumberInput source="kilometers" />
             <NumberInput source="price" />

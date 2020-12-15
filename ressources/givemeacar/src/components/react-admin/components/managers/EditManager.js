@@ -2,7 +2,7 @@ import {AutocompleteInput, Edit, PasswordInput, ReferenceInput, SimpleForm, Text
 import * as React from "react";
 
 const EditManager = (props) => (
-    <Edit {...props}>
+    <Edit {...props} undoable={false}>
         <SimpleForm>
             <ReferenceInput label="nom de l'agence" source="agencyId" reference="agencies">
                 <AutocompleteInput optionText="name" optionValue={"id"} />

@@ -1,8 +1,12 @@
-import {Datagrid, List, TextField} from "react-admin";
+import {Datagrid, Filter, List, SearchInput, TextField} from "react-admin";
 import * as React from "react";
-
+const PostFilter = (props) => (
+    <Filter {...props}>
+        <SearchInput source="q" alwaysOn />
+    </Filter>
+);
 const DisplayClient = (props) => (
-    <List {...props} title="Liste des clients">
+    <List {...props} title="Liste des clients" filters={<PostFilter/>}>
         <Datagrid rowClick="edit">
             <TextField source="first_name" />
             <TextField source="last_name" />

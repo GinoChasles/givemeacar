@@ -2,7 +2,7 @@ import * as React from "react";
 import {Admin,Resource,ListGuesser,ShowGuesser,EditGuesser} from "react-admin";
 
 import jsonServerProvider from "ra-data-json-server"
-
+import MyLayout from '../MyLayout'
 import { CreateAddresses, EditAddresses, DisplayAddresses } from '../react-admin/components/addresses'
 import {DisplayAdministrators,CreateAdministrators,EditAdministrators} from "../react-admin/components/administrators";
 import {DisplayAgency,EditAgency,CreateAgency} from '../react-admin/components/agency'
@@ -29,7 +29,7 @@ const dataProvider = jsonServerProvider("http://localhost:8080/api");
 
 const AdminDashboard = () => {
 return (
-<Admin dataProvider={dataProvider}>
+<Admin layout={MyLayout} dataProvider={dataProvider}>
     <Resource
       options={{ label: "Les couleurs" }}
       name="colors"
