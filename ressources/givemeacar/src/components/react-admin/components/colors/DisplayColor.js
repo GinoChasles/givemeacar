@@ -1,9 +1,9 @@
-import {Datagrid, Filter, List,TextField, TextInput} from "react-admin";
+import {Datagrid, Filter, List,TextField, SearchInput} from "react-admin";
 import * as React from "react";
 
 const PostFilter = (props) => (
     <Filter {...props}>
-        <TextInput label="Search" source="q" alwaysOn />
+        <SearchInput source="q" alwaysOn />
     </Filter>
 );
 

@@ -1,11 +1,16 @@
-import {Datagrid, List, NumberField, TextField, Filter, TextInput,ReferenceInput,SelectInput} from "react-admin";
+import {
+    Datagrid,
+    List,
+    NumberField,
+    TextField,
+    Filter,
+    SearchInput
+} from "react-admin";
 import * as React from "react";
 const PostFilter = (props) => (
     <Filter {...props}>
-        <TextInput label="Search" source="q" alwaysOn />
-        <ReferenceInput label="User" source="userId" reference="users" allowEmpty>
-            <SelectInput optionText="name" />
-        </ReferenceInput>
+        <SearchInput source="q" alwaysOn />
+        <SearchInput source="zipcode" />
     </Filter>
 );
 const DisplayCity = (props) => (

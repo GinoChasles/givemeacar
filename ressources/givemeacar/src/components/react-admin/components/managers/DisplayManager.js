@@ -1,8 +1,12 @@
-import {Datagrid, EmailField, List, TextField} from "react-admin";
+import {Datagrid, EmailField, Filter, List, SearchInput, TextField} from "react-admin";
 import * as React from "react";
-
+const PostFilter = (props) => (
+    <Filter {...props}>
+        <SearchInput source="q" alwaysOn />
+    </Filter>
+);
 const DisplayManager = (props) => (
-    <List {...props} title="les managers">
+    <List {...props} title="les managers" filters={<PostFilter/>}>
         <Datagrid rowClick="edit">
             {/* <ReferenceField source="agencyId" reference="agencies" sortBy="agencies.name">
       <TextField source="name" /> //TODO afficher agences auquel le manager appartient

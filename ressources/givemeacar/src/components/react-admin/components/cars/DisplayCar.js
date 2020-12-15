@@ -1,8 +1,24 @@
-import {BooleanField, Datagrid, List, NumberField, ReferenceField, TextField} from "react-admin";
+import {
+    BooleanField,
+    Datagrid,
+    Filter,
+    List,
+    NumberField,
+    ReferenceField,
+    ReferenceInput, SearchInput,
+    TextField
+} from "react-admin";
 import * as React from "react";
-
+const PostFilter = (props) => (
+    <Filter {...props}>
+        <SearchInput source="q" alwaysOn />
+        <ReferenceInput source="userId" reference="users" allowEmpty>
+            <SearchInput optionText="name" /> //todo ADAPTER LE FORMULAIRE
+        </ReferenceInput>
+    </Filter>
+);
 const DisplayCar = (props) => (
-    <List {...props} title="Liste des véhicules">
+    <List {...props} title="Liste des véhicules" filters={<PostFilter/>}>
         <Datagrid rowClick="edit">
             <NumberField source="kilometers" />
             <NumberField source="price" />
