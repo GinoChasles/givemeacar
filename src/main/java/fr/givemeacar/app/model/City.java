@@ -2,6 +2,7 @@ package fr.givemeacar.app.model;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ import java.math.BigDecimal;
 @Data
 @Entity
 @Table(name = "cities", schema = "givemeacar")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class City  implements CrudModel{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
