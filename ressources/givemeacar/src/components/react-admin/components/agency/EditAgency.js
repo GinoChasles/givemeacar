@@ -9,7 +9,7 @@ const EditAgency = (props) => (
                 <AutocompleteInput optionText="name" optionValue={"id"}/>
             </ReferenceInput>
             <ReferenceInput source="manager_id" reference="managers">
-                <AutocompleteInput optionText="name" optionValue={"id"}/>
+                <AutocompleteInput optionText="firstName" optionValue={"id"}/>
             </ReferenceInput>
         </SimpleForm>
     </Edit>

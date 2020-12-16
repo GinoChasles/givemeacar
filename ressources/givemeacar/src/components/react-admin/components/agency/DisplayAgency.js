@@ -3,7 +3,7 @@ import * as React from "react";
 
 const PostFilter = (props) => (
     <Filter {...props}>
-        <TextInput label="Search" source="q" alwaysOn />
+        <SearchInput source="q" alwaysOn />
         <ReferenceInput source="manager_id" reference="managers" allowEmpty>
             <SearchInput optionText="name" />
         </ReferenceInput>
