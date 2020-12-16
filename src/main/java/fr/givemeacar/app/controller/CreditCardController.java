@@ -1,7 +1,7 @@
 package fr.givemeacar.app.controller;
 
-import fr.givemeacar.app.config.TableNames;
 import fr.givemeacar.app.model.CreditCard;
+import fr.givemeacar.app.repository.CreditCardRepository;
 import fr.givemeacar.app.service.CreditCardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,57 +9,56 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.lang.reflect.InvocationTargetException;
-import java.math.BigInteger;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
-public class CreditCardController{
+public class CreditCardController extends CrudControllerImpl<CreditCard>{
 
     @Autowired
     CreditCardService service;
 
-    
     @RequestMapping("credit_cards/count")
-    public BigInteger count() {
-        return service.count(TableNames.creditCards);
+    @Override
+    public ResponseEntity count() {
+        return super.count();
     }
 
     @RequestMapping(value = "credit_cards", method = RequestMethod.GET)
-    public ResponseEntity findAll(@RequestParam(required = false) String _order, @RequestParam(required = false) String _sort,@RequestParam(required = false) Integer _start, @RequestParam int _end) {
-        if(_start != null) {
-            return service.findAll(TableNames.creditCards,new CreditCard(),_start, _end,_order,_sort);
-        }else{
-            return service.findAll(TableNames.creditCards,new CreditCard(), 0, _end,_order,_sort);
-        }
+    @Override
+        public ResponseEntity findAll(@RequestParam(required = false) String _order,
+            @RequestParam(required = false) String _sort, @RequestParam(required = false) Integer _start,
+                @RequestParam(required = false) Integer _end, @RequestParam(required = false) Integer id,
+                @RequestParam(required = false) String q) {
+            return super.findAll(_order, _sort, _start, _end, id, q);
     }
 
     @GetMapping("credit_cards/{id}")
-    public Object findById(@PathVariable int id) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
-        return service.findById(TableNames.creditCards,new CreditCard(),id);
-
+    @Override
+    public ResponseEntity findById(@PathVariable int id) {
+        return super.findById(id);
     }
 
 
-
-    
     @PostMapping("credit_cards")
-    public ResponseEntity<String> create(@Valid @RequestBody CreditCard model) {
-        return service.create(model);
+    public ResponseEntity create(@Valid @RequestBody CreditCard model) {
+        return super.create(model);
     }
 
-    
+
     @PutMapping("credit_cards/{id}")
-    public ResponseEntity<String> update(@PathVariable int id,@RequestBody CreditCard model) {
-        return service.update(model,id);
+    public ResponseEntity update(@PathVariable int id,@RequestBody CreditCard model) {
+        return super.update(model);
     }
 
-    
+
     @DeleteMapping("credit_cards/{id}")
-    public ResponseEntity<String> delete(@PathVariable int id) {
-        return service.delete(new CreditCard(),id);
+    public ResponseEntity deleteById(@PathVariable int id) {
+        return super.deleteById(id);
+    }
+
+    @Override
+    public CreditCardService getService() {
+        return service;
     }
 }

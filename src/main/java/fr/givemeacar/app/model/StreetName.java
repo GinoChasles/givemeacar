@@ -2,31 +2,22 @@ package fr.givemeacar.app.model;
 
 
 
+import lombok.Data;
+
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 
 
+@Data
 @Entity
-@Table(name = "streetNames", schema = "givemeacar", catalog = "")
+@Table(name = "street_names", schema = "givemeacar")
 public class StreetName  implements CrudModel{
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
-    @Column(name = "name", nullable = false, length = 45)
+    @Column(name = "name", nullable = false)
+    @Pattern(regexp = "[a-zA-Z" +
+            "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,45}")
     private String name;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }

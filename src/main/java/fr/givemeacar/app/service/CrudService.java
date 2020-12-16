@@ -1,100 +1,77 @@
 package fr.givemeacar.app.service;
 
 import java.lang.reflect.InvocationTargetException;
-import java.math.BigInteger;
-import java.util.Collection;
+import java.util.List;
 import java.util.Optional;
 
-import fr.givemeacar.app.model.Color;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-
-import javax.persistence.EntityManager;
+import fr.givemeacar.app.repository.BaseCrudRepository;
 
 public interface CrudService<T> {
 
     /**
-     * Returns the number of rows in the table
+     * Counts the entities in the table
      *
-     * @return the number of rows in the table
+     * @return the number of entities in the table
      */
-    public BigInteger count(String tableName);
-
-    /**
-     * Returns a collection of entities
-     *
-     * @param tableName the table to count the rows
-     * @param offset    the offset of the research
-     * @param limit     the limit of the research
-     * @return a collection of entities
-     */
-    public ResponseEntity findAll(String tableName, T t,int offset, int limit,String order,String sort);
-
-    /**
-     * Returns an optional model instance from its id in the database
-     *
-     * @param tableName the table to search by id
-     * @param id the id of the model
-     * @return an optional model instance from its id in the database
-     */
-    public ResponseEntity findById(String tableName,T t, int id) throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException;
+    public Long count();
 
     /**
      * Creates a model in the database
      *
-     * @param repo The repository to manage the transaction
      * @param t the model to save
      * @return a 200(ok) or 409(conflict) response with constraint message
      */
-    public ResponseEntity<String> create(JpaRepository<T, Integer> repo,T t);
+    public T create(T t) ;
 
     /**
      * Updates a model in the database
      *
-     * @param repo The repository to manage the transaction
-     * @param t the model to update
-     * @param id the id of the object to update
+     * @param t the object to update
      * @return a 200(ok) or 409(conflict) response with constraint message
      */
-    public ResponseEntity<String> update(JpaRepository<T, Integer> repo,T t,int id);
+    public T update(T t);
 
     /**
-     * Deletes a model in the database
+     * deletes an entity in the table based on its id
      *
-     * @param t the object to delete
-     * @param id the id of the model to delete
-     * @return a 200(ok) or 409(conflict) response with constraint message
+     * @param id the id of the entity in the table
+     * @return the delted entity
      */
-    public ResponseEntity<String> delete(T t,int id);
+    public T deleteById(int id);
+
 
     /**
-     * Transforms an Exception into a ResponseEntity
+     * finds an entity in the table based on its id
      *
-     * @param e The ExceptionMessage
-     * @return The ResponseEntity
+     * @param id the id of the entity in the table
+     * @return the entity in the table with the given id
      */
-    public ResponseEntity<String> exceptionToResponseEntity(Exception e);
+    public Optional<T> findById(int id);
 
     /**
-     * Returns the entityManager
+     * Returns the last entity in the table based on its id
      *
-     * @return the entityManager
+     * @return the last entity in the table
      */
-    public EntityManager getEntityManager();
+    public T findLast();
+
 
     /**
-     * Sets the entityManager
+     * Returns a collection of entities
      *
-     * @param em the entityManager to define
+     * @param offset the offset of the research
+     * @param limit  the limit of the research
+     * @param order  the ordering od the search
+     * @param sort   the sorting of the research
+     * @return a collection of entities
      */
-    public void setEntityManager(EntityManager em);
+    public List<T> findAll(int offset, int limit, String order, String sort);
+
 
     /**
-     * Tries to save a model and returns the corresponding ResponseEntity
-     * @param repo the repo to save the model
-     * @param model the model to save
-     * @return the ResponseEntity
+     * Returns the repository of the service
+     *
+     * @return the repository of the service
      */
-    public ResponseEntity<String> trySaveOrConflict(JpaRepository<T,Integer> repo,T model);
+    public BaseCrudRepository getRepository();
 }

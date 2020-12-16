@@ -1,7 +1,7 @@
 package fr.givemeacar.app.controller;
 
-import fr.givemeacar.app.config.TableNames;
 import fr.givemeacar.app.model.Agency;
+import fr.givemeacar.app.repository.AgencyRepository;
 import fr.givemeacar.app.service.AgencyService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -9,57 +9,56 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.lang.reflect.InvocationTargetException;
-import java.math.BigInteger;
-import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
-public class AgencyController{
+public class AgencyController extends CrudControllerImpl<Agency>{
 
     @Autowired
     AgencyService service;
 
-    
     @RequestMapping("agencies/count")
-    public BigInteger count() {
-        return service.count(TableNames.agencies);
+    @Override
+    public ResponseEntity count() {
+        return super.count();
     }
 
     @RequestMapping(value = "agencies", method = RequestMethod.GET)
-    public ResponseEntity findAll(@RequestParam(required = false) String _order, @RequestParam(required = false) String _sort,@RequestParam(required = false) Integer _start, @RequestParam int _end) {
-        if(_start != null) {
-            return service.findAll(TableNames.agencies,new Agency(),_start, _end,_order,_sort);
-        }else{
-            return service.findAll(TableNames.agencies,new Agency(), 0, _end,_order,_sort);
-        }
+    @Override
+    public ResponseEntity findAll(@RequestParam(required = false) String _order,
+            @RequestParam(required = false) String _sort, @RequestParam(required = false) Integer _start,
+            @RequestParam(required = false) Integer _end, @RequestParam(required = false) Integer id,
+                                  @RequestParam(required = false) String q){
+        return super.findAll(_order, _sort, _start, _end, id,q);
     }
 
     @GetMapping("agencies/{id}")
-    public Object findById(@PathVariable int id) throws NoSuchMethodException, InstantiationException, IllegalAccessException, InvocationTargetException {
-        return service.findById(TableNames.agencies,new Agency(),id);
-
+    @Override
+    public ResponseEntity findById(@PathVariable int id) {
+        return super.findById(id);
     }
 
 
-
-    
     @PostMapping("agencies")
-    public ResponseEntity<String> create(@Valid @RequestBody Agency model) {
-        return service.create(model);
+    public ResponseEntity create(@Valid @RequestBody Agency model) {
+        return super.create(model);
     }
 
-    
+
     @PutMapping("agencies/{id}")
-    public ResponseEntity<String> update(@PathVariable int id,@RequestBody Agency model) {
-        return service.update(model,id);
+    public ResponseEntity update(@PathVariable int id,@RequestBody Agency model) {
+        return super.update(model);
     }
 
-    
+
     @DeleteMapping("agencies/{id}")
-    public ResponseEntity<String> delete(@PathVariable int id) {
-        return service.delete(new Agency(),id);
+    public ResponseEntity deleteById(@PathVariable int id) {
+        return super.deleteById(id);
+    }
+
+    @Override
+    public AgencyService getService() {
+        return service;
     }
 }

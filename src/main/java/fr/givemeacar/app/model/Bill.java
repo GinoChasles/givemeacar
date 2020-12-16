@@ -2,84 +2,35 @@ package fr.givemeacar.app.model;
 
 
 
+import lombok.Data;
+
 import javax.persistence.*;
 import java.util.Date;
 
 
+@Data
 @Entity
-@Table(name = "bills", schema = "givemeacar", catalog = "")
+@Table(name = "bills", schema = "givemeacar")
 public class Bill  implements CrudModel{
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
     @Column(name = "price", nullable = false, precision = 0)
     private double price;
     @Column(name = "date", nullable = false)
     private Date date;
-    @Column(name = "rentid", nullable = false)
-    private int rentid;
-    @Column(name = "agencyid", nullable = false)
-    private int agencyid;
     @OneToOne
-    @JoinColumn(name = "rentid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Rent rentByRentid;
+    @JoinColumn(name = "rent_id", referencedColumnName = "id",
+            nullable = false, updatable = false,insertable = false)
+    private Rent rent;
     @OneToOne
-    @JoinColumn(name = "agencyid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Agency agencyByAgencyid;
+    @JoinColumn(name = "agency_id", referencedColumnName = "id",
+            nullable = false, updatable = false,insertable = false)
+    private Agency agency;
+    @Column(name = "rent_id", nullable = false)
+    private int rent_id;
+    @Column(name = "agency_id", nullable = false)
+    private int agency_id;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
-
-    public int getRentid() {
-        return rentid;
-    }
-
-    public void setRentid(int rentid) {
-        this.rentid = rentid;
-    }
-
-    public int getAgencyid() {
-        return agencyid;
-    }
-
-    public void setAgencyid(int agencyid) {
-        this.agencyid = agencyid;
-    }
-
-    public Rent getRentByRentid() {
-        return rentByRentid;
-    }
-
-    public void setRentByRentid(Rent rentByRentid) {
-        this.rentByRentid = rentByRentid;
-    }
-
-    public Agency getAgencyByAgencyid() {
-        return agencyByAgencyid;
-    }
-
-    public void setAgencyByAgencyid(Agency agencyByAgencyid) {
-        this.agencyByAgencyid = agencyByAgencyid;
-    }
 }

@@ -1,10 +1,12 @@
 package fr.givemeacar.app.repository;
 
 import fr.givemeacar.app.model.Manager;
-import org.springframework.data.jpa.repository.JpaRepository;
+import fr.givemeacar.app.model.UserStatus;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
-import java.util.List;
+public interface ManagerRepository extends BaseCrudRepository<Manager> {
+    @Query("SELECT c.userStatus FROM Manager c WHERE c.mail = :mail AND c.password = :password")
+    public UserStatus findUserStatusByMailAndPassword(@Param("mail") String mail, @Param("password") String password);
 
-
-public interface ManagerRepository extends JpaRepository<Manager,Integer> {
 }

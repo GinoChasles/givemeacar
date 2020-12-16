@@ -2,64 +2,32 @@ package fr.givemeacar.app.model;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Data;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
 
+@Data
 @Entity
 @Table(name = "streets", schema = "givemeacar", catalog = "")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Street  implements CrudModel{
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
-    @Column(name = "cityid", nullable = false)
-    private int cityid;
-    @Column(name = "streetNameid", nullable = false)
-    private int streetNameid;
     @OneToOne
-    @JoinColumn(name = "cityid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private City cityByCityid;
+    @JoinColumn(name = "city_id", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
+    private City city;
     @OneToOne
-    @JoinColumn(name = "streetNameid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private StreetName streetNameByStreetNameid;
+    @JoinColumn(name = "street_name_id", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
+    private StreetName streetName;
 
-    public int getId() {
-        return id;
-    }
+    @JoinColumn(name = "city_id", referencedColumnName = "id", nullable = false)
+    private int city_id;
+    @Column(name = "street_name_id", nullable = false)
+    private int street_name_id;
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public int getCityid() {
-        return cityid;
-    }
-
-    public void setCityid(int cityid) {
-        this.cityid = cityid;
-    }
-
-    public int getStreetNameid() {
-        return streetNameid;
-    }
-
-    public void setStreetNameid(int streetNameid) {
-        this.streetNameid = streetNameid;
-    }
-
-    public City getCityByCityid() {
-        return cityByCityid;
-    }
-
-    public void setCityByCityid(City cityByCityid) {
-        this.cityByCityid = cityByCityid;
-    }
-
-    public StreetName getStreetNameByStreetNameid() {
-        return streetNameByStreetNameid;
-    }
-
-    public void setStreetNameByStreetNameid(StreetName streetNameByStreetNameid) {
-        this.streetNameByStreetNameid = streetNameByStreetNameid;
-    }
 }

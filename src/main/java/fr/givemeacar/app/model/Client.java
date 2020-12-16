@@ -2,187 +2,63 @@ package fr.givemeacar.app.model;
 
 
 
+import lombok.Data;
+
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.util.Collection;
 
 
+@Data
 @Entity
 @Table(name = "clients", schema = "givemeacar", catalog = "")
 public class Client  implements CrudModel{
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
-    @Column(name = "firstname", nullable = false, length = 32)
+    @Column(name = "firstname", nullable = false)
+    @Pattern(regexp = "[a-zA-Z" +
+            "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,32}")
     private String firstName;
-    @Column(name = "lastname", nullable = false, length = 32)
+    @Column(name = "lastname", nullable = false)
+    @Pattern(regexp = "[a-zA-Z" +
+            "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,32}")
     private String lastName;
-    @Column(name = "mail", nullable = false, length = 64)
+    @Column(name = "mail", nullable = false)
+    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\" +
+            ".[a-zA-Z]{2,6}$")
     private String mail;
     @Column(name = "password", nullable = false, length = 64)
     private String password;
-    @Column(name = "phone", nullable = false, length = 12)
+    @Column(name = "phone", nullable = false)
+    @Pattern(regexp = "\\+?[0-9]{10,12}")
     private String phone;
-    @Column(name = "addressid", nullable = false)
-    private int addressid;
-    @Column(name = "userstatusid", nullable = false)
-    private int userStatusid;
-    @Column(name = "billid", nullable = false)
-    private int billid;
-    @Column(name = "creditCardid", nullable = false)
-    private int creditCardid;
-    @Column(name = "agencyid", nullable = false)
-    private int agencyid;
+
     @OneToOne
-    @JoinColumn(name = "agencyid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Agency agencyByAgencyid;
+    @JoinColumn(name = "agency_id", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
+    private Agency agency;
     @OneToOne
-    @JoinColumn(name = "addressid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Address addressByAddressid;
+    @JoinColumn(name = "address_id", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
+    private Address address;
     @OneToOne
-    @JoinColumn(name = "userstatusid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private UserStatus userStatusByUserStatusid;
+    @JoinColumn(name = "user_status_id", referencedColumnName = "id",updatable = false, insertable = false)
+    private UserStatus userStatus;
     @OneToOne
-    @JoinColumn(name = "billid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private Bill billByBillid;
+    @JoinColumn(name = "bill_id", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
+    private Bill bill;
     @OneToOne
-    @JoinColumn(name = "creditCardid", referencedColumnName = "id", nullable = false,updatable = false, insertable = false)
-    private CreditCard creditCardByCreditCardid;
-    @OneToMany(mappedBy = "clientByClientid")
-    private Collection<Rent> rentsByid;
+    @JoinColumn(name = "credit_card_id", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
+    private CreditCard creditCard;
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getMail() {
-        return mail;
-    }
-
-    public void setMail(String mail) {
-        this.mail = mail;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
-    }
-
-    public int getAddressid() {
-        return addressid;
-    }
-
-    public void setAddressid(int addressid) {
-        this.addressid = addressid;
-    }
-
-    public int getUserStatusid() {
-        return userStatusid;
-    }
-
-    public void setUserStatusid(int userStatusid) {
-        this.userStatusid = userStatusid;
-    }
-
-    public int getBillid() {
-        return billid;
-    }
-
-    public void setBillid(int billid) {
-        this.billid = billid;
-    }
-
-    public int getCreditCardid() {
-        return creditCardid;
-    }
-
-    public void setCreditCardid(int creditCardid) {
-        this.creditCardid = creditCardid;
-    }
-
-    public int getAgencyid() {
-        return agencyid;
-    }
-
-    public void setAgencyid(int agencyid) {
-        this.agencyid = agencyid;
-    }
-
-    public Agency getAgencyByAgencyid() {
-        return agencyByAgencyid;
-    }
-
-    public void setAgencyByAgencyid(Agency agencyByAgencyid) {
-        this.agencyByAgencyid = agencyByAgencyid;
-    }
-
-    public Address getAddressByAddressid() {
-        return addressByAddressid;
-    }
-
-    public void setAddressByAddressid(Address addressByAddressid) {
-        this.addressByAddressid = addressByAddressid;
-    }
-
-    public UserStatus getUserStatusByUserStatusid() {
-        return userStatusByUserStatusid;
-    }
-
-    public void setUserStatusByUserStatusid(UserStatus userStatusByUserStatusid) {
-        this.userStatusByUserStatusid = userStatusByUserStatusid;
-    }
-
-    public Bill getBillByBillid() {
-        return billByBillid;
-    }
-
-    public void setBillByBillid(Bill billByBillid) {
-        this.billByBillid = billByBillid;
-    }
-
-    public CreditCard getCreditCardByCreditCardid() {
-        return creditCardByCreditCardid;
-    }
-
-    public void setCreditCardByCreditCardid(CreditCard creditCardByCreditCardid) {
-        this.creditCardByCreditCardid = creditCardByCreditCardid;
-    }
-
-    public Collection<Rent> getRentsByid() {
-        return rentsByid;
-    }
-
-    public void setRentsByid(Collection<Rent> rentsByid) {
-        this.rentsByid = rentsByid;
-    }
+    @Column(name = "agency_id", nullable = false)
+    private int agency_id;
+    @Column(name = "address_id", nullable = false)
+    private int address_id;
+    @Column(name = "user_status_id")
+    private int user_status_id = 3;
+    @Column(name = "bill_id", nullable = false)
+    private int bill_id;
+    @Column(name = "credit_card_id", nullable = false)
+    private int credit_card_id;
 }
