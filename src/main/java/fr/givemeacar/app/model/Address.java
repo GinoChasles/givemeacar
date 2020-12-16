@@ -2,7 +2,11 @@ package fr.givemeacar.app.model;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -24,15 +28,25 @@ public class Address implements CrudModel{
     @NotBlank
     @Column(name = "numbersuffix", nullable = true)
     private String numberSuffix;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
     @JoinColumn(name = "street_id", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
     private Street street;
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
-    private Street city;
+    @JsonIgnore
+    private City city;
     @Column(name = "street_id", nullable = false)
     private int street_id;
     @Column(name = "city_id", nullable =
             false)
     private int city_id;
+
+    public String getCityName(){
+        return city.getName();
+    }
+
+    public String getStreetName(){
+        return street.getStreetName().getName();
+    }
 }
