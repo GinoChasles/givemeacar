@@ -6,7 +6,7 @@ const listStyle = {
     padding:'1rem',
     display:'flex',
     flexFlow:'flex-row wrap',
-    alignItems:'center'
+    alignItems:'center',
 }
 
 const itemStyle = {
@@ -21,7 +21,7 @@ const linkStyle = {
     color:'white'
 }
 
-const NavBar = ({links}) => <ul style={listStyle}>
+const NavBar = ({links}) => <ul id="main-navbar" style={listStyle}>
     {links.map(link=><li style={itemStyle}>
         <Link to={link.url} style={linkStyle}>{link.label}</Link>
     </li>)}
