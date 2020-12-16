@@ -16,7 +16,7 @@ const PostFilter = (props) => (
     </Filter>
 );
 const DisplayAgency = (props) => (
-    <List {...props} title="Votre adresse" filters={<PostFilter/>}>
+    <List {...props} title="Agences" filters={<PostFilter/>}>
         <Datagrid rowClick="edit">
             <TextField source="name"            label="name"       />
             <TextField source="fullAddress"     label="address"    />

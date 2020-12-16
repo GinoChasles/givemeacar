@@ -1,7 +1,9 @@
 package fr.givemeacar.app.service;
 
 import fr.givemeacar.app.model.Street;
+import fr.givemeacar.app.model.StreetSuffix;
 import fr.givemeacar.app.repository.StreetRepository;
+import fr.givemeacar.app.repository.StreetSuffixRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

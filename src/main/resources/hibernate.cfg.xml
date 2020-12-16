@@ -28,7 +28,7 @@
         <mapping class="fr.givemeacar.app.model.Region"/>
         <mapping class="fr.givemeacar.app.model.Rent"/>
         <mapping class="fr.givemeacar.app.model.Street"/>
-        <mapping class="fr.givemeacar.app.model.StreetName"/>
+        <mapping class="fr.givemeacar.app.model.Street"/>
         <mapping class="fr.givemeacar.app.model.StreetSuffix"/>
         <mapping class="fr.givemeacar.app.model.UserStatus"/>
 

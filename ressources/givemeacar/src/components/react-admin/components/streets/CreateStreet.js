@@ -6,20 +6,13 @@ import {
   Create,
   Edit,
   SimpleForm,
-  ReferenceInput,
-  AutocompleteInput,
+  TextInput,
 } from "react-admin";
-
 
 const CreateStreet = (props) => (
   <Create {...props}>
     <SimpleForm>
-      <ReferenceInput source="city_id" reference="cities">
-        <AutocompleteInput optionText="name" optionValue={"id"}/>
-      </ReferenceInput>
-      <ReferenceInput source="street_name_id" reference="street_names">
-        <AutocompleteInput optionText="name" optionValue={"id"}/>
-      </ReferenceInput>
+      <TextInput source="name" />
     </SimpleForm>
   </Create>
 );

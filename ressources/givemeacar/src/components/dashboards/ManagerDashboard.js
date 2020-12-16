@@ -16,11 +16,9 @@ import {DisplayEnergyType,EditEnergyType,CreateEnergyType} from "../react-admin/
 import {DisplayModel,EditModel,CreateModel} from "../react-admin/components/models";
 import {DisplayRegion,EditRegion,CreateRegion} from "../react-admin/components/regions";
 import {DisplayRent,EditRent,CreateRent} from "../react-admin/components/rents";
-import {DisplayStreetName,EditStreetName,CreateStreetName} from "../react-admin/components/street_names";
-import {DisplaySuffix,EditSuffix,CreateSuffix} from "../react-admin/components/street_suffices";
 import {DisplayStreet,EditStreet,CreateStreet} from "../react-admin/components/streets";
+import {DisplaySuffix,EditSuffix,CreateSuffix} from "../react-admin/components/street_suffices";
 import MyLayout from "../MyLayout";
-
 
 const dataProvider = jsonServerProvider("http://localhost:8080/api");
 
@@ -122,13 +120,6 @@ return (
       create={CreateRegion}
     />
     <Resource
-      name="streets"
-      list={DisplayStreet}
-      show={ShowGuesser}
-      edit={EditStreet}
-      create={CreateStreet}
-    />
-    <Resource
       name="street_suffices"
       list={DisplaySuffix}
       show={ShowGuesser}
@@ -136,11 +127,11 @@ return (
       create={CreateSuffix}
     />
     <Resource
-      name="street_names"
-      list={DisplayStreetName}
+      name="streets"
+      list={DisplayStreet}
       show={ShowGuesser}
-      edit={EditStreetName}
-      create={CreateStreetName}
+      edit={EditStreet}
+      create={CreateStreet}
     />
     <Resource
       name="countries"

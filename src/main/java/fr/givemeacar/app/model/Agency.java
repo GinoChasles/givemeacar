@@ -31,12 +31,13 @@ public class Agency  implements CrudModel{
     private int address_id;
 
     @OneToOne
+    @JsonIgnore
     @JoinColumn(name = "address_id", referencedColumnName = "id",
             nullable = false,insertable = false,updatable = false)
     private Address address;
 
     public String  getFullAddress(){
-        return getAddress().getNumber() + " " + getAddress().getStreetName() + " " +
+        return getAddress().getNumber() + " " + getAddress().getStreet().getName() + " " +
                 getAddress().getSuffix() + " " + getAddress().getZipCode() + " - " +
                 getAddress().getCity().getName();
     }
