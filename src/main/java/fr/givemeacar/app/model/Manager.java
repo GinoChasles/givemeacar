@@ -35,15 +35,15 @@ public class Manager  implements CrudModel{
     private String phone;
 
     @OneToOne
-    @JoinColumn(name = "userstatusid", referencedColumnName = "id", nullable = false, insertable = false,updatable = false)
+    @JoinColumn(name = "user_status_id", referencedColumnName = "id", nullable = false, insertable = false,updatable = false)
     private UserStatus userStatus;
-    @JoinColumn(name = "userstatusid", referencedColumnName = "id", nullable = false)
-    private int userStatusById;
+    @Column(name = "user_status_id", nullable = false)
+    private int user_status_id;
 
-    @Column(name = "agencyid", nullable = false)
-    private int agencyById;
+    @Column(name = "agency_id", nullable = false)
+    private int agency_id;
     @OneToOne
-    @JoinColumn( name = "agencyid", referencedColumnName = "id",
+    @JoinColumn( name = "agency_id", referencedColumnName = "id",
             nullable = false, insertable = false,updatable = false)
     private Agency agency;
 }

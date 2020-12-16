@@ -21,16 +21,16 @@ public class Bill  implements CrudModel{
     @Column(name = "date", nullable = false)
     private Date date;
     @OneToOne
-    @JoinColumn(name = "rentid", referencedColumnName = "id",
+    @JoinColumn(name = "rent_id", referencedColumnName = "id",
             nullable = false, updatable = false,insertable = false)
     private Rent rent;
     @OneToOne
-    @JoinColumn(name = "agencyid", referencedColumnName = "id",
+    @JoinColumn(name = "agency_id", referencedColumnName = "id",
             nullable = false, updatable = false,insertable = false)
     private Agency agency;
-    @JoinColumn(name = "rentid", referencedColumnName = "id", nullable = false)
-    private int rentById;
-    @JoinColumn(name = "agencyid", referencedColumnName = "id", nullable = false)
-    private int agencyById;
+    @Column(name = "rent_id", nullable = false)
+    private int rent_id;
+    @Column(name = "agency_id", nullable = false)
+    private int agency_id;
 
 }

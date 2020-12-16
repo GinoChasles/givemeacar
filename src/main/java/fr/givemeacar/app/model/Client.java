@@ -35,29 +35,29 @@ public class Client  implements CrudModel{
     private String phone;
 
     @OneToOne
-    @JoinColumn(name = "agencyid", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
+    @JoinColumn(name = "agency_id", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
     private Agency agency;
     @OneToOne
-    @JoinColumn(name = "addressid", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
+    @JoinColumn(name = "address_id", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
     private Address address;
     @OneToOne
-    @JoinColumn(name = "userstatusid", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
+    @JoinColumn(name = "user_status_id", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
     private UserStatus userStatus;
     @OneToOne
-    @JoinColumn(name = "billid", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
+    @JoinColumn(name = "bill_id", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
     private Bill bill;
     @OneToOne
-    @JoinColumn(name = "creditcardid", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
+    @JoinColumn(name = "credit_card_id", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
     private CreditCard creditCard;
 
-    @JoinColumn(name = "agencyid", referencedColumnName = "id", nullable = false)
-    private int agencyById;
-    @JoinColumn(name = "addressid", referencedColumnName = "id", nullable = false)
-    private int addressById;
-    @JoinColumn(name = "userstatusid", referencedColumnName = "id", nullable = false)
-    private int userStatusById;
-    @JoinColumn(name = "billid", referencedColumnName = "id", nullable = false)
-    private int billById;
-    @JoinColumn(name = "creditcardid", referencedColumnName = "id", nullable = false)
-    private int creditCardById;
+    @Column(name = "agency_id", nullable = false)
+    private int agency_id;
+    @Column(name = "address_id", nullable = false)
+    private int address_id;
+    @Column(name = "user_status_id", nullable = false)
+    private int user_status_id;
+    @Column(name = "bill_id", nullable = false)
+    private int bill_id;
+    @Column(name = "credit_card_id", nullable = false)
+    private int credit_card_id;
 }
