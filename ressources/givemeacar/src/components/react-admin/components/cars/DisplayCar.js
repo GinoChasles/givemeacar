@@ -20,23 +20,22 @@ const PostFilter = (props) => (
 const DisplayCar = (props) => (
     <List {...props} title="Liste des véhicules" filters={<PostFilter/>}>
         <Datagrid rowClick="edit">
-            <NumberField source="kilometers" />
-            <NumberField source="price" />
-            <NumberField source="year" />
-            <BooleanField source="available" default={true}/>
-            <BooleanField source="rented" default={false}/>
-            <TextField source="model_id" />
-            <ReferenceField source="model_id" reference="models">
-                <TextField source="name" />
-            </ReferenceField>
-            <TextField source="energy_id" />
-            <TextField source="color_id" />
-            <TextField source="energy_max" />
-            <TextField source="energy_current" />
-            <TextField source="energy_type_id" />
-            <TextField source="latitude" />
-            <TextField source="longitude" />
-            <TextField source="number_suffix" />
+            <TextField      source="brandName"      label="brandName" />
+            <TextField      source="modelName"      label="modelName" />
+            <TextField      source="colorName"      label="colorName" />
+            <TextField      source="energy"         label="energy" />
+            <NumberField    source="year"           label="year" />
+
+            <NumberField    source="kilometers"     label="kilometers" />
+            <NumberField    source="price"          label="price" />
+
+            <TextField      source="energyLevel"    label="energyLevel" />
+
+            <TextField      source="availability"   label="availability" />
+            <TextField      source="inRent"        label="inRent" />
+
+            <TextField      source="latitude"       label="latitude" />
+            <TextField      source="longitude"      label="longitude" />
         </Datagrid>
     </List>
 );
