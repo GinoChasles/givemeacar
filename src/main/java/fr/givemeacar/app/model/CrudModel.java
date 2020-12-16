@@ -1,6 +1,8 @@
 package fr.givemeacar.app.model;
 
-public interface CrudModel {
+import java.io.Serializable;
+
+public interface CrudModel extends Serializable {
     public int getId();
     public void setId(int id);
 }
