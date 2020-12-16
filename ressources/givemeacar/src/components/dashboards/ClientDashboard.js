@@ -3,18 +3,19 @@ import {Admin,Resource,ListGuesser,ShowGuesser,EditGuesser} from "react-admin";
 
 import jsonServerProvider from "ra-data-json-server"
 
-import {DisplayAgency} from '../react-admin/components/agency/CreateAgency'
-import {DisplayManager} from "../react-admin/components/managers/CreateManager.js";
-import {DisplayCars} from "../react-admin/components/cars/CreateCar";
-import {DisplayClient,EditClient} from "../react-admin/components/clients/CreateClient";
-import {DisplayRents,EditRents,CreateRent} from "../react-admin/components/rents/CreateRent";
+import MyLayout from '../MyLayout'
+import {DisplayAgency} from '../react-admin/components/agency'
+import {DisplayCar} from '../react-admin/components/cars'
+import {DisplayClient,EditClient,CreateClient} from "../react-admin/components/clients";
+import {DisplayManager} from "../react-admin/components/managers";
+import {CreateRent, DisplayRent, EditRent} from "../react-admin/components/rents";
 
 
 const dataProvider = jsonServerProvider("http://localhost:8080/api");
 
 const ClientDashboard = () => {
 return (
-<Admin dataProvider={dataProvider}>
+<Admin dataProvider={dataProvider} layout={MyLayout}>
 
     <Resource
       options={{ label: "Les managers !" }}
@@ -30,7 +31,7 @@ return (
     />
     <Resource
       name="cars"
-      list={DisplayCars}
+      list={DisplayCar}
       show={ShowGuesser}
     />
     <Resource
@@ -46,9 +47,9 @@ return (
     />
     <Resource
       name="rents"
-      list={DisplayRents}
+      list={DisplayRent}
       show={ShowGuesser}
-      edit={EditRents}
+      edit={EditRent}
       create={CreateRent}
     />
   </Admin>)}

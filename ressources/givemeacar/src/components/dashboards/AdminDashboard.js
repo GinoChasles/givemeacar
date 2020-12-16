@@ -29,7 +29,7 @@ const dataProvider = jsonServerProvider("http://localhost:8080/api");
 
 const AdminDashboard = () => {
 return (
-<Admin layout={MyLayout} dataProvider={dataProvider}>
+<Admin dataProvider={dataProvider}>
     <Resource
       options={{ label: "Les couleurs" }}
       name="colors"
