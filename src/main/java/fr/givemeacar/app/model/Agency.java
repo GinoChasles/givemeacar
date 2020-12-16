@@ -2,6 +2,7 @@ package fr.givemeacar.app.model;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
@@ -22,10 +23,36 @@ public class Agency  implements CrudModel{
     @Pattern(regexp = "[a-zA-Z" +
             "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,32}")
     private String name;
+
+
+    /* Address */
+
+    @Column(name = "address_id", nullable = false)
+    private int address_id;
+
     @OneToOne
     @JoinColumn(name = "address_id", referencedColumnName = "id",
             nullable = false,insertable = false,updatable = false)
     private Address address;
-    @Column(name = "address_id", nullable = false)
-    private int address_id;
+
+    public String  getFullAddress(){
+        return getAddress().getNumber() + " " + getAddress().getStreetName() + " " +
+                getAddress().getSuffix() + " " + getAddress().getZipCode() + " - " +
+                getAddress().getCity().getName();
+    }
+
+    /* Manager */
+
+    @Column(name = "manager_id", nullable = false)
+    private int manager_id;
+
+    @OneToOne
+    @JsonIgnore
+    @JoinColumn(name = "manager_id", referencedColumnName = "id", nullable = false, updatable = false, insertable =
+            false)
+    private Manager manager;
+
+    public String getManagerFullName(){
+        return getManager().getFirstName() + ' ' + getManager().getLastName();
+    }
 }
