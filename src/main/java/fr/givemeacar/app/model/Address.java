@@ -51,4 +51,9 @@ public class Address implements CrudModel{
     public String getStreetName(){
         return street.getStreetName().getName();
     }
+
+    public String toString(){
+        return number + " " + numberSuffix + " " +
+                street.getStreetName() + " - " + city.getZipcode() + " " + city.getName();
+    }
 }
