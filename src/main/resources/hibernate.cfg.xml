@@ -7,8 +7,8 @@
         <property name="connection.url">${MYSQL_DATABASE}</property>
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
         <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="connection.username">${MYSQL_USER}</property>
-        <property name="connection.password">${MYSQL_PASSWORD}</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">ttrys1107!!</property>
         <!--<property name="hibernate.hbm2ddl.auto">update</property>-->
         <mapping class="fr.givemeacar.app.model.Address"/>
         <mapping class="fr.givemeacar.app.model.Administrator"/>
