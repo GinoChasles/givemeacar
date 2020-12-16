@@ -3,14 +3,17 @@ import {Link} from "react-router-dom"
 
 const listStyle = {
     backgroundColor:'black',
-    padding:'1rem'
+    padding:'1rem',
+    display:'flex',
+    flexFlow:'flex-row wrap',
+    alignItems:'center'
 }
 
 const itemStyle = {
     listStyleType : 'none',
-    display:'inline-block',
     paddingLeft:'1rem',
     paddingRight:'1rem',
+    flex:'auto',
 }
 
 const linkStyle = {
