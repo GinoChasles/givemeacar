@@ -11,7 +11,7 @@ import {
 const CreateManager = (props) => (
     <Create {...props}>
         <SimpleForm >
-            <ReferenceInput label="nom de l'agence" source="agencyId" reference="agencies">
+            <ReferenceInput label="nom de l'agence" source="agency_id" reference="agencies">
                 <AutocompleteInput optionText="name" optionValue={"id"} />
             </ReferenceInput>
             <TextInput source="firstName" />

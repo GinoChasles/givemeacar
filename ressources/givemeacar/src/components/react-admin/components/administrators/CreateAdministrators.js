@@ -12,7 +12,7 @@ import {
 } from "react-admin";
 
 
-const postDefaultValue = () => ({ userStatusId: 1 });
+const postDefaultValue = () => ({ user_status_id: 1 });
 const CreateAdministrators = (props) => (
   <Create {...props}>
     <SimpleForm initialValues={postDefaultValue}>

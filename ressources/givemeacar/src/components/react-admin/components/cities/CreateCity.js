@@ -16,7 +16,7 @@ const CreateCity = (props) => (
       <TextInput source="name" />
       <NumberInput source="latitude" />
       <NumberInput source="longitude" />
-      <ReferenceInput source="departmentId" reference="departments">
+      <ReferenceInput source="department_id" reference="departments">
         <AutocompleteInput optionText="name" optionValue={"id"}/>
       </ReferenceInput>
     </SimpleForm>
