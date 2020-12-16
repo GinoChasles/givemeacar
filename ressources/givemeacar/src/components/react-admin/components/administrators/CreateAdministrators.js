@@ -12,10 +12,9 @@ import {
 } from "react-admin";
 
 
-const postDefaultValue = () => ({ user_status_id: 1 });
 const CreateAdministrators = (props) => (
   <Create {...props}>
-    <SimpleForm initialValues={postDefaultValue}>
+    <SimpleForm>
       <TextInput source="firstName" />
       <TextInput source="lastName" />
       <TextInput source="mail" />
