@@ -2,6 +2,7 @@ package fr.givemeacar.app.model;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
@@ -31,9 +32,22 @@ public class City  implements CrudModel{
     @Column(name = "latitude", nullable = false, precision = 14)
     private BigDecimal latitude;
     @OneToOne
+    @JsonIgnore
     @JoinColumn(name = "department_id", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
     private Department department;
     @Column(name = "department_id", nullable = false)
     private int department_id;
+
+    public String getDepartmentName(){
+        return getDepartment().getName();
+    }
+
+    public String getRegionName(){
+        return getDepartment().getRegion().getName();
+    }
+
+    public int getRegionId(){
+        return getDepartment().getRegion().getId();
+    }
 
 }
