@@ -26,12 +26,13 @@ public class Client  implements CrudModel{
             "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,32}")
     private String lastName;
     @Column(name = "mail", nullable = false)
-    @Pattern(regexp = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$")
+    @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\" +
+            ".[a-zA-Z]{2,6}$")
     private String mail;
     @Column(name = "password", nullable = false, length = 64)
     private String password;
     @Column(name = "phone", nullable = false)
-    @Pattern(regexp = "[0-9]{10}")
+    @Pattern(regexp = "\\+?[0-9]{10,12}")
     private String phone;
 
     @OneToOne
@@ -41,7 +42,7 @@ public class Client  implements CrudModel{
     @JoinColumn(name = "address_id", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
     private Address address;
     @OneToOne
-    @JoinColumn(name = "user_status_id", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
+    @JoinColumn(name = "user_status_id", referencedColumnName = "id",updatable = false, insertable = false)
     private UserStatus userStatus;
     @OneToOne
     @JoinColumn(name = "bill_id", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
@@ -54,8 +55,8 @@ public class Client  implements CrudModel{
     private int agency_id;
     @Column(name = "address_id", nullable = false)
     private int address_id;
-    @Column(name = "user_status_id", nullable = false)
-    private int user_status_id;
+    @Column(name = "user_status_id")
+    private int user_status_id = 3;
     @Column(name = "bill_id", nullable = false)
     private int bill_id;
     @Column(name = "credit_card_id", nullable = false)

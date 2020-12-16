@@ -12,7 +12,7 @@ import * as React from "react";
 const PostFilter = (props) => (
     <Filter {...props}>
         <SearchInput source="q" alwaysOn />
-        <ReferenceInput source="userId" reference="users" allowEmpty>
+        <ReferenceInput source="user_id" reference="users" allowEmpty>
             <SearchInput optionText="name" /> //todo ADAPTER LE FORMULAIRE
         </ReferenceInput>
     </Filter>

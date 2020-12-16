@@ -42,6 +42,10 @@ public class Car  implements CrudModel{
     @JoinColumn(name = "energy_type_id", referencedColumnName = "id",
             nullable = false, insertable = false,updatable = false)
     private EnergyType energyType;
+    @Column(name = "energy_max", nullable = false)
+    private double energyMax;
+    @Column(name = "energy_current", nullable = false)
+    private double energyCurrent;
     @Column(name = "model_id", nullable = false)
     private int model_id;
     @Column(name = "color_id", nullable = false)
