@@ -5,6 +5,7 @@ import fr.givemeacar.app.repository.findByNameStartingWithRepository;
 import fr.givemeacar.app.service.CrudService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.awt.print.Pageable;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
@@ -69,10 +71,12 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
         return ResponseEntity.notFound().build();
     }
 
-    public ResponseEntity findByNameStartingBy(String name){
+    public ResponseEntity findByNameStartingBy(
+                                               int _start, int _end,
+                                               String name){
         findByNameStartingWithRepository repo =
                 (findByNameStartingWithRepository) getService().getRepository();
-        List res = repo.findByNameStartingWith(name);
+        List res = repo.findByNameStartingWith(name).subList(_start,_end);
 
             responseHeaders = new HttpHeaders();
             responseHeaders.set("X-Total-Count", String.valueOf(res.size()));
@@ -81,14 +85,15 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
             return ResponseEntity.ok().headers(responseHeaders).body(res);
     }
 
-    public ResponseEntity findAll(@RequestParam(required = false) String _order,
+    public ResponseEntity findAll(
+                                  @RequestParam(required = false) String _order,
                                      @RequestParam(required = false) String _sort, @RequestParam(required = false) Integer _start,
                                      @RequestParam(required = false) Integer _end,@RequestParam(required =
             false) Integer id,@RequestParam(required = false) String q) {
 
 
         if(q != null){
-            return findByNameStartingBy(q);
+            return findByNameStartingBy(_start, _end,q);
         }
 
         if(id != null){
