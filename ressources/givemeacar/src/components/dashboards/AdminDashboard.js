@@ -82,7 +82,7 @@ return (
     />
     <Resource
       name="brands"
-      options={{ label: "Les modèles" }}
+      options={{ label: "Constructeurs" }}
       list={DisplayBrand}
       show={ShowGuesser}
       edit={EditBrand}
