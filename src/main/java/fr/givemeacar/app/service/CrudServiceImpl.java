@@ -1,7 +1,7 @@
 package fr.givemeacar.app.service;
 
 import fr.givemeacar.app.repository.BaseCrudRepository;
-import fr.givemeacar.app.repository.findByNameStartingWithRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 
@@ -9,11 +9,16 @@ import org.springframework.data.repository.NoRepositoryBean;
 
 import fr.givemeacar.app.model.CrudModel;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.util.List;
 import java.util.Optional;
 
 @NoRepositoryBean
-public abstract class CrudServiceImpl<T> implements CrudService<T> {
+public class CrudServiceImpl<T> implements CrudService<T> {
+
+    @Autowired
+    EntityManager entityManager;
 
     public Long count() {
         return ((BaseCrudRepository)getRepository()).count();
@@ -47,5 +52,22 @@ public abstract class CrudServiceImpl<T> implements CrudService<T> {
                         "DESC".equals(order) ? Sort.by(sort).descending() : Sort.by(sort).ascending()
                 )
         ).toList();
+    }
+
+    public List<T> findByNameStartingWith(T clazz,String column,String name,String sort,String order,int offset,
+                                          int limit){
+        Query q = getEntityManager().createNativeQuery("SELECT * FROM " + column + " WHERE name LIKE '" + name +
+                "%' " +
+                "ORDER BY " + sort,clazz.getClass());
+
+        return q.setFirstResult(offset).setMaxResults(limit).getResultList();
+    }
+
+    public BaseCrudRepository getRepository(){
+        return null;
+    }
+
+    public EntityManager getEntityManager(){
+        return entityManager;
     }
 }

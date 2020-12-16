@@ -10,5 +10,4 @@ import java.util.Optional;
 
 public interface findByNameStartingWithRepository<T> {
 
-    public List<T> findByNameStartingWith(String name);
 }
