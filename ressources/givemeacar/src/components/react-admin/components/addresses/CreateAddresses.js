@@ -14,7 +14,7 @@ const CreateAddresses = (props) => (
       <ReferenceInput source="street_suffices_id" reference="street_suffices">
         <AutocompleteInput optionText="name" optionValue={"id"}/>
       </ReferenceInput>
-      <ReferenceInput source="street_id" reference="streets">
+      <ReferenceInput source="street_id" reference="street_names">
         <AutocompleteInput optionText="name" optionValue={"id"}/>
       </ReferenceInput>
       <ReferenceInput source="city_id" reference="cities">
