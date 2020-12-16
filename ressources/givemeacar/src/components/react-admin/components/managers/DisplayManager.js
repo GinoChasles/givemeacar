@@ -11,11 +11,11 @@ const DisplayManager = (props) => (
             {/* <ReferenceField source="agencyId" reference="agencies" sortBy="agencies.name">
       <TextField source="name" /> //TODO afficher agences auquel le manager appartient
       </ReferenceField> */}
-            <TextField source="id" />
-            <TextField source="firstName" />
-            <TextField source="lastName" />
-            <EmailField source="mail" />
-            <TextField source="phone" />
+            <TextField source="firstName" label={"firstName"}/>
+            <TextField source="lastName" label={"lastName"}/>
+            <EmailField source="mail" label={"mail"}/>
+            <TextField source="phone" label={"phone"}/>
+            <TextField source="agencyName" label={"agency"}/>
         </Datagrid>
     </List>
 );
