@@ -29,7 +29,7 @@ public class Address implements CrudModel{
     @Pattern(regexp = "[a-zA-Z]{0,6}")
     @NotBlank
     @Column(name = "numbersuffix", nullable = true)
-    private String numberSuffix;
+    private String suffix;
     @OneToOne(fetch = FetchType.LAZY)
     @JsonIgnore
     @JoinColumn(name = "street_id", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
@@ -53,7 +53,12 @@ public class Address implements CrudModel{
     }
 
     public String toString(){
-        return number + " " + numberSuffix + " " +
+        return number + " " + suffix + " " +
                 street.getStreetName() + " - " + city.getZipcode() + " " + city.getName();
     }
+
+    public String getZipCode(){
+        return getCity().getZipcode();
+    }
+
 }

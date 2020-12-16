@@ -19,10 +19,11 @@ const PostFilter = (props) => (
 const DisplayAddresses = (props) => (
     <List {...props} title="Votre adresse" filters={<PostFilter/>}>
         <Datagrid rowClick="edit" >
-            <TextField source="number" />
-            <TextField source="cityName"/>
-            <TextField source="streetName" />
-            <TextField source="street_suffices" />
+            <TextField source="number"     label="number"   />
+            <TextField source="streetName" label="streetName"   />
+            <TextField source="suffix"     label="suffix"   />
+            <TextField source="zipCode"    label="zipCode"   />
+            <TextField source="cityName"   label="cityName"   />
         </Datagrid>
     </List>
 );
