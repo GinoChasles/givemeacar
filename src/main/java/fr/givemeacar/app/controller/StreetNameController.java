@@ -29,7 +29,7 @@ public class StreetNameController extends CrudControllerImpl<StreetName>{
             @RequestParam(required = false) String _sort, @RequestParam(required = false) Integer _start,
                 @RequestParam(required = false) Integer _end, @RequestParam(required = false) Integer id,
                 @RequestParam(required = false) String q) {
-            return super.findAll(_order, _sort, _start, _end, id, q);
+            return super.findAll(new StreetName(),"street_names",_order, _sort, _start, _end, id, q);
     }
 
     @GetMapping("street_names/{id}")

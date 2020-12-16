@@ -5,6 +5,8 @@ import fr.givemeacar.app.repository.AddressRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityManager;
+
 @Service
 public class AddressService extends CrudServiceImpl<Address> {
     @Autowired
@@ -13,5 +15,4 @@ public class AddressService extends CrudServiceImpl<Address> {
     public AddressRepository getRepository() {
         return repository;
     }
-
 }

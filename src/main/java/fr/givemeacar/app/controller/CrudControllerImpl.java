@@ -71,13 +71,9 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
         return ResponseEntity.notFound().build();
     }
 
-    public ResponseEntity findByNameStartingBy(
-                                               int _start, int _end,
-                                               String name){
-        findByNameStartingWithRepository repo =
-                (findByNameStartingWithRepository) getService().getRepository();
-        List res = repo.findByNameStartingWith(name).subList(_start,_end);
-
+    public ResponseEntity findByNameStartingBy(T clazz,String column,String name,String sort,String order, int offset,
+                                               int limit){
+        List<T> res = getService().findByNameStartingWith(clazz,column,name,sort,order,offset,limit);
             responseHeaders = new HttpHeaders();
             responseHeaders.set("X-Total-Count", String.valueOf(res.size()));
             responseHeaders.set("Access-Control-Expose-Headers", "X-Total-Count");
@@ -85,7 +81,7 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
             return ResponseEntity.ok().headers(responseHeaders).body(res);
     }
 
-    public ResponseEntity findAll(
+    public ResponseEntity findAll(T clazz, String column,
                                   @RequestParam(required = false) String _order,
                                      @RequestParam(required = false) String _sort, @RequestParam(required = false) Integer _start,
                                      @RequestParam(required = false) Integer _end,@RequestParam(required =
@@ -93,7 +89,7 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
 
 
         if(q != null){
-            return findByNameStartingBy(_start, _end,q);
+            return findByNameStartingBy(clazz,column,q,_sort,_order,_start, _end);
         }
 
         if(id != null){
