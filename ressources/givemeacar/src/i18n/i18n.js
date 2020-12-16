@@ -1,4 +1,4 @@
-import locales from ./lib
+import locales from './lib'
 
 class i18n{
 
