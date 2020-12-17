@@ -2,6 +2,8 @@ package fr.givemeacar.app.model;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -10,7 +12,8 @@ import javax.validation.constraints.Pattern;
 
 @Data
 @Entity
-@Table(name = "models", schema = "givemeacar", catalog = "")
+@Table(name = "models", schema = "givemeacar")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Model implements CrudModel {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -20,10 +23,19 @@ public class Model implements CrudModel {
     private int id;
     @Column(name = "name", nullable = false, length = 45)
     private String name;
+
+    /* Brand */
+
     @OneToOne
-    @JoinColumn(name = "brand_id", referencedColumnName = "id",
-            nullable = false,insertable = false,updatable = false)
+    @JoinColumn(name = "brand_id", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
+    @JsonIgnore
     private Brand brand;
+
     @Column(name = "brand_id", nullable = false)
     private int brand_id;
+
+    public String getBrandName(){
+        System.out.println(getBrand().getName());
+        return getBrand().getName();
+    }
 }

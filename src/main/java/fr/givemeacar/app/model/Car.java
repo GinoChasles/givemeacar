@@ -2,6 +2,8 @@ package fr.givemeacar.app.model;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -11,6 +13,7 @@ import java.math.BigDecimal;
 @Data
 @Entity
 @Table(name = "cars", schema = "givemeacar")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Car  implements CrudModel{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -23,21 +26,16 @@ public class Car  implements CrudModel{
     @Column(name = "year", nullable = false)
     private int year;
     @Column(name = "available", nullable = false)
+    @JsonIgnore
     private int available;
     @Column(name = "rented", nullable = false)
+    @JsonIgnore
     private int rented;
     @Column(name = "longitude", nullable = false, precision = 14)
     private BigDecimal longitude;
     @Column(name = "latitude", nullable = false, precision = 14)
     private BigDecimal latitude;
-    @OneToOne
-    @JoinColumn(name = "model_id", referencedColumnName = "id",
-            nullable = false, insertable = false,updatable = false)
-    private Model model;
-    @OneToOne
-    @JoinColumn(name = "color_id", referencedColumnName = "id",
-            nullable = false, insertable = false,updatable = false)
-    private Color color;
+
     @OneToOne
     @JoinColumn(name = "energy_type_id", referencedColumnName = "id",
             nullable = false, insertable = false,updatable = false)
@@ -52,4 +50,52 @@ public class Car  implements CrudModel{
     private int color_id;
     @Column(name = "energy_type_id",nullable = false)
     private int energy_type_id;
+
+    public String getAvailability(){
+        return  available != 0 ? "oui" : "non";
+    }
+
+    public String getInRent(){
+        return  rented != 0 ? "oui" : "non";
+    }
+
+
+    /*  Model and brand */
+
+    @OneToOne
+    @JoinColumn(name = "model_id", referencedColumnName = "id",
+            nullable = false, insertable = false,updatable = false)
+    private Model model;
+
+    public String getModelName(){
+        return getModel().getName();
+    }
+
+    public String getBrandName(){
+        return getModel().getBrand().getName();
+    }
+
+    public int getBrandId(){
+        return getModel().getBrand().getId();
+    }
+
+    public String getEnergyLevel(){
+        return getEnergyCurrent() + " / " + getEnergyMax();
+    }
+
+
+    /* color */
+
+    @OneToOne
+    @JoinColumn(name = "color_id", referencedColumnName = "id",
+            nullable = false, insertable = false,updatable = false)
+    private Color color;
+
+    public String getColorName(){
+        return getColor().getName();
+    }
+
+    public String getEnergy(){
+        return getEnergyType().getName();
+    }
 }

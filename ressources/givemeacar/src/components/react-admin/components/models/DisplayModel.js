@@ -12,7 +12,7 @@ const DisplayModel = (props) => (
     <List {...props} title="Modèles">
         <Datagrid rowClick="edit">
             <TextField source="name" />
-            <TextField source="brand_id" />
+            <TextField source="brandName" />
         </Datagrid>
     </List>
 );
