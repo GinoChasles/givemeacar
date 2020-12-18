@@ -1,7 +1,6 @@
 package fr.givemeacar.app.model;
 
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
@@ -14,9 +13,9 @@ import javax.validation.constraints.Pattern;
 @Entity
 @Table(name = "agencies", schema = "givemeacar")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Agency  implements CrudModel{
+public class Agency implements CrudModel {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
     @Column(name = "name", nullable = false)
@@ -33,10 +32,10 @@ public class Agency  implements CrudModel{
     @OneToOne
     @JsonIgnore
     @JoinColumn(name = "address_id", referencedColumnName = "id",
-            nullable = false,insertable = false,updatable = false)
+            nullable = false, insertable = false, updatable = false)
     private Address address;
 
-    public String  getFullAddress(){
+    public String getFullAddress() {
         return getAddress().getNumber() + " " + getAddress().getStreet().getName() + " " +
                 getAddress().getSuffix() + " " + getAddress().getZipCode() + " - " +
                 getAddress().getCity().getName();
@@ -53,7 +52,10 @@ public class Agency  implements CrudModel{
             false)
     private Manager manager;
 
-    public String getManagerFullName(){
-        return getManager().getFirstName() + ' ' + getManager().getLastName();
+    public String getManagerFullName() {
+        if (getManager() != null) {
+            return getManager().getFirstName() + ' ' + getManager().getLastName();
+        }
+        return null;
     }
 }

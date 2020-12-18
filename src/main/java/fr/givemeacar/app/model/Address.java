@@ -1,7 +1,6 @@
 package fr.givemeacar.app.model;
 
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AccessLevel;
@@ -19,9 +18,9 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "addresses", schema = "givemeacar")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Address implements CrudModel{
+public class Address implements CrudModel {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
     @Column(name = "number", nullable = true)
@@ -35,7 +34,8 @@ public class Address implements CrudModel{
 
     @OneToOne(fetch = FetchType.LAZY)
     @JsonIgnore
-    @JoinColumn(name = "street_id", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
+    @JoinColumn(name = "street_id", referencedColumnName = "id", nullable = false, insertable = false,
+            updatable = false)
     private Street street;
 
     @Column(name = "street_id", nullable = false)
@@ -44,25 +44,37 @@ public class Address implements CrudModel{
     /*  City  */
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "city_id", referencedColumnName = "id", nullable = false,insertable = false,updatable = false)
+    @JoinColumn(name = "city_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
     @JsonIgnore
     private City city;
 
-    public String getCityName(){
-        return city.getName();
+    public String getCityName() {
+        if (getCity() != null) {
+            return getCity().getName();
+        }
+        return null;
     }
 
-    public String getStreetName(){
-        return street.getName();
+    public String getStreetName() {
+        if (getStreet() != null) {
+            return getStreet().getName();
+        }
+        return null;
     }
 
-    public String getZipCode(){
-        return getCity().getZipcode();
+    public String getZipCode() {
+        if (getCity() != null) {
+            return getCity().getZipcode();
+        }
+        return null;
     }
 
-    public String toString(){
-        return number + " " + suffix + " " +
-                street.getName() + " - " + city.getZipcode() + " " + city.getName();
+    public String toString() {
+        if (getStreet() != null && getCity() != null) {
+            if (getStreet().getName() != null && getCity().getZipcode() != null && getCity().getName() != null)
+                return number + " " + suffix + " " +
+                        street.getName() + " - " + city.getZipcode() + " " + city.getName();
+        }
+        return null;
     }
-
 }
