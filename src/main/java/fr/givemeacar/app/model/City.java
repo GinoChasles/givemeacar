@@ -1,7 +1,6 @@
 package fr.givemeacar.app.model;
 
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
@@ -15,9 +14,9 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "cities", schema = "givemeacar")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class City  implements CrudModel{
+public class City implements CrudModel {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
     @Pattern(regexp = "[a-zA-Z" +
@@ -33,21 +32,35 @@ public class City  implements CrudModel{
     private BigDecimal latitude;
     @OneToOne
     @JsonIgnore
-    @JoinColumn(name = "department_id", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
+    @JoinColumn(name = "department_id", referencedColumnName = "id", nullable = false, updatable = false,
+            insertable = false)
     private Department department;
     @Column(name = "department_id", nullable = false)
     private int department_id;
 
-    public String getDepartmentName(){
-        return getDepartment().getName();
+    public String getDepartmentName() {
+        if (getDepartment() != null) {
+            return getDepartment().getName();
+        }
+        return null;
     }
 
-    public String getRegionName(){
-        return getDepartment().getRegion().getName();
+    public String getRegionName() {
+        if (getDepartment() != null) {
+            if (getDepartment().getRegion() != null) {
+                return getDepartment().getRegion().getName();
+            }
+        }
+        return null;
     }
 
-    public int getRegionId(){
-        return getDepartment().getRegion().getId();
+    public Integer getRegionId() {
+        if (getDepartment() != null) {
+            if (getDepartment().getRegion() != null) {
+                return getDepartment().getRegion().getId();
+            }
+        }
+        return null;
     }
 
 }

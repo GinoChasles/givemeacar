@@ -4,7 +4,9 @@ package fr.givemeacar.app.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
@@ -52,8 +54,11 @@ public class Manager  implements CrudModel{
 
     @Column(name = "agency_id", nullable = false)
     private int agency_id;
-
-    public String getAgencyName() {
-        return getAgency().getName();
+    
+    public String getAgencyName(){
+        if(getAgency() != null){
+            return getAgency().getName();
+        }
+        return null;
     }
 }

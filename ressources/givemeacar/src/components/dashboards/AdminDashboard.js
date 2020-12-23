@@ -22,149 +22,34 @@ import {DisplayStreet,EditStreet,CreateStreet} from "../react-admin/components/s
 import {DisplaySuffix,EditSuffix,CreateSuffix} from "../react-admin/components/street_suffices";
 import {DisplayStatus,EditStatus,CreateStatus} from "../react-admin/components/user_statuses";
 
-
+import redirect from '../../lib/redirectIfNoSession'
 
 const dataProvider = jsonServerProvider("http://localhost:8080/api");
 
-const AdminDashboard = () => {
-return (
-<Admin dataProvider={dataProvider}>
-    <Resource
-      options={{ label: "Les couleurs" }}
-      name="colors"
-      list={DisplayColor}
-      edit={EditColor}
-      create={CreateColor}
-    />
-    <Resource
-      name="cities"
-      list={DisplayCity}
-      show={ShowGuesser}
-      edit={EditCity}
-      create={CreateCity}
-    />
-    <Resource
-      name="departments"
-      list={DisplayDepartment}
-      show={ShowGuesser}
-      edit={EditDepartment}
-      create={CreateDepartment}
-    />
-    <Resource
-      options={{ label: "Les managers !" }}
-      name="managers"
-      list={DisplayManager}
-      show={ShowGuesser}
-      edit={EditManager}
-      create={CreateManager}
-    />
-    <Resource
-      name="clients"
-      list={DisplayClient}
-      show={ShowGuesser}
-      edit={EditClient}
-      create={CreateClient}
-    />
-    <Resource
-      name="administrators"
-      list={DisplayAdministrators}
-      show={ShowGuesser}
-      edit={EditAdministrators}
-      create={CreateAdministrators}
-    />
-    <Resource
-      name="cars"
-      list={DisplayCar}
-      show={ShowGuesser}
-      edit={EditCar}
-      create={CreateCar}
-    />
-    <Resource
-      name="brands"
-      options={{ label: "Constructeurs" }}
-      list={DisplayBrand}
-      show={ShowGuesser}
-      edit={EditBrand}
-      create={CreateBrand}
-    />
-    <Resource
-      name="models"
-      list={DisplayModel}
-      show={ShowGuesser}
-      edit={EditModel}
-      create={CreateModel}
-    />
-
-    <Resource
-      name="addresses"
-      list={DisplayAddresses}
-      show={ShowGuesser}
-      edit={EditAddresses}
-      create={CreateAddresses}
-    />
-
-    <Resource
-      name="agencies"
-      list={DisplayAgency}
-      show={ShowGuesser}
-      edit={EditAgency}
-      create={CreateAgency}
-    />
-    <Resource
-      name="bills"
-      list={ListGuesser}
-      show={ShowGuesser}
-      edit={EditGuesser}
-    />
-    <Resource
-      name="rents"
-      list={DisplayRent}
-      show={ShowGuesser}
-      edit={EditRent}
-      create={CreateRent}
-    />
-    <Resource
-      name="energy_types"
-      list={DisplayEnergyType}
-      show={ShowGuesser}
-      edit={EditEnergyType}
-      create={CreateEnergyType}
-    />
-    <Resource
-      name="regions"
-      list={DisplayRegion}
-      show={ShowGuesser}
-      edit={EditRegion}
-      create={CreateRegion}
-    />
-    <Resource
-      name="street_suffices"
-      list={DisplaySuffix}
-      show={ShowGuesser}
-      edit={EditSuffix}
-      create={CreateSuffix}
-    />
-    <Resource
-      name="streets"
-      list={DisplayStreet}
-      show={ShowGuesser}
-      edit={EditStreet}
-      create={CreateStreet}
-    />
-    <Resource
-      name="countries"
-      list={DisplayCountry}
-      show={ShowGuesser}
-      edit={EditCountry}
-      create={CreateCountry}
-    />
-    <Resource
-      name="user_statuses"
-      list={DisplayStatus}
-      show={ShowGuesser}
-      edit={EditStatus}
-      create={CreateStatus}
-    />
-  </Admin>)}
+const AdminDashboard = () => <>
+  { redirect('/') }
+  
+  <Admin dataProvider={dataProvider} >
+    <Resource options={{ label: "Les couleurs" }} name="colors" list={DisplayColor} edit={EditColor} create={CreateColor} />
+    <Resource name="cities" list={DisplayCity} show={ShowGuesser} edit={EditCity} create={CreateCity} />
+    <Resource name="departments" list={DisplayDepartment} show={ShowGuesser} edit={EditDepartment} create={CreateDepartment} />
+    <Resource options={{ label: "Les managers !" }} name="managers" list={DisplayManager} show={ShowGuesser} edit={EditManager} create={CreateManager} />
+    <Resource name="clients" list={DisplayClient} show={ShowGuesser} edit={EditClient} create={CreateClient} />
+    <Resource name="administrators" list={DisplayAdministrators} show={ShowGuesser} edit={EditAdministrators} create={CreateAdministrators} />
+    <Resource name="cars" list={DisplayCar} show={ShowGuesser} edit={EditCar} create={CreateCar} />
+    <Resource name="brands" options={{ label: "Constructeurs" }} list={DisplayBrand} show={ShowGuesser} edit={EditBrand} create={CreateBrand} />
+    <Resource name="models" list={DisplayModel} show={ShowGuesser} edit={EditModel} create={CreateModel} />
+    <Resource name="addresses" list={DisplayAddresses} show={ShowGuesser} edit={EditAddresses} create={CreateAddresses} />
+    <Resource name="agencies" list={DisplayAgency} show={ShowGuesser} edit={EditAgency} create={CreateAgency} />
+    <Resource name="bills" list={ListGuesser} show={ShowGuesser} edit={EditGuesser} />
+    <Resource name="rents" list={DisplayRent} show={ShowGuesser} edit={EditRent} create={CreateRent} />
+    <Resource name="energy_types" list={DisplayEnergyType} show={ShowGuesser} edit={EditEnergyType} create={CreateEnergyType} />
+    <Resource name="regions" list={DisplayRegion} show={ShowGuesser} edit={EditRegion} create={CreateRegion} />
+    <Resource name="street_suffices" list={DisplaySuffix} show={ShowGuesser} edit={EditSuffix} create={CreateSuffix} />
+    <Resource name="streets" list={DisplayStreet} show={ShowGuesser} edit={EditStreet} create={CreateStreet} />
+    <Resource name="countries" list={DisplayCountry} show={ShowGuesser} edit={EditCountry} create={CreateCountry} />
+    <Resource name="user_statuses" list={DisplayStatus} show={ShowGuesser} edit={EditStatus} create={CreateStatus} />
+  </Admin>
+</>
 
   export default AdminDashboard;

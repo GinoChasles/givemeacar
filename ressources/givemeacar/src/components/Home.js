@@ -1,9 +1,14 @@
-import React from "react";
+import React from 'react'
 
-const Home = () => {
-    return (
-    <div>Home</div>
-    )
-  }
+import LoginForm from '../components/forms/LoginForm'
 
-export default Home;
+import redirect from '../lib/redirectIfNoSession'
+
+export default function Home() {
+  return (
+    <div>
+      {redirect('/')}
+      Home
+           </div>
+  )
+}
