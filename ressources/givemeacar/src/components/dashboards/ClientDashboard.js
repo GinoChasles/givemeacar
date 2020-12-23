@@ -10,48 +10,21 @@ import {DisplayClient,EditClient,CreateClient} from "../react-admin/components/c
 import {DisplayManager} from "../react-admin/components/managers";
 import {CreateRent, DisplayRent, EditRent} from "../react-admin/components/rents";
 
+import redirect from '../../lib/redirectIfNoSession'
 
 const dataProvider = jsonServerProvider("http://localhost:8080/api");
 
-const ClientDashboard = () => {
-return (
-<Admin dataProvider={dataProvider} layout={MyLayout}>
+const ClientDashboard = () => <>
+    { redirect('/')}
 
-    <Resource
-      options={{ label: "Les managers !" }}
-      name="managers"
-      list={DisplayManager}
-      show={ShowGuesser}
-    />
-    <Resource
-      name="clients"
-      list={DisplayClient}
-      show={ShowGuesser}
-      edit={EditClient}
-    />
-    <Resource
-      name="cars"
-      list={DisplayCar}
-      show={ShowGuesser}
-    />
-    <Resource
-      name="agencies"
-      list={DisplayAgency}
-      show={ShowGuesser}
-    />
-    <Resource
-      name="bills"
-      list={ListGuesser}
-      show={ShowGuesser}
-      edit={EditGuesser}
-    />
-    <Resource
-      name="rents"
-      list={DisplayRent}
-      show={ShowGuesser}
-      edit={EditRent}
-      create={CreateRent}
-    />
-  </Admin>)}
+    <Admin dataProvider={dataProvider} layout={MyLayout}>
+      <Resource options={{ label: "Les managers !" }} name="managers" list={DisplayManager} show={ShowGuesser} />
+      <Resource name="clients" list={DisplayClient} show={ShowGuesser} edit={EditClient} />
+      <Resource name="cars" list={DisplayCar} show={ShowGuesser} />
+      <Resource name="agencies" list={DisplayAgency} show={ShowGuesser} />
+      <Resource name="bills" list={ListGuesser} show={ShowGuesser} edit={EditGuesser} />
+      <Resource name="rents" list={DisplayRent} show={ShowGuesser} edit={EditRent} create={CreateRent} />
+      </Admin>
+    </>
 
   export default ClientDashboard;

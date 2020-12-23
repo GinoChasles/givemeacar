@@ -13,9 +13,7 @@ const DisplayDepartments = (props) => (
         <Datagrid rowClick="edit">
             <TextField source="code" />
             <TextField source="name" />
-            <ReferenceField source="region_id" reference="regions">
-                <TextField source="name" />
-            </ReferenceField>
+            <TextField source="regionName" />
         </Datagrid>
     </List>
 );

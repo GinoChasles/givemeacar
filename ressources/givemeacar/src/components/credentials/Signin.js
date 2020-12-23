@@ -1,9 +1,12 @@
-import React from "react";
+import React from 'react'
 
-const Signin = () => {
-    return (
-    <div>se connecter</div>
-    )
-  }
+import LoginForm from '../forms/LoginForm'
+import Home from '../Home'
 
-export default Signin;
+import Cookies from 'js-cookie'
+
+export default function Signin() {
+  return (
+      Cookies.get('userStatus') ? <Home /> :<LoginForm />
+  )
+}

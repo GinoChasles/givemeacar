@@ -2,6 +2,7 @@ package fr.givemeacar.app.model;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -11,6 +12,7 @@ import javax.validation.constraints.Pattern;
 @Data
 @Entity
 @Table(name = "credit_cards", schema = "givemeacar", catalog = "")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class CreditCard  implements CrudModel{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -34,5 +36,4 @@ public class CreditCard  implements CrudModel{
     @Pattern(regexp = "[a-zA-Z" +
             "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,42}")
     private String society;
-
 }

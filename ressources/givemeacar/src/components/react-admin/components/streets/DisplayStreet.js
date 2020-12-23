@@ -6,10 +6,9 @@ const PostFilter = (props) => (
     </Filter>
 );
 const DisplayStreet = (props) => (
-    <List {...props} filters={<PostFilter/>}>
+    <List {...props} title="Nom des rues" filters={<PostFilter/>}>
         <Datagrid rowClick="edit">
-            <TextField source="city_id" />
-            <TextField source="street_name_id" />
+            <TextField source="name" />
         </Datagrid>
     </List>
 );

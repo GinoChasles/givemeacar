@@ -7,7 +7,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.lang.reflect.InvocationTargetException;
 
 @CrossOrigin
 @RestController
@@ -23,13 +22,14 @@ public class StreetController extends CrudControllerImpl<Street>{
         return super.count();
     }
 
-    @RequestMapping(value = "streets", method = RequestMethod.GET)
+    @RequestMapping(value = "streets", method =
+            RequestMethod.GET)
     @Override
         public ResponseEntity findAll(@RequestParam(required = false) String _order,
             @RequestParam(required = false) String _sort, @RequestParam(required = false) Integer _start,
                 @RequestParam(required = false) Integer _end, @RequestParam(required = false) Integer id,
                 @RequestParam(required = false) String q) {
-            return super.findAll(_order, _sort, _start, _end, id, q);
+            return super.findAll(new Street(),"streets",_order, _sort, _start, _end, id, q);
     }
 
     @GetMapping("streets/{id}")

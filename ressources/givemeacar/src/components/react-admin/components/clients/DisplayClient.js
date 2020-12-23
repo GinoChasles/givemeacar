@@ -8,16 +8,13 @@ const PostFilter = (props) => (
 const DisplayClient = (props) => (
     <List {...props} title="Liste des clients" filters={<PostFilter/>}>
         <Datagrid rowClick="edit">
-            <TextField source="first_name" />
-            <TextField source="last_name" />
-            <TextField source="mail" />
-            <TextField source="password" />
-            <TextField source="phone" />
-            <TextField source="address_id" />
-            <TextField source="user_status_id" />
-            <TextField source="bill_id" />
-            <TextField source="credit_card_id" />
-            <TextField source="agency_id" />
+            <TextField source="firstName"   label="firstName" />
+            <TextField source="lastName"    label="lastName" />
+            <TextField source="mail"        label="mail" />
+            <TextField source="password"    label="password" />
+            <TextField source="phone"       label="phone" />
+            <TextField source="city"        label="city" />
+            <TextField source="agencyName"  label="agencyName" />
         </Datagrid>
     </List>
 );

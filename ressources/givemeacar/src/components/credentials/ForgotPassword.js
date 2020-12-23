@@ -1,9 +1,11 @@
 import React from "react";
+import redirect from '../../lib/redirectIfNoSession'
 
 const ForgotPassword = () => {
-    return (
-    <div>mot de passe oublié</div>
-    )
+    return <>
+      { redirect('/') }
+      mot de passe oublié
+    </>
   }
 
 export default ForgotPassword;

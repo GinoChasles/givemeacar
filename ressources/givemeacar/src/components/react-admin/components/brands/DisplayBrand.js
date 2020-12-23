@@ -6,7 +6,7 @@ const PostFilter = (props) => (
     </Filter>
 );
 const DisplayBrand = (props) => (
-    <List {...props} title="Le modèle du véhicule" filters={<PostFilter/>}>
+    <List {...props} title="Constructeurs" filters={<PostFilter/>}>
         <Datagrid rowClick="edit">
             <TextField source="name" />
         </Datagrid>

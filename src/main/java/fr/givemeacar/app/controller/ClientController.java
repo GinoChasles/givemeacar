@@ -30,7 +30,7 @@ public class ClientController extends CrudControllerImpl<Client>{
             @RequestParam(required = false) String _sort, @RequestParam(required = false) Integer _start,
                 @RequestParam(required = false) Integer _end, @RequestParam(required = false) Integer id,
                 @RequestParam(required = false) String q) {
-            return super.findAll(_order, _sort, _start, _end, id, q);
+            return super.findAll(new Client(),"clients",_order, _sort, _start, _end, id, q);
     }
 
     @GetMapping("clients/{id}")

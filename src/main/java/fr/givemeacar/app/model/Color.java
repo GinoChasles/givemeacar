@@ -2,6 +2,7 @@ package fr.givemeacar.app.model;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ import javax.validation.constraints.Pattern;
 @Data
 @Entity
 @Table(name = "colors", schema = "givemeacar", catalog = "")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Color implements CrudModel {
 
     @Id

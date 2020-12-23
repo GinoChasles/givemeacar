@@ -1,7 +1,7 @@
 package fr.givemeacar.app.model;
 
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
@@ -14,9 +14,9 @@ import java.math.BigDecimal;
 @Entity
 @Table(name = "cities", schema = "givemeacar")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class City  implements CrudModel{
+public class City implements CrudModel {
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
     @Pattern(regexp = "[a-zA-Z" +
@@ -31,9 +31,36 @@ public class City  implements CrudModel{
     @Column(name = "latitude", nullable = false, precision = 14)
     private BigDecimal latitude;
     @OneToOne
-    @JoinColumn(name = "department_id", referencedColumnName = "id", nullable = false, updatable = false, insertable = false)
+    @JsonIgnore
+    @JoinColumn(name = "department_id", referencedColumnName = "id", nullable = false, updatable = false,
+            insertable = false)
     private Department department;
     @Column(name = "department_id", nullable = false)
     private int department_id;
+
+    public String getDepartmentName() {
+        if (getDepartment() != null) {
+            return getDepartment().getName();
+        }
+        return null;
+    }
+
+    public String getRegionName() {
+        if (getDepartment() != null) {
+            if (getDepartment().getRegion() != null) {
+                return getDepartment().getRegion().getName();
+            }
+        }
+        return null;
+    }
+
+    public Integer getRegionId() {
+        if (getDepartment() != null) {
+            if (getDepartment().getRegion() != null) {
+                return getDepartment().getRegion().getId();
+            }
+        }
+        return null;
+    }
 
 }

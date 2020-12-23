@@ -31,7 +31,7 @@ public class ColorController extends CrudControllerImpl<Color>{
             @RequestParam(required = false) String _sort, @RequestParam(required = false) Integer _start,
                 @RequestParam(required = false) Integer _end, @RequestParam(required = false) Integer id,
                 @RequestParam(required = false) String q){
-            return super.findAll(_order, _sort, _start, _end, id, q);
+            return super.findAll(new Color(),"colors",_order, _sort, _start, _end, id, q);
     }
 
     @GetMapping("colors/{id}")
