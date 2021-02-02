@@ -41,12 +41,16 @@ public class AddressController extends CrudControllerImpl<Address>{
 
     @PostMapping("addresses")
     public ResponseEntity create(@Valid @RequestBody Address model) {
+        System.out.println("model");
+        System.out.println(model);
         return super.create(model);
     }
 
 
     @PutMapping("addresses/{id}")
     public ResponseEntity update(@PathVariable int id,@RequestBody Address model) {
+        System.out.println("model");
+        System.out.println(model);
         return super.update(model);
     }
 

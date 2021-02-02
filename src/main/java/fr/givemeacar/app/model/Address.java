@@ -23,18 +23,24 @@ public class Address implements CrudModel {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
+
     @Column(name = "number", nullable = true)
     private Integer number;
-    @Pattern(regexp = "[a-zA-Z]{0,6}")
-    @NotBlank
-    @Column(name = "suffix", nullable = true)
-    private String suffix;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JsonIgnore
+    @JoinColumn(name = "suffix_id", referencedColumnName = "id", nullable = true, insertable = false,
+            updatable = false)
+    private StreetSuffix suffix;
+
+    @Column(name = "suffix_id", nullable = false)
+    private int suffix_id;
 
     /* Street */
 
     @OneToOne(fetch = FetchType.LAZY)
     @JsonIgnore
-    @JoinColumn(name = "street_id", referencedColumnName = "id", nullable = false, insertable = false,
+    @JoinColumn(name = "street_id", referencedColumnName = "id", nullable = true, insertable = false,
             updatable = false)
     private Street street;
 
@@ -44,9 +50,20 @@ public class Address implements CrudModel {
     /*  City  */
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "city_id", referencedColumnName = "id", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "city_id", referencedColumnName = "id", nullable = true, insertable = false, updatable = false)
     @JsonIgnore
     private City city;
+
+    @Column(name = "city_id", nullable = false)
+    private int city_id;
+
+
+    public String getSuffixName() {
+        if (getSuffix() != null) {
+            return getSuffix().getName();
+        }
+        return null;
+    }
 
     public String getCityName() {
         if (getCity() != null) {
@@ -65,15 +82,6 @@ public class Address implements CrudModel {
     public String getZipCode() {
         if (getCity() != null) {
             return getCity().getZipcode();
-        }
-        return null;
-    }
-
-    public String toString() {
-        if (getStreet() != null && getCity() != null) {
-            if (getStreet().getName() != null && getCity().getZipcode() != null && getCity().getName() != null)
-                return number + " " + suffix + " " +
-                        street.getName() + " - " + city.getZipcode() + " " + city.getName();
         }
         return null;
     }

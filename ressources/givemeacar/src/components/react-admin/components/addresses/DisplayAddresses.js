@@ -21,7 +21,7 @@ const DisplayAddresses = (props) => (
         <Datagrid rowClick="edit" >
             <TextField source="number"     label="number"   />
             <TextField source="streetName" label="streetName"   />
-            <TextField source="suffix"     label="suffix"   />
+            <TextField source="suffixName" label="suffixName"   />
             <TextField source="zipCode"    label="zipCode"   />
             <TextField source="cityName"   label="cityName"   />
         </Datagrid>

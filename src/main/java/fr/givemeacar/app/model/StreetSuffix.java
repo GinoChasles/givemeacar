@@ -19,7 +19,5 @@ public class StreetSuffix  implements CrudModel{
     @Column(name = "id", nullable = false)
     private int id;
     @Column(name = "name", nullable = true)
-    @Pattern(regexp = "[a-zA-Z" +
-            "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,12}")
     private String name;
 }
