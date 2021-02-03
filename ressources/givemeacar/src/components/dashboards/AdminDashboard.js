@@ -3,8 +3,8 @@ import {Admin,Resource,ListGuesser,ShowGuesser,EditGuesser} from "react-admin";
 
 import jsonServerProvider from "ra-data-json-server"
 import MyLayout from '../MyLayout'
-import { CreateAddresses, EditAddresses, DisplayAddresses } from '../react-admin/components/addresses'
-import {DisplayAdministrators,CreateAdministrators,EditAdministrators} from "../react-admin/components/administrators";
+
+import { DisplayAdministrators, CreateAdministrators, EditAdministrators } from "../react-admin/components/administrators";
 import {DisplayAgency,EditAgency,CreateAgency} from '../react-admin/components/agency'
 import { DisplayBrand,EditBrand,CreateBrand} from "../react-admin/components/brands";
 import {DisplayCar,EditCar,CreateCar} from "../react-admin/components/cars";
@@ -39,7 +39,6 @@ const AdminDashboard = () => <>
     <Resource name="cars" list={DisplayCar} show={ShowGuesser} edit={EditCar} create={CreateCar} />
     <Resource name="brands" options={{ label: "Constructeurs" }} list={DisplayBrand} show={ShowGuesser} edit={EditBrand} create={CreateBrand} />
     <Resource name="models" list={DisplayModel} show={ShowGuesser} edit={EditModel} create={CreateModel} />
-    <Resource name="addresses" list={DisplayAddresses} show={ShowGuesser} edit={EditAddresses} create={CreateAddresses} />
     <Resource name="agencies" list={DisplayAgency} show={ShowGuesser} edit={EditAgency} create={CreateAgency} />
     <Resource name="bills" list={ListGuesser} show={ShowGuesser} edit={EditGuesser} />
     <Resource name="rents" list={DisplayRent} show={ShowGuesser} edit={EditRent} create={CreateRent} />

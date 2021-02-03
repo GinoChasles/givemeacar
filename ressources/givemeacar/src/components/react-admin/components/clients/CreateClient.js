@@ -10,6 +10,7 @@ import {
   ReferenceInput,
   AutocompleteInput,
   TextInput,
+  NumberInput
 } from "react-admin";
 
 
@@ -23,17 +24,19 @@ const CreateClient = (props) => (
     <PasswordInput source="password" />
     <TextInput source="phone" />
 
-    <ReferenceInput source="address_id" reference="addresses">
-      <AutocompleteInput optionText="name" optionValue={"id"}/>
-    </ReferenceInput>
+      <NumberInput source="streetNumber" />
 
-    <ReferenceInput source="user_status_id" reference="user_statuses">
-      <AutocompleteInput optionText="name" optionValue={"id"}/>
-    </ReferenceInput>
+      <ReferenceInput source="street_suffix_id" reference="street_suffices">
+        <AutocompleteInput optionText="name" optionValue={"id"} />
+      </ReferenceInput>
 
-    <ReferenceInput source="bill_id" reference="bills" allowEmpty>
-      <AutocompleteInput optionText="name" optionValue={"id"}/>
-    </ReferenceInput>
+      <ReferenceInput source="street_id" reference="streets">
+        <AutocompleteInput optionText="name" optionValue={"id"} />
+      </ReferenceInput>
+
+      <ReferenceInput source="city_id" reference="cities">
+        <AutocompleteInput optionText="name" optionValue={"id"} />
+      </ReferenceInput>
 
     <ReferenceInput source="agency_id" reference="agencies">
       <AutocompleteInput optionText="name" optionValue={"id"}/>

@@ -1,4 +1,4 @@
-import {AutocompleteInput, Edit, PasswordInput, ReferenceInput, SimpleForm, TextInput} from "react-admin";
+import { AutocompleteInput, Edit, PasswordInput, ReferenceInput, SimpleForm, TextInput, NumberInput } from "react-admin";
 import * as React from "react";
 
 const EditClient = (props) => (
@@ -11,16 +11,18 @@ const EditClient = (props) => (
             <PasswordInput source="password" />
             <TextInput source="phone" />
 
-            <ReferenceInput source="address_id" reference="addresses">
-                <AutocompleteInput optionText="name" optionValue={"id"}/>
+            <NumberInput source="streetNumber" />
+
+            <ReferenceInput source="street_suffix_id" reference="street_suffices">
+                <AutocompleteInput optionText="name" optionValue={"id"} />
             </ReferenceInput>
 
-            <ReferenceInput source="user_status_id" reference="user_statuses">
-                <AutocompleteInput optionText="name" optionValue={"id"}/>
+            <ReferenceInput source="street_id" reference="streets">
+                <AutocompleteInput optionText="name" optionValue={"id"} />
             </ReferenceInput>
 
-            <ReferenceInput source="bill_id" reference="bills">
-                <AutocompleteInput optionText="name" optionValue={"id"}/>
+            <ReferenceInput source="city_id" reference="cities">
+                <AutocompleteInput optionText="name" optionValue={"id"} />
             </ReferenceInput>
 
             <ReferenceInput source="agency_id" reference="agencies">
