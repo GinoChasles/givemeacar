@@ -1,27 +1,30 @@
-import { AutocompleteInput, Edit, ReferenceInput, SimpleForm, TextInput, NumberInput } from "react-admin";
+import { AutocompleteInput, Edit, ReferenceInput, SimpleForm, TextInput, NumberInput, useTranslate } from "react-admin";
 import * as React from "react";
 
-const EditAgency = (props) => (
-    <Edit {...props} undoable={false}>
+const EditAgency = (props) => {
+
+    const t = useTranslate();
+
+    return <Edit {...props} undoable={false}>
         <SimpleForm>
-            <TextInput source="name" />
+            <TextInput label={t('custom.name')} source="name" />
 
-            <NumberInput source="streetNumber" />
+            <NumberInput label={t('custom.number')} source="streetNumber" />
 
-            <ReferenceInput source="street_suffix_id" reference="street_suffices">
+            <ReferenceInput label={t('custom.suffix')} source="street_suffix_id" reference="street_suffices">
                 <AutocompleteInput optionText="name" optionValue={"id"} />
             </ReferenceInput>
 
-            <ReferenceInput source="street_id" reference="streets">
+            <ReferenceInput label={t('custom.street')} source="street_id" reference="streets">
                 <AutocompleteInput optionText="name" optionValue={"id"} />
             </ReferenceInput>
 
-            <ReferenceInput source="city_id" reference="cities">
+            <ReferenceInput label={t('custom.city')} source="city_id" reference="cities">
                 <AutocompleteInput optionText="name" optionValue={"id"} />
             </ReferenceInput>
 
         </SimpleForm>
     </Edit>
-);
+}
 
 export default EditAgency

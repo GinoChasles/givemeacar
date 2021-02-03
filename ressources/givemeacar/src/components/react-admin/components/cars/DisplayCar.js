@@ -1,42 +1,52 @@
 import {
-    BooleanField,
-    Datagrid,
-    Filter,
-    List,
-    NumberField,
-    ReferenceField,
-    ReferenceInput, SearchInput,
-    TextField
+    Datagrid, Filter, List, NumberField, ReferenceInput, SearchInput, TextField, useTranslate
 } from "react-admin";
+
 import * as React from "react";
+
+
 const PostFilter = (props) => (
     <Filter {...props}>
         <SearchInput source="q" alwaysOn />
         <ReferenceInput source="user_id" reference="users" allowEmpty>
-            <SearchInput optionText="name" /> //todo ADAPTER LE FORMULAIRE
+            <SearchInput optionText="name" /> 
         </ReferenceInput>
     </Filter>
 );
-const DisplayCar = (props) => (
-    <List {...props} title="Liste des véhicules" filters={<PostFilter/>}>
+
+
+const DisplayCar = (props) => {
+
+    const t = useTranslate();
+
+    return <List {...props} title="Liste des véhicules" filters={<PostFilter />}>
         <Datagrid rowClick="edit">
-            <TextField      source="brandName"      label="brandName" />
-            <TextField      source="modelName"      label="modelName" />
-            <TextField      source="colorName"      label="colorName" />
-            <TextField      source="energy"         label="energy" />
-            <NumberField    source="year"           label="year" />
 
-            <NumberField    source="kilometers"     label="kilometers" />
-            <NumberField    source="price"          label="price" />
+            <TextField label={t('custom.brand')} source="brandName" />
 
-            <TextField      source="energyLevel"    label="energyLevel" />
+            <TextField label={t('custom.model')} source="modelName" />
 
-            <TextField      source="availability"   label="availability" />
-            <TextField      source="inRent"        label="inRent" />
+            <TextField label={t('custom.color')} source="colorName" />
 
-            <TextField      source="latitude"       label="latitude" />
-            <TextField      source="longitude"      label="longitude" />
+            <TextField label={t('custom.energy')} source="energy" />
+
+            <NumberField label={t('custom.year')} source="year" />
+
+            <NumberField label={t('custom.kilometers')} source="kilometers" />
+
+            <NumberField label={t('custom.price')} source="price" />
+
+            <TextField label={t('custom.energyLevel')} source="energyLevel" />
+
+            <TextField label={t('custom.available')} source="availability" />
+            
+            <TextField label={t('custom.rented')} source="inRent" />
+
+            <TextField label={t('custom.latitude')} source="latitude" />
+            
+            <TextField label={t('custom.longitude')} source="longitude" />
         </Datagrid>
     </List>
-);
+}
+
 export default DisplayCar

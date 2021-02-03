@@ -1,29 +1,44 @@
-import {AutocompleteInput, BooleanInput, Edit, NumberInput, ReferenceInput, SimpleForm} from "react-admin";
+import { AutocompleteInput, BooleanInput, Edit, NumberInput, ReferenceInput, SimpleForm, useTranslate } from "react-admin";
 import * as React from "react";
 
-const EditCar = (props) => (
-    <Edit {...props} undoable={false}>
+const EditCar = (props) => {
+
+    const t = useTranslate();
+
+    return <Edit {...props} undoable={false}>
         <SimpleForm>
-            <NumberInput source="kilometers" />
-            <NumberInput source="price" />
-            <NumberInput source="year" />
-            <BooleanInput source="available" valueLabelTrue="La voiture est dispo" valueLabelFalse="la voiture est indisponible"/>
-            <BooleanInput source="rented" valueLabelTrue="la voiture est louée" valueLabelFalse="la voiture n'est pas louée" />
-            <ReferenceInput source="model_id" reference="models">
-                <AutocompleteInput optionText="name" optionValue={"id"}/>
+
+            <NumberInput label={t('custom.kilometers')} source="kilometers" />
+
+            <NumberInput label={t('custom.price')} source="price" />
+
+            <NumberInput label={t('custom.year')} source="year" />
+
+            <BooleanInput label={t('custom.available')} source="available" valueLabelTrue="La voiture est dispo" valueLabelFalse="la voiture est indisponible" />
+
+            <BooleanInput label={t('custom.rented')} source="rented" valueLabelTrue="la voiture est louée" valueLabelFalse="la voiture n'est pas louée" />
+
+            <ReferenceInput label={t('custom.model')} source="model_id" reference="models">
+                <AutocompleteInput optionText="name" optionValue={"id"} />
             </ReferenceInput>
-            <ReferenceInput source="color_id" reference="colors">
-                <AutocompleteInput optionText="name" optionValue={"id"}/>
+
+            <ReferenceInput label={t('custom.color')} source="color_id" reference="colors">
+                <AutocompleteInput optionText="name" optionValue={"id"} />
             </ReferenceInput>
-            <NumberInput source="energy_max" />
-            <NumberInput source="energy_current" />
-            <ReferenceInput source="energy_type_id" reference="energy_types">
-                <AutocompleteInput optionText="name" optionValue={"id"}/>
+
+            <NumberInput label={t('custom.energyMax')} source="energy_max" />
+
+            <NumberInput label={t('custom.energyCurrent')} source="energy_current" />
+
+            <ReferenceInput label={t('custom.energyType')} source="energy_type_id" reference="energy_types">
+                <AutocompleteInput optionText="name" optionValue={"id"} />
             </ReferenceInput>
-            <NumberInput source="latitude" />
-            <NumberInput source="longitude" />
+
+            <NumberInput label={t('custom.latitude')} source="latitude" />
+
+            <NumberInput label={t('custom.longitude')} source="longitude" />
         </SimpleForm>
     </Edit>
-);
+}
 
-export default EditCar
+export default EditCar;

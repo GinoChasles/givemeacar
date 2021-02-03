@@ -1,27 +1,29 @@
 import * as React from "react";
+
+import { useTranslate } from "react-admin";
+
 import {
-  List,
-  Datagrid,
-  TextField,
   Create,
-  Edit,
-  EmailField,
   SimpleForm,
   TextInput,
   PasswordInput,
 } from "react-admin";
 
 
-const CreateAdministrators = (props) => (
-  <Create {...props}>
+const CreateAdministrators = (props) => {
+
+  const t = useTranslate();
+
+  return <Create {...props}>
     <SimpleForm>
-      <TextInput source="firstName" />
-      <TextInput source="lastName" />
-      <TextInput source="mail" />
-      <TextInput source="phone" />
-      <PasswordInput source="password" />
+      <TextInput source="firstName" label={t('custom.firstName')} />
+      <TextInput source="lastName" label={t('custom.lastName')} />
+      <TextInput source="mail" label={t('custom.mail')} />
+      <TextInput source="phone" label={t('custom.phone')} />
+      <PasswordInput source="password" label={t('custom.password')} />
     </SimpleForm>
   </Create>
-);
+
+}
 
 export default CreateAdministrators
