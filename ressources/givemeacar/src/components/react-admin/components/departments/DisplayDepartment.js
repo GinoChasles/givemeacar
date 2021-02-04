@@ -1,5 +1,5 @@
 import {
-    Datagrid, Filter, List, ReferenceInput, SearchInput, TextField, useTranslate
+    Datagrid, Filter, List, ReferenceInput, SearchInput, TextField, ReferenceField, useTranslate
 } from "react-admin";
 import * as React from "react";
 
@@ -24,7 +24,9 @@ const DisplayDepartments = (props) => {
 
             <TextField label={t('custom.name')} source="name" />
 
-            <TextField label={t('custom.region')} source="regionName" />
+            <ReferenceField label={t('custom.region')} source="region_id" reference="regions">
+                <TextField source="name" />
+            </ReferenceField>
         </Datagrid>
     </List>
 }
