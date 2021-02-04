@@ -74,7 +74,7 @@ import {
 import {
   Palette, DirectionsCar, LocationCity, Explore, Streetview, Face,
   AirportShuttle, HomeWork, Receipt, Description, EvStation, Public,
-  VpnKey, Person, RecordVoiceOver, FormatListNumbered, Map, LocalShipping
+  VpnKey, Person, RecordVoiceOver, FormatListNumbered, Map, LocalShipping, CreditCard
 } from '@material-ui/icons';
 
 import redirect from '../../lib/redirectIfNoSession'
@@ -101,7 +101,7 @@ const AdminDashboard = ({ dataProvider, i18nProvider }) => {
       <Resource icon={HomeWork} options={{ label: t("custom.agencies") }} name="agencies"
         list={DisplayAgency} show={ShowAgency} edit={EditAgency} create={CreateAgency} />
 
-      <Resource icon={Receipt} options={{ label: t("custom.bills") }} name="bills"
+      <Resource icon={CreditCard} options={{ label: t("custom.bills") }} name="bills"
         list={ListGuesser} show={ShowGuesser} edit={EditGuesser} />
 
       <Resource icon={Description} options={{ label: t("custom.rents") }} name="rents"
