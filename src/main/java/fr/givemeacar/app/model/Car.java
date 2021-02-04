@@ -49,6 +49,10 @@ public class Car implements CrudModel {
     private int color_id;
     @Column(name = "energy_type_id", nullable = false)
     private int energy_type_id;
+    @OneToOne
+    @JoinColumn(name = "color_id", referencedColumnName = "id",
+            nullable = false, insertable = false, updatable = false)
+    private Color color;
 
     public String getAvailability() {
         return available != 0 ? "oui" : "non";
@@ -81,15 +85,7 @@ public class Car implements CrudModel {
     public String getEnergyLevel() {
         return getEnergyCurrent() + " / " + getEnergyMax();
     }
-
-
-    /* color */
-
-    @OneToOne
-    @JoinColumn(name = "color_id", referencedColumnName = "id",
-            nullable = false, insertable = false, updatable = false)
-    private Color color;
-
+    
     public String getColorName() {
         if (getColor() != null) {
             return getColor().getName();

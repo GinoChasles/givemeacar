@@ -2,10 +2,21 @@ import * as React from "react";
 
 import { Admin, Resource, ListGuesser, ShowGuesser, EditGuesser, useTranslate } from "react-admin";
 
-import { DisplayAdministrators, CreateAdministrators, EditAdministrators } from "../react-admin/components/administrators";
-import {DisplayAgency,EditAgency,CreateAgency} from '../react-admin/components/agency'
-import { DisplayBrand, EditBrand, CreateBrand } from "../react-admin/components/brands";
-import {DisplayCar,EditCar,CreateCar} from "../react-admin/components/cars";
+import {
+  DisplayAdministrators, CreateAdministrators, EditAdministrators, ShowAdministrators
+} from "../react-admin/components/administrators";
+
+import {
+  DisplayAgency, EditAgency, CreateAgency, ShowAgency
+} from '../react-admin/components/agency'
+
+import {
+  DisplayBrand, EditBrand, CreateBrand, ShowBrand
+} from "../react-admin/components/brands";
+
+import {
+  DisplayCar, EditCar, CreateCar, ShowCar
+} from "../react-admin/components/cars";
 import {DisplayCity,EditCity,CreateCity} from "../react-admin/components/cities";
 import {DisplayClient,EditClient,CreateClient} from "../react-admin/components/clients";
 import {DisplayColor,EditColor,CreateColor} from "../react-admin/components/colors";
@@ -47,15 +58,15 @@ const AdminDashboard = ({ dataProvider, i18nProvider }) => {
 
       <Resource icon={Face} options={{ label: t("custom.clients") }} name="clients" list={DisplayClient} show={ShowGuesser} edit={EditClient} create={CreateClient} />
 
-      <Resource icon={SupervisorAccount} options={{ label: t("custom.administrators") }} name="administrators" list={DisplayAdministrators} show={ShowGuesser} edit={EditAdministrators} create={CreateAdministrators} />
+      <Resource icon={SupervisorAccount} options={{ label: t("custom.administrators") }} name="administrators" list={DisplayAdministrators} show={ShowAdministrators} edit={EditAdministrators} create={CreateAdministrators} />
 
-      <Resource icon={DirectionsCar} options={{ label: t("custom.cars") }} name="cars" list={DisplayCar} show={ShowGuesser} edit={EditCar} create={CreateCar} />
+      <Resource icon={DirectionsCar} options={{ label: t("custom.cars") }} name="cars" list={DisplayCar} show={ShowCar} edit={EditCar} create={CreateCar} />
 
-      <Resource icon={AirportShuttle} options={{ label: t("custom.brands") }} name="brands" list={DisplayBrand} show={ShowGuesser} edit={EditBrand} create={CreateBrand} />
+      <Resource icon={AirportShuttle} options={{ label: t("custom.brands") }} name="brands" list={DisplayBrand} show={ShowBrand} edit={EditBrand} create={CreateBrand} />
 
       <Resource icon={AirportShuttle} options={{ label: t("custom.models") }} name="models" list={DisplayModel} show={ShowGuesser} edit={EditModel} create={CreateModel} />
 
-      <Resource icon={HomeWork} options={{ label: t("custom.agencies") }} name="agencies" list={DisplayAgency} show={ShowGuesser} edit={EditAgency} create={CreateAgency} />
+      <Resource icon={HomeWork} options={{ label: t("custom.agencies") }} name="agencies" list={DisplayAgency} show={ShowAgency} edit={EditAgency} create={CreateAgency} />
 
       <Resource icon={Receipt} options={{ label: t("custom.bills") }} name="bills" list={ListGuesser} show={ShowGuesser} edit={EditGuesser} />
 
