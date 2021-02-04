@@ -22,7 +22,7 @@ import {DisplayStatus,EditStatus,CreateStatus} from "../react-admin/components/u
 
 
 import {
-  Palette, DirectionsCar, LocationCity, Explore, Streetview, Face, AirportShuttle, HomeWork, Receipt, Description, EvStation, Public, SupervisorAccount
+  Palette, DirectionsCar, LocationCity, Explore, Streetview, Face, AirportShuttle, HomeWork, Receipt, Description, EvStation, Public, SupervisorAccount, Person
 } from '@material-ui/icons';
 
 import redirect from '../../lib/redirectIfNoSession'
@@ -47,7 +47,7 @@ const AdminDashboard = ({ dataProvider, i18nProvider }) => {
 
       <Resource icon={Face} options={{ label: t("custom.clients") }} name="clients" list={DisplayClient} show={ShowGuesser} edit={EditClient} create={CreateClient} />
 
-      <Resource icon={Face} options={{ label: t("custom.administrators") }} name="administrators" list={DisplayAdministrators} show={ShowGuesser} edit={EditAdministrators} create={CreateAdministrators} />
+      <Resource icon={SupervisorAccount} options={{ label: t("custom.administrators") }} name="administrators" list={DisplayAdministrators} show={ShowGuesser} edit={EditAdministrators} create={CreateAdministrators} />
 
       <Resource icon={DirectionsCar} options={{ label: t("custom.cars") }} name="cars" list={DisplayCar} show={ShowGuesser} edit={EditCar} create={CreateCar} />
 
@@ -63,7 +63,7 @@ const AdminDashboard = ({ dataProvider, i18nProvider }) => {
 
       <Resource icon={EvStation} options={{ label: t("custom.energyTypes") }} name="energy_types" list={DisplayEnergyType} show={ShowGuesser} edit={EditEnergyType} create={CreateEnergyType} />
 
-      <Resource icon={DirectionsCar} options={{ label: t("custom.regions") }} name="regions" list={DisplayRegion} show={ShowGuesser} edit={EditRegion} create={CreateRegion} />
+      <Resource icon={Explore} options={{ label: t("custom.regions") }} name="regions" list={DisplayRegion} show={ShowGuesser} edit={EditRegion} create={CreateRegion} />
 
       <Resource icon={DirectionsCar} options={{ label: t("custom.suffices") }} name="street_suffices" list={DisplaySuffix} show={ShowGuesser} edit={EditSuffix} create={CreateSuffix} />
 
@@ -71,7 +71,7 @@ const AdminDashboard = ({ dataProvider, i18nProvider }) => {
 
       <Resource icon={Public} options={{ label: t("custom.countries") }} name="countries" list={DisplayCountry} show={ShowGuesser} edit={EditCountry} create={CreateCountry} />
 
-      <Resource icon={DirectionsCar} options={{ label: t("custom.statuses") }} name="user_statuses" list={DisplayStatus} show={ShowGuesser} edit={EditStatus} create={CreateStatus} />
+      <Resource icon={Person} options={{ label: t("custom.statuses") }} name="user_statuses" list={DisplayStatus} show={ShowGuesser} edit={EditStatus} create={CreateStatus} />
     </Admin>
   </>
 }

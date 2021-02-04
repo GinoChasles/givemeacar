@@ -13,8 +13,9 @@ const DisplayManager = (props) => {
 
     const t = useTranslate();
 
-    return <List {...props} title="les managers" filters={<PostFilter />}>
+    return <List {...props} title={t('custom.manager')} filters={<PostFilter />}>
         <Datagrid rowClick="edit">
+            <TextField label={t('custom.id')} source="id" />
 
             <TextField label={t('custom.firstName')} source="firstName" />
 

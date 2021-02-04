@@ -9,8 +9,10 @@ const DisplayBrand = (props) => {
 
     const t = useTranslate();
 
-    return <List {...props} title="Constructeurs" filters={<PostFilter />}>
+    return <List {...props} title={t('custom.brands')} filters={<PostFilter />}>
         <Datagrid rowClick="edit">
+            <TextField label={t('custom.id')} source="id" />
+
             <TextField label={t('custom.name')} source="name" />
         </Datagrid>
     </List>

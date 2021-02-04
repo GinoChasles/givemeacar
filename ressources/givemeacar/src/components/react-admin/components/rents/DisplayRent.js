@@ -13,11 +13,16 @@ const DisplayRent = (props) => {
 
     const t = useTranslate();
 
-    return <List {...props} title="Réservation" filters={<PostFilter />}>
+    return <List {...props} title={t('custom.rents')} filters={<PostFilter />}>
         <Datagrid rowClick="edit">
+            <TextField label={t('custom.id')} source="id" />
+
             <DateField label={t('custom.rentStart')} source="start" showTime />
+
             <DateField label={t('custom.rentEnd')} source="end" showTime />
+
             <TextField label={t('custom.car')} source="car_id" />
+
             <TextField label={t('custom.client')} source="client_id" />
         </Datagrid>
     </List>

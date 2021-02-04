@@ -16,8 +16,9 @@ const DisplayDepartments = (props) => {
 
     const t = useTranslate();
 
-    return <List {...props} title="Le département" filters={<PostFilter />}>
+    return <List {...props} title={t('custom.departments')} filters={<PostFilter />}>
         <Datagrid rowClick="edit">
+            <TextField label={t('custom.id')} source="id" />
 
             <TextField label={t('custom.code')} source="code" />
 

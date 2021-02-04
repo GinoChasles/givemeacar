@@ -11,7 +11,7 @@ const DisplayClient = (props) => {
 
     const t = useTranslate();
 
-    return <List {...props} title="Liste des clients" filters={<PostFilter />}>
+    return <List {...props} title={t('custom.clients')} filters={<PostFilter />}>
         <Datagrid rowClick="edit">
 
             <TextField label={t('custom.id')} source="id" />
