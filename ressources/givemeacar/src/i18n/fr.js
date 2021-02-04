@@ -103,5 +103,5 @@ export default {
     suffices: "suffixes",
 
     year: "année",
-    zipcode: "code psotal",
+    zipcode: "code postal",
 }
