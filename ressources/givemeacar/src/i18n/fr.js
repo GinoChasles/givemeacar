@@ -25,16 +25,22 @@ export default {
     client: "client",
     clients: "clients",
 
+    code: "code",
+
     color: "couleur",
     colors: "couleurs",
 
     countries: "pays",
     country: "pays",
 
+    creation: "création",
+
     creditCard: "carte de crédit",
 
     department: "département",
     departments: "départements",
+
+    edition: "édition",
 
     energy: "carburant",
 
@@ -84,6 +90,8 @@ export default {
     rent: "louer",
     rented: "loué",
     rents: "locations",
+    rentStart: "début de la location",
+    rentEnd: "fin de la location",
 
     status: "statut",
     statuses: "statuts",

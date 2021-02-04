@@ -12,7 +12,7 @@ const CreateCar = (props) => {
 
   const t = useTranslate();
 
-  return <Create {...props}>
+  return <Create {...props} title={t('custom.creation')}>
     <SimpleForm>
 
       <NumberInput label={t('custom.kilometers')} source="kilometers" />

@@ -14,7 +14,7 @@ const CreateCity = (props) => {
 
   const t = useTranslate();
 
-  return <Create {...props}>
+  return <Create {...props} title={t('custom.creation')}>
     <SimpleForm>
 
       <TextInput label={t('custom.zipcode')} source="zipcode" />

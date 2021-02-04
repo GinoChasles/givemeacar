@@ -1,15 +1,23 @@
-import {Datagrid, Filter, List, SearchInput, TextField} from "react-admin";
+import {
+    Datagrid, Filter, List, SearchInput, TextField, useTranslate
+} from "react-admin";
 import * as React from "react";
+
 const PostFilter = (props) => (
     <Filter {...props}>
         <SearchInput source="q" alwaysOn />
     </Filter>
 );
-const DisplayEnergyType = (props) => (
-    <List {...props} title="Votre adresse" filters={<PostFilter/>}>
+
+const DisplayEnergyType = (props) => {
+
+    const t = useTranslate();
+
+    return <List {...props} title="Votre adresse" filters={<PostFilter />}>
         <Datagrid rowClick="edit">
-            <TextField source="name" />
+            <TextField label={t('custom.name')} source="name" />
         </Datagrid>
     </List>
-);
+}
+
 export default DisplayEnergyType

@@ -1,28 +1,27 @@
 import * as React from "react";
 import {
-  List,
-  Datagrid,
-  TextField,
-  ReferenceField,
   Create,
-  Edit,
   SimpleForm,
   ReferenceInput,
   AutocompleteInput,
   TextInput,
+  useTranslate
 } from "react-admin";
 
 
-const CreateDepartment = (props) => (
-  <Create {...props}>
+const CreateDepartment = (props) => {
+
+  const t = useTranslate();
+
+  return <Create {...props} title={t('custom.creation')}>
     <SimpleForm>
-    <ReferenceInput source="region_id" reference="regions">
-        <AutocompleteInput optionText="name" optionValue={"id"}/>
+      <ReferenceInput label={t('custom.region')} source="region_id" reference="regions">
+        <AutocompleteInput optionText="name" optionValue={"id"} />
       </ReferenceInput>
-      <TextInput source="code" />
-      <TextInput source="name" />
+      <TextInput label={t('custom.code')} source="code" />
+      <TextInput label={t('custom.name')} source="name" />
     </SimpleForm>
   </Create>
-);
+}
 
 export default CreateDepartment

@@ -6,7 +6,7 @@ const EditBrand = (props) => {
 
     const t = useTranslate();
 
-    return <Edit {...props} undoable={false}>
+    return <Edit {...props} undoable={false} title={t('custom.edition')}>
         <SimpleForm>
             <TextInput label={t('custom.name')} source="name" />
         </SimpleForm>

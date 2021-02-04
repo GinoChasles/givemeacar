@@ -14,7 +14,7 @@ const CreateAgency = (props) => {
 
   const t = useTranslate();
 
-  return <Create {...props}>
+  return <Create {...props} title={t('custom.creation')}>
     <SimpleForm>
       <TextInput label={t('custom.name')} source="name" />
 

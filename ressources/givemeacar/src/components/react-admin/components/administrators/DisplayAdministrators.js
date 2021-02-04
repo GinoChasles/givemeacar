@@ -13,7 +13,7 @@ const DisplayAdministrators = (props) => {
 
     const t = useTranslate();
 
-    return <List {...props} title="les villes de l'eeenfer" filters={<PostFilter />}>
+    return <List {...props} title={t('custom.administrators')} filters={<PostFilter />}>
         <Datagrid rowClick="edit">
             <TextField label={t('custom.id')} source="id" />
             <TextField label={t('custom.firstName')} source="firstName" />

@@ -5,7 +5,7 @@ const EditCar = (props) => {
 
     const t = useTranslate();
 
-    return <Edit {...props} undoable={false}>
+    return <Edit {...props} undoable={false} title={t('custom.edition')}>
         <SimpleForm>
 
             <NumberInput label={t('custom.kilometers')} source="kilometers" />

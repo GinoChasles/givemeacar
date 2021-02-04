@@ -1,25 +1,26 @@
 import * as React from "react";
 import {
-  List,
-  Datagrid,
-  TextField,
   Create,
-  Edit,
   SimpleForm,
   ReferenceInput,
   AutocompleteInput,
   TextInput,
+  useTranslate
 } from "react-admin";
 
 
-const CreateModel = (props) => (
-  <Create {...props}>
+const CreateModel = (props) => {
+
+  const t = useTranslate();
+
+  return <Create {...props} title={t('custom.creation')}>
     <SimpleForm>
-      <ReferenceInput source="brand_id" reference="brands" >
-        <AutocompleteInput optionText={"name"} optionValue={"id"}/>
+      <ReferenceInput label={t('custom.brand')} source="brand_id" reference="brands" >
+        <AutocompleteInput optionText={"name"} optionValue={"id"} />
       </ReferenceInput>
-      <TextInput source="name" />
+
+      <TextInput label={t('custom.name')} source="name" />
     </SimpleForm>
   </Create>
-);
+}
 export default CreateModel

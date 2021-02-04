@@ -14,8 +14,8 @@ const CreateAdministrators = (props) => {
 
   const t = useTranslate();
 
-  return <Create {...props}>
-    <SimpleForm>
+  return <Create {...props} title={t('custom.creation')}>
+    <SimpleForm >
       <TextInput source="firstName" label={t('custom.firstName')} />
       <TextInput source="lastName" label={t('custom.lastName')} />
       <TextInput source="mail" label={t('custom.mail')} />

@@ -47,7 +47,7 @@ const AdminDashboard = ({ dataProvider, i18nProvider }) => {
 
       <Resource options={{ label: t("custom.cars") }} name="cars" list={DisplayCar} show={ShowGuesser} edit={EditCar} create={CreateCar} />
 
-      <Resource options={{ label: t("custom.brands") }} name="brands" options={{ label: "Constructeurs" }} list={DisplayBrand} show={ShowGuesser} edit={EditBrand} create={CreateBrand} />
+      <Resource options={{ label: t("custom.brands") }} name="brands" list={DisplayBrand} show={ShowGuesser} edit={EditBrand} create={CreateBrand} />
 
       <Resource options={{ label: t("custom.models") }} name="models" list={DisplayModel} show={ShowGuesser} edit={EditModel} create={CreateModel} />
 

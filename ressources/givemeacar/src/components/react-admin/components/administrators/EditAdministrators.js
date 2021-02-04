@@ -5,8 +5,8 @@ const EditAdministrators = (props) => {
 
     const t = useTranslate();
 
-    return <Edit {...props} undoable={false}>
-        <SimpleForm optionValue={"id"}>
+    return <Edit {...props} undoable={false} title={t('custom.edition')}>
+        <SimpleForm optionvalue={"id"}>
             <TextInput label={t('custom.firstName')} source="firstName" />
             <TextInput label={t('custom.lastName')} source="lastName" />
             <TextInput label={t('custom.mail')} source="mail" />
