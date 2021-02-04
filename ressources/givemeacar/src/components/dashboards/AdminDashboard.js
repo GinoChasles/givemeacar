@@ -58,9 +58,17 @@ import {
   DisplayRent, EditRent, CreateRent, ShowRent
 } from "../react-admin/components/rents";
 
-import {DisplayStreet,EditStreet,CreateStreet} from "../react-admin/components/streets";
-import {DisplaySuffix,EditSuffix,CreateSuffix} from "../react-admin/components/street_suffices";
-import {DisplayStatus,EditStatus,CreateStatus} from "../react-admin/components/user_statuses";
+import {
+  DisplayStreet, EditStreet, CreateStreet, ShowStreet
+} from "../react-admin/components/streets";
+
+import {
+  DisplaySuffix, EditSuffix, CreateSuffix, ShowSuffix
+} from "../react-admin/components/street_suffices";
+
+import {
+  DisplayStatus, EditStatus, CreateStatus, ShowStatus
+} from "../react-admin/components/user_statuses";
 
 
 import {
@@ -122,16 +130,16 @@ const AdminDashboard = ({ dataProvider, i18nProvider }) => {
         list={DisplayRegion} show={ShowRegion} edit={EditRegion} create={CreateRegion} />
 
       <Resource icon={DirectionsCar} options={{ label: t("custom.suffices") }} name="street_suffices"
-        list={DisplaySuffix} show={ShowGuesser} edit={EditSuffix} create={CreateSuffix} />
+        list={DisplaySuffix} show={ShowSuffix} edit={EditSuffix} create={CreateSuffix} />
 
       <Resource icon={Streetview} options={{ label: t("custom.streets") }} name="streets"
-        list={DisplayStreet} show={ShowGuesser} edit={EditStreet} create={CreateStreet} />
+        list={DisplayStreet} show={ShowStreet} edit={EditStreet} create={CreateStreet} />
 
       <Resource icon={Public} options={{ label: t("custom.countries") }} name="countries"
         list={DisplayCountry} show={ShowCountry} edit={EditCountry} create={CreateCountry} />
 
       <Resource icon={Person} options={{ label: t("custom.statuses") }} name="user_statuses"
-        list={DisplayStatus} show={ShowGuesser} edit={EditStatus} create={CreateStatus} />
+        list={DisplayStatus} show={ShowStatus} edit={EditStatus} create={CreateStatus} />
     </Admin>
   </>
 }
