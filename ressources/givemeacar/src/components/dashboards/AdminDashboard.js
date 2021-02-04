@@ -1,18 +1,10 @@
 import * as React from "react";
 
-import { frenchMessages } from '../../i18n';
-
 import { Admin, Resource, ListGuesser, ShowGuesser, EditGuesser, useTranslate } from "react-admin";
-
-import polyglotI18nProvider from 'ra-i18n-polyglot';
-import jsonServerProvider from "ra-data-json-server"
-
-
-import MyLayout from '../MyLayout'
 
 import { DisplayAdministrators, CreateAdministrators, EditAdministrators } from "../react-admin/components/administrators";
 import {DisplayAgency,EditAgency,CreateAgency} from '../react-admin/components/agency'
-import { DisplayBrand,EditBrand,CreateBrand} from "../react-admin/components/brands";
+import { DisplayBrand, EditBrand, CreateBrand } from "../react-admin/components/brands";
 import {DisplayCar,EditCar,CreateCar} from "../react-admin/components/cars";
 import {DisplayCity,EditCity,CreateCity} from "../react-admin/components/cities";
 import {DisplayClient,EditClient,CreateClient} from "../react-admin/components/clients";
@@ -30,18 +22,7 @@ import {DisplayStatus,EditStatus,CreateStatus} from "../react-admin/components/u
 
 import redirect from '../../lib/redirectIfNoSession'
 
-const messages = {
-  'fr': frenchMessages,
-};
-
-const i18nProvider = polyglotI18nProvider(locale => messages[locale]);
-
-i18nProvider.changeLocale('fr');
-
-const dataProvider = jsonServerProvider("http://localhost:8080/api");
-
-
-const AdminDashboard = () => {
+const AdminDashboard = ({ dataProvider, i18nProvider }) => {
 
   const t = useTranslate();
 

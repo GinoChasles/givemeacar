@@ -1,14 +1,7 @@
 import * as React from "react";
 
-import { frenchMessages } from '../../i18n';
 
 import { Admin, Resource, ListGuesser, ShowGuesser, EditGuesser, useTranslate } from "react-admin";
-
-import polyglotI18nProvider from 'ra-i18n-polyglot';
-import jsonServerProvider from "ra-data-json-server"
-
-
-import MyLayout from '../MyLayout'
 
 import { DisplayClient, EditClient, CreateClient } from "../react-admin/components/clients";
 import { DisplayRent, EditRent, CreateRent } from "../react-admin/components/rents";
@@ -16,23 +9,11 @@ import { DisplayStatus, EditStatus, CreateStatus } from "../react-admin/componen
 
 import redirect from '../../lib/redirectIfNoSession'
 
-const messages = {
-  'fr': frenchMessages,
-};
-
-const i18nProvider = polyglotI18nProvider(locale => messages[locale]);
-
-i18nProvider.changeLocale('fr');
-
-const dataProvider = jsonServerProvider("http://localhost:8080/api");
-
-
-const ManagerDashboard = () => {
+const ManagerDashboard = ({ dataProvider, i18nProvider }) => {
 
   const t = useTranslate();
 
   return <>
-
 
     { redirect('/')}
 

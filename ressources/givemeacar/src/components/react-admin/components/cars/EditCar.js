@@ -14,9 +14,9 @@ const EditCar = (props) => {
 
             <NumberInput label={t('custom.year')} source="year" />
 
-            <BooleanInput label={t('custom.available')} source="available" valueLabelTrue="La voiture est dispo" valueLabelFalse="la voiture est indisponible" />
+            <BooleanInput label={t('custom.available')} source="available" />
 
-            <BooleanInput label={t('custom.rented')} source="rented" valueLabelTrue="la voiture est louée" valueLabelFalse="la voiture n'est pas louée" />
+            <BooleanInput label={t('custom.rented')} source="rented" />
 
             <ReferenceInput label={t('custom.model')} source="model_id" reference="models">
                 <AutocompleteInput optionText="name" optionValue={"id"} />
