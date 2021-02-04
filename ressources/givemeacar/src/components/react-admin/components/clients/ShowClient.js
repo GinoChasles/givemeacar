@@ -1,20 +1,23 @@
-import {
-    Datagrid, Filter, List, SearchInput, TextField, EmailField, ReferenceField, useTranslate
-} from "react-admin";
 import * as React from "react";
 
-const PostFilter = (props) => (
-    <Filter {...props}>
-        <SearchInput source="q" alwaysOn />
-    </Filter>
-);
+import { useTranslate } from "react-admin";
 
-const DisplayClient = (props) => {
+import {
+    Show,
+    SimpleShowLayout,
+    TextField,
+    EmailField,
+    ReferenceField
+
+} from "react-admin";
+
+
+const ShowClient = (props) => {
 
     const t = useTranslate();
 
-    return <List {...props} title={t('custom.clients')} filters={<PostFilter />}>
-        <Datagrid rowClick="edit">
+    return <Show {...props}>
+        <SimpleShowLayout>
 
             <TextField label={t('custom.id')} source="id" />
 
@@ -33,9 +36,8 @@ const DisplayClient = (props) => {
             <ReferenceField link='show' label={t('custom.agency')} source="agency_id" reference="agencies">
                 <TextField source="name" />
             </ReferenceField>
-
-        </Datagrid>
-    </List>
+        </SimpleShowLayout>
+    </Show>
 }
 
-export default DisplayClient
+export default ShowClient;
