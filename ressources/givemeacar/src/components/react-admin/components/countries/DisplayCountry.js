@@ -16,11 +16,11 @@ const DisplayCountry = (props) => {
             <TextField label={t('word.id')} source="id" />
 
             <TextField label={t('word.name')} source="name" />
+
+            <EditButton />
+
+            <DeleteButton />
         </Datagrid>
-
-        <EditButton />
-
-        <DeleteButton />
     </List>
 }
 
