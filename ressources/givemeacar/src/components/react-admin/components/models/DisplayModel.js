@@ -1,5 +1,5 @@
 import {
-    Datagrid, Filter, List, ReferenceInput, SearchInput, TextField, useTranslate
+    Datagrid, Filter, List, ReferenceInput, SearchInput, TextField, ReferenceField, useTranslate
 } from "react-admin";
 import * as React from "react";
 
@@ -22,8 +22,9 @@ const DisplayModel = (props) => {
 
             <TextField label={t('custom.name')} source="name" />
 
-            <TextField label={t('custom.brand')} source="brandName" />
-
+            <ReferenceField label={t('custom.brand')} source="brand_id" reference="brands">
+                <TextField source="name" />
+            </ReferenceField>
         </Datagrid>
     </List>
 }

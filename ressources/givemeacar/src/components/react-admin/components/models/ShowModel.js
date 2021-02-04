@@ -6,7 +6,6 @@ import {
     Show,
     SimpleShowLayout,
     TextField,
-    EmailField,
     ReferenceField,
 
 } from "react-admin";
@@ -23,9 +22,9 @@ const ShowModel = (props) => {
 
             <TextField label={t('custom.name')} source="name" />
 
-            <ReferenceInput label={t('custom.brand')} source="brand_id" reference="brands">
-                <AutocompleteInput source="name" />
-            </ReferenceInput>
+            <ReferenceField label={t('custom.brand')} source="brand_id" reference="brands">
+                <TextField source="name" />
+            </ReferenceField>
 
         </SimpleShowLayout>
     </Show>
