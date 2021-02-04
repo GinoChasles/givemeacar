@@ -1,6 +1,5 @@
 import * as React from "react";
 import {
-  NumberInput,
   Create,
   SimpleForm,
   ReferenceInput,
@@ -9,25 +8,28 @@ import {
   useTranslate
 } from "react-admin";
 
+import Name from '../form/name'
+import Latitude from '../form/latitude'
+import Longitude from '../form/longitude'
+import Department from '../form/department'
+import Zipcode from '../form/zipcode'
 
 const CreateCity = (props) => {
 
   const t = useTranslate();
 
-  return <Create {...props} title={t('custom.creation')}>
+  return <Create {...props} title={t('word.creation')}>
     <SimpleForm>
 
-      <TextInput label={t('custom.zipcode')} source="zipcode" />
+      <Zipcode />
 
-      <TextInput label={t('custom.name')} source="name" />
+      <Name />
 
-      <NumberInput label={t('custom.latitude')} source="latitude" />
+      <Latitude />
 
-      <NumberInput label={t('custom.longitude')} source="longitude" />
+      <Longitude />
 
-      <ReferenceInput label={t('custom.department')} source="department_id" reference="departments">
-        <AutocompleteInput optionText="name" optionValue={"id"} />
-      </ReferenceInput>
+      <Department />
 
     </SimpleForm>
   </Create>

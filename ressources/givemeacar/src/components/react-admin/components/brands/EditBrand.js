@@ -1,14 +1,18 @@
 import * as React from "react";
 
-import { Edit, SimpleForm, TextInput, useTranslate } from "react-admin";
+import { Edit, SimpleForm, useTranslate } from "react-admin";
+
+import Name from '../form/name';
 
 const EditBrand = (props) => {
 
     const t = useTranslate();
 
-    return <Edit {...props} undoable={false} title={t('custom.edition')}>
+    return <Edit {...props} undoable={false} title={t('word.edition')}>
         <SimpleForm>
-            <TextInput label={t('custom.name')} source="name" />
+
+            <Name />
+
         </SimpleForm>
     </Edit>
 }

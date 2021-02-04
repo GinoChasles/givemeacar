@@ -3,13 +3,15 @@ import {
 } from "react-admin";
 import * as React from "react";
 
+import Name from '../form/name';
+
 const EditEnergyType = (props) => {
 
     const t = useTranslate();
 
-    return <Edit {...props} undoable={false} title={t('custom.edition')}>
+    return <Edit {...props} undoable={false} title={t('word.edition')}>
         <SimpleForm>
-            <TextInput label={t('custom.name')} source="name" />
+            <Name />
         </SimpleForm>
     </Edit>
 }

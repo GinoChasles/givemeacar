@@ -1,19 +1,22 @@
 import {
-    AutocompleteInput, Edit, ReferenceInput, SimpleForm, TextInput, useTranslate
+    Edit, SimpleForm, useTranslate
 } from "react-admin";
 import * as React from "react";
+
+import Name from '../form/name';
+import Brand from '../form/brand';
 
 const EditModel = (props) => {
 
     const t = useTranslate();
 
-    return <Edit {...props} undoable={false} title={t('custom.edition')}>
+    return <Edit {...props} undoable={false} title={t('word.edition')}>
         <SimpleForm>
-            <ReferenceInput label={t('custom.brand')} source="brand_id" reference="brands">
-                <AutocompleteInput optionText="name" optionValue={"id"} />
 
-            </ReferenceInput>
-            <TextInput label={t('custom.name')} source="name" />
+            <Brand />
+
+            <Name />
+
         </SimpleForm>
     </Edit>
 }

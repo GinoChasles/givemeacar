@@ -13,12 +13,12 @@ const ShowAdministrators = (props) => {
 
     const t = useTranslate();
 
-    return <Show {...props} title={t('custom.description')}>
+    return <Show {...props} title={t('word.description')}>
         <SimpleShowLayout>
-            <TextField label={t('custom.firstName')} source="firstName" />
-            <TextField label={t('custom.lastName')} source="lastName" />
-            <TextField label={t('custom.mail')} source="mail" />
-            <TextField label={t('custom.phone')} source="phone" />
+            <TextField label={t('word.firstName')} source="firstName" />
+            <TextField label={t('word.lastName')} source="lastName" />
+            <TextField label={t('word.mail')} source="mail" />
+            <TextField label={t('word.phone')} source="phone" />
         </SimpleShowLayout>
     </Show>
 }

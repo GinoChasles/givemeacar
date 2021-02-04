@@ -16,9 +16,9 @@ const ClientDashboard = ({ dataProvider, i18nProvider }) => {
 
     <Admin dataProvider={dataProvider} i18nProvider={i18nProvider}>
 
-      {/** <Resource options={{ label: t("custom.bills") }} name="bills" list={DisplayBill} show={ShowGuesser} edit={EditBill} create={CreateBill} /> */}
+      {/** <Resource options={{ label: t("word.bills") }} name="bills" list={DisplayBill} show={ShowGuesser} edit={EditBill} create={CreateBill} /> */}
 
-      <Resource options={{ label: t("custom.rents") }} name="rents" list={DisplayRent} show={ShowGuesser} edit={EditRent} create={CreateRent} />
+      <Resource options={{ label: t("word.rents") }} name="rents" list={DisplayRent} show={ShowGuesser} edit={EditRent} create={CreateRent} />
     </Admin>
   </>
 }

@@ -1,51 +1,49 @@
 import * as React from "react";
 import {
-  PasswordInput,
   Create,
   SimpleForm,
-  ReferenceInput,
-  AutocompleteInput,
-  TextInput,
-  NumberInput,
   useTranslate
 } from "react-admin";
 
+import FirstName from '../form/firstName';
+import LastName from '../form/lastName';
+import Mail from '../form/mail';
+import Phone from '../form/phone';
+import Password from '../form/password';
+
+import City from '../form/city';
+import Street from '../form/street';
+import Suffix from '../form/suffix';
+import StreetNumber from '../form/streetNumber';
+import Agency from '../form/agency';
 
 
 const CreateClient = (props) => {
 
   const t = useTranslate();
 
-  return <Create {...props} title={t('custom.creation')}>
+  return <Create {...props} title={t('word.creation')}>
     <SimpleForm>
 
-      <TextInput label={t('custom.firstName')} source="firstName" />
+      <FirstName />
+      
+      <LastName />
+      
+      <Mail />
 
-      <TextInput label={t('custom.lastName')} source="lastName" />
+      <Phone />
+      
+      <Password />
+      
+      <StreetNumber />
+      
+      <Suffix />
+      
+      <Street />
+      
+      <City />
 
-      <TextInput label={t('custom.mail')} source="mail" />
-
-      <PasswordInput label={t('custom.password')} source="password" />
-
-      <TextInput label={t('custom.phone')} source="phone" />
-
-      <NumberInput label={t('custom.number')} source="streetNumber" />
-
-      <ReferenceInput label={t('custom.suffix')} source="street_suffix_id" reference="street_suffices">
-        <AutocompleteInput optionText="name" optionValue={"id"} />
-      </ReferenceInput>
-
-      <ReferenceInput label={t('custom.street')} source="street_id" reference="streets">
-        <AutocompleteInput optionText="name" optionValue={"id"} />
-      </ReferenceInput>
-
-      <ReferenceInput label={t('custom.city')} source="city_id" reference="cities">
-        <AutocompleteInput optionText="name" optionValue={"id"} />
-      </ReferenceInput>
-
-      <ReferenceInput label={t('custom.agency')} source="agency_id" reference="agencies">
-        <AutocompleteInput optionText="name" optionValue={"id"} />
-      </ReferenceInput>
+      <Agency />
 
     </SimpleForm>
   </Create>

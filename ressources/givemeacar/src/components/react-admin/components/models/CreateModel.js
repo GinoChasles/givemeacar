@@ -2,24 +2,23 @@ import * as React from "react";
 import {
   Create,
   SimpleForm,
-  ReferenceInput,
-  AutocompleteInput,
-  TextInput,
   useTranslate
 } from "react-admin";
 
+import Name from '../form/name';
+import Brand from '../form/brand';
 
 const CreateModel = (props) => {
 
   const t = useTranslate();
 
-  return <Create {...props} title={t('custom.creation')}>
+  return <Create {...props} title={t('word.creation')}>
     <SimpleForm>
-      <ReferenceInput label={t('custom.brand')} source="brand_id" reference="brands" >
-        <AutocompleteInput optionText={"name"} optionValue={"id"} />
-      </ReferenceInput>
 
-      <TextInput label={t('custom.name')} source="name" />
+      <Brand />
+
+      <Name />
+
     </SimpleForm>
   </Create>
 }

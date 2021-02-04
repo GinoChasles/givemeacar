@@ -2,18 +2,20 @@ import * as React from "react";
 import {
   Create,
   SimpleForm,
-  TextInput,
   useTranslate
 } from "react-admin";
 
+import Name from '../form/name';
 
 const CreateBrand = (props) => {
 
   const t = useTranslate()
 
-  return <Create {...props} title={t('custom.creation')}>
+  return <Create {...props} title={t('word.creation')}>
     <SimpleForm>
-      <TextInput label={t('custom.name')} source="name" />
+
+      <Name />
+
     </SimpleForm>
   </Create>
 }

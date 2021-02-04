@@ -19,13 +19,13 @@ const ManagerDashboard = ({ dataProvider, i18nProvider }) => {
 
     <Admin dataProvider={dataProvider} i18nProvider={i18nProvider}>
 
-      <Resource options={{ label: t("custom.clients") }} name="clients" list={DisplayClient} show={ShowGuesser} edit={EditClient} create={CreateClient} />
+      <Resource options={{ label: t("word.clients") }} name="clients" list={DisplayClient} show={ShowGuesser} edit={EditClient} create={CreateClient} />
 
-      <Resource options={{ label: t("custom.bills") }} name="bills" list={ListGuesser} show={ShowGuesser} edit={EditGuesser} />
+      <Resource options={{ label: t("word.bills") }} name="bills" list={ListGuesser} show={ShowGuesser} edit={EditGuesser} />
 
-      <Resource options={{ label: t("custom.rents") }} name="rents" list={DisplayRent} show={ShowGuesser} edit={EditRent} create={CreateRent} />
+      <Resource options={{ label: t("word.rents") }} name="rents" list={DisplayRent} show={ShowGuesser} edit={EditRent} create={CreateRent} />
 
-      <Resource options={{ label: t("custom.statuses") }} name="user_statuses" list={DisplayStatus} show={ShowGuesser} edit={EditStatus} create={CreateStatus} />
+      <Resource options={{ label: t("word.statuses") }} name="user_statuses" list={DisplayStatus} show={ShowGuesser} edit={EditStatus} create={CreateStatus} />
     </Admin>
   </>
 }

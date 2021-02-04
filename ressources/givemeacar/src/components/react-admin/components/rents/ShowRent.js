@@ -15,17 +15,17 @@ const ShowModel = (props) => {
 
     const t = useTranslate();
 
-    return <Show {...props} title={t('custom.description')}>
+    return <Show {...props} title={t('word.description')}>
         <SimpleShowLayout>
-            <TextField label={t('custom.id')} source="id" />
+            <TextField label={t('word.id')} source="id" />
 
-            <DateField label={t('custom.rentStart')} source="start" showTime />
+            <DateField label={t('word.rentStart')} source="start" showTime />
 
-            <DateField label={t('custom.rentEnd')} source="end" showTime />
+            <DateField label={t('word.rentEnd')} source="end" showTime />
 
-            <TextField label={t('custom.car')} source="car_id" />
+            <TextField label={t('word.car')} source="car_id" />
 
-            <TextField label={t('custom.client')} source="client_id" />
+            <TextField label={t('word.client')} source="client_id" />
 
         </SimpleShowLayout>
     </Show>

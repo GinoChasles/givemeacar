@@ -18,19 +18,19 @@ const DisplayCity = (props) => {
 
     const t = useTranslate();
 
-    return <List {...props} title={t('custom.cities')} filters={<PostFilter />}>
+    return <List {...props} title={t('word.cities')} filters={<PostFilter />}>
 
         <Datagrid rowClick="edit">
-            <TextField label={t('custom.id')} source="id" />
+            <TextField label={t('word.id')} source="id" />
 
-            <TextField label={t('custom.name')} source="name" />
+            <TextField label={t('word.name')} source="name" />
 
-            <TextField label={t('custom.zipcode')} source="zipcode" />
+            <TextField label={t('word.zipcode')} source="zipcode" />
 
-            <ReferenceField link="show" label={t('custom.department')} source="department_id" reference="departments">
+            <ReferenceField link="show" label={t('word.department')} source="department_id" reference="departments">
                 <TextField source="name" />
             </ReferenceField>
-            <ReferenceField link="show" label={t('custom.region')} source="regionId" reference="regions">
+            <ReferenceField link="show" label={t('word.region')} source="regionId" reference="regions">
                 <TextField source="name" />
             </ReferenceField>
 

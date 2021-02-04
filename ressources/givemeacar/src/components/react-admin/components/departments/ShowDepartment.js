@@ -15,15 +15,15 @@ const ShowDepartment = (props) => {
 
     const t = useTranslate();
 
-    return <Show {...props} title={t('custom.description')}>
+    return <Show {...props} title={t('word.description')}>
         <SimpleShowLayout>
-            <TextField label={t('custom.id')} source="id" />
+            <TextField label={t('word.id')} source="id" />
 
-            <TextField label={t('custom.code')} source="code" />
+            <TextField label={t('word.code')} source="code" />
 
-            <TextField label={t('custom.name')} source="name" />
+            <TextField label={t('word.name')} source="name" />
 
-            <ReferenceField label={t('custom.region')} source="region_id" reference="regions">
+            <ReferenceField label={t('word.region')} source="region_id" reference="regions">
                 <TextField source="name" />
             </ReferenceField>
 

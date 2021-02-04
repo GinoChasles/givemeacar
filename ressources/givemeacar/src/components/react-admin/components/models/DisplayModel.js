@@ -16,13 +16,13 @@ const DisplayModel = (props) => {
 
     const t = useTranslate();
 
-    return <List {...props} title={t('custom.models')} filter={PostFilter}>
+    return <List {...props} title={t('word.models')} filter={PostFilter}>
         <Datagrid rowClick="edit">
-            <TextField label={t('custom.id')} source="id" />
+            <TextField label={t('word.id')} source="id" />
 
-            <TextField label={t('custom.name')} source="name" />
+            <TextField label={t('word.name')} source="name" />
 
-            <ReferenceField label={t('custom.brand')} source="brand_id" reference="brands">
+            <ReferenceField label={t('word.brand')} source="brand_id" reference="brands">
                 <TextField source="name" />
             </ReferenceField>
         </Datagrid>

@@ -1,17 +1,25 @@
-import { Edit, PasswordInput, SimpleForm, TextInput, useTranslate } from "react-admin";
+import { Edit, SimpleForm, useTranslate } from "react-admin";
 import * as React from "react";
+
+import FirstName from '../form/firstName';
+import LastName from '../form/lastName';
+import Mail from '../form/mail';
+import Phone from '../form/phone';
+import Password from '../form/password';
 
 const EditAdministrators = (props) => {
 
     const t = useTranslate();
 
-    return <Edit {...props} undoable={false} title={t('custom.edition')}>
+    return <Edit {...props} undoable={false} title={t('word.edition')}>
         <SimpleForm optionvalue={"id"}>
-            <TextInput label={t('custom.firstName')} source="firstName" />
-            <TextInput label={t('custom.lastName')} source="lastName" />
-            <TextInput label={t('custom.mail')} source="mail" />
-            <TextInput label={t('custom.phone')} source="phone" />
-            <PasswordInput label={t('custom.password')} source="password" />
+
+            <FirstName />
+            <LastName />
+            <Mail />
+            <Phone />
+            <Password />
+
         </SimpleForm>
     </Edit>
 }

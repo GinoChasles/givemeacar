@@ -1,42 +1,67 @@
-import { AutocompleteInput, BooleanInput, Edit, NumberInput, ReferenceInput, SimpleForm, useTranslate } from "react-admin";
+import { AutocompleteInput, required, Edit, NumberInput, ReferenceInput, SimpleForm, useTranslate } from "react-admin";
 import * as React from "react";
 
 const EditCar = (props) => {
 
     const t = useTranslate();
 
-    return <Edit {...props} undoable={false} title={t('custom.edition')}>
+    return <Edit {...props} undoable={false} title={t('word.edition')}>
         <SimpleForm>
 
-            <NumberInput label={t('custom.kilometers')} source="kilometers" />
+            <NumberInput label={t('word.kilometers')} source="kilometers" validate={[
+                required(t('error.required'))
+            ]} />
 
-            <NumberInput label={t('custom.price')} source="price" />
+            <NumberInput label={t('word.pricePerMin')} source="price" validate={[
+                required(t('error.required'))
+            ]} />
 
-            <NumberInput label={t('custom.year')} source="year" />
+            <NumberInput label={t('word.year')} source="year" validate={[
+                required(t('error.required'))
+            ]} />
 
-            <BooleanInput label={t('custom.available')} source="available" />
+            <NumberInput label={t('word.available')} source="available" validate={[
+                required(t('error.required'))
+            ]} />
 
-            <BooleanInput label={t('custom.rented')} source="rented" />
+            <NumberInput label={t('word.rented')} source="rented" validate={[
+                required(t('error.required'))
+            ]} />
 
-            <ReferenceInput label={t('custom.model')} source="model_id" reference="models">
+            <ReferenceInput label={t('word.model')} source="model_id" reference="models" validate={[
+                required(t('error.required'))
+            ]}>
                 <AutocompleteInput optionText="name" optionValue={"id"} />
             </ReferenceInput>
 
-            <ReferenceInput label={t('custom.color')} source="color_id" reference="colors">
+            <ReferenceInput label={t('word.color')} source="color_id" reference="colors" validate={[
+                required(t('error.required'))
+            ]}>
                 <AutocompleteInput optionText="name" optionValue={"id"} />
             </ReferenceInput>
 
-            <NumberInput label={t('custom.energyMax')} source="energy_max" />
+            <NumberInput label={t('word.energyMax')} source="energy_max" validate={[
+                required(t('error.required'))
+            ]} />
 
-            <NumberInput label={t('custom.energyCurrent')} source="energy_current" />
+            <NumberInput label={t('word.energyCurrent')} source="energy_current" validate={[
+                required(t('error.required'))
+            ]} />
 
-            <ReferenceInput label={t('custom.energyType')} source="energy_type_id" reference="energy_types">
+            <ReferenceInput label={t('word.energyType')} source="energy_type_id" reference="energy_types" validate={[
+                required(t('error.required'))
+            ]}>
                 <AutocompleteInput optionText="name" optionValue={"id"} />
             </ReferenceInput>
 
-            <NumberInput label={t('custom.latitude')} source="latitude" />
+            <NumberInput label={t('word.latitude')} source="latitude" validate={[
+                required(t('error.required'))
+            ]} />
 
-            <NumberInput label={t('custom.longitude')} source="longitude" />
+            <NumberInput label={t('word.longitude')} source="longitude" validate={[
+                required(t('error.required'))
+            ]} />
+
         </SimpleForm>
     </Edit>
 }

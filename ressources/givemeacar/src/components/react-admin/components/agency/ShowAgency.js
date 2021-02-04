@@ -14,11 +14,11 @@ const ShowAdgency = (props) => {
 
     const t = useTranslate();
 
-    return <Show {...props} title={t('custom.description')}>
+    return <Show {...props} title={t('word.description')}>
         <SimpleShowLayout>
-            <TextField source="id" label={t("custom.id")} />
-            <TextField source="name" label={t("custom.name")} />
-            <TextField source="address" label={t("custom.address")} />
+            <TextField source="id" label={t("word.id")} />
+            <TextField source="name" label={t("word.name")} />
+            <TextField source="address" label={t("word.address")} />
         </SimpleShowLayout>
     </Show>
 }

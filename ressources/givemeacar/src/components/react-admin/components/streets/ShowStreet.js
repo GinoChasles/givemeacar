@@ -14,11 +14,11 @@ const ShowModel = (props) => {
 
     const t = useTranslate();
 
-    return <Show {...props} title={t('custom.description')}>
+    return <Show {...props} title={t('word.description')}>
         <SimpleShowLayout>
-            <TextField label={t('custom.id')} source="id" />
+            <TextField label={t('word.id')} source="id" />
 
-            <TextField label={t('custom.name')} source="name" />
+            <TextField label={t('word.name')} source="name" />
         </SimpleShowLayout>
     </Show>
 }

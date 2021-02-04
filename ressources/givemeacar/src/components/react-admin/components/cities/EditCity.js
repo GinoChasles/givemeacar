@@ -1,24 +1,29 @@
-import { AutocompleteInput, Edit, NumberInput, ReferenceInput, SimpleForm, TextInput, useTranslate } from "react-admin";
+import { Edit, SimpleForm, useTranslate } from "react-admin";
 import * as React from "react";
+
+import Name from '../form/name'
+import Latitude from '../form/latitude'
+import Longitude from '../form/longitude'
+import Department from '../form/department'
+import Zipcode from '../form/zipcode'
 
 const EditCity = (props) => {
 
     const t = useTranslate();
 
-    return <Edit {...props} undoable={false} title={t('custom.edition')}>
+    return <Edit {...props} undoable={false} title={t('word.edition')}>
         <SimpleForm>
 
-            <TextInput label={t('custom.zipcode')} source="zipcode" />
+            <Zipcode />
 
-            <TextInput label={t('custom.name')} source="name" />
+            <Name />
 
-            <NumberInput label={t('custom.latitude')} source="latitude" />
+            <Latitude />
 
-            <NumberInput label={t('custom.longitude')} source="longitude" />
+            <Longitude />
 
-            <ReferenceInput label={t('custom.department')} source="department_id" reference="departments">
-                <AutocompleteInput optionText="name" optionValue={"id"} />
-            </ReferenceInput>
+            <Department />
+
         </SimpleForm>
     </Edit>
 }

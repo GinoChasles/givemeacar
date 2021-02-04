@@ -20,14 +20,14 @@ const DisplayAgency = (props) => {
 
     const t = useTranslate();
 
-    return <List {...props} title={t('custom.agencies')} filters={<PostFilter />}>
+    return <List {...props} title={t('word.agencies')} filters={<PostFilter />}>
         <Datagrid rowClick="edit">
 
-            <TextField source="id" label={t("custom.id")} />
+            <TextField source="id" label={t("word.id")} />
 
-            <TextField source="name" label={t("custom.name")} />
+            <TextField source="name" label={t("word.name")} />
 
-            <TextField source="address" label={t("custom.address")} />
+            <TextField source="address" label={t("word.address")} />
         </Datagrid>
     </List>
 }

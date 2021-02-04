@@ -13,18 +13,18 @@ const DisplayAdministrators = (props) => {
 
     const t = useTranslate();
 
-    return <List {...props} title={t('custom.administrators')} filters={<PostFilter />}>
+    return <List {...props} title={t('word.administrators')} filters={<PostFilter />}>
         <Datagrid rowClick="edit">
 
-            <TextField label={t('custom.id')} source="id" />
+            <TextField label={t('word.id')} source="id" />
 
-            <TextField label={t('custom.firstName')} source="firstName" />
+            <TextField label={t('word.firstName')} source="firstName" />
 
-            <TextField label={t('custom.lastName')} source="lastName" />
+            <TextField label={t('word.lastName')} source="lastName" />
 
-            <EmailField label={t('custom.mail')} source="mail" />
+            <EmailField label={t('word.mail')} source="mail" />
 
-            <TextField label={t('custom.phone')} source="phone" />
+            <TextField label={t('word.phone')} source="phone" />
         </Datagrid>
     </List>
 }

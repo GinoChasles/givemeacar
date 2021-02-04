@@ -1,8 +1,9 @@
 import frenchMessages from 'ra-language-french';
 
-import fr from './fr';
+import { errors, words } from './fr';
 
-frenchMessages['custom'] = fr;
+frenchMessages['word'] = words;
+frenchMessages['error'] = errors;
 
 frenchMessages.ra.action.create = "Créer";
 

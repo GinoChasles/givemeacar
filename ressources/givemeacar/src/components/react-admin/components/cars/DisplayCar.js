@@ -19,43 +19,43 @@ const DisplayCar = (props) => {
 
     const t = useTranslate();
 
-    return <List {...props} title={t('custom.cars')} filters={<PostFilter />}>
+    return <List {...props} title={t('word.cars')} filters={<PostFilter />}>
         <Datagrid rowClick="edit">
-            <TextField label={t('custom.id')} source="id" />
+            <TextField label={t('word.id')} source="id" />
 
-            <ReferenceField link="show" label={t('custom.brand')} source="brandId" reference="brands">
+            <ReferenceField link="show" label={t('word.brand')} source="brandId" reference="brands">
                 <TextField source="name" />
             </ReferenceField>
 
-            <ReferenceField link="show" label={t('custom.model')} source="model_id" reference="models">
+            <ReferenceField link="show" label={t('word.model')} source="model_id" reference="models">
                 <TextField source="name" />
             </ReferenceField>
 
-            <ReferenceField link="show" label={t('custom.color')} source="color_id" reference="colors">
+            <ReferenceField link="show" label={t('word.color')} source="color_id" reference="colors">
                 <TextField source="name" />
             </ReferenceField>
 
-            <TextField label={t('custom.energyLevel')} source="energyLevel" />
+            <TextField label={t('word.energyLevel')} source="energyLevel" />
 
-            <ReferenceField link="show" label={t('custom.energy')} source="energy_type_id" reference="energy_types">
+            <ReferenceField link="show" label={t('word.energy')} source="energy_type_id" reference="energy_types">
                 <TextField source="name" />
             </ReferenceField>
             
-            <NumberField label={t('custom.year')} source="year" />
+            <NumberField label={t('word.year')} source="year" />
 
-            <NumberField label={t('custom.kilometers')} source="kilometers" />
+            <NumberField label={t('word.kilometers')} source="kilometers" />
 
-            <NumberField label={t('custom.price')} source="price" />
+            <NumberField label={t('word.price')} source="price" />
 
-            <TextField label={t('custom.energyLevel')} source="energyLevel" />
+            <TextField label={t('word.energyLevel')} source="energyLevel" />
 
-            <TextField label={t('custom.available')} source="availability" />
+            <TextField label={t('word.available')} source="availability" />
             
-            <TextField label={t('custom.rented')} source="inRent" />
+            <TextField label={t('word.rented')} source="inRent" />
 
-            <TextField label={t('custom.latitude')} source="latitude" />
+            <TextField label={t('word.latitude')} source="latitude" />
             
-            <TextField label={t('custom.longitude')} source="longitude" />
+            <TextField label={t('word.longitude')} source="longitude" />
         </Datagrid>
     </List>
 }

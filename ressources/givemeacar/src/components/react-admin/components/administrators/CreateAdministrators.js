@@ -1,26 +1,30 @@
 import * as React from "react";
 
-import { useTranslate } from "react-admin";
-
 import {
   Create,
   SimpleForm,
-  TextInput,
-  PasswordInput,
+  useTranslate
 } from "react-admin";
 
+import FirstName from '../form/firstName';
+import LastName from '../form/lastName';
+import Mail from '../form/mail';
+import Phone from '../form/phone';
+import Password from '../form/password';
 
 const CreateAdministrators = (props) => {
 
   const t = useTranslate();
 
-  return <Create {...props} title={t('custom.creation')}>
+  return <Create {...props} title={t('word.creation')}>
     <SimpleForm >
-      <TextInput source="firstName" label={t('custom.firstName')} />
-      <TextInput source="lastName" label={t('custom.lastName')} />
-      <TextInput source="mail" label={t('custom.mail')} />
-      <TextInput source="phone" label={t('custom.phone')} />
-      <PasswordInput source="password" label={t('custom.password')} />
+
+      <FirstName />
+      <LastName />
+      <Mail />
+      <Phone />
+      <Password />
+
     </SimpleForm>
   </Create>
 

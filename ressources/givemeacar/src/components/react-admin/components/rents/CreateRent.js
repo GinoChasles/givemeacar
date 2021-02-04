@@ -3,30 +3,32 @@ import {
   DateTimeInput,
   Create,
   SimpleForm,
-  ReferenceInput,
-  AutocompleteInput,
+  required,
   useTranslate
 } from "react-admin";
 
+import Client from '../form/client';
+import Car from '../form/car';
 
 const CreateRent = (props) => {
 
   const t = useTranslate();
 
-  return <Create {...props} title={t('custom.creation')}>
+  return <Create {...props} title={t('word.creation')}>
     <SimpleForm>
 
-      <DateTimeInput label={t('custom.rentStart')} source="start" />
+      <DateTimeInput label={t('word.rentStart')} source="start" validate={[
+        required()
+      ]} />
 
-      <DateTimeInput label={t('custom.rentEnd')} source="end" />
+      <DateTimeInput label={t('word.rentEnd')} source="end" validate={[
+        required()
+      ]} />
 
-      <ReferenceInput label={t('custom.car')} source="car_id" reference="cars">
-        <AutocompleteInput optionText="name" optionValue={"id"} />
-      </ReferenceInput>
+      <Car />
 
-      <ReferenceInput label={t('custom.client')} source="client_id" reference="clients">
-        <AutocompleteInput optionText="name" optionValue={"id"} />
-      </ReferenceInput>
+      <Client />
+
     </SimpleForm>
   </Create>
 }

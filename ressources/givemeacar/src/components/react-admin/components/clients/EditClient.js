@@ -1,44 +1,52 @@
-import { AutocompleteInput, Edit, PasswordInput, ReferenceInput, SimpleForm, TextInput, NumberInput, useTranslate } from "react-admin";
 import * as React from "react";
+import {
+    Create,
+    SimpleForm,
+    useTranslate
+} from "react-admin";
+
+import FirstName from '../form/firstName';
+import LastName from '../form/lastName';
+import Mail from '../form/mail';
+import Phone from '../form/phone';
+import Password from '../form/password';
+
+import City from '../form/city';
+import Street from '../form/street';
+import Suffix from '../form/suffix';
+import StreetNumber from '../form/streetNumber';
+import Agency from '../form/agency';
+
 
 const EditClient = (props) => {
 
     const t = useTranslate();
 
-    return <Edit {...props} undoable={false} title={t('custom.edition')}>
-        {/* <TabbedShowLayout> */}
+    return <Edit {...props} undoable={false} title={t('word.edition')}>
+
         <SimpleForm>
 
-            <TextInput label={t('custom.firstName')} source="firstName" />
+            <FirstName />
 
-            <TextInput label={t('custom.lastName')} source="lastName" />
+            <LastName />
 
-            <TextInput label={t('custom.mail')} source="mail" />
+            <Mail />
 
-            <PasswordInput label={t('custom.password')} source="password" />
+            <Phone />
 
-            <TextInput label={t('custom.phone')} source="phone" />
+            <Password />
 
-            <NumberInput label={t('custom.number')} source="streetNumber" />
+            <StreetNumber />
 
-            <ReferenceInput label={t('custom.suffix')} source="street_suffix_id" reference="street_suffices">
-                <AutocompleteInput optionText="name" optionValue={"id"} />
-            </ReferenceInput>
+            <Suffix />
 
-            <ReferenceInput label={t('custom.street')} source="street_id" reference="streets">
-                <AutocompleteInput optionText="name" optionValue={"id"} />
-            </ReferenceInput>
+            <Street />
 
-            <ReferenceInput label={t('custom.city')} source="city_id" reference="cities">
-                <AutocompleteInput optionText="name" optionValue={"id"} />
-            </ReferenceInput>
+            <City />
 
-            <ReferenceInput label={t('custom.agency')} source="agency_id" reference="agencies">
-                <AutocompleteInput optionText="name" optionValue={"id"} />
-            </ReferenceInput>
+            <Agency />
 
         </SimpleForm>
-        {/* </TabbedShowLayout> */}
     </Edit>
 }
 

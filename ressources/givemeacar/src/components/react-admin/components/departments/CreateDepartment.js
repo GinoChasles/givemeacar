@@ -2,24 +2,27 @@ import * as React from "react";
 import {
   Create,
   SimpleForm,
-  ReferenceInput,
-  AutocompleteInput,
-  TextInput,
   useTranslate
 } from "react-admin";
 
+
+import Name from '../form/name';
+import Code from '../form/code';
+import Region from '../form/region';
 
 const CreateDepartment = (props) => {
 
   const t = useTranslate();
 
-  return <Create {...props} title={t('custom.creation')}>
+  return <Create {...props} title={t('word.creation')}>
     <SimpleForm>
-      <ReferenceInput label={t('custom.region')} source="region_id" reference="regions">
-        <AutocompleteInput optionText="name" optionValue={"id"} />
-      </ReferenceInput>
-      <TextInput label={t('custom.code')} source="code" />
-      <TextInput label={t('custom.name')} source="name" />
+
+      <Region />
+
+      <Code />
+
+      <Name />
+
     </SimpleForm>
   </Create>
 }
