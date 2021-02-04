@@ -46,7 +46,7 @@ public class DepartmentController extends CrudControllerImpl<Department>{
 
 
     @PutMapping("departments/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody Department model) {
+    public ResponseEntity update(@PathVariable int id,@Valid @RequestBody Department model) {
         return super.update(model);
     }
 

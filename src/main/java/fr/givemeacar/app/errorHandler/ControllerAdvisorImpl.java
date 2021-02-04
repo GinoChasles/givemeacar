@@ -28,21 +28,6 @@ public class ControllerAdvisorImpl implements ControllerAdvisor{
         return new ResponseEntity<>(patternViolationToMap(ex), HttpStatus.CONFLICT);
     }
 
-    public Map patternViolationToMap(MethodArgumentNotValidException ex){
-            Map<String, String> map = new HashMap<String, String>();
-
-            Matcher m = Pattern.compile("\\[.*]").matcher(ex.getFieldError().getDefaultMessage());
-
-            if(m.find()) {
-                map.put("pattern", m.group(0));
-            }
-            map.put("constraint","pattern");
-            map.put("value", ex.getFieldError().getRejectedValue().toString());
-            map.put("field", ex.getFieldError().getField());
-            map.put("message","pattern violation");
-            map.put("timestamp",new Date().toString());
-            return map;
-    }
 
     @ExceptionHandler(ConstraintViolationException.class)
     public ResponseEntity<Object> handleDataIntegrityException(
@@ -59,6 +44,21 @@ public class ControllerAdvisorImpl implements ControllerAdvisor{
 
 
 
+    public Map patternViolationToMap(MethodArgumentNotValidException ex){
+        Map<String, String> map = new HashMap<String, String>();
+
+        Matcher m = Pattern.compile("\\[.*]").matcher(ex.getFieldError().getDefaultMessage());
+
+        if(m.find()) {
+            map.put("pattern", m.group(0));
+        }
+        map.put("constraint","pattern");
+        map.put("value", ex.getFieldError().getRejectedValue().toString());
+        map.put("field", ex.getFieldError().getField());
+        map.put("message","pattern violation");
+        map.put("timestamp",new Date().toString());
+        return map;
+    }
 
     public Map truncationToMap(String message) {
         Map<String, String> map = new HashMap<String, String>();

@@ -46,7 +46,7 @@ public class EnergyTypeController extends CrudControllerImpl<EnergyType>{
 
 
     @PutMapping("energy_types/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody EnergyType model) {
+    public ResponseEntity update(@PathVariable int id,@Valid @RequestBody EnergyType model) {
         return super.update(model);
     }
 

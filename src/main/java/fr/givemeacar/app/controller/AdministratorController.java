@@ -46,7 +46,7 @@ public class AdministratorController extends CrudControllerImpl<Administrator>{
 
 
     @PutMapping("administrators/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody Administrator model) {
+    public ResponseEntity update(@PathVariable int id,@Valid @RequestBody Administrator model) {
         return super.update(model);
     }
 

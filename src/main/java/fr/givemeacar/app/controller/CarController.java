@@ -46,7 +46,7 @@ public class CarController extends CrudControllerImpl<Car>{
 
 
     @PutMapping("cars/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody Car model) {
+    public ResponseEntity update(@PathVariable int id,@Valid @RequestBody Car model) {
         return super.update(model);
     }
 
