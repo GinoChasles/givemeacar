@@ -11,7 +11,7 @@ import {
     maxLength
 } from "react-admin";
 
-const validateRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$/;
+const validateRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
 export default function Mail() {
 

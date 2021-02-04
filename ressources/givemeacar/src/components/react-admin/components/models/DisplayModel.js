@@ -1,14 +1,11 @@
 import {
-    Datagrid, Filter, List, ReferenceInput, SearchInput, TextField, ReferenceField, useTranslate
+    Datagrid, Filter, List, SearchInput, TextField, ReferenceField, useTranslate, EditButton, DeleteButton
 } from "react-admin";
 import * as React from "react";
 
-const PostFilter = (props) => (
+const ModelFilter = (props) => (
     <Filter {...props}>
         <SearchInput source="q" alwaysOn />
-        <ReferenceInput source="brand_id" reference="brands" allowEmpty>
-            <SearchInput optionText="name" />
-        </ReferenceInput>
     </Filter>
 );
 
@@ -16,8 +13,8 @@ const DisplayModel = (props) => {
 
     const t = useTranslate();
 
-    return <List {...props} title={t('word.models')} filter={PostFilter}>
-        <Datagrid rowClick="edit">
+    return <List {...props} title={t('word.models')} filter={ModelFilter} exporter={false} perPage={25}>
+        <Datagrid hasBulkActions rowClick="show">
             <TextField label={t('word.id')} source="id" />
 
             <TextField label={t('word.name')} source="name" />
@@ -25,6 +22,10 @@ const DisplayModel = (props) => {
             <ReferenceField label={t('word.brand')} source="brand_id" reference="brands">
                 <TextField source="name" />
             </ReferenceField>
+
+            <EditButton />
+
+            <DeleteButton />
         </Datagrid>
     </List>
 }

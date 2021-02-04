@@ -1,9 +1,9 @@
 import {
-    Datagrid, Filter, List, SearchInput, TextField, ReferenceField, EmailField, useTranslate
+    Datagrid, Filter, List, SearchInput, TextField, ReferenceField, EmailField, useTranslate, EditButton, DeleteButton
 } from "react-admin";
 import * as React from "react";
 
-const PostFilter = (props) => (
+const ManagerFilter = (props) => (
     <Filter {...props}>
         <SearchInput source="q" alwaysOn />
     </Filter>
@@ -13,8 +13,8 @@ const DisplayManager = (props) => {
 
     const t = useTranslate();
 
-    return <List {...props} title={t('word.manager')} filters={<PostFilter />}>
-        <Datagrid rowClick="edit">
+    return <List {...props} title={t('word.manager')} filters={<ManagerFilter />} exporter={false} perPage={25}>
+        <Datagrid hasBulkActions rowClick="show">
             <TextField label={t('word.id')} source="id" />
 
             <TextField label={t('word.firstName')} source="firstName" />
@@ -28,6 +28,10 @@ const DisplayManager = (props) => {
             <ReferenceField link='show' label={t('word.agency')} source="agency_id" reference="agencies">
                 <TextField source="name" />
             </ReferenceField>
+
+            <EditButton />
+
+            <DeleteButton />
         </Datagrid>
     </List>
 }

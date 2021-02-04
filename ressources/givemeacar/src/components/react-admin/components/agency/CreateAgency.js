@@ -16,8 +16,10 @@ const CreateAgency = (props) => {
 
   const t = useTranslate();
 
-  return <Create {...props} title={t('word.creation')}>
-    <SimpleForm>
+  return <>
+    <Create {...props} title={t('word.creation')} >
+
+      <SimpleForm on>
       
       <Name />
       <StreetNumber />
@@ -26,7 +28,8 @@ const CreateAgency = (props) => {
       <City />
 
     </SimpleForm>
-  </Create>
+    </Create>
+  </>
 }
 
 export default CreateAgency

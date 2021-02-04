@@ -1,5 +1,5 @@
 import {
-    Datagrid, Filter, List, SearchInput, TextField, useTranslate
+    Datagrid, Filter, List, SearchInput, TextField, useTranslate, EditButton, DeleteButton
 } from "react-admin";
 import * as React from "react";
 
@@ -13,11 +13,15 @@ const DisplayStatus = (props) => {
 
     const t = useTranslate();
 
-    return <List {...props} title={t('word.statuses')} filters={<PostFilter />}>
-        <Datagrid rowClick="edit">
+    return <List {...props} title={t('word.statuses')} filters={<PostFilter />} exporter={false} perPage={25}>
+        <Datagrid rowClick="edit" hasBulkActions rowClick="show">
             <TextField label={t('word.id')} source="id" />
 
             <TextField label={t('word.name')} source="name" />
+
+            <EditButton />
+
+            <DeleteButton />
         </Datagrid>
     </List>
 }

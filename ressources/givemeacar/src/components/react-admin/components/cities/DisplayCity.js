@@ -5,22 +5,25 @@ import {
     TextField,
     Filter,
     SearchInput,
-    useTranslate
+    useTranslate,
+    EditButton,
+    DeleteButton
 } from "react-admin";
 import * as React from "react";
-const PostFilter = (props) => (
+
+const CityFilter = (props) => (
     <Filter {...props}>
         <SearchInput source="q" alwaysOn />
-        <SearchInput source="zipcode" />
     </Filter>
 );
+
 const DisplayCity = (props) => {
 
     const t = useTranslate();
 
-    return <List {...props} title={t('word.cities')} filters={<PostFilter />}>
+    return <List {...props} title={t('word.cities')} filters={<CityFilter />} exporter={false} perPage={25}>
 
-        <Datagrid rowClick="edit">
+        <Datagrid hasBulkActions rowClick="show">
             <TextField label={t('word.id')} source="id" />
 
             <TextField label={t('word.name')} source="name" />
@@ -30,10 +33,14 @@ const DisplayCity = (props) => {
             <ReferenceField link="show" label={t('word.department')} source="department_id" reference="departments">
                 <TextField source="name" />
             </ReferenceField>
+
             <ReferenceField link="show" label={t('word.region')} source="regionId" reference="regions">
                 <TextField source="name" />
             </ReferenceField>
 
+            <EditButton />
+
+            <DeleteButton />
         </Datagrid>
     </List>
 }

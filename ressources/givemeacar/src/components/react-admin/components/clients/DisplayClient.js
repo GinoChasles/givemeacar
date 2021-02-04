@@ -1,9 +1,9 @@
 import {
-    Datagrid, Filter, List, SearchInput, TextField, EmailField, ReferenceField, useTranslate
+    Datagrid, Filter, List, SearchInput, TextField, EmailField, ReferenceField, useTranslate, EditButton, DeleteButton
 } from "react-admin";
 import * as React from "react";
 
-const PostFilter = (props) => (
+const ClientFilter = (props) => (
     <Filter {...props}>
         <SearchInput source="q" alwaysOn />
     </Filter>
@@ -13,8 +13,8 @@ const DisplayClient = (props) => {
 
     const t = useTranslate();
 
-    return <List {...props} title={t('word.clients')} filters={<PostFilter />}>
-        <Datagrid rowClick="edit">
+    return <List {...props} title={t('word.clients')} filters={<ClientFilter />} exporter={false} perPage={25}>
+        <Datagrid hasBulkActions rowClick="show">
 
             <TextField label={t('word.id')} source="id" />
 
@@ -34,6 +34,9 @@ const DisplayClient = (props) => {
                 <TextField source="name" />
             </ReferenceField>
 
+            <EditButton />
+
+            <DeleteButton />
         </Datagrid>
     </List>
 }

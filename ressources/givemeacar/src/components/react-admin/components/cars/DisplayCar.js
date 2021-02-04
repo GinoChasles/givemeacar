@@ -1,16 +1,13 @@
 import {
-    Datagrid, Filter, List, NumberField, ReferenceInput, SearchInput, TextField, ReferenceField, useTranslate
+    Datagrid, Filter, List, NumberField, ReferenceInput, SearchInput, TextField, ReferenceField, useTranslate, EditButton, DeleteButton
 } from "react-admin";
 
 import * as React from "react";
 
 
-const PostFilter = (props) => (
+const CarFilter = (props) => (
     <Filter {...props}>
         <SearchInput source="q" alwaysOn />
-        <ReferenceInput source="user_id" reference="users" allowEmpty>
-            <SearchInput optionText="name" /> 
-        </ReferenceInput>
     </Filter>
 );
 
@@ -19,8 +16,8 @@ const DisplayCar = (props) => {
 
     const t = useTranslate();
 
-    return <List {...props} title={t('word.cars')} filters={<PostFilter />}>
-        <Datagrid rowClick="edit">
+    return <List {...props} title={t('word.cars')} filters={<CarFilter />} exporter={false} perPage={25}>
+        <Datagrid hasBulkActions rowClick="show">
             <TextField label={t('word.id')} source="id" />
 
             <ReferenceField link="show" label={t('word.brand')} source="brandId" reference="brands">
@@ -56,6 +53,10 @@ const DisplayCar = (props) => {
             <TextField label={t('word.latitude')} source="latitude" />
             
             <TextField label={t('word.longitude')} source="longitude" />
+
+            <EditButton />
+
+            <DeleteButton />
         </Datagrid>
     </List>
 }
