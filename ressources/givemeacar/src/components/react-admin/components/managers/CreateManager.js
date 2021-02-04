@@ -6,20 +6,29 @@ import {
     AutocompleteInput,
     TextInput,
     PasswordInput,
+    useTranslate
 } from "react-admin";
 
-const CreateManager = (props) => (
-    <Create {...props}>
+const CreateManager = (props) => {
+
+    const t = useTranslate();
+
+    return <Create {...props} title={t('custom.creation')}>
         <SimpleForm >
-            <ReferenceInput label="nom de l'agence" source="agency_id" reference="agencies">
+            <ReferenceInput label={t('custom.agency')} source="agency_id" reference="agencies">
                 <AutocompleteInput optionText="name" optionValue={"id"} />
             </ReferenceInput>
-            <TextInput source="firstName" />
-            <TextInput source="lastName" />
-            <TextInput source="mail" />
-            <TextInput source="phone" />
-            <PasswordInput source="password" />
+
+            <TextInput label={t('custom.firstName')} source="firstName" />
+
+            <TextInput label={t('custom.lastName')} source="lastName" />
+
+            <TextInput label={t('custom.mail')} source="mail" />
+
+            <TextInput label={t('custom.phone')} source="phone" />
+
+            <PasswordInput label={t('custom.password')} source="password" />
         </SimpleForm>
     </Create>
-);
+}
 export default CreateManager

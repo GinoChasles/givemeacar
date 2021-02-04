@@ -1,44 +1,53 @@
 import * as React from "react";
 import {
-  List,
-  Datagrid,
-  TextField,
   PasswordInput,
   Create,
-  Edit,
   SimpleForm,
   ReferenceInput,
   AutocompleteInput,
   TextInput,
+  NumberInput,
+  useTranslate
 } from "react-admin";
 
 
 
-const CreateClient = (props) => (
-  <Create {...props}>
+const CreateClient = (props) => {
+
+  const t = useTranslate();
+
+  return <Create {...props} title={t('custom.creation')}>
     <SimpleForm>
-    <TextInput source="firstName" />
-    <TextInput source="lastName" />
-    <TextInput source="mail" />
-    <PasswordInput source="password" />
-    <TextInput source="phone" />
 
-    <ReferenceInput source="address_id" reference="addresses">
-      <AutocompleteInput optionText="name" optionValue={"id"}/>
-    </ReferenceInput>
+      <TextInput label={t('custom.firstName')} source="firstName" />
 
-    <ReferenceInput source="user_status_id" reference="user_statuses">
-      <AutocompleteInput optionText="name" optionValue={"id"}/>
-    </ReferenceInput>
+      <TextInput label={t('custom.lastName')} source="lastName" />
 
-    <ReferenceInput source="bill_id" reference="bills" allowEmpty>
-      <AutocompleteInput optionText="name" optionValue={"id"}/>
-    </ReferenceInput>
+      <TextInput label={t('custom.mail')} source="mail" />
 
-    <ReferenceInput source="agency_id" reference="agencies">
-      <AutocompleteInput optionText="name" optionValue={"id"}/>
-    </ReferenceInput>
+      <PasswordInput label={t('custom.password')} source="password" />
+
+      <TextInput label={t('custom.phone')} source="phone" />
+
+      <NumberInput label={t('custom.number')} source="streetNumber" />
+
+      <ReferenceInput label={t('custom.suffix')} source="street_suffix_id" reference="street_suffices">
+        <AutocompleteInput optionText="name" optionValue={"id"} />
+      </ReferenceInput>
+
+      <ReferenceInput label={t('custom.street')} source="street_id" reference="streets">
+        <AutocompleteInput optionText="name" optionValue={"id"} />
+      </ReferenceInput>
+
+      <ReferenceInput label={t('custom.city')} source="city_id" reference="cities">
+        <AutocompleteInput optionText="name" optionValue={"id"} />
+      </ReferenceInput>
+
+      <ReferenceInput label={t('custom.agency')} source="agency_id" reference="agencies">
+        <AutocompleteInput optionText="name" optionValue={"id"} />
+      </ReferenceInput>
+
     </SimpleForm>
   </Create>
-);
+}
 export default CreateClient

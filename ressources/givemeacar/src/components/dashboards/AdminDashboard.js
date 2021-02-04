@@ -1,55 +1,156 @@
 import * as React from "react";
-import {Admin,Resource,ListGuesser,ShowGuesser,EditGuesser} from "react-admin";
 
-import jsonServerProvider from "ra-data-json-server"
-import MyLayout from '../MyLayout'
-import { CreateAddresses, EditAddresses, DisplayAddresses } from '../react-admin/components/addresses'
-import {DisplayAdministrators,CreateAdministrators,EditAdministrators} from "../react-admin/components/administrators";
-import {DisplayAgency,EditAgency,CreateAgency} from '../react-admin/components/agency'
-import { DisplayBrand,EditBrand,CreateBrand} from "../react-admin/components/brands";
-import {DisplayCar,EditCar,CreateCar} from "../react-admin/components/cars";
-import {DisplayCity,EditCity,CreateCity} from "../react-admin/components/cities";
-import {DisplayClient,EditClient,CreateClient} from "../react-admin/components/clients";
-import {DisplayColor,EditColor,CreateColor} from "../react-admin/components/colors";
-import {DisplayCountry,CreateCountry,EditCountry} from "../react-admin/components/countries";
-import {DisplayDepartment,EditDepartment,CreateDepartment} from "../react-admin/components/departments";
-import {DisplayEnergyType,EditEnergyType,CreateEnergyType} from "../react-admin/components/energy_types";
-import {DisplayManager,EditManager,CreateManager} from "../react-admin/components/managers";
-import {DisplayModel,EditModel,CreateModel} from "../react-admin/components/models";
-import {DisplayRegion,EditRegion,CreateRegion} from "../react-admin/components/regions";
-import {DisplayRent,EditRent,CreateRent} from "../react-admin/components/rents";
-import {DisplayStreet,EditStreet,CreateStreet} from "../react-admin/components/streets";
-import {DisplaySuffix,EditSuffix,CreateSuffix} from "../react-admin/components/street_suffices";
-import {DisplayStatus,EditStatus,CreateStatus} from "../react-admin/components/user_statuses";
+import { Admin, Resource, ListGuesser, ShowGuesser, EditGuesser, useTranslate } from "react-admin";
+
+import {
+  DisplayAdministrators, CreateAdministrators, EditAdministrators, ShowAdministrators
+} from "../react-admin/components/administrators";
+
+import {
+  DisplayAgency, EditAgency, CreateAgency, ShowAgency
+} from '../react-admin/components/agency'
+
+import {
+  DisplayBrand, EditBrand, CreateBrand, ShowBrand
+} from "../react-admin/components/brands";
+
+import {
+  DisplayCar, EditCar, CreateCar, ShowCar
+} from "../react-admin/components/cars";
+
+import {
+  DisplayCity, EditCity, CreateCity, ShowCity
+} from "../react-admin/components/cities";
+
+import {
+  DisplayClient, EditClient, CreateClient, ShowClient
+} from "../react-admin/components/clients";
+
+import {
+  DisplayColor, EditColor, CreateColor, ShowColor
+} from "../react-admin/components/colors";
+
+import {
+  DisplayCountry, CreateCountry, EditCountry, ShowCountry
+} from "../react-admin/components/countries";
+
+import {
+  DisplayDepartment, EditDepartment, CreateDepartment, ShowDepartment
+} from "../react-admin/components/departments";
+
+import {
+  DisplayEnergyType, EditEnergyType, CreateEnergyType, ShowEnergyType
+} from "../react-admin/components/energy_types";
+
+import {
+  DisplayManager, EditManager, CreateManager, ShowManager
+} from "../react-admin/components/managers";
+
+import {
+  DisplayModel, EditModel, CreateModel, ShowModel
+} from "../react-admin/components/models";
+
+import {
+  DisplayRegion, EditRegion, CreateRegion, ShowRegion
+} from "../react-admin/components/regions";
+
+import {
+  DisplayRent, EditRent, CreateRent, ShowRent
+} from "../react-admin/components/rents";
+
+import {
+  DisplayStreet, EditStreet, CreateStreet, ShowStreet
+} from "../react-admin/components/streets";
+
+import {
+  DisplaySuffix, EditSuffix, CreateSuffix, ShowSuffix
+} from "../react-admin/components/street_suffices";
+
+import {
+  DisplayStatus, EditStatus, CreateStatus, ShowStatus
+} from "../react-admin/components/user_statuses";
+
+
+import {
+  Palette, DirectionsCar, LocationCity, Explore, Streetview, Face,
+  AirportShuttle, HomeWork, Receipt, Description, EvStation, Public,
+  VpnKey, Person, RecordVoiceOver, FormatListNumbered, Map, LocalShipping
+} from '@material-ui/icons';
 
 import redirect from '../../lib/redirectIfNoSession'
 
-const dataProvider = jsonServerProvider("http://localhost:8080/api");
+const AdminDashboard = ({ dataProvider, i18nProvider }) => {
 
-const AdminDashboard = () => <>
-  { redirect('/') }
-  
-  <Admin dataProvider={dataProvider} >
-    <Resource options={{ label: "Les couleurs" }} name="colors" list={DisplayColor} edit={EditColor} create={CreateColor} />
-    <Resource name="cities" list={DisplayCity} show={ShowGuesser} edit={EditCity} create={CreateCity} />
-    <Resource name="departments" list={DisplayDepartment} show={ShowGuesser} edit={EditDepartment} create={CreateDepartment} />
-    <Resource options={{ label: "Les managers !" }} name="managers" list={DisplayManager} show={ShowGuesser} edit={EditManager} create={CreateManager} />
-    <Resource name="clients" list={DisplayClient} show={ShowGuesser} edit={EditClient} create={CreateClient} />
-    <Resource name="administrators" list={DisplayAdministrators} show={ShowGuesser} edit={EditAdministrators} create={CreateAdministrators} />
-    <Resource name="cars" list={DisplayCar} show={ShowGuesser} edit={EditCar} create={CreateCar} />
-    <Resource name="brands" options={{ label: "Constructeurs" }} list={DisplayBrand} show={ShowGuesser} edit={EditBrand} create={CreateBrand} />
-    <Resource name="models" list={DisplayModel} show={ShowGuesser} edit={EditModel} create={CreateModel} />
-    <Resource name="addresses" list={DisplayAddresses} show={ShowGuesser} edit={EditAddresses} create={CreateAddresses} />
-    <Resource name="agencies" list={DisplayAgency} show={ShowGuesser} edit={EditAgency} create={CreateAgency} />
-    <Resource name="bills" list={ListGuesser} show={ShowGuesser} edit={EditGuesser} />
-    <Resource name="rents" list={DisplayRent} show={ShowGuesser} edit={EditRent} create={CreateRent} />
-    <Resource name="energy_types" list={DisplayEnergyType} show={ShowGuesser} edit={EditEnergyType} create={CreateEnergyType} />
-    <Resource name="regions" list={DisplayRegion} show={ShowGuesser} edit={EditRegion} create={CreateRegion} />
-    <Resource name="street_suffices" list={DisplaySuffix} show={ShowGuesser} edit={EditSuffix} create={CreateSuffix} />
-    <Resource name="streets" list={DisplayStreet} show={ShowGuesser} edit={EditStreet} create={CreateStreet} />
-    <Resource name="countries" list={DisplayCountry} show={ShowGuesser} edit={EditCountry} create={CreateCountry} />
-    <Resource name="user_statuses" list={DisplayStatus} show={ShowGuesser} edit={EditStatus} create={CreateStatus} />
-  </Admin>
-</>
+  const t = useTranslate();
 
-  export default AdminDashboard;
+  return <>
+
+    { redirect('/')}
+
+    <Admin dataProvider={dataProvider} i18nProvider={i18nProvider}>
+      
+      <Resource icon={Face} options={{ label: t("custom.clients") }} name="clients"
+        list={DisplayClient} show={ShowClient} edit={EditClient} create={CreateClient} />
+
+      <Resource icon={RecordVoiceOver} options={{ label: t("custom.managers") }} name="managers"
+        list={DisplayManager} show={ShowManager} edit={EditManager} create={CreateManager} />
+
+      <Resource icon={VpnKey} options={{ label: t("custom.administrators") }} name="administrators"
+        list={DisplayAdministrators} show={ShowAdministrators} edit={EditAdministrators} create={CreateAdministrators} />
+
+      <Resource icon={HomeWork} options={{ label: t("custom.agencies") }} name="agencies"
+        list={DisplayAgency} show={ShowAgency} edit={EditAgency} create={CreateAgency} />
+
+      <Resource icon={Receipt} options={{ label: t("custom.bills") }} name="bills"
+        list={ListGuesser} show={ShowGuesser} edit={EditGuesser} />
+
+      <Resource icon={Description} options={{ label: t("custom.rents") }} name="rents"
+        list={DisplayRent} show={ShowRent} edit={EditRent} create={CreateRent} />
+
+
+
+      <Resource icon={DirectionsCar} options={{ label: t("custom.cars") }} name="cars"
+        list={DisplayCar} show={ShowCar} edit={EditCar} create={CreateCar} />
+
+
+
+      <Resource icon={FormatListNumbered} options={{ label: t("custom.suffices") }} name="street_suffices"
+        list={DisplaySuffix} show={ShowSuffix} edit={EditSuffix} create={CreateSuffix} />
+
+      <Resource icon={Streetview} options={{ label: t("custom.streets") }} name="streets"
+        list={DisplayStreet} show={ShowStreet} edit={EditStreet} create={CreateStreet} />
+
+      <Resource icon={LocationCity} options={{ label: t("custom.cities") }} name="cities"
+        list={DisplayCity} show={ShowCity} edit={EditCity} create={CreateCity} />
+
+      <Resource icon={Explore} options={{ label: t("custom.departments") }} name="departments"
+        list={DisplayDepartment} show={ShowDepartment} edit={EditDepartment} create={CreateDepartment} />
+
+      <Resource icon={Map} options={{ label: t("custom.regions") }} name="regions"
+        list={DisplayRegion} show={ShowRegion} edit={EditRegion} create={CreateRegion} />
+
+      <Resource icon={Public} options={{ label: t("custom.countries") }} name="countries"
+        list={DisplayCountry} show={ShowCountry} edit={EditCountry} create={CreateCountry} />
+
+
+
+      <Resource icon={AirportShuttle} options={{ label: t("custom.brands") }} name="brands"
+        list={DisplayBrand} show={ShowBrand} edit={EditBrand} create={CreateBrand} />
+
+      <Resource icon={LocalShipping} options={{ label: t("custom.models") }} name="models"
+        list={DisplayModel} show={ShowModel} edit={EditModel} create={CreateModel} />
+
+      <Resource icon={Person} options={{ label: t("custom.statuses") }} name="user_statuses"
+        list={DisplayStatus} show={ShowStatus} edit={EditStatus} create={CreateStatus} />
+
+      <Resource icon={EvStation} options={{ label: t("custom.energyTypes") }} name="energy_types"
+        list={DisplayEnergyType} show={ShowEnergyType} edit={EditEnergyType} create={CreateEnergyType} />
+
+      <Resource icon={Palette} options={{ label: t("custom.colors") }} name="colors"
+        list={DisplayColor} show={ShowColor} edit={EditColor} create={CreateColor} />
+
+    </Admin>
+  </>
+}
+
+export default AdminDashboard;

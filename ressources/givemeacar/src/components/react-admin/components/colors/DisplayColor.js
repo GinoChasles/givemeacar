@@ -1,4 +1,4 @@
-import {Datagrid, Filter, List,TextField, SearchInput} from "react-admin";
+import { Datagrid, Filter, List, TextField, SearchInput, useTranslate } from "react-admin";
 import * as React from "react";
 
 const PostFilter = (props) => (
@@ -7,11 +7,16 @@ const PostFilter = (props) => (
     </Filter>
 );
 
-const DisplayColor = (props) => (
-    <List {...props} title="Liste de couleurs create color" filters={<PostFilter/>}>
+const DisplayColor = (props) => {
+
+    const t = useTranslate();
+
+    return <List {...props} title={t('custom.colors')} filters={<PostFilter />}>
         <Datagrid rowClick="edit">
-            <TextField source="name" />
+            <TextField label={t('custom.id')} source="id" />
+
+            <TextField label={t('custom.name')} source="name" />
         </Datagrid>
     </List>
-);
+}
 export default DisplayColor

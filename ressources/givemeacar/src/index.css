@@ -1,14 +1,3 @@
-body,html,#root,#root>div,.RaLayout-contentWithSidebar-3{
-  height:100%;
-  overflow:hidden;
-  position:relative;
-}
-
-#root > div >.layout,MuiDrawer-root,.RaLayout-content-4{
-  height:100%;
-  overflow:auto;
-}
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -22,25 +11,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-/*
-table {
-  border-collapse: collapse;
-}
-td,
-th {
-  border: 1px solid black;
-  text-align: center;
-}
-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem;
-}
-.MuiAppBar-positionFixed{
-position: relative !important;
-}
-.RaLayout-appFrame-2 {
-margin-top:0 !important;
-}
-*/

@@ -1,18 +1,28 @@
-import {AutocompleteInput, DateTimeInput, Edit, ReferenceInput, SimpleForm} from "react-admin";
+import {
+    AutocompleteInput, DateTimeInput, Edit, ReferenceInput, SimpleForm, useTranslate
+} from "react-admin";
 import * as React from "react";
 
-const EditRent = (props) => (
-    <Edit {...props} undoable={false}>
+const EditRent = (props) => {
+
+    const t = useTranslate();
+
+    return <Edit {...props} undoable={false} title={t('custom.edition')}>
         <SimpleForm>
-            <DateTimeInput source="start" />
-            <DateTimeInput source="end" />
-            <ReferenceInput source="car_id" reference="cars">
-                <AutocompleteInput optionText="name" optionValue={"id"}/>
+
+            <DateTimeInput label={t('custom.Start')} source="start" />
+
+            <DateTimeInput label={t('custom.End')} source="end" />
+
+            <ReferenceInput label={t('custom.car')} source="car_id" reference="cars">
+                <AutocompleteInput optionText="name" optionValue={"id"} />
             </ReferenceInput>
-            <ReferenceInput source="client_id" reference="clients">
-                <AutocompleteInput optionText="name" optionValue={"id"}/>
+
+            <ReferenceInput label={t('custom.client')} source="client_id" reference="clients">
+                <AutocompleteInput optionText="name" optionValue={"id"} />
             </ReferenceInput>
         </SimpleForm>
     </Edit>
-);
+}
+
 export default EditRent

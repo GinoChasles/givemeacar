@@ -10,7 +10,6 @@
         <property name="connection.username">${MYSQL_USER}</property>
         <property name="connection.password">${MYSQL_PASSWORD}</property>
         <!--<property name="hibernate.hbm2ddl.auto">update</property>-->
-        <mapping class="fr.givemeacar.app.model.Address"/>
         <mapping class="fr.givemeacar.app.model.Administrator"/>
         <mapping class="fr.givemeacar.app.model.Agency"/>
         <mapping class="fr.givemeacar.app.model.Bill"/>

@@ -1,15 +1,23 @@
-import {Datagrid, Filter, List, ReferenceInput, SearchInput, TextField} from "react-admin";
+import { Datagrid, Filter, List, SearchInput, TextField, useTranslate } from "react-admin";
 import * as React from "react";
+
 const PostFilter = (props) => (
     <Filter {...props}>
         <SearchInput source="q" alwaysOn />
     </Filter>
 );
-const DisplayRegion = (props) => (
-    <List {...props} title="La région" filters={<PostFilter/>}>
+
+const DisplayRegion = (props) => {
+
+    const t = useTranslate();
+
+    return <List {...props} title={t('custom.regions')} filters={<PostFilter />}>
         <Datagrid rowClick="edit">
-            <TextField source="name" />
+            <TextField label={t('custom.id')} source="id" />
+
+            <TextField label={t('custom.name')} source="name" />
         </Datagrid>
     </List>
-);
+}
+
 export default DisplayRegion

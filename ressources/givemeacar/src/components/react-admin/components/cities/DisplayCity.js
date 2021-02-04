@@ -1,10 +1,11 @@
 import {
     Datagrid,
     List,
-    NumberField,
+    ReferenceField,
     TextField,
     Filter,
-    SearchInput
+    SearchInput,
+    useTranslate
 } from "react-admin";
 import * as React from "react";
 const PostFilter = (props) => (
@@ -13,20 +14,28 @@ const PostFilter = (props) => (
         <SearchInput source="zipcode" />
     </Filter>
 );
-const DisplayCity = (props) => (
-    <List {...props} title="Liste des villes" filters={<PostFilter/>}>
+const DisplayCity = (props) => {
+
+    const t = useTranslate();
+
+    return <List {...props} title={t('custom.cities')} filters={<PostFilter />}>
 
         <Datagrid rowClick="edit">
-            <TextField source="name" label={"name"}/>
-            <TextField source="zipcode" label={"zipCode"}/>
-            <NumberField source="departmentName" label={"department"}/>
-            <NumberField source="regionName" label={"region"}/>
+            <TextField label={t('custom.id')} source="id" />
 
-            {/* <ReferenceField source="departmentId" reference="departments" sortBy="departments.name">
-      <TextField source="name" /> //TODO afficher le nom du département
-      </ReferenceField> */}
+            <TextField label={t('custom.name')} source="name" />
+
+            <TextField label={t('custom.zipcode')} source="zipcode" />
+
+            <ReferenceField link="show" label={t('custom.department')} source="department_id" reference="departments">
+                <TextField source="name" />
+            </ReferenceField>
+            <ReferenceField link="show" label={t('custom.region')} source="regionId" reference="regions">
+                <TextField source="name" />
+            </ReferenceField>
+
         </Datagrid>
     </List>
-);
+}
 
 export default DisplayCity

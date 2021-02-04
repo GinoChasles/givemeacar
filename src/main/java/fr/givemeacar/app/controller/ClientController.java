@@ -34,9 +34,7 @@ public class ClientController extends CrudControllerImpl<Client>{
     }
 
     @GetMapping("clients/{id}")
-    public ResponseEntity findById(@PathVariable int id) {
-        return super.findById(id);
-    }
+    public ResponseEntity findById(@PathVariable int id) { return super.findById(id);}
 
 
     @PostMapping("clients")

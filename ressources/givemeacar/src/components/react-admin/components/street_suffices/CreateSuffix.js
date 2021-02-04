@@ -3,14 +3,19 @@ import {
   Create,
   SimpleForm,
   TextInput,
+  useTranslate
 } from "react-admin";
 
 
-const CreateSuffix = (props) => (
-  <Create {...props}>
+const CreateSuffix = (props) => {
+
+  const t = useTranslate();
+
+  return <Create {...props} title={t('custom.creation')}>
     <SimpleForm>
-      <TextInput source="name" />
+      <TextInput label={t('custom.name')} source="name" />
     </SimpleForm>
   </Create>
-);
+}
+
 export default CreateSuffix

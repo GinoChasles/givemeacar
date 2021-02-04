@@ -1,10 +1,10 @@
-import {Datagrid, Filter, List, ReferenceInput, SearchInput, TextField, TextInput} from "react-admin";
+import { Datagrid, Filter, List, ReferenceInput, SearchInput, TextField, useTranslate } from "react-admin";
 import * as React from "react";
 
 const PostFilter = (props) => (
     <Filter {...props}>
         <SearchInput source="q" alwaysOn />
-        <ReferenceInput source="manager_id" reference="managers" allowEmpty>
+        <ReferenceInput source="name" reference="agencies" allowEmpty>
             <SearchInput optionText="name" />
         </ReferenceInput>
         <ReferenceInput source="city_id" reference="cities" allowEmpty>
@@ -15,14 +15,21 @@ const PostFilter = (props) => (
         </ReferenceInput>
     </Filter>
 );
-const DisplayAgency = (props) => (
-    <List {...props} title="Agences" filters={<PostFilter/>}>
+
+const DisplayAgency = (props) => {
+
+    const t = useTranslate();
+
+    return <List {...props} title={t('custom.agencies')} filters={<PostFilter />}>
         <Datagrid rowClick="edit">
-            <TextField source="name"            label="name"       />
-            <TextField source="fullAddress"     label="address"    />
-            <TextField source="managerFullName" label="manager"    />
+
+            <TextField source="id" label={t("custom.id")} />
+
+            <TextField source="name" label={t("custom.name")} />
+
+            <TextField source="address" label={t("custom.address")} />
         </Datagrid>
     </List>
-);
+}
 
 export default DisplayAgency

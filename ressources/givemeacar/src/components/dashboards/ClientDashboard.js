@@ -1,30 +1,26 @@
 import * as React from "react";
-import {Admin,Resource,ListGuesser,ShowGuesser,EditGuesser} from "react-admin";
 
-import jsonServerProvider from "ra-data-json-server"
+import { Admin, Resource, ShowGuesser, useTranslate } from "react-admin";
 
-import MyLayout from '../MyLayout'
-import {DisplayAgency} from '../react-admin/components/agency'
-import {DisplayCar} from '../react-admin/components/cars'
-import {DisplayClient,EditClient,CreateClient} from "../react-admin/components/clients";
-import {DisplayManager} from "../react-admin/components/managers";
-import {CreateRent, DisplayRent, EditRent} from "../react-admin/components/rents";
+import { DisplayRent, EditRent, CreateRent } from "../react-admin/components/rents";
+//import { DisplayBill, EditBill, CreateBill } from "../react-admin/components/bills";
 
 import redirect from '../../lib/redirectIfNoSession'
 
-const dataProvider = jsonServerProvider("http://localhost:8080/api");
+const ClientDashboard = ({ dataProvider, i18nProvider }) => {
 
-const ClientDashboard = () => <>
+  const t = useTranslate();
+
+  return <>
     { redirect('/')}
 
-    <Admin dataProvider={dataProvider} layout={MyLayout}>
-      <Resource options={{ label: "Les managers !" }} name="managers" list={DisplayManager} show={ShowGuesser} />
-      <Resource name="clients" list={DisplayClient} show={ShowGuesser} edit={EditClient} />
-      <Resource name="cars" list={DisplayCar} show={ShowGuesser} />
-      <Resource name="agencies" list={DisplayAgency} show={ShowGuesser} />
-      <Resource name="bills" list={ListGuesser} show={ShowGuesser} edit={EditGuesser} />
-      <Resource name="rents" list={DisplayRent} show={ShowGuesser} edit={EditRent} create={CreateRent} />
-      </Admin>
-    </>
+    <Admin dataProvider={dataProvider} i18nProvider={i18nProvider}>
 
-  export default ClientDashboard;
+      {/** <Resource options={{ label: t("custom.bills") }} name="bills" list={DisplayBill} show={ShowGuesser} edit={EditBill} create={CreateBill} /> */}
+
+      <Resource options={{ label: t("custom.rents") }} name="rents" list={DisplayRent} show={ShowGuesser} edit={EditRent} create={CreateRent} />
+    </Admin>
+  </>
+}
+
+export default ClientDashboard;
