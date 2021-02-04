@@ -6,8 +6,7 @@ import {
     Show,
     SimpleShowLayout,
     TextField,
-    BooleanField
-
+    ReferenceField
 } from "react-admin";
 
 
@@ -26,14 +25,24 @@ const ShowCar = (props) => {
             <TextField label={t('custom.available')} source="availability" />
 
             <TextField label={t('custom.rented')} source="inRent" />
+            
+            <ReferenceField link="show" label={t('custom.brand')} source="brandId" reference="brands">
+                <TextField source="name" />
+            </ReferenceField>
 
-            <TextField label={t('custom.model')} source="modelName" />
+            <ReferenceField link="show" label={t('custom.model')} source="model_id" reference="models">
+                <TextField source="name" />
+            </ReferenceField>
 
-            <TextField label={t('custom.color')} source="colorName" />
+            <ReferenceField link="show" label={t('custom.color')} source="color_id" reference="colors">
+                <TextField source="name" />
+            </ReferenceField>
 
             <TextField label={t('custom.energyLevel')} source="energyLevel" />
 
-            <TextField label={t('custom.energyType')} source="energy" />
+            <ReferenceField link="show" label={t('custom.energy')} source="energy_type_id" reference="energy_types">
+                <TextField source="name" />
+            </ReferenceField>
 
             <TextField label={t('custom.latitude')} source="latitude" />
 

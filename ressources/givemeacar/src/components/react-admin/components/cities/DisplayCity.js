@@ -1,7 +1,7 @@
 import {
     Datagrid,
     List,
-    NumberField,
+    ReferenceField,
     TextField,
     Filter,
     SearchInput,
@@ -27,9 +27,12 @@ const DisplayCity = (props) => {
 
             <TextField label={t('custom.zipcode')} source="zipcode" />
 
-            <NumberField label={t('custom.department')} source="departmentName" />
-
-            <NumberField label={t('custom.region')} source="regionName" />
+            <ReferenceField link="show" label={t('custom.department')} source="department_id" reference="departments">
+                <TextField source="name" />
+            </ReferenceField>
+            <ReferenceField link="show" label={t('custom.region')} source="regionId" reference="regions">
+                <TextField source="name" />
+            </ReferenceField>
 
         </Datagrid>
     </List>

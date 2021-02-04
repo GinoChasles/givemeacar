@@ -85,7 +85,7 @@ public class Car implements CrudModel {
     public String getEnergyLevel() {
         return getEnergyCurrent() + " / " + getEnergyMax();
     }
-    
+
     public String getColorName() {
         if (getColor() != null) {
             return getColor().getName();
