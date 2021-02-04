@@ -40,6 +40,8 @@ export default {
     department: "département",
     departments: "départements",
 
+    description: "description",
+
     edition: "édition",
 
     energy: "carburant",

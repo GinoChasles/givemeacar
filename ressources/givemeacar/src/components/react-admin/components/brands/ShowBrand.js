@@ -14,7 +14,7 @@ const ShowBrand = (props) => {
 
     const t = useTranslate();
 
-    return <Show {...props}>
+    return <Show {...props} title={t('custom.description')}>
         <SimpleShowLayout>
             <TextField source="name" label={t("custom.name")} />
         </SimpleShowLayout>

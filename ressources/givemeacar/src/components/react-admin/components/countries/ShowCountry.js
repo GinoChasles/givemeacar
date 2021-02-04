@@ -14,7 +14,7 @@ const ShowCountry = (props) => {
 
     const t = useTranslate();
 
-    return <Show {...props}>
+    return <Show {...props} title={t('custom.description')}>
         <SimpleShowLayout>
             <TextField label={t('custom.id')} source="id" />
 
