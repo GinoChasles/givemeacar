@@ -9,6 +9,8 @@ import CarToolbar from './CarToolbar';
  * Fromulaire d'édition de voiture
  * @param {*} props
  */
+import styles from '../../styles/forms.module.css';
+
 const EditCar = (props) => {
 
     const t = useTranslate();

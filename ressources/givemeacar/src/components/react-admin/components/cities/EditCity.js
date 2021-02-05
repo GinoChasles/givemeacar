@@ -7,12 +7,15 @@ import Longitude from '../form/longitude'
 import Department from '../form/department'
 import Zipcode from '../form/zipcode'
 
+import styles from '../../styles/forms.module.css';
+
 const EditCity = (props) => {
 
     const t = useTranslate();
 
     return <Edit {...props} undoable={false} title={t('word.edition')}>
         <SimpleForm>
+            <section className={styles.form}>
 
             <Zipcode />
 
@@ -23,6 +26,7 @@ const EditCity = (props) => {
             <Longitude />
 
             <Department />
+            </section>
 
         </SimpleForm>
     </Edit>

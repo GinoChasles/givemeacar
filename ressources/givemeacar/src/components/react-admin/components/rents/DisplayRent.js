@@ -15,7 +15,7 @@ const DisplayRent = (props) => {
 
     return <List {...props} title={t('word.rents')} filters={<RentFilter />} exporter={false} perPage={25}>
         <Datagrid rowClick="edit" hasBulkActions rowClick="show">
-            <TextField label={t('word.id')} source="id" />
+
 
             <DateField label={t('word.rentStart')} source="start" showTime />
 

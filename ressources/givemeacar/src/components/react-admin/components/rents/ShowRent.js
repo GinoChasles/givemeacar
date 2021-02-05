@@ -18,7 +18,7 @@ const ShowModel = (props) => {
 
     return <Show {...props} title={t('word.description')}>
         <SimpleShowLayout className={styles.show}>
-            <TextField label={t('word.id')} source="id" />
+
 
             <DateField label={t('word.rentStart')} source="start" showTime />
 

@@ -7,6 +7,7 @@ import {
 
 import Name from '../form/name';
 import Brand from '../form/brand';
+import styles from '../../styles/forms.module.css';
 
 const CreateModel = (props) => {
 
@@ -14,10 +15,12 @@ const CreateModel = (props) => {
 
   return <Create {...props} title={t('word.creation')}>
     <SimpleForm>
+      <section className={styles.form}>
 
       <Brand />
 
       <Name />
+      </section>
 
     </SimpleForm>
   </Create>

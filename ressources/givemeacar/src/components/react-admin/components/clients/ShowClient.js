@@ -21,7 +21,7 @@ const ShowClient = (props) => {
     return <Show {...props} title={t('word.description')}>
         <SimpleShowLayout className={styles.show}>
 
-            <TextField label={t('word.id')} source="id" />
+
 
             <TextField label={t('word.firstName')} source="firstName" />
 

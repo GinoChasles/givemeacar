@@ -12,18 +12,21 @@ import Mail from '../form/mail';
 import Phone from '../form/phone';
 import Password from '../form/password';
 
+import styles from '../../styles/forms.module.css';
+
 const CreateAdministrators = (props) => {
 
   const t = useTranslate();
 
   return <Create {...props} title={t('word.creation')}>
-    <SimpleForm >
-
+    <SimpleForm>
+      <section className={styles.form}>
       <FirstName />
       <LastName />
       <Mail />
       <Phone />
       <Password />
+      </section>
 
     </SimpleForm>
   </Create>

@@ -17,6 +17,7 @@ import Suffix from '../form/suffix';
 import StreetNumber from '../form/streetNumber';
 import Agency from '../form/agency';
 
+import styles from '../../styles/forms.module.css';
 
 const CreateClient = (props) => {
 
@@ -24,6 +25,7 @@ const CreateClient = (props) => {
 
   return <Create {...props} title={t('word.creation')}>
     <SimpleForm>
+      <section className={styles.form}>
 
       <FirstName />
       
@@ -44,6 +46,7 @@ const CreateClient = (props) => {
       <City />
 
       <Agency />
+      </section>
 
     </SimpleForm>
   </Create>

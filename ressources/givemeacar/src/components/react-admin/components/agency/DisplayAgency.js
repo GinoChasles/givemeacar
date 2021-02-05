@@ -16,7 +16,6 @@ const DisplayAgency = (props) => {
     return <List {...props} title={t('word.agencies')} filters={<AgencyFilter />} exporter={false} perPage={25}>
         <Datagrid hasBulkActions rowClick="show" expand={ShowAgency}>
 
-            <TextField source="id" label={t("word.id")} />
 
             <TextField source="name" label={t("word.name")} />
 

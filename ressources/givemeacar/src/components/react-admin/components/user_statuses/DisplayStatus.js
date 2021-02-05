@@ -15,7 +15,7 @@ const DisplayStatus = (props) => {
 
     return <List {...props} title={t('word.statuses')} filters={<PostFilter />} exporter={false} perPage={25}>
         <Datagrid rowClick="edit" hasBulkActions rowClick="show">
-            <TextField label={t('word.id')} source="id" />
+
 
             <TextField label={t('word.name')} source="name" />
 

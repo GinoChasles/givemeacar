@@ -24,7 +24,7 @@ const DisplayCity = (props) => {
     return <List {...props} title={t('word.cities')} filters={<CityFilter />} exporter={false} perPage={25}>
 
         <Datagrid hasBulkActions rowClick="show">
-            <TextField label={t('word.id')} source="id" />
+
 
             <TextField label={t('word.name')} source="name" />
 

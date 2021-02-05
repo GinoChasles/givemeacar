@@ -9,12 +9,15 @@ import Mail from '../form/mail';
 import Phone from '../form/phone';
 import Password from '../form/password';
 
+import styles from '../../styles/forms.module.css';
+
 const EditManager = (props) => {
 
     const t = useTranslate();
 
     return <Edit {...props} undoable={false} title={t('word.edition')}>
         <SimpleForm>
+            <section className={styles.form}>
 
                  
             <FirstName />
@@ -22,6 +25,7 @@ const EditManager = (props) => {
             <Mail />
             <Phone />
             <Password />
+            </section>
 
         </SimpleForm>
     </Edit>

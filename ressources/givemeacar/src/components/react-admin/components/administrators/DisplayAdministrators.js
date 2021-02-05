@@ -16,7 +16,7 @@ const DisplayAdministrators = (props) => {
     return <List {...props} title={t('word.administrators')} filters={<AdminFilter />} exporter={false} perPage={25}>
         <Datagrid hasBulkActions rowClick="show">
 
-            <TextField label={t('word.id')} source="id" />
+
 
             <TextField label={t('word.firstName')} source="firstName" />
 

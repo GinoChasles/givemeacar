@@ -15,7 +15,7 @@ const DisplaySuffix = (props) => {
 
     return <List {...props} title={t('word.suffices')} filters={<SuffixFilter />} exporter={false} perPage={25}>
         <Datagrid rowClick="edit" hasBulkActions rowClick="show">
-            <TextField label={t('word.id')} source="id" />
+
 
             <TextField label={t('word.name')} source="name" />
 

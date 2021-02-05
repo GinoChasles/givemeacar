@@ -9,6 +9,7 @@ import {
 
 import Client from '../form/client';
 import Car from '../form/car';
+import styles from '../../styles/forms.module.css';
 
 const CreateRent = (props) => {
 
@@ -16,6 +17,7 @@ const CreateRent = (props) => {
 
   return <Create {...props} title={t('word.creation')}>
     <SimpleForm>
+      <section className={styles.form}>
 
       <DateTimeInput label={t('word.rentStart')} source="start" validate={[
         required()
@@ -28,6 +30,7 @@ const CreateRent = (props) => {
       <Car />
 
       <Client />
+      </section>
 
     </SimpleForm>
   </Create>

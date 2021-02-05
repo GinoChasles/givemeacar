@@ -19,7 +19,7 @@ const DisplayCar = (props) => {
 
     return <List {...props} title={t('word.cars')} filters={<CarFilter />} exporter={false} perPage={25}>
         <Datagrid hasBulkActions rowClick="show" expand={ShowCar}>
-            <TextField label={t('word.id')} source="id" />
+
 
             <ReferenceField link="show" label={t('word.brand')} source="brandId" reference="brands">
                 <TextField source="name" />

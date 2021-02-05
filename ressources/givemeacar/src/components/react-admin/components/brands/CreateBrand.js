@@ -6,6 +6,7 @@ import {
 } from "react-admin";
 
 import Name from '../form/name';
+import styles from '../../styles/forms.module.css';
 
 const CreateBrand = (props) => {
 
@@ -13,8 +14,10 @@ const CreateBrand = (props) => {
 
   return <Create {...props} title={t('word.creation')}>
     <SimpleForm>
+      <section className={styles.form}>
 
       <Name />
+      </section>
 
     </SimpleForm>
   </Create>

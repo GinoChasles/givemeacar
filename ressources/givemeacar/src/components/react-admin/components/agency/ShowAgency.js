@@ -18,7 +18,6 @@ const ShowAgency = (props) => {
     return <Show {...props} title={t('word.description')}>
         <SimpleShowLayout className={styles.show}>
 
-            <TextField source="id" label={t("word.id")} />
 
             <TextField source="name" label={t("word.name")} />
 

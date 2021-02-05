@@ -7,18 +7,22 @@ import Mail from '../form/mail';
 import Phone from '../form/phone';
 import Password from '../form/password';
 
+import styles from '../../styles/forms.module.css';
+
 const EditAdministrators = (props) => {
 
     const t = useTranslate();
 
     return <Edit {...props} undoable={false} title={t('word.edition')}>
-        <SimpleForm optionvalue={"id"}>
+        <SimpleForm>
+            <section className={styles.form}>
 
             <FirstName />
             <LastName />
             <Mail />
             <Phone />
             <Password />
+            </section>
 
         </SimpleForm>
     </Edit>

@@ -18,7 +18,7 @@ const DisplayClient = (props) => {
     return <List {...props} title={t('word.clients')} filters={<ClientFilter />} exporter={false} perPage={25}>
         <Datagrid hasBulkActions rowClick="show" expand={ShowClient}>
 
-            <TextField label={t('word.id')} source="id" />
+
 
             <TextField label={t('word.firstName')} source="firstName" />
 

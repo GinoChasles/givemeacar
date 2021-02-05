@@ -18,6 +18,8 @@ import StreetNumber from '../form/streetNumber';
 import Agency from '../form/agency';
 
 
+import styles from '../../styles/forms.module.css';
+
 const EditClient = (props) => {
 
     const t = useTranslate();
@@ -25,6 +27,7 @@ const EditClient = (props) => {
     return <Edit {...props} undoable={false} title={t('word.edition')}>
 
         <SimpleForm>
+            <section className={styles.form}>
 
             <FirstName />
 
@@ -45,6 +48,7 @@ const EditClient = (props) => {
             <City />
 
             <Agency />
+            </section>
 
         </SimpleForm>
     </Edit>

@@ -7,6 +7,7 @@ import {
 
 import Name from '../form/name';
 
+import styles from '../../styles/forms.module.css';
 
 const CreateColor = (props) => {
 
@@ -14,7 +15,11 @@ const CreateColor = (props) => {
 
   return <Create {...props} title={t('word.creation')}>
     <SimpleForm>
+      <section className={styles.form}>
+
       <Name />
+      </section>
+
     </SimpleForm>
   </Create>
 }
