@@ -13,9 +13,10 @@ export default function City() {
 
     const t = useTranslate();
 
-    return <ReferenceInput label={t('word.city')} source="city_id" reference="cities" validate={[
+    return <ReferenceInput label={t('word.city')} source="city_id" reference="cities" className="w-100"
+        validate={[
         required(t('error.required'))
     ]}>
-        <AutocompleteInput optionText="name" optionValue={"id"} />
+        <AutocompleteInput optionText="name" optionValue={"id"} className="w-100" />
     </ReferenceInput>
 }

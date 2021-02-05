@@ -17,7 +17,8 @@ import Latitude from '../form/latitude';
 const FORM_STYLES = {
     display: 'grid',
     gridTemplateColumns: "1fr 1fr",
-    gap: ".5rem"
+    gap: ".5rem",
+    gridAutoColumns: "1fr"
 }
 
 export default function CarForm(props) {

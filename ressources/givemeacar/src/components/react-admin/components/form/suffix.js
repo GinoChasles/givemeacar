@@ -12,7 +12,7 @@ export default function Suffix() {
 
     const t = useTranslate();
 
-    return <ReferenceInput label={t('word.suffix')} source="street_suffix_id" reference="street_suffices">
-        <AutocompleteInput optionText="name" optionValue={"id"} />
+    return <ReferenceInput label={t('word.suffix')} source="street_suffix_id" reference="street_suffices" className="w-100" >
+        <AutocompleteInput optionText="name" optionValue={"id"} className="w-100" />
     </ReferenceInput>
 }

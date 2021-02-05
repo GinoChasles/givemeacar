@@ -13,9 +13,10 @@ export default function Client() {
 
     const t = useTranslate();
 
-    return <ReferenceInput label={t('word.client')} source="client_id" reference="clients" validate={[
+    return <ReferenceInput label={t('word.client')} source="client_id" reference="clients" className="w-100"
+        validate={[
         required(t('error.required'))
     ]}>
-        <AutocompleteInput optionText="name" optionValue={"id"} />
+        <AutocompleteInput optionText="name" optionValue={"id"} className="w-100" />
     </ReferenceInput>
 }
