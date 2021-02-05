@@ -13,38 +13,36 @@ import EnergyCurrent from '../form/energyMax';
 import Longitude from '../form/longitude';
 import Latitude from '../form/latitude';
 
+import styles from '../../styles/forms.module.css';
 
-const FORM_STYLES = {
-    display: 'grid',
-    gridTemplateColumns: "1fr 1fr",
-    gap: ".5rem",
-    gridAutoColumns: "1fr"
-}
-
-export default function CarForm(props) {
-    return <section style={FORM_STYLES}>
+/**
+ * Le formulaire de création et d'édition de la voiture
+ */
+export default function CarForm() {
+    return <section className={styles.form}>
+        {/** le modèle de la voiture  */}
         <Model />
-        
+        {/** l'année de construction de la voiture  */}
         <Year />
-        
+        {/** la couleur de la voiture  */}
         <Color />
-        
+        {/** le type de carburant de la voiture  */}
         <EnergyType />
-
+        {/** le niveau de carburant actuel de la voiture  */}
         <EnergyCurrent />
-
+        {/** le niveau de carburant max de la voiture  */}
         <EnergyMax />
-
+        {/** le kilométrage de la voiture  */}
         <Kilometer />
-
+        {/** le prix à la minute de la voiture  */}
         <Price />
-
+        {/** la latitude de la voiture  */}
         <Latitude />
-
+        {/** la longitude de la voiture  */}
         <Longitude />
-
+        {/** la disponibilité de la voiture  */}
         <Available />
-
+        {/** l'état de la location en cours de la voiture  */}
         <Rented />
     </section>
 }

@@ -3,9 +3,12 @@ import CarForm from './CarForm';
 
 import { Edit, useTranslate, SimpleForm } from 'react-admin';
 
-
 import CarToolbar from './CarToolbar';
 
+/**
+ * Fromulaire d'édition de voiture
+ * @param {*} props
+ */
 const EditCar = (props) => {
 
     const t = useTranslate();

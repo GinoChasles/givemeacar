@@ -6,6 +6,10 @@ import { Create, useTranslate, SimpleForm } from 'react-admin';
 
 import CarToolbar from './CarToolbar';
 
+/**
+ * Fromulaire de création de voiture
+ * @param {*} props
+ */
 const CreateCar = (props) => {
 
   const t = useTranslate();
