@@ -1,5 +1,4 @@
 import * as React from "react";
-import { SimpleForm, SaveButton, Toolbar } from "react-admin";
 
 import Model from '../form/model';
 import Color from '../form/color';
@@ -14,43 +13,37 @@ import EnergyCurrent from '../form/energyMax';
 import Longitude from '../form/longitude';
 import Latitude from '../form/latitude';
 
-const CarToolbar = props => (
-    <Toolbar {...props}>
-        <SaveButton submitOnEnter transform={(data) => {
-            data.available = data.available === true ? 1 : 0;
-            data.rented = data.rented === true ? 1 : 0;
-            console.log(data)
-            return data;
-        }} />
-    </Toolbar>
-);
 
-export default function CarForm() {
-    return <SimpleForm toolbar={<CarToolbar />}>
+const FORM_STYLES = {
+    display: 'grid',
+    gridTemplateColumns: "1fr 1fr",
+    gap: ".5rem"
+}
+
+export default function CarForm(props) {
+    return <section style={FORM_STYLES}>
+        <Model />
+        
+        <Year />
+        
+        <Color />
+        
+        <EnergyType />
+
+        <EnergyCurrent />
+
+        <EnergyMax />
 
         <Kilometer />
 
         <Price />
 
-        <Year />
-
-        <Available />
-
-        <Rented />
-
-        <Model />
-
-        <Color />
-
-        <EnergyMax />
-
-        <EnergyCurrent />
-
-        <EnergyType />
-
         <Latitude />
 
         <Longitude />
 
-    </SimpleForm>
+        <Available />
+
+        <Rented />
+    </section>
 }

@@ -17,6 +17,6 @@ export default function Color() {
         reference="colors" validate={[
             required(t('error.required'))
         ]}>
-        <AutocompleteInput optionText="fullName" optionValue={"id"} />
+        <AutocompleteInput optionText="name" optionValue={"id"} />
     </ReferenceInput>
 }

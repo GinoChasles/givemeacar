@@ -12,7 +12,7 @@ export default function Kilometer() {
 
     const t = useTranslate();
 
-    return <NumberInput label={t('word.energyMax')} source="energy_max" validate={[
+    return <NumberInput label={t('word.energyMax')} source="energyMax" validate={[
         required(t('error.required'))
     ]} />
 }
