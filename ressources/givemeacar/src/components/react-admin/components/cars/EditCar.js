@@ -1,12 +1,26 @@
-import { AutocompleteInput, required, Edit, NumberInput, ReferenceInput, SimpleForm, useTranslate } from "react-admin";
+import {
+    AutocompleteInput, required, Edit, NumberInput, BooleanInput, ReferenceInput, SimpleForm, useTranslate, SaveButton, Toolbar
+} from "react-admin";
 import * as React from "react";
+
+
+const CarToolbar = props => (
+    <Toolbar {...props}>
+        <SaveButton submitOnEnter transform={(data) => {
+            data.available = data.available === true ? 1 : 0;
+            data.rented = data.rented === true ? 1 : 0;
+            console.log(data)
+            return data;
+        }} />
+    </Toolbar>
+);
 
 const EditCar = (props) => {
 
     const t = useTranslate();
 
-    return <Edit {...props} undoable={false} title={t('word.edition')}>
-        <SimpleForm>
+    return <Edit {...props} undoable={false} title={t('word.edition')} >
+        <SimpleForm toolbar={<CarToolbar />}>
 
             <NumberInput label={t('word.kilometers')} source="kilometers" validate={[
                 required(t('error.required'))
@@ -20,18 +34,20 @@ const EditCar = (props) => {
                 required(t('error.required'))
             ]} />
 
-            <NumberInput label={t('word.available')} source="available" validate={[
+            <BooleanInput label={t('word.available')} source="available" validate={[
                 required(t('error.required'))
             ]} />
 
-            <NumberInput label={t('word.rented')} source="rented" validate={[
+            <BooleanInput label={t('word.rented')} source="rented" validate={[
                 required(t('error.required'))
             ]} />
 
-            <ReferenceInput label={t('word.model')} source="model_id" reference="models" validate={[
+            <ReferenceInput label={t('word.model')} source="model_id"
+                filter={{ brand_id: 70 }}
+                reference="models" validate={[
                 required(t('error.required'))
             ]}>
-                <AutocompleteInput optionText="name" optionValue={"id"} />
+                <AutocompleteInput optionText="fullName" optionValue={"id"} />
             </ReferenceInput>
 
             <ReferenceInput label={t('word.color')} source="color_id" reference="colors" validate={[
@@ -40,11 +56,11 @@ const EditCar = (props) => {
                 <AutocompleteInput optionText="name" optionValue={"id"} />
             </ReferenceInput>
 
-            <NumberInput label={t('word.energyMax')} source="energy_max" validate={[
+            <NumberInput label={t('word.energyMax')} source="energyMax" validate={[
                 required(t('error.required'))
             ]} />
 
-            <NumberInput label={t('word.energyCurrent')} source="energy_current" validate={[
+            <NumberInput label={t('word.energyCurrent')} source="energyCurrent" validate={[
                 required(t('error.required'))
             ]} />
 
@@ -61,6 +77,7 @@ const EditCar = (props) => {
             <NumberInput label={t('word.longitude')} source="longitude" validate={[
                 required(t('error.required'))
             ]} />
+
 
         </SimpleForm>
     </Edit>

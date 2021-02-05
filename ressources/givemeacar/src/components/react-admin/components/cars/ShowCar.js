@@ -6,6 +6,7 @@ import {
     Show,
     SimpleShowLayout,
     TextField,
+    BooleanField,
     ReferenceField
 } from "react-admin";
 
@@ -22,9 +23,9 @@ const ShowCar = (props) => {
 
             <TextField label={t('word.year')} source="year" />
 
-            <TextField label={t('word.available')} source="availability" />
+            <BooleanField label={t('word.available')} source="available" />
 
-            <TextField label={t('word.rented')} source="inRent" />
+            <BooleanField label={t('word.rented')} source="rented" />
             
             <ReferenceField link="show" label={t('word.brand')} source="brandId" reference="brands">
                 <TextField source="name" />
@@ -38,7 +39,9 @@ const ShowCar = (props) => {
                 <TextField source="name" />
             </ReferenceField>
 
-            <TextField label={t('word.energyLevel')} source="energyLevel" />
+            <TextField label={t('word.energyCurrent')} source="energyCurrent" />
+
+            <TextField label={t('word.energyMax')} source="energyMax" />
 
             <ReferenceField link="show" label={t('word.energy')} source="energy_type_id" reference="energy_types">
                 <TextField source="name" />

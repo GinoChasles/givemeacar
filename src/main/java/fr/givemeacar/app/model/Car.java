@@ -80,23 +80,29 @@ public class Car implements CrudModel {
     }
 
     public String getModelName() {
-        return getModel().getName();
+        if(model!= null){
+        return model.getName();
+        }
+        return null;
     }
 
     public String getBrandName() {
-        return getModel().getBrand().getName();
+        if(model!= null) {
+            return model.getBrand().getName();
+        }
+        return null;
     }
 
     public int getBrandId() {
-        return getModel().getBrand().getId();
+        if(model != null) {
+            return model.getBrand().getId();
+        }
+        return 0;
     }
 
-    public String getEnergyLevel() {
-        return getEnergyCurrent() + " / " + getEnergyMax();
-    }
 
     public String getColorName() {
-        if (getColor() != null) {
+        if (color != null) {
             return getColor().getName();
         }
         return null;

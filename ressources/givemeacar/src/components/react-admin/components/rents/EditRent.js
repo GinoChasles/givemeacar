@@ -1,5 +1,5 @@
 import {
-    DateTimeInput, Edit, SimpleForm, useTranslate
+    DateTimeInput, Edit, SimpleForm, useTranslate, required
 } from "react-admin";
 import * as React from "react";
 

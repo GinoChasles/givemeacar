@@ -1,6 +1,8 @@
 import * as React from "react";
 import {
   NumberInput,
+  BooleanInput,
+  SaveButton,
   Create,
   SimpleForm,
   ReferenceInput,
@@ -14,7 +16,7 @@ const CreateCar = (props) => {
   const t = useTranslate();
 
   return <Create {...props} title={t('word.creation')}>
-    <SimpleForm>
+    <SimpleForm >
 
       <NumberInput label={t('word.kilometers')} source="kilometers" validate={[
         required(t('error.required'))
@@ -28,11 +30,11 @@ const CreateCar = (props) => {
         required(t('error.required'))
       ]} />
 
-      <NumberInput label={t('word.available')} source="available" validate={[
+      <BooleanInput label={t('word.available')} source="available" validate={[
         required(t('error.required'))
       ]} />
 
-      <NumberInput label={t('word.rented')} source="rented" validate={[
+      <BooleanInput label={t('word.rented')} source="rented" validate={[
         required(t('error.required'))
       ]} />
 
@@ -69,6 +71,12 @@ const CreateCar = (props) => {
       <NumberInput label={t('word.longitude')} source="longitude" validate={[
         required(t('error.required'))
       ]} />
+
+      <SaveButton submitOnEnter transform={(data) => {
+        data.available = data.available === true ? 1 : 0;
+        data.rented = data.rented === true ? 1 : 0;
+        return data;
+      }} />
 
     </SimpleForm>
   </Create>
