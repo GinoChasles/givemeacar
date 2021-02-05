@@ -21,8 +21,8 @@ const linkStyle = {
     color:'white'
 }
 
-const NavBar = ({links}) => <ul id="main-navbar" style={listStyle}>
-    {links.map(link=><li style={itemStyle}>
+const NavBar = ({ links }, i) => <ul key={i} id="main-navbar" style={listStyle}>
+    {links.map((link, i) => <li key={i} style={itemStyle}>
         <Link to={link.url} style={linkStyle}>{link.label}</Link>
     </li>)}
 </ul>

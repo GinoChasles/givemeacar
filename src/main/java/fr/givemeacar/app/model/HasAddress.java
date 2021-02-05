@@ -2,7 +2,7 @@ package fr.givemeacar.app.model;
 
 public interface HasAddress {
 
-    public String getStreetSuffix();
+    public String getStreetSuffixName();
 
     public String getCityName();
 

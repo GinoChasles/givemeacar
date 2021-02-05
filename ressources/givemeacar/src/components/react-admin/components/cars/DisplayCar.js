@@ -1,9 +1,10 @@
 import {
-    Datagrid, Filter, List, NumberField, ReferenceInput, SearchInput, TextField, ReferenceField, useTranslate, EditButton, DeleteButton
+    Datagrid, Filter, List, BooleanField, SearchInput, TextField, ReferenceField, useTranslate, DeleteButton,
 } from "react-admin";
 
 import * as React from "react";
 
+import ShowCar from './ShowCar';
 
 const CarFilter = (props) => (
     <Filter {...props}>
@@ -17,7 +18,7 @@ const DisplayCar = (props) => {
     const t = useTranslate();
 
     return <List {...props} title={t('word.cars')} filters={<CarFilter />} exporter={false} perPage={25}>
-        <Datagrid hasBulkActions rowClick="show">
+        <Datagrid hasBulkActions rowClick="show" expand={ShowCar}>
             <TextField label={t('word.id')} source="id" />
 
             <ReferenceField link="show" label={t('word.brand')} source="brandId" reference="brands">
@@ -28,33 +29,13 @@ const DisplayCar = (props) => {
                 <TextField source="name" />
             </ReferenceField>
 
-            <ReferenceField link="show" label={t('word.color')} source="color_id" reference="colors">
-                <TextField source="name" />
-            </ReferenceField>
+            <BooleanField label={t('word.available')} source="available" />
 
-            <TextField label={t('word.energyLevel')} source="energyLevel" />
-
-            <ReferenceField link="show" label={t('word.energy')} source="energy_type_id" reference="energy_types">
-                <TextField source="name" />
-            </ReferenceField>
-            
-            <NumberField label={t('word.year')} source="year" />
-
-            <NumberField label={t('word.kilometers')} source="kilometers" />
-
-            <NumberField label={t('word.price')} source="price" />
-
-            <TextField label={t('word.energyLevel')} source="energyLevel" />
-
-            <TextField label={t('word.available')} source="availability" />
-            
-            <TextField label={t('word.rented')} source="inRent" />
+            <BooleanField label={t('word.rented')} source="rented" />
 
             <TextField label={t('word.latitude')} source="latitude" />
-            
-            <TextField label={t('word.longitude')} source="longitude" />
 
-            <EditButton />
+            <TextField label={t('word.longitude')} source="longitude" />
 
             <DeleteButton />
         </Datagrid>

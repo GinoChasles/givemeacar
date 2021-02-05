@@ -25,10 +25,8 @@ public class Car implements CrudModel {
     @Column(name = "year", nullable = false)
     private int year;
     @Column(name = "available", nullable = false)
-    @JsonIgnore
     private int available;
     @Column(name = "rented", nullable = false)
-    @JsonIgnore
     private int rented;
     @Column(name = "longitude", nullable = false, precision = 14)
     private BigDecimal longitude;
@@ -36,39 +34,50 @@ public class Car implements CrudModel {
     private BigDecimal latitude;
 
     @OneToOne
+    @JsonIgnore
     @JoinColumn(name = "energy_type_id", referencedColumnName = "id",
             nullable = false, insertable = false, updatable = false)
     private EnergyType energyType;
+
     @Column(name = "energy_max", nullable = false)
     private double energyMax;
+
     @Column(name = "energy_current", nullable = false)
     private double energyCurrent;
+
     @Column(name = "model_id", nullable = false)
     private int model_id;
+
     @Column(name = "color_id", nullable = false)
     private int color_id;
+
     @Column(name = "energy_type_id", nullable = false)
     private int energy_type_id;
+
     @OneToOne
+    @JsonIgnore
     @JoinColumn(name = "color_id", referencedColumnName = "id",
             nullable = false, insertable = false, updatable = false)
     private Color color;
 
-    public String getAvailability() {
-        return available != 0 ? "oui" : "non";
-    }
-
-    public String getInRent() {
-        return rented != 0 ? "oui" : "non";
-    }
 
 
     /*  Model and brand */
 
     @OneToOne
+    @JsonIgnore
     @JoinColumn(name = "model_id", referencedColumnName = "id",
             nullable = false, insertable = false, updatable = false)
     private Model model;
+
+
+    public boolean getAvailable() {
+        return available != 0 ? true : false;
+    }
+
+    public boolean getRented() {
+        return rented != 0 ? true : false;
+    }
 
     public String getModelName() {
         return getModel().getName();

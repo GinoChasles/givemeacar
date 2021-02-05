@@ -26,14 +26,6 @@ public class Agency implements CrudModel,HasAddress {
             "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,32}")
     private String name;
 
-
-    /* Address */
-
-
-    /** Address */
-
-
-
     @Column(name = "street_number", nullable = true)
     private int streetNumber;
 
@@ -67,13 +59,12 @@ public class Agency implements CrudModel,HasAddress {
     @Column(name = "city_id", nullable = false)
     private int city_id;
 
+    @Column(name = "manager_id", nullable = false)
+    private int manager_id;
 
-    @Override public String getStreetSuffix() {
-        if (streetSuffix != null) {
-            return streetSuffix.getName();
-        }
-        return null;
-    }
+
+    /** METHODES */
+
 
     public String getCityName() {
         if (city != null) {
@@ -85,6 +76,13 @@ public class Agency implements CrudModel,HasAddress {
     public String getStreetName() {
         if (street != null) {
             return street.getName();
+        }
+        return null;
+    }
+
+    public String getStreetSuffixName() {
+        if (streetSuffix != null) {
+            return streetSuffix.getName();
         }
         return null;
     }

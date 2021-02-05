@@ -114,7 +114,7 @@ public class Client implements CrudModel,HasAddress {
     private int agency_id;
 
 
-    @Override public String getStreetSuffix() {
+    @Override public String getStreetSuffixName() {
         if (streetSuffix != null) {
             return streetSuffix.getName();
         }

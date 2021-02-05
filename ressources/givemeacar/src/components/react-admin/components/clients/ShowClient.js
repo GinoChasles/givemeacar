@@ -27,12 +27,18 @@ const ShowClient = (props) => {
 
             <EmailField label={t('word.mail')} source="mail" />
 
-            <TextField label={t('word.password')} source="password" />
-
             <TextField label={t('word.phone')} source="phone" />
 
-            <TextField label={t('word.address')} source="address" />
+            <TextField source="streetNumber" label={t("word.number")} />
 
+            <TextField source="streetSuffixName" label={t("word.suffix")} />
+
+            <TextField source="streetName" label={t("word.street")} />
+
+            <TextField source="zipCode" label={t("word.zipcode")} />
+
+            <TextField source="cityName" label={t("word.city")} />
+            
             <ReferenceField link='show' label={t('word.agency')} source="agency_id" reference="agencies">
                 <TextField source="name" />
             </ReferenceField>
