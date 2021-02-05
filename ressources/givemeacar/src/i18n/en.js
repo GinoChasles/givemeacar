@@ -1,4 +1,4 @@
-{
+export default {
   "agencyId":"agency",
   "agency":"agency",
   "agencies":"agencies",

@@ -1,6 +1,12 @@
-import fr from './fr.json'
-import en from './en.json'
+import frenchMessages from 'ra-language-french';
 
-export { fr, en }
+import { errors, words } from './fr';
 
-export default {fr,en}
+frenchMessages['word'] = words;
+frenchMessages['error'] = errors;
+
+frenchMessages.ra.action.create = "Créer";
+
+export {
+    frenchMessages
+}

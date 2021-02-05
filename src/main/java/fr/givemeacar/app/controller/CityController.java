@@ -46,7 +46,7 @@ public class CityController extends CrudControllerImpl<City>{
 
 
     @PutMapping("cities/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody City model) {
+    public ResponseEntity update(@PathVariable int id,@Valid @RequestBody City model) {
         return super.update(model);
     }
 

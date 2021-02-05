@@ -2,15 +2,20 @@ import * as React from "react";
 import {
   Create,
   SimpleForm,
-  TextInput,
+  useTranslate
 } from "react-admin";
 
+import Name from '../form/name';
 
-const CreateSuffix = (props) => (
-  <Create {...props}>
+const CreateSuffix = (props) => {
+
+  const t = useTranslate();
+
+  return <Create {...props} title={t('word.creation')}>
     <SimpleForm>
-      <TextInput source="name" />
+      <Name />
     </SimpleForm>
   </Create>
-);
+}
+
 export default CreateSuffix

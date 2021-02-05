@@ -1,11 +1,19 @@
-import {Edit, SimpleForm, TextInput} from "react-admin";
+import {
+    Edit, SimpleForm, TextInput, useTranslate
+} from "react-admin";
 import * as React from "react";
 
-const EditEnergyType = (props) => (
-    <Edit {...props} undoable={false}>
+import Name from '../form/name';
+
+const EditEnergyType = (props) => {
+
+    const t = useTranslate();
+
+    return <Edit {...props} undoable={false} title={t('word.edition')}>
         <SimpleForm>
-            <TextInput source="name" />
+            <Name />
         </SimpleForm>
     </Edit>
-);
+}
+
 export default EditEnergyType

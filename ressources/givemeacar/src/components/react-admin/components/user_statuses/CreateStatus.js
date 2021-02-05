@@ -1,19 +1,21 @@
 import * as React from "react";
 import {
-  List,
-  Datagrid,
-  TextField,
   Create,
-  Edit,
   SimpleForm,
-  TextInput,
+  useTranslate
 } from "react-admin";
 
-const CreateStatus = (props) => (
-  <Create {...props}>
+import Name from '../form/name';
+
+const CreateStatus = (props) => {
+
+  const t = useTranslate();
+
+  return <Create {...props} title={t('word.creation')}>
     <SimpleForm>
-      <TextInput source="name" />
+      <Name />
     </SimpleForm>
   </Create>
-);
+}
+
 export default CreateStatus

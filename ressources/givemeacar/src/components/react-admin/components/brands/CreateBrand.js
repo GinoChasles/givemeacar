@@ -2,15 +2,22 @@ import * as React from "react";
 import {
   Create,
   SimpleForm,
-  TextInput,
+  useTranslate
 } from "react-admin";
 
+import Name from '../form/name';
 
-const CreateBrand = (props) => (
-  <Create {...props}>
+const CreateBrand = (props) => {
+
+  const t = useTranslate()
+
+  return <Create {...props} title={t('word.creation')}>
     <SimpleForm>
-      <TextInput source="name" />
+
+      <Name />
+
     </SimpleForm>
   </Create>
-);
+}
+
 export default CreateBrand

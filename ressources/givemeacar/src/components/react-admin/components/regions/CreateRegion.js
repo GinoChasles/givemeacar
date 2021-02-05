@@ -1,21 +1,21 @@
 import * as React from "react";
 import {
-  List,
-  Datagrid,
-  TextField,
   Create,
-  Edit,
   SimpleForm,
-  TextInput,
+  useTranslate
 } from "react-admin";
 
+import Name from '../form/name';
 
-const CreateRegion = (props) => (
-  <Create {...props}>
+const CreateRegion = (props) => {
+
+  const t = useTranslate();
+
+  return <Create {...props} title={t('word.creation')}>
     <SimpleForm>
-      <TextInput source="name" />
+      <Name />
     </SimpleForm>
   </Create>
-);
+}
 
 export default CreateRegion

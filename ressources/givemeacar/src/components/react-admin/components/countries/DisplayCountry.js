@@ -1,16 +1,27 @@
-import {Datagrid, Filter, List, TextField, TextInput, SearchInput} from "react-admin";
+import { Datagrid, Filter, List, TextField, SearchInput, useTranslate, EditButton, DeleteButton } from "react-admin";
 import * as React from "react";
-const PostFilter = (props) => (
+
+const CountryFilter = (props) => (
     <Filter {...props}>
         <SearchInput source="q" alwaysOn />
     </Filter>
 );
-const DisplayCountry = (props) => (
-    <List {...props} title="Votre adresse" filters={<PostFilter/>}>
-        <Datagrid rowClick="edit">
-            <TextField source="name" />
+
+const DisplayCountry = (props) => {
+
+    const t = useTranslate();
+
+    return <List {...props} title={t('word.countries')} filters={<CountryFilter />} exporter={false} perPage={25}>
+        <Datagrid hasBulkActions rowClick="show">
+            <TextField label={t('word.id')} source="id" />
+
+            <TextField label={t('word.name')} source="name" />
+
+            <EditButton />
+
+            <DeleteButton />
         </Datagrid>
     </List>
-);
+}
 
 export default DisplayCountry

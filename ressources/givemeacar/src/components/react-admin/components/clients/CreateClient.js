@@ -1,47 +1,51 @@
 import * as React from "react";
 import {
-  List,
-  Datagrid,
-  TextField,
-  PasswordInput,
   Create,
-  Edit,
   SimpleForm,
-  ReferenceInput,
-  AutocompleteInput,
-  TextInput,
-  NumberInput
+  useTranslate
 } from "react-admin";
 
+import FirstName from '../form/firstName';
+import LastName from '../form/lastName';
+import Mail from '../form/mail';
+import Phone from '../form/phone';
+import Password from '../form/password';
+
+import City from '../form/city';
+import Street from '../form/street';
+import Suffix from '../form/suffix';
+import StreetNumber from '../form/streetNumber';
+import Agency from '../form/agency';
 
 
-const CreateClient = (props) => (
-  <Create {...props}>
+const CreateClient = (props) => {
+
+  const t = useTranslate();
+
+  return <Create {...props} title={t('word.creation')}>
     <SimpleForm>
-    <TextInput source="firstName" />
-    <TextInput source="lastName" />
-    <TextInput source="mail" />
-    <PasswordInput source="password" />
-    <TextInput source="phone" />
 
-      <NumberInput source="streetNumber" />
+      <FirstName />
+      
+      <LastName />
+      
+      <Mail />
 
-      <ReferenceInput source="street_suffix_id" reference="street_suffices">
-        <AutocompleteInput optionText="name" optionValue={"id"} />
-      </ReferenceInput>
+      <Phone />
+      
+      <Password />
+      
+      <StreetNumber />
+      
+      <Suffix />
+      
+      <Street />
+      
+      <City />
 
-      <ReferenceInput source="street_id" reference="streets">
-        <AutocompleteInput optionText="name" optionValue={"id"} />
-      </ReferenceInput>
+      <Agency />
 
-      <ReferenceInput source="city_id" reference="cities">
-        <AutocompleteInput optionText="name" optionValue={"id"} />
-      </ReferenceInput>
-
-    <ReferenceInput source="agency_id" reference="agencies">
-      <AutocompleteInput optionText="name" optionValue={"id"}/>
-    </ReferenceInput>
     </SimpleForm>
   </Create>
-);
+}
 export default CreateClient

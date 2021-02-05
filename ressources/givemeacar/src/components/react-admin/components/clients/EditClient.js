@@ -1,36 +1,53 @@
-import { AutocompleteInput, Edit, PasswordInput, ReferenceInput, SimpleForm, TextInput, NumberInput } from "react-admin";
 import * as React from "react";
+import {
+    Create,
+    SimpleForm,
+    useTranslate
+} from "react-admin";
 
-const EditClient = (props) => (
-    <Edit {...props} undoable={false}>
-        {/* <TabbedShowLayout> */}
+import FirstName from '../form/firstName';
+import LastName from '../form/lastName';
+import Mail from '../form/mail';
+import Phone from '../form/phone';
+import Password from '../form/password';
+
+import City from '../form/city';
+import Street from '../form/street';
+import Suffix from '../form/suffix';
+import StreetNumber from '../form/streetNumber';
+import Agency from '../form/agency';
+
+
+const EditClient = (props) => {
+
+    const t = useTranslate();
+
+    return <Edit {...props} undoable={false} title={t('word.edition')}>
+
         <SimpleForm>
-            <TextInput source="firstName" />
-            <TextInput source="lastName" />
-            <TextInput source="mail" />
-            <PasswordInput source="password" />
-            <TextInput source="phone" />
 
-            <NumberInput source="streetNumber" />
+            <FirstName />
 
-            <ReferenceInput source="street_suffix_id" reference="street_suffices">
-                <AutocompleteInput optionText="name" optionValue={"id"} />
-            </ReferenceInput>
+            <LastName />
 
-            <ReferenceInput source="street_id" reference="streets">
-                <AutocompleteInput optionText="name" optionValue={"id"} />
-            </ReferenceInput>
+            <Mail />
 
-            <ReferenceInput source="city_id" reference="cities">
-                <AutocompleteInput optionText="name" optionValue={"id"} />
-            </ReferenceInput>
+            <Phone />
 
-            <ReferenceInput source="agency_id" reference="agencies">
-                <AutocompleteInput optionText="name" optionValue={"id"}/>
-            </ReferenceInput>
+            <Password />
+
+            <StreetNumber />
+
+            <Suffix />
+
+            <Street />
+
+            <City />
+
+            <Agency />
+
         </SimpleForm>
-        {/* </TabbedShowLayout> */}
     </Edit>
-);
+}
 
 export default EditClient

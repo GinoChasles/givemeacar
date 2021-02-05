@@ -2,24 +2,30 @@ import * as React from "react";
 import {
     Create,
     SimpleForm,
-    ReferenceInput,
-    AutocompleteInput,
-    TextInput,
-    PasswordInput,
+    useTranslate
 } from "react-admin";
 
-const CreateManager = (props) => (
-    <Create {...props}>
+
+import FirstName from '../form/firstName';
+import LastName from '../form/lastName';
+import Mail from '../form/mail';
+import Phone from '../form/phone';
+import Password from '../form/password';
+
+const CreateManager = (props) => {
+
+    const t = useTranslate();
+
+    return <Create {...props} title={t('word.creation')}>
         <SimpleForm >
-            <ReferenceInput label="nom de l'agence" source="agency_id" reference="agencies">
-                <AutocompleteInput optionText="name" optionValue={"id"} />
-            </ReferenceInput>
-            <TextInput source="firstName" />
-            <TextInput source="lastName" />
-            <TextInput source="mail" />
-            <TextInput source="phone" />
-            <PasswordInput source="password" />
+            
+            <FirstName />
+            <LastName />
+            <Mail />
+            <Phone />
+            <Password />
+
         </SimpleForm>
     </Create>
-);
+}
 export default CreateManager

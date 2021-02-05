@@ -1,15 +1,29 @@
-import {Datagrid, Filter, List, ReferenceInput, SearchInput, TextField} from "react-admin";
+import {
+    Datagrid, Filter, List, SearchInput, TextField, useTranslate, EditButton, DeleteButton
+} from "react-admin";
 import * as React from "react";
-const PostFilter = (props) => (
+
+const StreetFilter = (props) => (
     <Filter {...props}>
         <SearchInput source="q" alwaysOn />
     </Filter>
 );
-const DisplayStreet = (props) => (
-    <List {...props} title="Nom des rues" filters={<PostFilter/>}>
-        <Datagrid rowClick="edit">
-            <TextField source="name" />
+
+const DisplayStreet = (props) => {
+
+    const t = useTranslate()
+
+    return <List {...props} title={t('word.streets')} filters={<StreetFilter />} exporter={false} perPage={25}>
+        <Datagrid hasBulkActions rowClick="show">
+            <TextField label={t('word.id')} source="id" />
+
+            <TextField label={t('word.name')} source="name" />
+
+            <EditButton />
+
+            <DeleteButton />
         </Datagrid>
     </List>
-);
+}
+
 export default DisplayStreet

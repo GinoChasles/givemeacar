@@ -1,25 +1,37 @@
 import * as React from "react";
 import {
-  NumberInput,
   Create,
   SimpleForm,
   ReferenceInput,
   AutocompleteInput,
   TextInput,
+  useTranslate
 } from "react-admin";
 
+import Name from '../form/name'
+import Latitude from '../form/latitude'
+import Longitude from '../form/longitude'
+import Department from '../form/department'
+import Zipcode from '../form/zipcode'
 
-const CreateCity = (props) => (
-  <Create {...props}>
-      <SimpleForm>
-      <TextInput source="zipcode" />
-      <TextInput source="name" />
-      <NumberInput source="latitude" />
-      <NumberInput source="longitude" />
-      <ReferenceInput source="department_id" reference="departments">
-        <AutocompleteInput optionText="name" optionValue={"id"}/>
-      </ReferenceInput>
+const CreateCity = (props) => {
+
+  const t = useTranslate();
+
+  return <Create {...props} title={t('word.creation')}>
+    <SimpleForm>
+
+      <Zipcode />
+
+      <Name />
+
+      <Latitude />
+
+      <Longitude />
+
+      <Department />
+
     </SimpleForm>
   </Create>
-);
+}
 export default CreateCity

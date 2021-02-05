@@ -46,7 +46,7 @@ public class BillController extends CrudControllerImpl<Bill>{
 
 
     @PutMapping("bills/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody Bill model) {
+    public ResponseEntity update(@PathVariable int id,@Valid @RequestBody Bill model) {
         return super.update(model);
     }
 

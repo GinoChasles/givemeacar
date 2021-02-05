@@ -1,46 +1,77 @@
 import * as React from "react";
 import {
-  List,
-  Datagrid,
-  TextField,
-  ReferenceField,
   NumberInput,
-  NumberField,
   Create,
-  Edit,
   SimpleForm,
   ReferenceInput,
-  BooleanInput,
-  BooleanField,
+  useTranslate,
   AutocompleteInput,
+  required
 } from "react-admin";
 
+const CreateCar = (props) => {
 
-//TODO problème sur l'avaibility et rent, ne demande pas un boolean mais un int
+  const t = useTranslate();
 
-const CreateCar = (props) => (
-  <Create {...props}>
+  return <Create {...props} title={t('word.creation')}>
     <SimpleForm>
-      <NumberInput source="kilometers" />
-      <NumberInput source="price" label="prix par minute" />
-      <NumberInput source="year" />
-      <NumberInput source="available" />
-      <NumberInput source="rented"  />
-      <ReferenceInput source="model_id" reference="models" >
+
+      <NumberInput label={t('word.kilometers')} source="kilometers" validate={[
+        required(t('error.required'))
+      ]} />
+
+      <NumberInput label={t('word.pricePerMin')} source="price" validate={[
+        required(t('error.required'))
+      ]} />
+
+      <NumberInput label={t('word.year')} source="year" validate={[
+        required(t('error.required'))
+      ]} />
+
+      <NumberInput label={t('word.available')} source="available" validate={[
+        required(t('error.required'))
+      ]} />
+
+      <NumberInput label={t('word.rented')} source="rented" validate={[
+        required(t('error.required'))
+      ]} />
+
+      <ReferenceInput label={t('word.model')} source="model_id" reference="models" validate={[
+        required(t('error.required'))
+      ]}>
         <AutocompleteInput optionText="name" optionValue={"id"} />
       </ReferenceInput>
-      <ReferenceInput source="color_id" reference="colors" >
-        <AutocompleteInput optionText="name" optionValue={"id"}/>
+
+      <ReferenceInput label={t('word.color')} source="color_id" reference="colors" validate={[
+        required(t('error.required'))
+      ]}>
+        <AutocompleteInput optionText="name" optionValue={"id"} />
       </ReferenceInput>
-      <NumberInput source="energy_max" />
-      <NumberInput source="energy_current" />
-      <ReferenceInput source="energy_type_id" reference="energy_types">
-        <AutocompleteInput optionText="name" optionValue={"id"}/>
+
+      <NumberInput label={t('word.energyMax')} source="energy_max" validate={[
+        required(t('error.required'))
+      ]} />
+
+      <NumberInput label={t('word.energyCurrent')} source="energy_current" validate={[
+        required(t('error.required'))
+      ]} />
+
+      <ReferenceInput label={t('word.energyType')} source="energy_type_id" reference="energy_types" validate={[
+        required(t('error.required'))
+      ]}>
+        <AutocompleteInput optionText="name" optionValue={"id"} />
       </ReferenceInput>
-      <NumberInput source="latitude" />
-      <NumberInput source="longitude" />
+
+      <NumberInput label={t('word.latitude')} source="latitude" validate={[
+        required(t('error.required'))
+      ]} />
+
+      <NumberInput label={t('word.longitude')} source="longitude" validate={[
+        required(t('error.required'))
+      ]} />
+
     </SimpleForm>
   </Create>
-);
+}
 
-export default CreateCar
+export default CreateCar;

@@ -47,7 +47,7 @@ public class CreditCardController extends CrudControllerImpl<CreditCard>{
 
 
     @PutMapping("credit_cards/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody CreditCard model) {
+    public ResponseEntity update(@PathVariable int id,@Valid @RequestBody CreditCard model) {
         return super.update(model);
     }
 

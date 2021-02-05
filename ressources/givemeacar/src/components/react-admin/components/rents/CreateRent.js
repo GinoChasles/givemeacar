@@ -1,30 +1,35 @@
 import * as React from "react";
 import {
-  List,
-  Datagrid,
-  TextField,
   DateTimeInput,
-  DateField,
   Create,
-  Edit,
   SimpleForm,
-  ReferenceInput,
-  AutocompleteInput,
+  required,
+  useTranslate
 } from "react-admin";
 
+import Client from '../form/client';
+import Car from '../form/car';
 
-const CreateRent = (props) => (
-  <Create {...props}>
+const CreateRent = (props) => {
+
+  const t = useTranslate();
+
+  return <Create {...props} title={t('word.creation')}>
     <SimpleForm>
-    <DateTimeInput source="start" />
-    <DateTimeInput source="end" />
-      <ReferenceInput source="car_id" reference="cars">
-        <AutocompleteInput optionText="name" optionValue={"id"}/>
-      </ReferenceInput>
-      <ReferenceInput source="client_id" reference="clients">
-        <AutocompleteInput optionText="name" optionValue={"id"}/>
-      </ReferenceInput>
+
+      <DateTimeInput label={t('word.rentStart')} source="start" validate={[
+        required()
+      ]} />
+
+      <DateTimeInput label={t('word.rentEnd')} source="end" validate={[
+        required()
+      ]} />
+
+      <Car />
+
+      <Client />
+
     </SimpleForm>
   </Create>
-);
+}
 export default CreateRent

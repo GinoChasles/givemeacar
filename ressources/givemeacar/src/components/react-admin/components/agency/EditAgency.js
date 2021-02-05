@@ -1,27 +1,27 @@
-import { AutocompleteInput, Edit, ReferenceInput, SimpleForm, TextInput, NumberInput } from "react-admin";
+import { Edit, SimpleForm, useTranslate } from "react-admin";
 import * as React from "react";
 
-const EditAgency = (props) => (
-    <Edit {...props} undoable={false}>
+import City from '../form/city';
+import Street from '../form/street';
+import Suffix from '../form/suffix';
+import Name from '../form/name';
+import StreetNumber from '../form/streetNumber';
+
+const EditAgency = (props) => {
+
+    const t = useTranslate();
+
+    return <Edit {...props} undoable={false} title={t('word.edition')}>
         <SimpleForm>
-            <TextInput source="name" />
-
-            <NumberInput source="streetNumber" />
-
-            <ReferenceInput source="street_suffix_id" reference="street_suffices">
-                <AutocompleteInput optionText="name" optionValue={"id"} />
-            </ReferenceInput>
-
-            <ReferenceInput source="street_id" reference="streets">
-                <AutocompleteInput optionText="name" optionValue={"id"} />
-            </ReferenceInput>
-
-            <ReferenceInput source="city_id" reference="cities">
-                <AutocompleteInput optionText="name" optionValue={"id"} />
-            </ReferenceInput>
+            
+            <Name />
+            <StreetNumber />
+            <Suffix />
+            <Street />
+            <City />
 
         </SimpleForm>
     </Edit>
-);
+}
 
 export default EditAgency

@@ -48,7 +48,7 @@ public class ColorController extends CrudControllerImpl<Color>{
 
 
     @PutMapping("colors/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody Color model) {
+    public ResponseEntity update(@PathVariable int id,@Valid @RequestBody Color model) {
         return super.update(model);
     }
 
