@@ -157,6 +157,9 @@ public class Client implements CrudModel,HasAddress {
     }
 
     public String getAddress(){
-        return streetNumber + " " + streetSuffix.getName() + " " + street.getName() + " - " + getZipCode() + " " + city.getName();
+        if(streetNumber != 0 && streetSuffix != null && street != null && city != null){
+            return streetNumber + " " + streetSuffix.getName() + " " + street.getName() + " - " + getZipCode() + " " + city.getName();
+        }
+        return null;
     }
 }

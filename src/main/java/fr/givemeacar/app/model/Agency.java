@@ -96,6 +96,9 @@ public class Agency implements CrudModel,HasAddress {
     }
 
     public String getAddress(){
+        if(streetNumber != 0 && streetSuffix != null && street != null && city != null){
         return streetNumber + " " + streetSuffix.getName() + " " + street.getName() + " - " + getZipCode() + " " + city.getName();
+        }
+        return null;
     }
 }
