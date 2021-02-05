@@ -9,13 +9,14 @@ import {
 
 } from "react-admin";
 
+import styles from '../../styles/shows.module.css';
 
 const ShowAgency = (props) => {
 
     const t = useTranslate();
 
     return <Show {...props} title={t('word.description')}>
-        <SimpleShowLayout>
+        <SimpleShowLayout className={styles.show}>
 
             <TextField source="id" label={t("word.id")} />
 

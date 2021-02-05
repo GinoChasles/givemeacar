@@ -10,7 +10,7 @@ import {
     ReferenceField
 } from "react-admin";
 
-import styles from './styles.module.css';
+import styles from '../../styles/shows.module.css';
 
 /**
  * Carte de présentation de la voiture
@@ -21,7 +21,7 @@ const ShowCar = (props) => {
     const t = useTranslate();
 
     return <Show {...props} title={t('word.description')}>
-        <SimpleShowLayout className={styles['show-car']}>
+        <SimpleShowLayout className={styles.show}>
             {/** la marque de la voiture  */}
             <ReferenceField link="show" label={t('word.brand')} source="brandId" reference="brands">
                 <TextField source="name" />

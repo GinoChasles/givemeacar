@@ -8,13 +8,14 @@ import {
     TextField,
 } from "react-admin";
 
+import styles from '../../styles/shows.module.css';
 
 const ShowAdministrators = (props) => {
 
     const t = useTranslate();
 
     return <Show {...props} title={t('word.description')}>
-        <SimpleShowLayout>
+        <SimpleShowLayout className={styles.show}>
             <TextField label={t('word.firstName')} source="firstName" />
             <TextField label={t('word.lastName')} source="lastName" />
             <TextField label={t('word.mail')} source="mail" />
