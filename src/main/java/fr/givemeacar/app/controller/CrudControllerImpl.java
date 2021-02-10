@@ -71,6 +71,7 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
         return ResponseEntity.notFound().build();
     }
 
+
     public ResponseEntity findByNameStartingBy(T clazz,String column,String name,String sort,String order, int offset,
                                                int limit){
         List<T> res = getService().findByNameStartingWith(clazz,column,name,sort,order,offset,limit);
