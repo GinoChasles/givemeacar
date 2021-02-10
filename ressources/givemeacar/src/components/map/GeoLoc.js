@@ -1,7 +1,7 @@
 import { Marker, Popup, useMapEvents, Circle } from "react-leaflet";
 import React, { useState } from "react";
 
-export default function Localisation({props}) {
+export default function GeoLoc({props}) {
 
     const [position, setPosition] = useState(null);
     const map = useMapEvents({
@@ -15,7 +15,7 @@ export default function Localisation({props}) {
     });
     return position === null ? null : (
         <div>
-            <Marker position={position}>
+            <Marker position={position} >
                 <Popup>Je sais que tu es là !</Popup>
             </Marker>
             <Circle center={position} radius={props} />

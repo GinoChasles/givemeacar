@@ -3,9 +3,21 @@ import {
     TileLayer
 } from "react-leaflet";
 import React, { useState } from "react";
-import Localisation from "./Localisation";
-import Distance from "./Distance";
+import GeoLoc from "./GeoLoc";
+import Slide from "./Slide";
+import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
+
+let DefaultIcon = L.icon({
+    iconUrl: icon,
+    shadowUrl: iconShadow,
+    iconSize: [24,36],
+    iconAnchor: [12,36]
+});
+
+L.Marker.prototype.options.icon = DefaultIcon;
 
 export default function Map() {
 
@@ -21,14 +33,14 @@ export default function Map() {
     return (
         <>
 
-            <Distance onChange={onchange} />
+            <Slide onChange={onchange} />
             <MapContainer
                 center={[47.2239586, -1.5408058]}
                 zoom={7}
                 scrollWheelZoom={false}
                 style={{ height: "50vh", width: "50%", margin: "auto" }}
             >
-                <Localisation props={radius} />
+                <GeoLoc props={radius} />
                 {/* coordonnée nantes*/}
                 <TileLayer
                     attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
