@@ -1,19 +1,33 @@
-import {Datagrid, Filter, List, ReferenceInput, SearchInput, TextField} from "react-admin";
+import {
+    Datagrid, Filter, List, SearchInput, TextField, ReferenceField, useTranslate, EditButton, DeleteButton
+} from "react-admin";
 import * as React from "react";
-const PostFilter = (props) => (
+
+const ModelFilter = (props) => (
     <Filter {...props}>
         <SearchInput source="q" alwaysOn />
-        <ReferenceInput source="brand_id" reference="brands" allowEmpty>
-            <SearchInput optionText="name" />
-        </ReferenceInput>
     </Filter>
 );
-const DisplayModel = (props) => (
-    <List {...props} title="Modèles">
-        <Datagrid rowClick="edit">
-            <TextField source="name" />
-            <TextField source="brandName" />
+
+const DisplayModel = (props) => {
+
+    const t = useTranslate();
+
+    return <List {...props} title={t('word.models')} filter={ModelFilter} exporter={false} perPage={25}>
+        <Datagrid hasBulkActions rowClick="show">
+
+
+            <TextField label={t('word.name')} source="name" />
+
+            <ReferenceField label={t('word.brand')} source="brand_id" reference="brands">
+                <TextField source="name" />
+            </ReferenceField>
+
+            <EditButton />
+
+            <DeleteButton />
         </Datagrid>
     </List>
-);
+}
+
 export default DisplayModel

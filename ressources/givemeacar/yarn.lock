@@ -1831,6 +1831,14 @@
     "@babel/runtime" "^7.12.5"
     "@testing-library/dom" "^7.28.1"
 
+"@testing-library/react@^11.2.3":
+  version "11.2.5"
+  resolved "https://registry.yarnpkg.com/@testing-library/react/-/react-11.2.5.tgz#ae1c36a66c7790ddb6662c416c27863d87818eb9"
+  integrity sha512-yEx7oIa/UWLe2F2dqK0FtMF9sJWNXD+2PPtp39BvE0Kh9MJ9Kl0HrZAgEuhUJR+Lx8Di6Xz+rKwSdEPY2UV8ZQ==
+  dependencies:
+    "@babel/runtime" "^7.12.5"
+    "@testing-library/dom" "^7.28.1"
+
 "@testing-library/react@^8.0.7":
   version "8.0.9"
   resolved "https://registry.yarnpkg.com/@testing-library/react/-/react-8.0.9.tgz#1ecd96bc3471b06dd2f9763b6e53a7ace28a54a2"
@@ -9679,6 +9687,21 @@ ra-core@^3.10.3:
     query-string "^5.1.1"
     reselect "~3.0.0"
 
+ra-core@^3.12.0:
+  version "3.12.0"
+  resolved "https://registry.yarnpkg.com/ra-core/-/ra-core-3.12.0.tgz#2e0b4a80f79fc375d62ea954b9d01ed8643d13a8"
+  integrity sha512-DyntKjRaRDGF/pJj7anCWocRxL8gH97djTLw+hLsLm+TdxXthfNMMPCojwJ6hfwsiQDTNAkL8zNEK2CVK9ki/A==
+  dependencies:
+    "@testing-library/react" "^11.2.3"
+    classnames "~2.2.5"
+    date-fns "^1.29.0"
+    eventemitter3 "^3.0.0"
+    inflection "~1.12.0"
+    lodash "~4.17.5"
+    prop-types "^15.6.1"
+    query-string "^5.1.1"
+    reselect "~3.0.0"
+
 ra-data-json-server@^3.10.3:
   version "3.10.3"
   resolved "https://registry.yarnpkg.com/ra-data-json-server/-/ra-data-json-server-3.10.3.tgz#7ec6b1e487eed1e573a3f98a09e10feb9804f701"
@@ -9701,6 +9724,13 @@ ra-language-english@^3.10.3:
   integrity sha512-9zTmtbWCL2I4pG52kR3/S6d9lyhqKb1+rcLEax7fBcbkc4pdf42Wj/UHoD6hFKAUPMtIRgWqP/oK2/9odhDu8w==
   dependencies:
     ra-core "^3.10.3"
+
+ra-language-french@^3.12.0:
+  version "3.12.0"
+  resolved "https://registry.yarnpkg.com/ra-language-french/-/ra-language-french-3.12.0.tgz#ff522186c8de30519860c25108cc6aa6135118e2"
+  integrity sha512-dm1gYcDkLSm4ue6sotjT1Us4WyUBVuj5G6Nz80TnnlqE5iO753BZRXJqIh/aFc31wbtgD5R9NwzhjUNXEg5f5Q==
+  dependencies:
+    ra-core "^3.12.0"
 
 ra-ui-materialui@^3.10.3:
   version "3.10.3"

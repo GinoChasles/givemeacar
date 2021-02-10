@@ -46,7 +46,7 @@ public class RegionController extends CrudControllerImpl<Region>{
 
 
     @PutMapping("regions/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody Region model) {
+    public ResponseEntity update(@PathVariable int id,@Valid @RequestBody Region model) {
         return super.update(model);
     }
 

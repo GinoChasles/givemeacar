@@ -25,11 +25,11 @@ public class ModelController extends CrudControllerImpl<Model>{
 
     @RequestMapping(value = "models", method = RequestMethod.GET)
     @Override
-        public ResponseEntity findAll(@RequestParam(required = false) String _order,
-            @RequestParam(required = false) String _sort, @RequestParam(required = false) Integer _start,
-                @RequestParam(required = false) Integer _end, @RequestParam(required = false) Integer id,
-                @RequestParam(required = false) String q) {
-            return super.findAll(new Model(),"models",_order, _sort, _start, _end, id, q);
+    public ResponseEntity findAll(@RequestParam(required = false) String _order,
+                                  @RequestParam(required = false) String _sort, @RequestParam(required = false) Integer _start,
+                                  @RequestParam(required = false) Integer _end, @RequestParam(required = false) Integer id,
+                                  @RequestParam(required = false) String q) {
+        return super.findAll(new Model(),"models",_order, _sort, _start, _end, id, q);
     }
 
     @GetMapping("models/{id}")
@@ -46,7 +46,7 @@ public class ModelController extends CrudControllerImpl<Model>{
 
 
     @PutMapping("models/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody Model model) {
+    public ResponseEntity update(@PathVariable int id,@Valid @RequestBody Model model) {
         return super.update(model);
     }
 

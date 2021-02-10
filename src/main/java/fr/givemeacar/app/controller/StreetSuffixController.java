@@ -46,7 +46,7 @@ public class StreetSuffixController extends CrudControllerImpl<StreetSuffix>{
 
 
     @PutMapping("street_suffices/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody StreetSuffix model) {
+    public ResponseEntity update(@PathVariable int id,@Valid @RequestBody StreetSuffix model) {
         return super.update(model);
     }
 

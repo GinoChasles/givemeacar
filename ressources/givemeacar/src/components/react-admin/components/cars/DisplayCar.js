@@ -1,42 +1,45 @@
 import {
-    BooleanField,
-    Datagrid,
-    Filter,
-    List,
-    NumberField,
-    ReferenceField,
-    ReferenceInput, SearchInput,
-    TextField
+    Datagrid, Filter, List, BooleanField, SearchInput, TextField, ReferenceField, useTranslate, DeleteButton,
 } from "react-admin";
+
 import * as React from "react";
-const PostFilter = (props) => (
+
+import ShowCar from './ShowCar';
+
+const CarFilter = (props) => (
     <Filter {...props}>
         <SearchInput source="q" alwaysOn />
-        <ReferenceInput source="user_id" reference="users" allowEmpty>
-            <SearchInput optionText="name" /> //todo ADAPTER LE FORMULAIRE
-        </ReferenceInput>
     </Filter>
 );
-const DisplayCar = (props) => (
-    <List {...props} title="Liste des véhicules" filters={<PostFilter/>}>
-        <Datagrid rowClick="edit">
-            <TextField      source="brandName"      label="brandName" />
-            <TextField      source="modelName"      label="modelName" />
-            <TextField      source="colorName"      label="colorName" />
-            <TextField      source="energy"         label="energy" />
-            <NumberField    source="year"           label="year" />
 
-            <NumberField    source="kilometers"     label="kilometers" />
-            <NumberField    source="price"          label="price" />
 
-            <TextField      source="energyLevel"    label="energyLevel" />
+const DisplayCar = (props) => {
 
-            <TextField      source="availability"   label="availability" />
-            <TextField      source="inRent"        label="inRent" />
+    const t = useTranslate();
 
-            <TextField      source="latitude"       label="latitude" />
-            <TextField      source="longitude"      label="longitude" />
+    return <List {...props} title={t('word.cars')} filters={<CarFilter />} exporter={false} perPage={25}>
+        <Datagrid hasBulkActions rowClick="show" expand={ShowCar}>
+
+
+            <ReferenceField link="show" label={t('word.brand')} source="brandId" reference="brands">
+                <TextField source="name" />
+            </ReferenceField>
+
+            <ReferenceField link="show" label={t('word.model')} source="model_id" reference="models">
+                <TextField source="name" />
+            </ReferenceField>
+
+            <BooleanField label={t('word.available')} source="available" />
+
+            <BooleanField label={t('word.rented')} source="rented" />
+
+            <TextField label={t('word.latitude')} source="latitude" />
+
+            <TextField label={t('word.longitude')} source="longitude" />
+
+            <DeleteButton />
         </Datagrid>
     </List>
-);
+}
+
 export default DisplayCar

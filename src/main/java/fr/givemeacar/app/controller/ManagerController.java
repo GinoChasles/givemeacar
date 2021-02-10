@@ -41,7 +41,7 @@ public class ManagerController extends CrudControllerImpl<Manager>{
     @GetMapping("managers/{id}")
     @Override
     public ResponseEntity findById(@PathVariable int id) {
-        return super.listById(id);
+        return super.findById(id);
     }
 
 
@@ -66,7 +66,7 @@ public class ManagerController extends CrudControllerImpl<Manager>{
 
 
     @PutMapping("managers/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody Manager model) {
+    public ResponseEntity update(@PathVariable int id,@Valid @RequestBody Manager model) {
         return super.update(model);
     }
 

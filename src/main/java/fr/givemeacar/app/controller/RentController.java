@@ -46,7 +46,7 @@ public class RentController extends CrudControllerImpl<Rent>{
 
 
     @PutMapping("rents/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody Rent model) {
+    public ResponseEntity update(@PathVariable int id,@Valid @RequestBody Rent model) {
         return super.update(model);
     }
 

@@ -54,10 +54,17 @@ public class Manager  implements CrudModel{
 
     @Column(name = "agency_id", nullable = false)
     private int agency_id;
-    
+
     public String getAgencyName(){
         if(getAgency() != null){
             return getAgency().getName();
+        }
+        return null;
+    }
+
+    public String getFullName(){
+        if(firstName != null && lastName != null){
+            return firstName + " " + lastName;
         }
         return null;
     }

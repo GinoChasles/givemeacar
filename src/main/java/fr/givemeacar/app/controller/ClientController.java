@@ -34,9 +34,7 @@ public class ClientController extends CrudControllerImpl<Client>{
     }
 
     @GetMapping("clients/{id}")
-    public ResponseEntity findById(@PathVariable int id) {
-        return super.findById(id);
-    }
+    public ResponseEntity findById(@PathVariable int id) { return super.findById(id);}
 
 
     @PostMapping("clients")
@@ -46,7 +44,7 @@ public class ClientController extends CrudControllerImpl<Client>{
 
 
     @PutMapping("clients/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody Client model) {
+    public ResponseEntity update(@PathVariable int id,@Valid @RequestBody Client model) {
         return super.update(model);
     }
 

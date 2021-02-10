@@ -46,7 +46,7 @@ public class BrandController extends CrudControllerImpl<Brand>{
 
 
     @PutMapping("brands/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody Brand model) {
+    public ResponseEntity update(@PathVariable int id,@Valid @RequestBody Brand model) {
         return super.update(model);
     }
 

@@ -1,29 +1,25 @@
-import {AutocompleteInput, BooleanInput, Edit, NumberInput, ReferenceInput, SimpleForm} from "react-admin";
 import * as React from "react";
+import CarForm from './CarForm';
 
-const EditCar = (props) => (
-    <Edit {...props} undoable={false}>
-        <SimpleForm>
-            <NumberInput source="kilometers" />
-            <NumberInput source="price" />
-            <NumberInput source="year" />
-            <BooleanInput source="available" valueLabelTrue="La voiture est dispo" valueLabelFalse="la voiture est indisponible"/>
-            <BooleanInput source="rented" valueLabelTrue="la voiture est louée" valueLabelFalse="la voiture n'est pas louée" />
-            <ReferenceInput source="model_id" reference="models">
-                <AutocompleteInput optionText="name" optionValue={"id"}/>
-            </ReferenceInput>
-            <ReferenceInput source="color_id" reference="colors">
-                <AutocompleteInput optionText="name" optionValue={"id"}/>
-            </ReferenceInput>
-            <NumberInput source="energy_max" />
-            <NumberInput source="energy_current" />
-            <ReferenceInput source="energy_type_id" reference="energy_types">
-                <AutocompleteInput optionText="name" optionValue={"id"}/>
-            </ReferenceInput>
-            <NumberInput source="latitude" />
-            <NumberInput source="longitude" />
+import { Edit, useTranslate, SimpleForm } from 'react-admin';
+
+import CarToolbar from './CarToolbar';
+
+/**
+ * Fromulaire d'édition de voiture
+ * @param {*} props
+ */
+import styles from '../../styles/forms.module.css';
+
+const EditCar = (props) => {
+
+    const t = useTranslate();
+
+    return <Edit {...props} undoable={false} title={t('word.edition')} >
+        <SimpleForm toolbar={<CarToolbar />}>
+            <CarForm />
         </SimpleForm>
     </Edit>
-);
+}
 
-export default EditCar
+export default EditCar;

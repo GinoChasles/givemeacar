@@ -1,0 +1,6 @@
+.form{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: .5rem;
+    grid-auto-columns: 1fr;
+}

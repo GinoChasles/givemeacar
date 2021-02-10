@@ -1,22 +1,38 @@
-import {Datagrid, EmailField, Filter, List, SearchInput, TextField} from "react-admin";
+import {
+    Datagrid, Filter, List, SearchInput, TextField, ReferenceField, EmailField, useTranslate, EditButton, DeleteButton
+} from "react-admin";
 import * as React from "react";
-const PostFilter = (props) => (
+
+const ManagerFilter = (props) => (
     <Filter {...props}>
         <SearchInput source="q" alwaysOn />
     </Filter>
 );
-const DisplayManager = (props) => (
-    <List {...props} title="les managers" filters={<PostFilter/>}>
-        <Datagrid rowClick="edit">
-            {/* <ReferenceField source="agencyId" reference="agencies" sortBy="agencies.name">
-      <TextField source="name" /> //TODO afficher agences auquel le manager appartient
-      </ReferenceField> */}
-            <TextField source="firstName" label={"firstName"}/>
-            <TextField source="lastName" label={"lastName"}/>
-            <EmailField source="mail" label={"mail"}/>
-            <TextField source="phone" label={"phone"}/>
-            <TextField source="agencyName" label={"agency"}/>
+
+const DisplayManager = (props) => {
+
+    const t = useTranslate();
+
+    return <List {...props} title={t('word.manager')} filters={<ManagerFilter />} exporter={false} perPage={25}>
+        <Datagrid hasBulkActions rowClick="show">
+
+
+            <TextField label={t('word.firstName')} source="firstName" />
+
+            <TextField label={t('word.lastName')} source="lastName" />
+
+            <EmailField label={t('word.mail')} source="mail" />
+
+            <TextField label={t('word.phone')} source="phone" />
+
+            <ReferenceField link='show' label={t('word.agency')} source="agency_id" reference="agencies">
+                <TextField source="name" />
+            </ReferenceField>
+
+            <EditButton />
+
+            <DeleteButton />
         </Datagrid>
     </List>
-);
+}
 export default DisplayManager

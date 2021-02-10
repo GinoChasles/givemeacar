@@ -47,7 +47,7 @@ public class AgencyController extends CrudControllerImpl<Agency>{
 
 
     @PutMapping("agencies/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody Agency model) {
+    public ResponseEntity update(@PathVariable int id,@Valid @RequestBody Agency model) {
         return super.update(model);
     }
 

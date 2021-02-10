@@ -1,28 +1,35 @@
-import {Datagrid, Filter, List, ReferenceInput, SearchInput, TextField, TextInput} from "react-admin";
+import { Datagrid, Filter, List, SearchInput, TextField, ReferenceField, useTranslate, EditButton, DeleteButton } from "react-admin";
 import * as React from "react";
 
-const PostFilter = (props) => (
+import ShowAgency from './ShowAgency';
+
+const AgencyFilter = (props) => (
     <Filter {...props}>
         <SearchInput source="q" alwaysOn />
-        <ReferenceInput source="manager_id" reference="managers" allowEmpty>
-            <SearchInput optionText="name" />
-        </ReferenceInput>
-        <ReferenceInput source="city_id" reference="cities" allowEmpty>
-            <SearchInput optionText="name" />
-        </ReferenceInput>
-        <ReferenceInput source="street_id" reference="streets" allowEmpty>
-            <SearchInput optionText="name" />
-        </ReferenceInput>
     </Filter>
 );
-const DisplayAgency = (props) => (
-    <List {...props} title="Agences" filters={<PostFilter/>}>
-        <Datagrid rowClick="edit">
-            <TextField source="name"            label="name"       />
-            <TextField source="fullAddress"     label="address"    />
-            <TextField source="managerFullName" label="manager"    />
+
+const DisplayAgency = (props) => {
+
+    const t = useTranslate();
+
+    return <List {...props} title={t('word.agencies')} filters={<AgencyFilter />} exporter={false} perPage={25}>
+        <Datagrid hasBulkActions rowClick="show" expand={ShowAgency}>
+
+
+            <TextField source="name" label={t("word.name")} />
+
+            <TextField source="cityName" label={t("word.city")} />
+
+            <ReferenceField label={t('word.manager')} source="manager_id" reference="managers" link="show">
+                <TextField source="fullName" />
+            </ReferenceField>
+
+
+            <DeleteButton />
+
         </Datagrid>
     </List>
-);
+}
 
 export default DisplayAgency

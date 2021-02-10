@@ -1,25 +1,38 @@
 import * as React from "react";
+
 import {
   Create,
   SimpleForm,
-  ReferenceInput,
-  AutocompleteInput,
-  TextInput,
+  useTranslate
 } from "react-admin";
 
+import City from '../form/city';
+import Street from '../form/street';
+import Suffix from '../form/suffix';
+import Name from '../form/name';
+import StreetNumber from '../form/streetNumber';
+import styles from '../../styles/forms.module.css';
 
-const CreateAgency = (props) => (
-  <Create {...props}>
-    <SimpleForm>
-      <TextInput source="name" />
-      <ReferenceInput source="address_id" reference="addresses">
-        <AutocompleteInput optionText="name" optionValue={"id"}/>
-      </ReferenceInput>
-      <ReferenceInput source="manager_id" reference="managers">
-        <AutocompleteInput optionText="name" optionValue={"id"}/>
-      </ReferenceInput>
+const CreateAgency = (props) => {
+
+  const t = useTranslate();
+
+  return <>
+    <Create {...props} title={t('word.creation')} >
+
+      <SimpleForm on>
+        <section className={styles.form}>
+
+      <Name />
+      <StreetNumber />
+      <Suffix />
+      <Street />
+      <City />
+        </section>
+
     </SimpleForm>
-  </Create>
-);
+    </Create>
+  </>
+}
 
 export default CreateAgency
