@@ -34,8 +34,15 @@ public class Model implements CrudModel {
     private int brand_id;
 
     public String getBrandName() {
-        if (getBrand() != null) {
-            return getBrand().getName();
+        if (brand != null) {
+            return brand.getName();
+        }
+        return null;
+    }
+
+    public String getFullName() {
+        if (brand != null) {
+            return brand.getName() + " " + name;
         }
         return null;
     }

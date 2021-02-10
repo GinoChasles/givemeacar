@@ -1,11 +1,23 @@
-import {Edit, SimpleForm, TextInput} from "react-admin";
+import { Edit, SimpleForm, TextInput, useTranslate } from "react-admin";
 import * as React from "react";
 
-const EditSuffix = (props) => (
-    <Edit {...props} undoable={false}>
+import Name from '../form/name';
+
+import styles from '../../styles/forms.module.css';
+
+const EditSuffix = (props) => {
+
+    const t = useTranslate();
+
+    return <Edit {...props} undoable={false} title={t('word.edition')}>
         <SimpleForm>
-            <TextInput source="name" />
+            <section className={styles.form}>
+
+            <Name />
+            </section>
+
         </SimpleForm>
     </Edit>
-);
+}
+
 export default EditSuffix

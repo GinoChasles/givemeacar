@@ -1,6 +1,5 @@
 package fr.givemeacar.app.controller;
 
-import fr.givemeacar.app.model.Address;
 import fr.givemeacar.app.model.CrudModel;
 import fr.givemeacar.app.service.CrudService;
 

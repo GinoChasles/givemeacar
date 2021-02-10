@@ -46,7 +46,7 @@ public class StreetController extends CrudControllerImpl<Street>{
 
 
     @PutMapping("streets/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody Street model) {
+    public ResponseEntity update(@PathVariable int id,@Valid @RequestBody Street model) {
         return super.update(model);
     }
 

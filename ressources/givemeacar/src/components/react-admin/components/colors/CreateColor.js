@@ -1,21 +1,27 @@
 import * as React from "react";
 import {
-  List,
-  Datagrid,
-  TextField,
   Create,
-  Edit,
   SimpleForm,
-  TextInput,
+  useTranslate
 } from "react-admin";
 
+import Name from '../form/name';
 
+import styles from '../../styles/forms.module.css';
 
-const CreateColor = (props) => (
-  <Create {...props}>
+const CreateColor = (props) => {
+
+  const t = useTranslate();
+
+  return <Create {...props} title={t('word.creation')}>
     <SimpleForm>
-      <TextInput source="name" />
+      <section className={styles.form}>
+
+      <Name />
+      </section>
+
     </SimpleForm>
   </Create>
-);
+}
+
 export default CreateColor

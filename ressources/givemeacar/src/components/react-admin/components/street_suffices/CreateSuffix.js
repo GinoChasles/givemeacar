@@ -2,15 +2,25 @@ import * as React from "react";
 import {
   Create,
   SimpleForm,
-  TextInput,
+  useTranslate
 } from "react-admin";
 
+import Name from '../form/name';
+import styles from '../../styles/forms.module.css';
 
-const CreateSuffix = (props) => (
-  <Create {...props}>
+const CreateSuffix = (props) => {
+
+  const t = useTranslate();
+
+  return <Create {...props} title={t('word.creation')}>
     <SimpleForm>
-      <TextInput source="name" />
+      <section className={styles.form}>
+
+      <Name />
+      </section>
+
     </SimpleForm>
   </Create>
-);
+}
+
 export default CreateSuffix

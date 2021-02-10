@@ -1,16 +1,31 @@
-import {AutocompleteInput, Edit, ReferenceInput, SimpleForm, TextInput} from "react-admin";
+import {
+    Edit, SimpleForm, useTranslate
+} from "react-admin";
 import * as React from "react";
 
-const EditDepartments = (props) => (
-    <Edit {...props} undoable={false}>
+import Name from '../form/name';
+import Code from '../form/code';
+import Region from '../form/region';
+
+import styles from '../../styles/forms.module.css';
+
+const EditDepartments = (props) => {
+
+    const t = useTranslate();
+
+    return <Edit {...props} undoable={false} title={t('word.edition')}>
         <SimpleForm>
-            <ReferenceInput source="region_id" reference="regions">
-                <AutocompleteInput optionText="name" optionValue={"id"}/>
-            </ReferenceInput>
-            <TextInput source="code" />
-            <TextInput source="name" />
+            <section className={styles.form}>
+
+            <Region />
+
+            <Code />
+
+            <Name />
+            </section>
+
         </SimpleForm>
     </Edit>
-);
+}
 
 export default EditDepartments

@@ -1,12 +1,24 @@
-import {Edit, SimpleForm, TextInput} from "react-admin";
 import * as React from "react";
 
-const EditBrand = (props) => (
-    <Edit {...props} undoable={false}>
+import { Edit, SimpleForm, useTranslate } from "react-admin";
+
+import Name from '../form/name';
+
+import styles from '../../styles/forms.module.css';
+
+const EditBrand = (props) => {
+
+    const t = useTranslate();
+
+    return <Edit {...props} undoable={false} title={t('word.edition')}>
         <SimpleForm>
-            <TextInput source="name" />
+            <section className={styles.form}>
+
+            <Name />
+            </section>
+
         </SimpleForm>
     </Edit>
-);
+}
 
 export default EditBrand

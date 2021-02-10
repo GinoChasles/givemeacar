@@ -46,7 +46,7 @@ public class UserStatusController extends CrudControllerImpl<UserStatus>{
 
 
     @PutMapping("user_statuses/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody UserStatus model) {
+    public ResponseEntity update(@PathVariable int id,@Valid @RequestBody UserStatus model) {
         return super.update(model);
     }
 

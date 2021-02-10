@@ -46,7 +46,7 @@ public class CountryController extends CrudControllerImpl<Country>{
 
 
     @PutMapping("countries/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody Country model) {
+    public ResponseEntity update(@PathVariable int id,@Valid @RequestBody Country model) {
         return super.update(model);
     }
 

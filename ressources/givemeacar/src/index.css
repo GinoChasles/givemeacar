@@ -1,12 +1,5 @@
-body,html,#root,#root>div,.RaLayout-contentWithSidebar-3{
-  height:100%;
-  overflow:hidden;
-  position:relative;
-}
-
-#root > div >.layout,MuiDrawer-root,.RaLayout-content-4{
-  height:100%;
-  overflow:auto;
+*{
+      box-sizing: border-box;
 }
 
 body {
@@ -23,24 +16,6 @@ code {
     monospace;
 }
 
-/*
-table {
-  border-collapse: collapse;
+.w-100{
+  width:100% !important;
 }
-td,
-th {
-  border: 1px solid black;
-  text-align: center;
-}
-form {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem;
-}
-.MuiAppBar-positionFixed{
-position: relative !important;
-}
-.RaLayout-appFrame-2 {
-margin-top:0 !important;
-}
-*/

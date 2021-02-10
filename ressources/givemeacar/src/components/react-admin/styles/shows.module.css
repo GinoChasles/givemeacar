@@ -1,0 +1,31 @@
+.show{
+    position:relative;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap:2rem;
+    text-align:center;
+    padding:2rem;
+}
+
+.show *{
+    display:block !important;
+    width:100% !important;
+    font-size:1rem;
+    transform: none !important;
+}
+
+.show label {
+    font-size: 1rem;
+    border-radius:.25rem;
+    box-shadow: .25rem .25rem .25rem rgba(0,0,0,.25);
+    padding:.5rem;
+    background-color: #ff006e;
+    color:#fff !important;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.show a,.show a>*{
+  text-decoration: underline !important;
+      color:#000 !important;
+}

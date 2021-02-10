@@ -1,18 +1,36 @@
-import {AutocompleteInput, DateTimeInput, Edit, ReferenceInput, SimpleForm} from "react-admin";
+import {
+    DateTimeInput, Edit, SimpleForm, useTranslate, required
+} from "react-admin";
 import * as React from "react";
 
-const EditRent = (props) => (
-    <Edit {...props} undoable={false}>
+import Client from '../form/client';
+import Car from '../form/car';
+
+import styles from '../../styles/forms.module.css';
+
+const EditRent = (props) => {
+
+    const t = useTranslate();
+
+    return <Edit {...props} undoable={false} title={t('word.edition')}>
         <SimpleForm>
-            <DateTimeInput source="start" />
-            <DateTimeInput source="end" />
-            <ReferenceInput source="car_id" reference="cars">
-                <AutocompleteInput optionText="name" optionValue={"id"}/>
-            </ReferenceInput>
-            <ReferenceInput source="client_id" reference="clients">
-                <AutocompleteInput optionText="name" optionValue={"id"}/>
-            </ReferenceInput>
+            <section className={styles.form}>
+
+            <DateTimeInput label={t('word.rentStart')} source="start" validate={[
+                required()
+            ]} />
+
+            <DateTimeInput label={t('word.rentEnd')} source="end" validate={[
+                required()
+            ]} />
+
+            <Car />
+
+            <Client />
+            </section>
+
         </SimpleForm>
     </Edit>
-);
+}
+
 export default EditRent
