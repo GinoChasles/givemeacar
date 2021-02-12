@@ -10,26 +10,24 @@
         <property name="connection.username">${MYSQL_USER}</property>
         <property name="connection.password">${MYSQL_PASSWORD}</property>
         <!--<property name="hibernate.hbm2ddl.auto">update</property>-->
-        <mapping class="fr.givemeacar.app.model.Administrator"/>
         <mapping class="fr.givemeacar.app.model.Agency"/>
         <mapping class="fr.givemeacar.app.model.Bill"/>
         <mapping class="fr.givemeacar.app.model.Brand"/>
         <mapping class="fr.givemeacar.app.model.Car"/>
         <mapping class="fr.givemeacar.app.model.City"/>
-        <mapping class="fr.givemeacar.app.model.Client"/>
+        <mapping class="fr.givemeacar.app.model.User"/>
         <mapping class="fr.givemeacar.app.model.Color"/>
         <mapping class="fr.givemeacar.app.model.Country"/>
         <mapping class="fr.givemeacar.app.model.CreditCard"/>
         <mapping class="fr.givemeacar.app.model.Department"/>
         <mapping class="fr.givemeacar.app.model.EnergyType"/>
-        <mapping class="fr.givemeacar.app.model.Manager"/>
         <mapping class="fr.givemeacar.app.model.Model"/>
         <mapping class="fr.givemeacar.app.model.Region"/>
         <mapping class="fr.givemeacar.app.model.Rent"/>
         <mapping class="fr.givemeacar.app.model.Street"/>
         <mapping class="fr.givemeacar.app.model.Street"/>
         <mapping class="fr.givemeacar.app.model.StreetSuffix"/>
-        <mapping class="fr.givemeacar.app.model.UserStatus"/>
+        <mapping class="fr.givemeacar.app.model.Role"/>
 
     </session-factory>
 </hibernate-configuration>

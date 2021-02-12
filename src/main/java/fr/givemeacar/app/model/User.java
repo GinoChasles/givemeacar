@@ -7,17 +7,27 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
+import java.util.Set;
 
 
 @Data
 @Entity
-@Table(name = "clients", schema = "givemeacar")
+@Table(name = "users", schema = "givemeacar")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Client implements CrudModel,HasAddress {
+public class User implements CrudModel,HasAddress {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
+    private boolean enabled;
+
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id")
+    )
+    private Set<Role> roles;
 
     @Column(name = "firstname", nullable = false)
     @Pattern(regexp = "[a-zA-Z" +
@@ -28,6 +38,8 @@ public class Client implements CrudModel,HasAddress {
     @Pattern(regexp = "[a-zA-Z" +
             "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,32}")
     private String lastName;
+
+    private String username;
 
     @Column(name = "mail", nullable = false)
     @Pattern(regexp = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\" +
@@ -78,11 +90,6 @@ public class Client implements CrudModel,HasAddress {
 
     @Column(name = "city_id", nullable = false)
     private int city_id;
-
-    @OneToOne
-    @JoinColumn(name = "user_status_id", referencedColumnName = "id", updatable = false, insertable = false)
-    @JsonIgnore
-    private UserStatus userStatus;
 
     @OneToOne
     @JoinColumn(name = "bill_id", referencedColumnName = "id", nullable = true, updatable = false, insertable = false)
@@ -158,5 +165,13 @@ public class Client implements CrudModel,HasAddress {
 
     public String getAddress(){
         return streetNumber + " " + streetSuffix.getName() + " " + street.getName() + " - " + getZipCode() + " " + city.getName();
+    }
+
+    public void updateUsername(){
+        username = Integer.toString(id);
+    }
+
+    public String getUsername(){
+        return username;
     }
 }

@@ -1,6 +1,6 @@
 import * as React from "react";
 
-import { useTranslate } from "react-admin";
+import { useTranslate, ReferenceInput, AutocompleteInput } from "react-admin";
 
 import {
     Show,

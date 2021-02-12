@@ -1,18 +1,12 @@
 package fr.givemeacar.app.controller;
 
-import fr.givemeacar.app.model.UserStatus;
-import fr.givemeacar.app.service.AdministratorService;
-import fr.givemeacar.app.service.ClientService;
-import fr.givemeacar.app.service.ManagerService;
+import fr.givemeacar.app.model.User;
+import fr.givemeacar.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -23,11 +17,7 @@ import java.util.Map;
 @RequestMapping("/session")
 public class SessionController {
     @Autowired
-    ClientService clientService;
-    @Autowired
-    AdministratorService administratorService;
-    @Autowired
-    ManagerService managerService;
+    UserService userService;
     @Autowired
     HttpSession session;
 
@@ -35,26 +25,15 @@ public class SessionController {
     public ResponseEntity signin(HttpServletRequest request, @RequestBody Map<String, String> credentials,
                                  HttpServletResponse response) {
 
-        UserStatus status = clientService.getRepository()
+        User user = userService.getRepository()
                 .findUserStatusByMailAndPassword(credentials.get("mail"), credentials.get("password"));
 
-        if(status == null)
-            status = managerService.getRepository()
-                    .findUserStatusByMailAndPassword(credentials.get("mail"), credentials.get("password"));
 
-        if(status == null)
-            status = administratorService.getRepository()
-                    .findUserStatusByMailAndPassword(credentials.get("mail"), credentials.get("password"));
-
-        if(status == null){
+        if(user == null){
             ResponseEntity.notFound().build();
         }
 
-        getSession().setAttribute("userStatus",status.getId());
-        HttpHeaders userStatus = new HttpHeaders();
-        userStatus.set("userStatus",Integer.toString(status.getId()));
-
-        return ResponseEntity.ok().headers(userStatus).build();
+        return ResponseEntity.ok().build();
     }
 
     @GetMapping("/signout")

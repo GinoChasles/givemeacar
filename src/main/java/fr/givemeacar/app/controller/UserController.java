@@ -1,7 +1,7 @@
 package fr.givemeacar.app.controller;
 
-import fr.givemeacar.app.model.Client;
-import fr.givemeacar.app.service.ClientService;
+import fr.givemeacar.app.model.User;
+import fr.givemeacar.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,48 +14,48 @@ import java.lang.reflect.InvocationTargetException;
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
-public class ClientController extends CrudControllerImpl<Client>{
+public class UserController extends CrudControllerImpl<User>{
 
     @Autowired
-    ClientService service;
+    UserService service;
 
-    @RequestMapping("clients/count")
+    @RequestMapping("users/count")
     public ResponseEntity count() {
         return super.count();
     }
 
-    @RequestMapping(value = "clients", method = RequestMethod.GET)
+    @RequestMapping(value = "users", method = RequestMethod.GET)
     @Override
         public ResponseEntity findAll(@RequestParam(required = false) String _order,
             @RequestParam(required = false) String _sort, @RequestParam(required = false) Integer _start,
                 @RequestParam(required = false) Integer _end, @RequestParam(required = false) Integer id,
                 @RequestParam(required = false) String q) {
-            return super.findAll(new Client(),"clients",_order, _sort, _start, _end, id, q);
+            return super.findAll(new User(),"users",_order, _sort, _start, _end, id, q);
     }
 
-    @GetMapping("clients/{id}")
+    @GetMapping("users/{id}")
     public ResponseEntity findById(@PathVariable int id) { return super.findById(id);}
 
 
-    @PostMapping("clients")
-    public ResponseEntity create(@Valid @RequestBody Client model) {
+    @PostMapping("users")
+    public ResponseEntity create(@Valid @RequestBody User model) {
         return super.create(model);
     }
 
 
-    @PutMapping("clients/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody Client model) {
+    @PutMapping("users/{id}")
+    public ResponseEntity update(@PathVariable int id,@RequestBody User model) {
         return super.update(model);
     }
 
 
-    @DeleteMapping("clients/{id}")
+    @DeleteMapping("users/{id}")
     public ResponseEntity deleteById(@PathVariable int id) {
         return super.deleteById(id);
     }
 
     @Override
-    public ClientService getService() {
+    public UserService getService() {
         return service;
     }
 }

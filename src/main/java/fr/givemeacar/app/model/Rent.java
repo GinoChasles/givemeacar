@@ -29,7 +29,7 @@ public class Rent  implements CrudModel{
     @OneToOne
     @JoinColumn(name = "client_id", referencedColumnName = "id",
             nullable = false,insertable = false,updatable = false)
-    private Client client;
+    private User user;
 
     @Column(name = "car_id", nullable = false)
     private int car_id;

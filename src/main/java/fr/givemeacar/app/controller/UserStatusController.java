@@ -1,18 +1,17 @@
 package fr.givemeacar.app.controller;
 
-import fr.givemeacar.app.model.UserStatus;
+import fr.givemeacar.app.model.Role;
 import fr.givemeacar.app.service.UserStatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.lang.reflect.InvocationTargetException;
 
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
-public class UserStatusController extends CrudControllerImpl<UserStatus>{
+public class UserStatusController extends CrudControllerImpl<Role>{
 
     @Autowired
     UserStatusService service;
@@ -29,7 +28,7 @@ public class UserStatusController extends CrudControllerImpl<UserStatus>{
             @RequestParam(required = false) String _sort, @RequestParam(required = false) Integer _start,
                 @RequestParam(required = false) Integer _end, @RequestParam(required = false) Integer id,
                 @RequestParam(required = false) String q) {
-            return super.findAll(new UserStatus(),"user_statuses",_order, _sort, _start, _end, id, q);
+            return super.findAll(new Role(),"user_statuses",_order, _sort, _start, _end, id, q);
     }
 
     @GetMapping("user_statuses/{id}")
@@ -40,13 +39,13 @@ public class UserStatusController extends CrudControllerImpl<UserStatus>{
 
 
     @PostMapping("user_statuses")
-    public ResponseEntity create(@Valid @RequestBody UserStatus model) {
+    public ResponseEntity create(@Valid @RequestBody Role model) {
         return super.create(model);
     }
 
 
     @PutMapping("user_statuses/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody UserStatus model) {
+    public ResponseEntity update(@PathVariable int id,@RequestBody Role model) {
         return super.update(model);
     }
 
