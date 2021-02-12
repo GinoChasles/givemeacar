@@ -3,8 +3,8 @@ import * as React from "react";
 import { Admin, Resource, ListGuesser, ShowGuesser, EditGuesser, useTranslate } from "react-admin";
 
 import {
-  DisplayAdministrators, CreateAdministrators, EditAdministrators, ShowAdministrators
-} from "../react-admin/components/administrators";
+  DisplayUsers, CreateUsers, EditUsers, ShowUsers
+} from "../react-admin/components/users";
 
 import {
   DisplayAgency, EditAgency, CreateAgency, ShowAgency
@@ -23,10 +23,6 @@ import {
 } from "../react-admin/components/cities";
 
 import {
-  DisplayClient, EditClient, CreateClient, ShowClient
-} from "../react-admin/components/clients";
-
-import {
   DisplayColor, EditColor, CreateColor, ShowColor
 } from "../react-admin/components/colors";
 
@@ -41,10 +37,6 @@ import {
 import {
   DisplayEnergyType, EditEnergyType, CreateEnergyType, ShowEnergyType
 } from "../react-admin/components/energy_types";
-
-import {
-  DisplayManager, EditManager, CreateManager, ShowManager
-} from "../react-admin/components/managers";
 
 import {
   DisplayModel, EditModel, CreateModel, ShowModel
@@ -67,8 +59,9 @@ import {
 } from "../react-admin/components/street_suffices";
 
 import {
-  DisplayStatus, EditStatus, CreateStatus, ShowStatus
-} from "../react-admin/components/user_statuses";
+  DisplayRole, EditRole, CreateRole, ShowRole
+} from "../react-admin/components/roles";
+
 
 
 import {
@@ -90,13 +83,7 @@ const AdminDashboard = ({ dataProvider, i18nProvider }) => {
     <Admin dataProvider={dataProvider} i18nProvider={i18nProvider}>
       
       <Resource icon={Face} options={{ label: t("custom.clients") }} name="clients"
-        list={DisplayClient} show={ShowClient} edit={EditClient} create={CreateClient} />
-
-      <Resource icon={RecordVoiceOver} options={{ label: t("custom.managers") }} name="managers"
-        list={DisplayManager} show={ShowManager} edit={EditManager} create={CreateManager} />
-
-      <Resource icon={VpnKey} options={{ label: t("custom.administrators") }} name="administrators"
-        list={DisplayAdministrators} show={ShowAdministrators} edit={EditAdministrators} create={CreateAdministrators} />
+        list={DisplayUser} show={ShowUser} edit={EditUser} create={CreateUser} />
 
       <Resource icon={HomeWork} options={{ label: t("custom.agencies") }} name="agencies"
         list={DisplayAgency} show={ShowAgency} edit={EditAgency} create={CreateAgency} />

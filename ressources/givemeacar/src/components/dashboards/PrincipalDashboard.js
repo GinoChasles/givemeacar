@@ -1,7 +1,5 @@
 import * as React from "react";
 import AdminDashboard from './AdminDashboard'
-import ManagerDashboard from './ManagerDashboard'
-import ClientDashboard from './ClientDashboard'
 
 import redirect from '../../lib/redirectIfNoSession'
 
@@ -31,8 +29,6 @@ const PrincipalDashboard = () => {
   if (typeof userStatus != 'undefined') {
     switch (userStatus) {
       case 1: dashboard = <AdminDashboard dataProvider={dataProvider} i18nProvider={i18nProvider} />; break;
-      case 2: dashboard = <ManagerDashboard dataProvider={dataProvider} i18nProvider={i18nProvider} />; break;
-      case 3: dashboard = <ClientDashboard dataProvider={dataProvider} i18nProvider={i18nProvider} />; break;
       default: dashboard = null;
     }
   }

@@ -18,8 +18,6 @@ import java.util.Map;
 public class SessionController {
     @Autowired
     UserService userService;
-    @Autowired
-    HttpSession session;
 
     @PostMapping("/signin")
     public ResponseEntity signin(HttpServletRequest request, @RequestBody Map<String, String> credentials,
@@ -33,21 +31,12 @@ public class SessionController {
             ResponseEntity.notFound().build();
         }
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(user.getRoles());
     }
 
     @GetMapping("/signout")
     public RedirectView signout() {
-        getSession().removeAttribute("userStatus");
         return new RedirectView("/");
     }
 
-    @GetMapping("/status")
-    public ResponseEntity count() {
-        return ResponseEntity.ok(getSession().getAttribute("status"));
-    }
-
-    public HttpSession getSession() {
-        return session;
-    }
 }

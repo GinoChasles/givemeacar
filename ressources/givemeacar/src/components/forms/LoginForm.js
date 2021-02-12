@@ -30,10 +30,10 @@ export default function LoginForm() {
             })
         }).then((response) => {
             if (response.ok) {
-                Cookies.set("userStatus", response.headers.get("userStatus"))
-                console.log(document.cookie)
-                document.location.reload()
+                return response.json()
             } 
+        }).then(json=>{
+            console.log(json);
         })
 
     }
