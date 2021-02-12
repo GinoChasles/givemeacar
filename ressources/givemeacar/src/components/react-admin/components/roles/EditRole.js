@@ -3,7 +3,7 @@ import {
 } from "react-admin";
 import * as React from "react";
 
-const EditStatus = (props) => {
+const EditRole = (props) => {
 
     const t = useTranslate();
 
@@ -14,4 +14,4 @@ const EditStatus = (props) => {
     </Edit>
 }
 
-export default EditStatus
+export default EditRole

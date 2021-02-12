@@ -1,11 +1,19 @@
-import React,{useState,useEffect} from 'react'
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
-import Cookies from 'js-cookie'
+import Cookies from 'js-cookie';
+
+import redirect from '../../lib/redirectIfSession';
 
 export default function LoginForm() {
 
-    const [mail, setMail] = useState()
-    const [password, setPassword] = useState()
+
+    redirect(true, '/home');
+
+    const history = useHistory();
+
+    const [mail, setMail] = useState();
+    const [password, setPassword] = useState();
     
     const handleSubmit = (evt) => {
         evt.preventDefault();
@@ -27,13 +35,14 @@ export default function LoginForm() {
             body: JSON.stringify({
                 mail: mail,
                 password: password
-            })
+            })  
         }).then((response) => {
             if (response.ok) {
                 return response.json()
             } 
         }).then(json=>{
-            console.log(json);
+            Cookies.set('user', JSON.stringify(json));
+            history.push('/home');
         })
 
     }

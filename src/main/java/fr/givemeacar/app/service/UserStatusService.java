@@ -1,16 +1,16 @@
 package fr.givemeacar.app.service;
 
 import fr.givemeacar.app.model.Role;
-import fr.givemeacar.app.repository.UserStatusRepository;
+import fr.givemeacar.app.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class UserStatusService extends CrudServiceImpl<Role> {
     @Autowired
-    UserStatusRepository repository;
+    RoleRepository repository;
 
-    public UserStatusRepository getRepository() {
+    public RoleRepository getRepository() {
         return repository;
     }
 }

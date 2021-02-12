@@ -9,7 +9,7 @@ const PostFilter = (props) => (
     </Filter>
 );
 
-const DisplayStatus = (props) => {
+const DisplayRole = (props) => {
 
     const t = useTranslate();
 
@@ -22,4 +22,4 @@ const DisplayStatus = (props) => {
     </List>
 }
 
-export default DisplayStatus
+export default DisplayRole

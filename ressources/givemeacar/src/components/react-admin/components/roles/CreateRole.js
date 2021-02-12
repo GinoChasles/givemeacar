@@ -6,7 +6,7 @@ import {
   useTranslate
 } from "react-admin";
 
-const CreateStatus = (props) => {
+const CreateRole = (props) => {
 
   const t = useTranslate();
 
@@ -17,4 +17,4 @@ const CreateStatus = (props) => {
   </Create>
 }
 
-export default CreateStatus
+export default CreateRole

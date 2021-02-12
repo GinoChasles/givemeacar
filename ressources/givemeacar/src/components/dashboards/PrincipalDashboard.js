@@ -1,7 +1,7 @@
 import * as React from "react";
-import AdminDashboard from './AdminDashboard'
-
-import redirect from '../../lib/redirectIfNoSession'
+import AdminDashboard from './AdminDashboard';
+import { Redirect } from 'react-router-dom';
+import redirect from '../../lib/redirectIfSession';
 
 import Cookies from 'js-cookie'
 
@@ -21,19 +21,20 @@ const i18nProvider = polyglotI18nProvider(locale => messages[locale]);
 i18nProvider.changeLocale('fr');
 
 const PrincipalDashboard = () => {
-  
-  let dashboard = null;
 
-  const userStatus = parseInt(Cookies.get('userStatus'))
-  
-  if (typeof userStatus != 'undefined') {
-    switch (userStatus) {
-      case 1: dashboard = <AdminDashboard dataProvider={dataProvider} i18nProvider={i18nProvider} />; break;
-      default: dashboard = null;
+  redirect(false, '/signin');
+
+  const roles = JSON.parse(Cookies.get('user')).roles;
+
+  if (roles) {
+    if (roles.includes('admin')) {
+      return <AdminDashboard dataProvider={dataProvider} i18nProvider={i18nProvider} />
+    }
+    else if (roles.includes('manager')) {
+      return <div>manager</div>
     }
   }
-
-  return redirect('/') || dashboard;
+  return <Redirect to="/signin" />
   
 }
 

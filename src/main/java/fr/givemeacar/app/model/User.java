@@ -102,8 +102,6 @@ public class User implements CrudModel,HasAddress {
             insertable = false)
     private CreditCard creditCard;
 
-    @Column(name = "user_status_id")
-    private int user_status_id = 3;
 
     @Column(name = "bill_id", nullable = true)
     private Integer bill_id;

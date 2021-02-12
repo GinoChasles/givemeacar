@@ -10,7 +10,7 @@ import {
 } from "react-admin";
 
 
-const ShowStatus = (props) => {
+const ShowRole = (props) => {
 
     const t = useTranslate();
 
@@ -23,4 +23,4 @@ const ShowStatus = (props) => {
     </Show>
 }
 
-export default ShowStatus;
+export default ShowRole;
