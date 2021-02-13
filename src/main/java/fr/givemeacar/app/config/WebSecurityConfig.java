@@ -6,6 +6,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.cors.CorsConfiguration;
@@ -23,7 +24,17 @@ import java.util.List;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
     /**
-     * Configuration de la sécurité
+     * Configuration du fournisseur d'authentification
+     * @param auth Security builder
+     * @throws Exception Exception lancée en cas d'erreur
+     */
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.authenticationProvider(authenticationProvider());
+    }
+
+    /**
+     * Configuration de la sécurité du protocol http
      * @param http l'instance responsable de la sécurité du protocol http
      * @throws Exception l'exception levée en cas d'erreur
      */
@@ -32,17 +43,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/session/signin").hasAuthority("ROLE_ANONYMOUS")
+                .antMatchers("/session/signin").anonymous()
+                .antMatchers("/session/signout").permitAll()
                 .antMatchers("/session/signout").hasAnyRole("admin","client","manager")
                 .antMatchers("/new").hasAnyAuthority("ADMIN", "CREATOR")
                 .antMatchers("/edit/**").hasAnyAuthority("ADMIN", "EDITOR")
                 .antMatchers("/delete/**").hasAuthority("ADMIN")
-                .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().accessDeniedPage("/403");
 
 
-        http.cors().and().csrf()/*.disable()*/;
+        http.cors().and().csrf().disable();
 
 
         //Gestion du logout
@@ -51,6 +62,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
                 .logoutSuccessUrl("/");
+        /**
+        http
+                .sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+         */
     }
 
     @Bean
@@ -121,9 +137,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         return authProvider;
     }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authenticationProvider());
-    }
+
 
 }

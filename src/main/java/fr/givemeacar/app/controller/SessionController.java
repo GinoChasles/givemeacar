@@ -2,13 +2,19 @@ package fr.givemeacar.app.controller;
 
 import fr.givemeacar.app.config.MyUserDetails;
 import fr.givemeacar.app.config.WebSecurityConfig;
+import fr.givemeacar.app.model.Role;
 import fr.givemeacar.app.model.User;
 import fr.givemeacar.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
@@ -17,6 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import static java.util.stream.Collectors.joining;
 
@@ -26,6 +33,12 @@ import static java.util.stream.Collectors.joining;
 @RestController
 @RequestMapping("/session")
 public class SessionController {
+
+    //Rôles utilisateurs pour enregistrement dans le contexte
+
+    static String ROLE_ADMIN = "admin";
+    static String ROLE_MANAGER = "manager";
+    static String ROLE_CLIENT = "client";
 
     //Service permettant la recherche dans la bdd via son repository
     @Autowired UserService userService;
@@ -40,23 +53,30 @@ public class SessionController {
             @RequestBody Map<String, String> credentials
     ){
 
-        //recherche de l'utilisateur dans la bdd
+        //recherche de l'utilisateur dans la bdd via son mail
         User user = userService
                 .getRepository()
-                .findUserStatusByMailAndPassword(
-                        credentials.get("mail"),
-                        credentials.get("password")
-                );
+                .getUserByMail(credentials.get("mail"));
 
         //retour 404 si aucun utilisateur trouvé
+        //#TODO écrire un UserNotFoundException
         if(user == null) return ResponseEntity.notFound().build();
 
-        //sinon authentification dans le contexte de sécurité
-        authenticateUser(user);
+        //test du mot de passe
+        boolean passwordMatches = webSecurityConfig.passwordEncoder()
+                .matches(credentials.get("password"),user.getPassword());
 
-        //retour 200 avec retour des roles en json dans le corps
+        //retour 404 si password ne matche pas
+        //#TODO écrire un BadCredentialsException
+        if(!passwordMatches) return ResponseEntity.notFound().build();
+
+        //sinon authentification dans le contexte de sécurité
+        List<String> authorities = authenticateUser(user,credentials.get("password"));
+
+        //retour 200 avec retour des rôles en json dans le corps pour le provider de l'application react
+        //#TODO Ecrire le contextProvider dans l'application client
         String roles = user.getRoles().stream().map(role->role.getName()).collect((joining(",")));
-        return ResponseEntity.ok("{\"roles\":\""+roles+"\"}");
+        return ResponseEntity.ok("{\"authorities\":\""+String.join(",",authorities)+"\"}");
     }
 
 
@@ -67,6 +87,7 @@ public class SessionController {
     }
 
 
+
     /**
      * Méthodes autres
      */
@@ -74,26 +95,43 @@ public class SessionController {
 
 
     /**
-     * Enregistre les détails de l'utilisateur dans le contexte de sécurité
+     * Authentifie l'utilisateur dans le contexte et définit ses autorités selon ses rôles
      * @param user l'utilisateur à enregistrer
      */
-    public void authenticateUser(User user){
+    public List<String> authenticateUser(User user,String password){
 
-        UserDetails details = new MyUserDetails(user);
-
+        //la liste des autorités rajoutées dans le contexte
         List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
 
-        if(user.getRoles().contains("admin")){
-            authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
-        }
+        //la liste des noms d'autorités renvoyées dans le corps de la réponse
+        ArrayList<String> auths = new ArrayList<String>();
 
-        webSecurityConfig.authenticationProvider().authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        details,
-                        user.getPassword(),
-                        authorities
-                )
+        user.getRoles().stream().forEach(role->{
+            String name = role.getName();
+            if(name.equals(SessionController.ROLE_ADMIN)){
+                authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+                auths.add(name);
+            }
+            if(role.getName().equals(SessionController.ROLE_MANAGER)){
+                authorities.add(new SimpleGrantedAuthority("ROLE_MANAGER"));
+                auths.add(name);
+            }
+            if(role.getName().equals(SessionController.ROLE_CLIENT)){
+                authorities.add(new SimpleGrantedAuthority("ROLE_CLIENT"));
+                auths.add(name);
+            }
+        });
+
+        Authentication auth = new UsernamePasswordAuthenticationToken(
+                user.getUsername(),
+                password,
+                authorities
         );
-    }
 
+        Authentication authentication = webSecurityConfig.authenticationProvider().authenticate(auth);
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+
+        return auths;
+    }
 }

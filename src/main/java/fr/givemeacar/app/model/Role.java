@@ -4,11 +4,13 @@ package fr.givemeacar.app.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.io.Serializable;
+
 
 @Data
 @Entity
 @Table(name = "roles")
-public class Role {
+public class Role implements Serializable {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)

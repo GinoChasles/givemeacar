@@ -39,7 +39,18 @@ public class UserInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) {
 
-        handleNoSession();
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+
+        if(authentication != null){
+
+            //l'autentification en cours
+            List<SimpleGrantedAuthority> auths = (List<SimpleGrantedAuthority>)authentication.getAuthorities();
+
+            auths.forEach(auth -> System.out.println(auth.getAuthority()));
+
+
+            System.out.println("authentificationnnnnnnnnnnnnnnnn : " + authentication);
+        }
 
         return true;
     }
@@ -56,47 +67,5 @@ public class UserInterceptor implements HandlerInterceptor {
                                 Object handler, Exception exception) throws Exception {
 
         System.out.println("Completed completed completed");
-    }
-
-    /**
-     * Produit un utilisateur anonyme si aucune authentification n'est trouvée car chaque utilisateur du site doit
-     * être authentifié par un rôle et/ou des autoritées
-     */
-    private void handleNoSession() {
-        //l'autentification en cours
-        List<SimpleGrantedAuthority> auths =
-                (List<SimpleGrantedAuthority>) SecurityContextHolder.getContext().getAuthentication().getAuthorities();
-
-        auths.forEach(auth -> System.out.println(auth.getAuthority()));
-
-/*
-        if(!auth.getPrincipal()){
-
-            System.out.println("L'utilisateur n'est pas authentifié, enregistrement en mode anonyme ");
-
-            //Production d'un utilisateur anonyme avec une autorité anonyme et enregistrement dans le contexte
-            User anonymous = new User();
-            anonymous.setUsername("anonymous");
-            anonymous.setPassword(config.passwordEncoder().encode("keyboard cat"));
-
-            UserDetails details = new MyUserDetails(anonymous);
-
-            List<SimpleGrantedAuthority> authorities = new ArrayList<SimpleGrantedAuthority>();
-            authorities.add(new SimpleGrantedAuthority("ROLE_ANONYMOUS"));
-
-            UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken( details,
-                    anonymous.getPassword(), authorities);
-
-            config.authenticationProvider().authenticate(authenticationToken);
-
-        }else{
-            String principal = (String) auth.getPrincipal();
-            System.out.println("PRINCIPAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAL");
-            System.out.println(principal);
-
-            //System.out.println(String.format("L'utilisateur %s est authentifié ",username));
-        }
-    }
-    */
     }
 }
