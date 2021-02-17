@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import {
   Create,
   SimpleForm,
@@ -17,7 +18,7 @@ const CreateAgency = (props) => {
   return <Create {...props} title={t('custom.creation')}>
     <SimpleForm>
       <TextInput label={t('custom.name')} source="name" />
-
+      
       <NumberInput label={t('custom.streetNumber')} source="streetNumber" />
 
       <ReferenceInput label={t('custom.suffix')} source="street_suffix_id" reference="street_suffices">

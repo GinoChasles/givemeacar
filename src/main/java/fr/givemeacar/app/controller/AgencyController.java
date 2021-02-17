@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.lang.reflect.InvocationTargetException;
 
+/**
+ * Contrôleur responsable des opérations CRUD sur les agences
+ */
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
@@ -30,6 +33,7 @@ public class AgencyController extends CrudControllerImpl<Agency>{
             @RequestParam(required = false) String _sort, @RequestParam(required = false) Integer _start,
             @RequestParam(required = false) Integer _end, @RequestParam(required = false) Integer id,
                                   @RequestParam(required = false) String q){
+
         return super.findAll(new Agency(),"agencies",_order, _sort, _start, _end, id,q);
     }
 

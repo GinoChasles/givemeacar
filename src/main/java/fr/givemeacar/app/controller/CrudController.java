@@ -11,36 +11,43 @@ import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.lang.reflect.InvocationTargetException;
 
+/**
+ * Interface d'un contrôleur CRUD générique
+ * @param <T> le model rattaché au contrôleur
+ */
 public interface CrudController<T> {
 
     /**
-     * Counts the entities in the table
-     * @return the number of entities in the table
+     * Compte les entités dans la table
+     * @return le nombre d'entités dans la table
      */
     public ResponseEntity count();
 
     /**
-     * deletes an entity in the table based on its id
-     * @param id the id of the entity in the table
-     * @return the delted entity
-     */
-    public ResponseEntity deleteById(@PathVariable int id);
-
-
-    /**
-     * finds an entity in the table based on its id
-     * @param id the id of the entity in the table
-     * @return the entity in the table with the given id
+     * Cherche l'entité dans la table via son id
+     * @param id l'id de l'entité à trouver
+     * @return l'entité trouvée
      */
     public ResponseEntity findById(@PathVariable int id);
 
     /**
-     *
-     * @param _order the
-     * @param _sort
-     * @param _start
-     * @param _end
-     * @return
+     * Cherche plusieurs entités via leur id (requête react-admin)
+     * @param id l'id des entités à chercher
+     * @return les entités trouvées
+     */
+    public ResponseEntity<?> listById(int id);
+
+    /**
+     * @param _order l'ordre ASC ou DESC
+     * @param _sort la façon dont les données sont ordonées
+     * @param _start le début de la recherche (OFFSET)
+     * @param _end la fin de la recherche (LIMIT)
+     * @param id l'identifiant de l'entité à chercher
+     * @param q la requête de recherche
+     * @return un response entity contenant toutes les données trouvées
+     * @throws NoSuchMethodException
+     * @throws IllegalAccessException
+     * @throws InvocationTargetException
      */
     public ResponseEntity findAll(@RequestParam(required = false) String _order,
             @RequestParam(required = false) String _sort, @RequestParam(required = false) Integer _start,
@@ -49,28 +56,31 @@ public interface CrudController<T> {
             throws NoSuchMethodException, IllegalAccessException, InvocationTargetException;
 
     /**
-     * Creates an entity in the table
-     * @param model the entity to save
-     * @return the saved entity
+     *
+     * Crée une entité dans la table
+     * @param model l'entité à persister
+     * @return l'entité persistée
      */
-    //public ResponseEntity create(@Valid @RequestBody T model) throws Exception;
+    public ResponseEntity create(@Valid @RequestBody T model) throws Exception;
 
     /**
-     * Updates an entity in the table
-     * @param model the entity to update
-     * @return the updated entity
+     * met à jour une entité dans la table
+     * @param model l'entité à mettre à  jour
+     * @return l'entité mise à jour
      */
     public ResponseEntity update(@RequestBody T model);
 
-    /**
-     * Returns the attached CrudService
-     * @return the attached CrudService
-     */
-    public CrudService<T> getService();
 
     /**
-     * Returns the attached HttpSession
-     * @return the attached HttpSession
+     * Supprime l'entité dans la table via son id
+     * @param id l'id de l'entité à supprimer
+     * @return l'entité supprimée
      */
-    public HttpSession getSession();
+    public ResponseEntity deleteById(@PathVariable int id);
+
+    /**
+     * Retourne le service rattaché au contrôleur
+     * @return le service rattaché au contrôleur
+     */
+    public CrudService<T> getService();
 }
