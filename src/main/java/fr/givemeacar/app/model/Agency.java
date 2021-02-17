@@ -64,4 +64,8 @@ public class Agency implements CrudModel,HasAddress {
 
     @Column(name = "city_id", nullable = false)
     private int city_id;
+
+    public String getStreetNumber(){
+        return Integer.toString(streetNumber);
+    }
 }

@@ -143,6 +143,9 @@ public class User implements CrudModel,HasAddress {
         return null;
     }
 
+    public String getStreetNumber(){
+        return Integer.toString(streetNumber);
+    }
 
     public void updateUsername(){
         username = Integer.toString(id);

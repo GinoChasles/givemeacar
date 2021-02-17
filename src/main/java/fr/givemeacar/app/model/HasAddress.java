@@ -70,7 +70,7 @@ public interface HasAddress {
      */
     public default String getAddress(){
         return getStreetNumber() + " "
-                + getStreetSuffix() + " "
+                + getStreetSuffixName() + " "
                 + getStreetName() + " - "
                 + getZipCode() + " "
                 + getCityName();

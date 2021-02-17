@@ -9,9 +9,9 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository extends BaseCrudRepository<User> {
 
     @Query("SELECT u FROM User u WHERE u.mail = :mail")
-    public User getUserByMail(@Param("mail") String mail);
+    User getUserByMail(@Param("mail") String mail);
 
     @Query("SELECT u FROM User u WHERE u.username = :username")
-    public User getUserByUsername(@Param("username") String username);
+    User getUserByUsername(@Param("username") String username);
 
 }

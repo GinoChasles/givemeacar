@@ -1,6 +1,5 @@
 package fr.givemeacar.app.service;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,90 +10,82 @@ import javax.persistence.EntityManager;
 public interface CrudService<T> {
 
     /**
-     * Counts the entities in the table
+     * Compte les entitées dnas la base de données
      *
-     * @return the number of entities in the table
+     * @return le nombre d'entités dans la base de données
      */
-    public Long count();
+     Long count();
 
     /**
-     * Creates a model in the database
+     * persiste une entité en base de données
      *
-     * @param t the model to save
-     * @return a 200(ok) or 409(conflict) response with constraint message
+     * @param t l'entité à persister
+     * @return une réponse 200(ok) ou 409(conflict)
      */
-    public T create(T t) ;
+     T create(T t) ;
 
     /**
-     * Updates a model in the database
+     * met à jour une entité
      *
-     * @param t the object to update
-     * @return a 200(ok) or 409(conflict) response with constraint message
+     * @param t l'objet à mettre à jour
+     * @return une réponse 200(ok) ou 409(conflict)
      */
-    public T update(T t);
+     T update(T t);
 
     /**
-     * deletes an entity in the table based on its id
+     * supprime une entité en base de donnée
      *
-     * @param id the id of the entity in the table
-     * @return the delted entity
+     * @param id l'id de l'entité en base de données
+     * @return l'entité supprimée
      */
-    public T deleteById(int id);
-
-
-    /**
-     * finds an entity in the table based on its id
-     *
-     * @param id the id of the entity in the table
-     * @return the entity in the table with the given id
-     */
-    public Optional<T> findById(int id);
-
-    /**
-     * Returns the last entity in the table based on its id
-     *
-     * @return the last entity in the table
-     */
-    public T findLast();
+     T deleteById(int id);
 
 
     /**
-     * Returns a collection of entities
+     * Trouve une entité dans la base de dinnées via son id
      *
-     * @param offset the offset of the research
-     * @param limit  the limit of the research
-     * @param order  the ordering od the search
-     * @param sort   the sorting of the research
-     * @return a collection of entities
+     * @param id l'id de l'entité à chercher
+     * @return l'entité trouvée
      */
-    public List<T> findAll(int offset, int limit, String order, String sort);
+     Optional<T> findById(int id);
 
     /**
-     * Searches for entities who's name starts with given name
-     * @param clazz The Entity class
-     * @param column The column where to search
-     * @param name the name to search
-     * @param sort the sort of the result
-     * @param order the order of the result
-     * @param offset the offset of the search
-     * @param limit the limit of the search
+     * @return la dernière entité dans la table selon son id
+     */
+     T findLast();
+
+
+    /**
+     *
+     * @param offset l'offset de recherce
+     * @param limit  la limite de recherche
+     * @param order  l'ordre de recherce (ASC ou DESC)
+     * @param sort   le tri effectué (par id, name...)
+     * @return une liste d'entités trouvées
+     */
+     List<T> findAll(int offset, int limit, String order, String sort);
+
+    /**
+     * Cherche les entités dont le nom commence par...
+     * @param clazz la classe de l'entité
+     * @param column la colonne où chercher
+     * @param name le nom à chercher
+     * @param offset l'offset de recherce
+     * @param limit  la limite de recherche
+     * @param order  l'ordre de recherce (ASC ou DESC)
+     * @param sort   le tri effectué (par id, name...)
      * @return a list of entities starting by the given name
      */
-    public List<T> findByNameStartingWith(T clazz, String column,String name,String sort,String order,int offset,
+     List<T> findByNameStartingWith(T clazz, String column,String name,String sort,String order,int offset,
                                           int limit);
 
     /**
-     * Returns the repository of the service
-     *
      * @return the repository of the service
      */
-    public BaseCrudRepository getRepository();
+     BaseCrudRepository<?> getRepository();
 
     /**
-     * Returns the entityManager of the service
-     *
-     * @return the entityManager of the service
+     * @return l'entityManager lié au servie
      */
-    public EntityManager getEntityManager();
-
+     EntityManager getEntityManager();
 }
