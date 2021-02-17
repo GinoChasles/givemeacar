@@ -82,7 +82,7 @@ const AdminDashboard = ({ dataProvider, i18nProvider }) => {
 
     <Admin dataProvider={dataProvider} i18nProvider={i18nProvider}>
       
-      <Resource icon={Face} options={{ label: t("custom.clients") }} name="clients"
+      <Resource icon={Face} options={{ label: t("custom.users") }} name="users"
         list={DisplayUser} show={ShowUser} edit={EditUser} create={CreateUser} />
 
       <Resource icon={HomeWork} options={{ label: t("custom.agencies") }} name="agencies"

@@ -9,6 +9,8 @@ import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import java.util.Set;
 
+import static java.util.stream.Collectors.joining;
+
 
 @Data
 @Entity
@@ -27,6 +29,8 @@ public class User implements CrudModel,HasAddress {
             joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id",referencedColumnName = "id")
     )
+
+    @JsonIgnore
     private Set<Role> roles;
 
     @Column(name = "firstname", nullable = false)
@@ -172,4 +176,9 @@ public class User implements CrudModel,HasAddress {
     public String getUsername(){
         return username;
     }
+
+    public String getJoinedRoles(){
+        return (String) roles.stream().map(role->role.getName()).collect(joining(","));
+    }
+
 }

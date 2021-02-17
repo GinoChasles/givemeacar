@@ -42,6 +42,8 @@ export default {
 
     edition: "édition",
 
+    enabled: "autorisé",
+
     energy: "carburant",
 
     energyMax: "énergie max",
@@ -93,14 +95,17 @@ export default {
     rentStart: "début de la location",
     rentEnd: "fin de la location",
 
-    status: "statut",
-    statuses: "statuts",
+    roles: "roles",
+    roles: "roles",
 
     street: "rue",
     streets: "rues",
 
     suffix: "suffixe",
     suffices: "suffixes",
+
+    user: "user",
+    users: "users",
 
     year: "année",
     zipcode: "code postal",

@@ -36,9 +36,9 @@ public class SessionController {
 
     //Rôles utilisateurs pour enregistrement dans le contexte
 
-    static String ROLE_ADMIN = "admin";
-    static String ROLE_MANAGER = "manager";
-    static String ROLE_CLIENT = "client";
+    static String ROLE_ADMIN = "ROLE_ADMIN";
+    static String ROLE_MANAGER = "ROLE_MANAGER";
+    static String ROLE_CLIENT = "ROLE_CLIENT";
 
     //Service permettant la recherche dans la bdd via son repository
     @Autowired UserService userService;
@@ -73,17 +73,8 @@ public class SessionController {
         //sinon authentification dans le contexte de sécurité
         List<String> authorities = authenticateUser(user,credentials.get("password"));
 
-        //retour 200 avec retour des rôles en json dans le corps pour le provider de l'application react
-        //#TODO Ecrire le contextProvider dans l'application client
-        String roles = user.getRoles().stream().map(role->role.getName()).collect((joining(",")));
+
         return ResponseEntity.ok("{\"authorities\":\""+String.join(",",authorities)+"\"}");
-    }
-
-
-
-    @GetMapping("/signout")
-    public RedirectView signout() {
-        return new RedirectView("/");
     }
 
 
@@ -129,6 +120,7 @@ public class SessionController {
         );
 
         Authentication authentication = webSecurityConfig.authenticationProvider().authenticate(auth);
+
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
 

@@ -43,12 +43,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
-                .antMatchers("/session/signin").anonymous()
+                .antMatchers("/session/signin").permitAll()
                 .antMatchers("/session/signout").permitAll()
-                .antMatchers("/session/signout").hasAnyRole("admin","client","manager")
-                .antMatchers("/new").hasAnyAuthority("ADMIN", "CREATOR")
-                .antMatchers("/edit/**").hasAnyAuthority("ADMIN", "EDITOR")
-                .antMatchers("/delete/**").hasAuthority("ADMIN")
+                //.antMatchers("/new").hasAnyAuthority("ADMIN", "CREATOR")
+                //.antMatchers("/edit/**").hasAnyAuthority("ADMIN", "EDITOR")
+                //.antMatchers("/delete/**").hasAuthority("ADMIN")
                 .and()
                 .exceptionHandling().accessDeniedPage("/403");
 
@@ -58,7 +57,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
 
         //Gestion du logout
         http.logout()
-                .logoutUrl("/session/logout")
+                .logoutUrl("/session/signout")
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
                 .logoutSuccessUrl("/");

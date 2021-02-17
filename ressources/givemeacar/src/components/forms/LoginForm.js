@@ -37,12 +37,18 @@ export default function LoginForm() {
                 password: password
             })  
         }).then((response) => {
+
             if (response.ok) {
                 return response.json()
             } 
+            else {
+                return Promise.reject(response)
+            }
         }).then(json=>{
             Cookies.set('user', JSON.stringify(json));
             history.push('/home');
+        }).catch(response => {
+            console.log(response);
         })
 
     }

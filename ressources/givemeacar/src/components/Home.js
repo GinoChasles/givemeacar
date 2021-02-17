@@ -9,13 +9,13 @@ export default function Home() {
 
   const user = JSON.parse(Cookies.get('user'));
 
-  if (user.roles) {
+  if (user.authorities) {
 
-    if (user.roles.includes('admin')) {
+    if (user.authorities.includes('ROLE_ADMIN')) {
       return <Redirect to="/dashboard" />
-    } else if (user.roles.includes('manager')) {
+    } else if (user.authorities.includes('ROLE_MANAGER')) {
       return <div>manager</div>
-    } else if (user.roles.includes('client')) {
+    } else if (user.authorities.includes('ROLE_CLIENT')) {
       return <div>client</div>
     }
     else {

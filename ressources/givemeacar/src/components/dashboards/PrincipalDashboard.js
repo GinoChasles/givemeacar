@@ -24,16 +24,17 @@ const PrincipalDashboard = () => {
 
   redirect(false, '/signin');
 
-  const roles = JSON.parse(Cookies.get('user')).roles;
+  const authorities = JSON.parse(Cookies.get('user')).authorities;
 
-  if (roles) {
-    if (roles.includes('admin')) {
+  if (authorities) {
+    if (authorities.includes('ROLE_ADMIN')) {
       return <AdminDashboard dataProvider={dataProvider} i18nProvider={i18nProvider} />
     }
-    else if (roles.includes('manager')) {
+    else if (authorities.includes('ROLE_MANAGER')) {
       return <div>manager</div>
     }
   }
+
   return <Redirect to="/signin" />
   
 }
