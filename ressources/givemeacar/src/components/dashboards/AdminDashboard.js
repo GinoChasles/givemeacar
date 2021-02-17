@@ -121,7 +121,7 @@ const AdminDashboard = ({ dataProvider, i18nProvider }) => {
       <Resource icon={LocalShipping} options={{ label: t("custom.models") }} name="models"
         list={DisplayModel} show={ShowModel} edit={EditModel} create={CreateModel} />
 
-      <Resource icon={Person} options={{ label: t("custom.statuses") }} name="user_statuses"
+      <Resource icon={Person} options={{ label: t("custom.roles") }} name="roles"
         list={DisplayRole} show={ShowRole} edit={EditRole} create={CreateRole} />
 
       <Resource icon={EvStation} options={{ label: t("custom.energyTypes") }} name="energy_types"

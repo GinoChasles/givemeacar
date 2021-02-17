@@ -11,18 +11,18 @@ import javax.validation.Valid;
 @CrossOrigin
 @RestController
 @RequestMapping("/api")
-public class UserStatusController extends CrudControllerImpl<Role>{
+public class RoleController extends CrudControllerImpl<Role>{
 
     @Autowired
     UserStatusService service;
 
-    @RequestMapping("user_statuses/count")
+    @RequestMapping("roles/count")
     @Override
     public ResponseEntity count() {
         return super.count();
     }
 
-    @RequestMapping(value = "user_statuses", method = RequestMethod.GET)
+    @RequestMapping(value = "roles", method = RequestMethod.GET)
     @Override
         public ResponseEntity findAll(@RequestParam(required = false) String _order,
             @RequestParam(required = false) String _sort, @RequestParam(required = false) Integer _start,
@@ -31,26 +31,26 @@ public class UserStatusController extends CrudControllerImpl<Role>{
             return super.findAll(new Role(),"user_statuses",_order, _sort, _start, _end, id, q);
     }
 
-    @GetMapping("user_statuses/{id}")
+    @GetMapping("roles/{id}")
     @Override
     public ResponseEntity findById(@PathVariable int id) {
         return super.findById(id);
     }
 
 
-    @PostMapping("user_statuses")
+    @PostMapping("roles")
     public ResponseEntity create(@Valid @RequestBody Role model) {
         return super.create(model);
     }
 
 
-    @PutMapping("user_statuses/{id}")
+    @PutMapping("roles/{id}")
     public ResponseEntity update(@PathVariable int id,@RequestBody Role model) {
         return super.update(model);
     }
 
 
-    @DeleteMapping("user_statuses/{id}")
+    @DeleteMapping("roles/{id}")
     public ResponseEntity deleteById(@PathVariable int id) {
         return super.deleteById(id);
     }

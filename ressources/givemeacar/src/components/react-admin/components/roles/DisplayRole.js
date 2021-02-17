@@ -13,7 +13,7 @@ const DisplayRole = (props) => {
 
     const t = useTranslate();
 
-    return <List {...props} title={t('custom.statuses')} filters={<PostFilter />}>
+    return <List {...props} title={t('custom.roles')} filters={<PostFilter />}>
         <Datagrid rowClick="edit">
             <TextField label={t('custom.id')} source="id" />
 
