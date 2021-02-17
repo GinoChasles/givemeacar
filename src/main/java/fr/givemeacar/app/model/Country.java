@@ -8,18 +8,23 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 
-
+/**
+ * Réprésentation des pays
+ */
 @Data
 @Entity
 @Table(name = "countries", schema = "givemeacar")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Country  implements CrudModel{
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
+
+    //le nom du pays
     @Column(name = "name", nullable = false)
     @Pattern(regexp = "[a-zA-Z" +
-            "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,42}")
+            "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆŠŽ∂ð ,.'-]{2,42}")
     private String name;
 }

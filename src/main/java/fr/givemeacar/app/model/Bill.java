@@ -18,7 +18,7 @@ public class Bill  implements CrudModel{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
-    @Column(name = "price", nullable = false, precision = 0)
+    @Column(name = "price", nullable = false)
     private double price;
     @Column(name = "date", nullable = false)
     private Date date;

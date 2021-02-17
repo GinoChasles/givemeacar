@@ -25,17 +25,17 @@ public class Agency implements CrudModel,HasAddress {
     //le nom de l'agence
     @Column(name = "name", nullable = false)
     @Pattern(regexp = "[a-zA-Z" +
-            "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,32}")
+            "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆŠŽ∂ð ,.'-]{2,32}")
     private String name;
 
     //le numéro de rue de l'agence
-    @Column(name = "street_number", nullable = true)
+    @Column(name = "street_number")
     private int streetNumber;
 
     //l'instance du modèle représentant le suffixe de rue de l'agence
     @OneToOne(fetch = FetchType.LAZY)
     @JsonIgnore
-    @JoinColumn(name = "street_suffix_id", referencedColumnName = "id", nullable = true, insertable = false,
+    @JoinColumn(name = "street_suffix_id", referencedColumnName = "id", insertable = false,
             updatable = false)
     private StreetSuffix streetSuffix;
 
@@ -46,7 +46,7 @@ public class Agency implements CrudModel,HasAddress {
     //l'instance du modèle représentant la rue de l'agence
     @OneToOne(fetch = FetchType.LAZY)
     @JsonIgnore
-    @JoinColumn(name = "street_id", referencedColumnName = "id", nullable = true, insertable = false,
+    @JoinColumn(name = "street_id", referencedColumnName = "id",  insertable = false,
             updatable = false)
     private Street street;
 
@@ -56,7 +56,7 @@ public class Agency implements CrudModel,HasAddress {
 
     //l'unstance du modèle de la ville de l'agence
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "city_id", referencedColumnName = "id", nullable = true, insertable = false, updatable = false)
+    @JoinColumn(name = "city_id", referencedColumnName = "id",  insertable = false, updatable = false)
     @JsonIgnore
     private City city;
 
@@ -64,56 +64,4 @@ public class Agency implements CrudModel,HasAddress {
 
     @Column(name = "city_id", nullable = false)
     private int city_id;
-
-    /**
-     * Retourne le nom du suffixe de la rue où est située l'agence
-     * @return le nom du suffixe de la rue où est située l'agence
-     */
-    @Override public String getStreetSuffix() {
-        if (streetSuffix != null) {
-            return streetSuffix.getName();
-        }
-        return null;
-    }
-
-    /**
-     * Retourne le nom de la ville où est située l'agence
-     * @return le nom de la ville où est située l'agence
-     */
-    public String getCityName() {
-        if (city != null) {
-            return city.getName();
-        }
-        return null;
-    }
-
-    /**
-     * Retourne le nom de la rue où est située l'agence
-     * @return le nom de la rue où est située l'agence
-     */
-    public String getStreetName() {
-        if (street != null) {
-            return street.getName();
-        }
-        return null;
-    }
-
-    /**
-     * Retourne le zipcode de la ville où est située l'agence
-     * @return le zipcode de la ville où est située l'agence
-     */
-    public String getZipCode() {
-        if (city != null) {
-            return city.getZipcode();
-        }
-        return null;
-    }
-
-    /**
-     * Retourne l'adresse complète de l'agence
-     * @return l'adresse complète de l'agence
-     */
-    public String getAddress(){
-        return streetNumber + " " + streetSuffix.getName() + " " + street.getName() + " - " + getZipCode() + " " + city.getName();
-    }
 }

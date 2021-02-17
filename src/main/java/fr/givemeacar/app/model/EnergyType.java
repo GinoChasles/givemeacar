@@ -8,19 +8,23 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 
-
+/**
+ * Représentation de l'énergie d'uen véhicule
+ */
 @Data
 @Entity
 @Table(name = "energy_types", schema = "givemeacar")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class EnergyType  implements CrudModel{
+
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
+
+    //le nom du type d'énergie du véhicule
     @Column(name = "name", nullable = false)
     @Pattern(regexp = "[a-zA-Z" +
             "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,42}")
     private String name;
-
 }

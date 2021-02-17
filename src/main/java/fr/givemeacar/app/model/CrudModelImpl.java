@@ -1,5 +1,8 @@
 package fr.givemeacar.app.model;
 
+/**
+ * Classe générique de modèle CRUD
+ */
 public class CrudModelImpl implements CrudModel{
 
     private int id;

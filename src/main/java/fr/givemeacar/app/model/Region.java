@@ -8,7 +8,9 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 
-
+/**
+ * Représentation de la région
+ */
 @Data
 @Entity
 @Table(name = "regions", schema = "givemeacar")
@@ -18,8 +20,10 @@ public class Region  implements CrudModel{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private int id;
-    @Column(name = "name", nullable = true)
+
+    //le nom de la région
+    @Column(name = "name")
     @Pattern(regexp = "[a-zA-Z" +
-            "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,45}")
+            "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆŠŽ∂ð ,.'-]{2,45}")
     private String name;
 }
