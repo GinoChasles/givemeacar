@@ -10,12 +10,12 @@ import Cookies from 'js-cookie'
  */
 export default function redirectIfSession(session, route) {
     if (session) {
-        if (Cookies.get('user') && Cookies.get('user') !== "undefined") {
+        if (Cookies.get('user') && typeof Cookies.get('user') !== "undefined") {
             console.log(Cookies.get('user'));
             return <Redirect to={route} />
         }
     } else {
-        if (!Cookies.get('user') && !Cookies.get('user') === "undefined") {
+        if (!Cookies.get('user') && typeof !Cookies.get('user') === "undefined") {
             return <Redirect to={route} />
         }
     }
