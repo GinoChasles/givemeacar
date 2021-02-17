@@ -34,7 +34,7 @@ const MyMenu = ({ onMenuClick, logout }) => {
                 onClick={onMenuClick}
                 sidebarIsOpen={open}
             > <MenuItemLink
-                to="/dashboard"
+                    to="/admin"
                 primaryText="Test"
             /></MenuItemLink>
             {isXSmall && logout}

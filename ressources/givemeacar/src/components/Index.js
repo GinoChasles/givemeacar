@@ -1,9 +1,12 @@
-import React from 'react'
+import React from 'react';
+import LoginForm from './forms/LoginForm';
+
+import RedirectIfSession from './RedirectIfSession';
 
 export default function Index() {
-    return (
-        <div>
-            index
-        </div>
-    )
+
+    return <>
+        <RedirectIfSession session={true} route='/home' />
+        <LoginForm />
+    </>
 }

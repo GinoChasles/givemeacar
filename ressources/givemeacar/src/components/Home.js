@@ -2,17 +2,13 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import Cookies from 'js-cookie';
 
-import redirect from '../lib/redirectIfSession';
-
 export default function Home() {
-  { redirect(false, "/signin") }
-
   const user = JSON.parse(Cookies.get('user'));
 
-  if (user.authorities) {
+  if (user && user.authorities) {
 
     if (user.authorities.includes('ROLE_ADMIN')) {
-      return <Redirect to="/dashboard" />
+      return <Redirect to="/admin" />
     } else if (user.authorities.includes('ROLE_MANAGER')) {
       return <div>manager</div>
     } else if (user.authorities.includes('ROLE_CLIENT')) {
@@ -23,5 +19,5 @@ export default function Home() {
     }
   }
 
-  return <div>ok</div>
+  return <Redirect to='/' />
 }

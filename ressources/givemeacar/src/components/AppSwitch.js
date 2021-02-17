@@ -10,11 +10,11 @@ import Current from './rental/Current'
 import Search from './rental/Search'
 import Rent from './rental/Rent'
 import Map from './map/Map'
-import PrincipalDashboard from './dashboards/PrincipalDashboard'
+import AdminDashboard from './dashboards/AdminDashboard'
 
 const links = [
     { url: '/home', label: 'Home', component: Home },
-    { url: '/dashboard', label: 'Dashboard', component: PrincipalDashboard },
+    { url: '/admin', label: 'Admin', component: AdminDashboard },
     { url: '/signin', label: 'connexion', component: Signin },
     { url: '/signup', label: 's\'enregistrer', component: Signup },
     { url: '/forgot-password', label: 'Mot de passe oublié', component: ForgotPassword },

@@ -70,15 +70,31 @@ import {
   Person, FormatListNumbered, Map, LocalShipping
 } from '@material-ui/icons';
 
-import redirect from '../../lib/redirectIfSession'
 
-const AdminDashboard = ({ dataProvider, i18nProvider }) => {
+import { frenchMessages } from '../../i18n';
+
+import jsonServerProvider from "ra-data-json-server"
+import polyglotI18nProvider from 'ra-i18n-polyglot';
+
+import RedirectIfSession from '../RedirectIfSession'
+
+const messages = {
+  'fr': frenchMessages,
+};
+
+const dataProvider = jsonServerProvider("http://localhost:8080/api");
+
+const i18nProvider = polyglotI18nProvider(locale => messages[locale]);
+
+i18nProvider.changeLocale('fr');
+
+const AdminDashboard = () => {
 
   const t = useTranslate();
 
   return <>
 
-    { redirect(false, '/signin')}
+    <RedirectIfSession session={false} route='/' />
 
     <Admin dataProvider={dataProvider} i18nProvider={i18nProvider}>
       
