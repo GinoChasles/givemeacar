@@ -75,7 +75,10 @@ export default function LoginForm() {
                 return Promise.reject(response)
             }
         }).then(json => {
-            Cookies.set('user', JSON.stringify(json));
+            console.log((1 / 3600) / 12);
+
+            Cookies.set('user', JSON.stringify(json), { expires: 1 });
+
             history.push('/home');
         }).catch(response => {
             console.log(response);

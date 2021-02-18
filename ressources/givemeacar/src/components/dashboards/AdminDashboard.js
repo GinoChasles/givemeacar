@@ -93,7 +93,6 @@ const AdminDashboard = () => {
   const t = useTranslate();
 
   return <>
-
     <RedirectIfSession session={false} route='/' />
 
     <Admin dataProvider={dataProvider} i18nProvider={i18nProvider}>
