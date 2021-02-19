@@ -15,14 +15,15 @@ const DisplayUser = (props) => {
 
     return <List {...props} title={t('custom.users')} filters={<PostFilter />}>
         <Datagrid rowClick="edit" >
-
             <TextField label={t('custom.id')} source="id" />
-
+            
             <TextField label={t('custom.firstName')} source="firstName" />
 
             <TextField label={t('custom.lastName')} source="lastName" />
 
             <EmailField label={t('custom.mail')} source="mail" />
+
+            <BooleanField label={t('custom.enabled')} source="enabled" />
 
             <ArrayField label={t('custom.roles')} source="roles">
                 <SingleFieldList>
@@ -30,14 +31,16 @@ const DisplayUser = (props) => {
                 </SingleFieldList>
             </ArrayField>
 
-
             <TextField label={t('custom.phone')} source="phone" />
 
-            <TextField label={t('custom.address')} source="address" />
+            <TextField label={t("custom.number")} source="streetNumber" />
+            <TextField label={t("custom.suffix")} source="streetSuffix.name" />
+            <TextField label={t("custom.street")} source="street.name" />
+            <TextField label={t("custom.zipcode")} source="city.zipcode" />
+            <TextField label={t("custom.city")} source="city.name" />
 
-            <TextField label={t('custom.agency')} source="agencyName" />
+            <TextField label={t('custom.agency')} source="agency.name" />
 
-            <BooleanField label={t('custom.enabled')} source="enabled" />
         </Datagrid>
     </List>
 }

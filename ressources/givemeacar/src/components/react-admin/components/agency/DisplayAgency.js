@@ -27,7 +27,11 @@ const DisplayAgency = (props) => {
 
             <TextField source="name" label={t("custom.name")} />
 
-            <TextField source="address" label={t("custom.address")} />
+            <TextField source="streetNumber" label={t("custom.number")} />
+            <TextField source="streetSuffix.name" label={t("custom.suffix")} />
+            <TextField source="street.name" label={t("custom.street")} />
+            <TextField source="city.zipcode" label={t("custom.zipcode")} />
+            <TextField source="city.name" label={t("custom.city")} />
         </Datagrid>
     </List>
 }

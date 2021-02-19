@@ -77,7 +77,6 @@ public class User implements CrudModel{
 
     //le suffixe de la rue de l'utilisateur
     @OneToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
     @JoinColumn(name = "street_suffix_id", referencedColumnName = "id", nullable = true, insertable = false,
             updatable = false)
     private StreetSuffix streetSuffix;
@@ -88,7 +87,6 @@ public class User implements CrudModel{
 
     //la rue de l'utilisateur
     @OneToOne(fetch = FetchType.LAZY)
-    @JsonIgnore
     @JoinColumn(name = "street_id", referencedColumnName = "id", nullable = true, insertable = false,
             updatable = false)
     private Street street;
@@ -100,7 +98,6 @@ public class User implements CrudModel{
     //la ville de l'utilisateur
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "city_id", referencedColumnName = "id", nullable = true, insertable = false, updatable = false)
-    @JsonIgnore
     private City city;
 
     //l'id de la ville de l'utilisateur
@@ -110,12 +107,10 @@ public class User implements CrudModel{
     //#TODO ManyToMany sur user et bills
     @OneToOne
     @JoinColumn(name = "bill_id", referencedColumnName = "id", nullable = true, updatable = false, insertable = false)
-    @JsonIgnore
     private Bill bill;
 
     //la carte de crédit de l'utilisateur
     @OneToOne
-    @JsonIgnore
     @JoinColumn(name = "credit_card_id", referencedColumnName = "id", nullable = true, updatable = false,
             insertable = false)
     private CreditCard creditCard;
@@ -126,7 +121,6 @@ public class User implements CrudModel{
 
     //l'agence rattachée à l'utilisateur
     @OneToOne
-    @JsonIgnore
     @JoinColumn(name = "agency_id", referencedColumnName = "id", nullable = false, updatable = false,
             insertable = false)
     private Agency agency;
@@ -134,88 +128,6 @@ public class User implements CrudModel{
     //l'id de l'agence rattachée à l'utilisateur
     @Column(name = "agency_id", nullable = false)
     private Integer agency_id;
-
-    /**
-     * @return le nom de l'agence
-     */
-    public String getAgencyName() {
-        if (agency != null) {
-            return agency.getName();
-        }
-        return null;
-    }
-
-    public String getStreetNumber(){
-        if(streetNumber != null){
-            return Integer.toString(streetNumber);
-        }
-        return null;
-    }
-
-
-    /**
-     * Retourne le nom du suffixe de la rue où se situe le modèle
-     *
-     * @return le nom du suffixe de la rue où se situe le modèle
-     */
-    public String getStreetSuffixName(){
-        if(streetSuffix != null){
-            return streetSuffix.getName();
-        }
-        return null;
-    }
-
-    /**
-     * Retourne le nom de la ville où se situe le modèle
-     *
-     * @return le nom de la ville où se situe le modèle
-     */
-    public String getCityName(){
-        if(city != null){
-            return city.getName();
-        }
-        return null;
-    }
-
-    /**
-     * Retourne le nomde la rue où se situe le modèle
-     *
-     * @return le nomde la rue où se situe le modèle
-     */
-    String getStreetName(){
-        if(street != null){
-            return street.getName();
-        }
-        return null;
-    }
-
-    /**
-     * Retourne le zipcode de la ville où se situe le modèle
-     *
-     * @return le zipcode de la ville où se situe le modèle
-     */
-    public String getZipCode(){
-        if(city != null){
-            return city.getZipcode();
-        }
-        return null;
-    }
-
-    /**
-     * Retourne l'adresse complète du modèle
-     * @return l'adresse complète du modèle
-     */
-    public String getAddress(){
-        if(getStreetNumber() != null && getStreetSuffixName() != null && getStreetName() != null &&
-        getZipCode() != null && getCityName() != null){
-            return getStreetNumber() + " "
-                    + getStreetSuffixName() + " "
-                    + getStreetName() + " - "
-                    + getZipCode() + " "
-                    + getCityName();
-        }
-        return null;
-    }
 
     public void updateUsername(){
         username = Integer.toString(id);
