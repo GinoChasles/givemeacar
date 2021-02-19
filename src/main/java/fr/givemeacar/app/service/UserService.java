@@ -13,4 +13,5 @@ public class UserService extends CrudServiceImpl<User> {
     public UserRepository getRepository() {
         return repository;
     }
+    
 }

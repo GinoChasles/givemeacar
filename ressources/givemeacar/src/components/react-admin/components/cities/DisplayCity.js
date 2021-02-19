@@ -27,13 +27,9 @@ const DisplayCity = (props) => {
 
             <TextField label={t('custom.zipcode')} source="zipcode" />
 
-            <ReferenceField link="show" label={t('custom.department')} source="department_id" reference="departments">
-                <TextField source="name" />
-            </ReferenceField>
-            <ReferenceField link="show" label={t('custom.region')} source="regionId" reference="regions">
-                <TextField source="name" />
-            </ReferenceField>
+            <TextField label={t('custom.department')} source="departmentName" />
 
+            <TextField label={t('custom.region')} source="regionName" />
         </Datagrid>
     </List>
 }

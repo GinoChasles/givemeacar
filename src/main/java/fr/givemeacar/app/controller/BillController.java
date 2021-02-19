@@ -34,7 +34,7 @@ public class BillController extends CrudControllerImpl<Bill>{
 
     @GetMapping("bills/{id}")
     @Override
-    public ResponseEntity findById(@PathVariable int id) {
+    public ResponseEntity findById(@PathVariable Integer id) {
         return super.findById(id);
     }
 
@@ -46,13 +46,13 @@ public class BillController extends CrudControllerImpl<Bill>{
 
 
     @PutMapping("bills/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody Bill model) {
+    public ResponseEntity update(@PathVariable Integer id,@RequestBody Bill model) {
         return super.update(model);
     }
 
 
     @DeleteMapping("bills/{id}")
-    public ResponseEntity deleteById(@PathVariable int id) {
+    public ResponseEntity deleteById(@PathVariable Integer id) {
         return super.deleteById(id);
     }
 

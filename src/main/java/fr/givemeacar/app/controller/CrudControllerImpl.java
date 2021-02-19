@@ -1,5 +1,6 @@
 package fr.givemeacar.app.controller;
 
+import fr.givemeacar.app.model.CrudModel;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -19,7 +20,7 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
 
     public ResponseEntity<?> count() {
         try {
-            return ResponseEntity.ok((getService()).count());
+            return ResponseEntity.ok(getService().count());
         } catch (DataIntegrityViolationException e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e);
         }
@@ -29,7 +30,11 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
 
     @Override
     public ResponseEntity<?> create(@Valid @RequestBody T model) {
-            return ResponseEntity.ok(getService().create(model));
+        try{
+            return ResponseEntity.ok((CrudModel) getService().create(model));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(e);
+        }
     }
 
 
@@ -37,18 +42,18 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
     public ResponseEntity<?> update(@RequestBody T model) {
         try {
             return ResponseEntity.ok((getService()).update(model));
-        } catch (DataIntegrityViolationException e) {
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e);
         }
     }
 
 
 
-    public ResponseEntity<?> deleteById(int id){ return ResponseEntity.ok((getService()).deleteById(id)); }
+    public ResponseEntity<?> deleteById(Integer id){ return ResponseEntity.ok((getService()).deleteById(id)); }
 
 
 
-    public ResponseEntity<?> listById(int id){
+    public ResponseEntity<?> listById(Integer id){
         if(id == 0) return ResponseEntity.ok((getService()).findLast());
 
         Optional<T> model = (getService()).findById(id);
@@ -63,7 +68,7 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
 
 
 
-    public ResponseEntity<?> findById(int id){
+    public ResponseEntity<?> findById(Integer id){
         if(id == 0) return ResponseEntity.ok((getService()).findLast());
 
         Optional<T> model = (getService()).findById(id);
@@ -89,7 +94,8 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
 
     public ResponseEntity<?> findAll(T clazz, String column,
                                   @RequestParam(required = false) String _order,
-                                     @RequestParam(required = false) String _sort, @RequestParam(required = false) Integer _start,
+                                     @RequestParam(required = false) String _sort,
+                                     @RequestParam(required = false) Integer _start,
                                      @RequestParam(required = false) Integer _end,@RequestParam(required =
             false) Integer id,@RequestParam(required = false) String q) {
 

@@ -35,7 +35,7 @@ public class CreditCardController extends CrudControllerImpl<CreditCard>{
 
     @GetMapping("credit_cards/{id}")
     @Override
-    public ResponseEntity findById(@PathVariable int id) {
+    public ResponseEntity findById(@PathVariable Integer id) {
         return super.findById(id);
     }
 
@@ -47,13 +47,13 @@ public class CreditCardController extends CrudControllerImpl<CreditCard>{
 
 
     @PutMapping("credit_cards/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody CreditCard model) {
+    public ResponseEntity update(@PathVariable Integer id,@RequestBody CreditCard model) {
         return super.update(model);
     }
 
 
     @DeleteMapping("credit_cards/{id}")
-    public ResponseEntity deleteById(@PathVariable int id) {
+    public ResponseEntity deleteById(@PathVariable Integer id) {
         return super.deleteById(id);
     }
 

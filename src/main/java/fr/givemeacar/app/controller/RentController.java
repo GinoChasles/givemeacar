@@ -34,7 +34,7 @@ public class RentController extends CrudControllerImpl<Rent>{
 
     @GetMapping("rents/{id}")
     @Override
-    public ResponseEntity findById(@PathVariable int id) {
+    public ResponseEntity findById(@PathVariable Integer id) {
         return super.findById(id);
     }
 
@@ -46,13 +46,13 @@ public class RentController extends CrudControllerImpl<Rent>{
 
 
     @PutMapping("rents/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody Rent model) {
+    public ResponseEntity update(@PathVariable Integer id,@RequestBody Rent model) {
         return super.update(model);
     }
 
 
     @DeleteMapping("rents/{id}")
-    public ResponseEntity deleteById(@PathVariable int id) {
+    public ResponseEntity deleteById(@PathVariable Integer id) {
         return super.deleteById(id);
     }
 

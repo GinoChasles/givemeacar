@@ -5,13 +5,13 @@ package fr.givemeacar.app.model;
  */
 public class CrudModelImpl implements CrudModel{
 
-    private int id;
+    private Integer id;
 
-    @Override public int getId() {
+    @Override public Integer getId() {
         return id;
     }
 
-    @Override public void setId(int id) {
+    @Override public void setId(Integer id) {
         this.id = id;
     }
 }

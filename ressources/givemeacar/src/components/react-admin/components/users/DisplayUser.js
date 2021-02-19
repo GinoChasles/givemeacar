@@ -14,7 +14,7 @@ const DisplayUser = (props) => {
     const t = useTranslate();
 
     return <List {...props} title={t('custom.users')} filters={<PostFilter />}>
-        <Datagrid rowClick="edit">
+        <Datagrid rowClick="edit" >
 
             <TextField label={t('custom.id')} source="id" />
 
@@ -32,9 +32,7 @@ const DisplayUser = (props) => {
 
             <TextField label={t('custom.address')} source="address" />
 
-            <ReferenceField link='show' label={t('custom.agency')} source="agency_id" reference="agencies">
-                <TextField source="name" />
-            </ReferenceField>
+            <TextField label={t('custom.agency')} source="agencyName" />
 
         </Datagrid>
     </List>

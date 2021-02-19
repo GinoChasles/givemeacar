@@ -34,25 +34,26 @@ public class CarController extends CrudControllerImpl<Car>{
     }
 
     @GetMapping("cars/{id}")
-    public ResponseEntity findById(@PathVariable int id) {
+    public ResponseEntity findById(@PathVariable Integer id) {
         return super.findById(id);
     }
 
 
     @PostMapping("cars")
     public ResponseEntity create(@Valid @RequestBody Car model) {
+        System.out.println(model);
         return super.create(model);
     }
 
 
     @PutMapping("cars/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody Car model) {
+    public ResponseEntity update(@PathVariable Integer id,@RequestBody Car model) {
         return super.update(model);
     }
 
 
     @DeleteMapping("cars/{id}")
-    public ResponseEntity deleteById(@PathVariable int id) {
+    public ResponseEntity deleteById(@PathVariable Integer id) {
         return super.deleteById(id);
     }
 

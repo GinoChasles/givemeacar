@@ -1,12 +1,14 @@
 import * as React from "react";
 import {
   NumberInput,
+  BooleanInput,
   Create,
   SimpleForm,
   ReferenceInput,
   useTranslate,
   AutocompleteInput,
 } from "react-admin";
+
 
 const CreateCar = (props) => {
 
@@ -21,9 +23,9 @@ const CreateCar = (props) => {
 
       <NumberInput label={t('custom.year')} source="year" />
 
-      <NumberInput label={t('custom.available')} source="available" />
+      <BooleanInput label={t('custom.available')} source="available" />
 
-      <NumberInput label={t('custom.rented')} source="rented" />
+      <BooleanInput label={t('custom.rented')} source="rented" />
 
       <ReferenceInput label={t('custom.model')} source="model_id" reference="models" >
         <AutocompleteInput optionText="name" optionValue={"id"} />
@@ -33,9 +35,8 @@ const CreateCar = (props) => {
         <AutocompleteInput optionText="name" optionValue={"id"} />
       </ReferenceInput>
 
-      <NumberInput label={t('custom.energyMax')} source="energy_max" />
-
-      <NumberInput label={t('custom.energyCurrent')} source="energy_current" />
+      <NumberInput label={t('custom.energyMax')} source="energyMax" />
+      <NumberInput label={t('custom.energyCurrent')} source="energyCurrent" />
 
       <ReferenceInput label={t('custom.energyType')} source="energy_type_id" reference="energy_types">
         <AutocompleteInput optionText="name" optionValue={"id"} />

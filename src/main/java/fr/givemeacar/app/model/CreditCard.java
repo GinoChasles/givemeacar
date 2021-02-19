@@ -19,7 +19,7 @@ public class CreditCard  implements CrudModel{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private int id;
+    private Integer id;
 
     //le numéro de carte
     @Column(name = "number", nullable = false, length = 16)

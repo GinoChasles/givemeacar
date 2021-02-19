@@ -28,14 +28,14 @@ public interface CrudController<T> {
      * @param id l'id de l'entité à trouver
      * @return l'entité trouvée
      */
-    public ResponseEntity findById(@PathVariable int id);
+    public ResponseEntity findById(@PathVariable Integer id);
 
     /**
      * Cherche plusieurs entités via leur id (requête react-admin)
      * @param id l'id des entités à chercher
      * @return les entités trouvées
      */
-    public ResponseEntity<?> listById(int id);
+    public ResponseEntity<?> listById(Integer id);
 
     /**
      * @param _order l'ordre ASC ou DESC
@@ -61,7 +61,7 @@ public interface CrudController<T> {
      * @param model l'entité à persister
      * @return l'entité persistée
      */
-    public ResponseEntity create(@Valid @RequestBody T model) throws Exception;
+    public ResponseEntity create(@Valid @RequestBody T model);
 
     /**
      * met à jour une entité dans la table
@@ -76,7 +76,7 @@ public interface CrudController<T> {
      * @param id l'id de l'entité à supprimer
      * @return l'entité supprimée
      */
-    public ResponseEntity deleteById(@PathVariable int id);
+    public ResponseEntity deleteById(@PathVariable Integer id);
 
     /**
      * Retourne le service rattaché au contrôleur

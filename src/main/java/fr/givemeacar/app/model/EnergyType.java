@@ -20,7 +20,7 @@ public class EnergyType  implements CrudModel{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private int id;
+    private Integer id;
 
     //le nom du type d'énergie du véhicule
     @Column(name = "name", nullable = false)

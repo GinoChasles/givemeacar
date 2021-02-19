@@ -20,7 +20,7 @@ public class Brand implements CrudModel {
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private int id;
+    private Integer id;
 
     //le nom de la marque
     @Column(name = "name", nullable = false)

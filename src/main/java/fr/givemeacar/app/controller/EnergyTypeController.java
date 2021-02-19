@@ -34,7 +34,7 @@ public class EnergyTypeController extends CrudControllerImpl<EnergyType>{
 
     @GetMapping("energy_types/{id}")
     @Override
-    public ResponseEntity findById(@PathVariable int id) {
+    public ResponseEntity findById(@PathVariable Integer id) {
         return super.findById(id);
     }
 
@@ -46,13 +46,13 @@ public class EnergyTypeController extends CrudControllerImpl<EnergyType>{
 
 
     @PutMapping("energy_types/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody EnergyType model) {
+    public ResponseEntity update(@PathVariable Integer id,@RequestBody EnergyType model) {
         return super.update(model);
     }
 
 
     @DeleteMapping("energy_types/{id}")
-    public ResponseEntity deleteById(@PathVariable int id) {
+    public ResponseEntity deleteById(@PathVariable Integer id) {
         return super.deleteById(id);
     }
 

@@ -34,7 +34,7 @@ public class UserController extends CrudControllerImpl<User>{
     }
 
     @GetMapping("users/{id}")
-    public ResponseEntity findById(@PathVariable int id) { return super.findById(id);}
+    public ResponseEntity findById(@PathVariable Integer id) { return super.findById(id);}
 
 
     @PostMapping("users")
@@ -44,13 +44,13 @@ public class UserController extends CrudControllerImpl<User>{
 
 
     @PutMapping("users/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody User model) {
+    public ResponseEntity update(@PathVariable Integer id,@Valid @RequestBody User model) {
         return super.update(model);
     }
 
 
     @DeleteMapping("users/{id}")
-    public ResponseEntity deleteById(@PathVariable int id) {
+    public ResponseEntity deleteById(@PathVariable Integer id) {
         return super.deleteById(id);
     }
 

@@ -7,7 +7,10 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.joining;
 
@@ -18,12 +21,12 @@ import static java.util.stream.Collectors.joining;
 @Entity
 @Table(name = "users", schema = "givemeacar")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class User implements CrudModel,HasAddress {
+public class User implements CrudModel{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private int id;
+    private Integer id;
 
     //l'activation de l'utilisateur
     private boolean enabled;
@@ -35,7 +38,6 @@ public class User implements CrudModel,HasAddress {
             joinColumns = @JoinColumn(name = "user_id",referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id",referencedColumnName = "id")
     )
-    @JsonIgnore
     private Set<Role> roles;
 
     //le prénom de l'utilisateur
@@ -70,7 +72,7 @@ public class User implements CrudModel,HasAddress {
 
     //le numéro de la rue de l'utilisateur
     @Column(name = "street_number", nullable = true)
-    private int streetNumber;
+    private Integer streetNumber;
 
 
     //le suffixe de la rue de l'utilisateur
@@ -82,7 +84,7 @@ public class User implements CrudModel,HasAddress {
 
     //l'id du suffixe de la rue de l'utilisateur
     @Column(name = "street_suffix_id", nullable = false)
-    private int street_suffix_id;
+    private Integer street_suffix_id;
 
     //la rue de l'utilisateur
     @OneToOne(fetch = FetchType.LAZY)
@@ -93,7 +95,7 @@ public class User implements CrudModel,HasAddress {
 
     //l'id de la rue de l'utilisateur
     @Column(name = "street_id", nullable = false)
-    private int street_id;
+    private Integer street_id;
 
     //la ville de l'utilisateur
     @OneToOne(fetch = FetchType.LAZY)
@@ -103,7 +105,7 @@ public class User implements CrudModel,HasAddress {
 
     //l'id de la ville de l'utilisateur
     @Column(name = "city_id", nullable = false)
-    private int city_id;
+    private Integer city_id;
 
     //#TODO ManyToMany sur user et bills
     @OneToOne
@@ -131,7 +133,7 @@ public class User implements CrudModel,HasAddress {
 
     //l'id de l'agence rattachée à l'utilisateur
     @Column(name = "agency_id", nullable = false)
-    private int agency_id;
+    private Integer agency_id;
 
     /**
      * @return le nom de l'agence
@@ -144,7 +146,75 @@ public class User implements CrudModel,HasAddress {
     }
 
     public String getStreetNumber(){
-        return Integer.toString(streetNumber);
+        if(streetNumber != null){
+            return Integer.toString(streetNumber);
+        }
+        return null;
+    }
+
+
+    /**
+     * Retourne le nom du suffixe de la rue où se situe le modèle
+     *
+     * @return le nom du suffixe de la rue où se situe le modèle
+     */
+    public String getStreetSuffixName(){
+        if(streetSuffix != null){
+            return streetSuffix.getName();
+        }
+        return null;
+    }
+
+    /**
+     * Retourne le nom de la ville où se situe le modèle
+     *
+     * @return le nom de la ville où se situe le modèle
+     */
+    public String getCityName(){
+        if(city != null){
+            return city.getName();
+        }
+        return null;
+    }
+
+    /**
+     * Retourne le nomde la rue où se situe le modèle
+     *
+     * @return le nomde la rue où se situe le modèle
+     */
+    String getStreetName(){
+        if(street != null){
+            return street.getName();
+        }
+        return null;
+    }
+
+    /**
+     * Retourne le zipcode de la ville où se situe le modèle
+     *
+     * @return le zipcode de la ville où se situe le modèle
+     */
+    public String getZipCode(){
+        if(city != null){
+            return city.getZipcode();
+        }
+        return null;
+    }
+
+    /**
+     * Retourne l'adresse complète du modèle
+     * @return l'adresse complète du modèle
+     */
+    public String getAddress(){
+        if(getStreetNumber() != null && getStreetSuffixName() != null && getStreetName() != null &&
+        getZipCode() != null && getCityName() != null){
+            return getStreetNumber() + " "
+                    + getStreetSuffixName() + " "
+                    + getStreetName() + " - "
+                    + getZipCode() + " "
+                    + getCityName();
+        }
+        return null;
     }
 
     public void updateUsername(){
@@ -159,4 +229,7 @@ public class User implements CrudModel,HasAddress {
         return (String) roles.stream().map(role->role.getName()).collect(joining(","));
     }
 
+    public List<Integer> getRoleIds(){
+        return roles.stream().map(role->role.getId().intValue()).collect(Collectors.toList());
+    }
 }

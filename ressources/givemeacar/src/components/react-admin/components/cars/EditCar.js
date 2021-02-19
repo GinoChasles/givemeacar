@@ -26,9 +26,9 @@ const EditCar = (props) => {
                 <AutocompleteInput optionText="name" optionValue={"id"} />
             </ReferenceInput>
 
-            <NumberInput label={t('custom.energyMax')} source="energy_max" />
+            <NumberInput label={t('custom.energyMax')} source="energyMax" />
 
-            <NumberInput label={t('custom.energyCurrent')} source="energy_current" />
+            <NumberInput label={t('custom.energyCurrent')} source="energyCurrent" />
 
             <ReferenceInput label={t('custom.energyType')} source="energy_type_id" reference="energy_types">
                 <AutocompleteInput optionText="name" optionValue={"id"} />

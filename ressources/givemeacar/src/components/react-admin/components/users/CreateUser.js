@@ -47,6 +47,10 @@ const CreateUser = (props) => {
         <AutocompleteInput optionText="name" optionValue={"id"} />
       </ReferenceInput>
 
+      <ReferenceInput label={t('custom.roles')} source="roles" reference="roles">
+        <AutocompleteInput optionText="name" optionValue={"id"} />
+      </ReferenceInput>
+
     </SimpleForm>
   </Create>
 }

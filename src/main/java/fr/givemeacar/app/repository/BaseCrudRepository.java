@@ -9,4 +9,5 @@ import org.springframework.data.repository.NoRepositoryBean;
  */
 @NoRepositoryBean
 public interface BaseCrudRepository<CrudModel> extends CrudRepository<CrudModel>, JpaRepository<CrudModel,Integer> {
+
 }

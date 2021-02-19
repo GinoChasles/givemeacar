@@ -34,7 +34,7 @@ public class ModelController extends CrudControllerImpl<Model>{
 
     @GetMapping("models/{id}")
     @Override
-    public ResponseEntity findById(@PathVariable int id) {
+    public ResponseEntity findById(@PathVariable Integer id) {
         return super.findById(id);
     }
 
@@ -46,13 +46,13 @@ public class ModelController extends CrudControllerImpl<Model>{
 
 
     @PutMapping("models/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody Model model) {
+    public ResponseEntity update(@PathVariable Integer id,@RequestBody Model model) {
         return super.update(model);
     }
 
 
     @DeleteMapping("models/{id}")
-    public ResponseEntity deleteById(@PathVariable int id) {
+    public ResponseEntity deleteById(@PathVariable Integer id) {
         return super.deleteById(id);
     }
 

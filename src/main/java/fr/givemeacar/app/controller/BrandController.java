@@ -34,7 +34,7 @@ public class BrandController extends CrudControllerImpl<Brand>{
 
     @GetMapping("brands/{id}")
     @Override
-    public ResponseEntity findById(@PathVariable int id) {
+    public ResponseEntity findById(@PathVariable Integer id) {
         return super.findById(id);
     }
 
@@ -46,13 +46,13 @@ public class BrandController extends CrudControllerImpl<Brand>{
 
 
     @PutMapping("brands/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody Brand model) {
+    public ResponseEntity update(@PathVariable Integer id,@RequestBody Brand model) {
         return super.update(model);
     }
 
 
     @DeleteMapping("brands/{id}")
-    public ResponseEntity deleteById(@PathVariable int id) {
+    public ResponseEntity deleteById(@PathVariable Integer id) {
         return super.deleteById(id);
     }
 

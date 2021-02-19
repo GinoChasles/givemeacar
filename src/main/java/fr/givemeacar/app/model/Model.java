@@ -22,7 +22,7 @@ public class Model implements CrudModel {
     @Column(name = "id", nullable = false)
     @Pattern(regexp = "[a-zA-Z" +
             "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆŠŽ∂ð ,.'-]{2,32}")
-    private int id;
+    private Integer id;
 
     //le nom du modèle
     @Column(name = "name", nullable = false, length = 45)

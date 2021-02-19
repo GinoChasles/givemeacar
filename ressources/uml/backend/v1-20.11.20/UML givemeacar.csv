@@ -27,12 +27,12 @@ Client",,"+ refillCar() : void
 
 + signUp() :  void
 + signout() : void+ "
-4,Classe,UML,1,,,,,,,BaseCar,"- km : Integer
-- price : Integer
-- year : Integer
+4,Classe,UML,1,,,,,,,BaseCar,"- km : int
+- price : int
+- year : int
 - availability : Boolean
 - onrent: Boolean",
-5,Classe,UML,1,,,,,,,BaseAddress,- number : Integer ,
+5,Classe,UML,1,,,,,,,BaseAddress,- number : int ,
 6,Classe,UML,1,,,,,,,BaseAgency,- name : String,
 7,Classe,UML,1,,,,,,,"<<interface>>
 Manager",,
@@ -41,7 +41,7 @@ Manager",,
 - lastName : String = 32
 - firstName : String = 32
 
-- cardNumber : Integer = 16",
+- cardNumber : int = 16",
 9,Classe,UML,1,,,,,,,BaseLocalization,"- latitude : Double
 - longitude : Double",
 10,Classe,UML,1,,,,,,,BaseCity,"- name : String = 32
@@ -58,8 +58,8 @@ Manager",,
 14,Classe,UML,1,,,,,,,BaseBrand,- name : String = 32,
 15,Classe,UML,1,,,,,,,BaseModel,- name : String = 32,
 16,Classe,UML,1,,,,,,,BaseColor,- name : String = 32,
-17,Classe,UML,1,,,,,,,BaseEnergy,"- max :  Integer
-- current : Integer",
+17,Classe,UML,1,,,,,,,BaseEnergy,"- max :  int
+- current : int",
 18,Classe,UML,1,,,,,,,BaseEnergyType,- name : String : 32,
 19,Classe,UML,1,,,,,,,BaseUserStatus,name : String,
 20,Classe,UML,1,,,,,,,BaseRent,"- startDate Time: DateTime

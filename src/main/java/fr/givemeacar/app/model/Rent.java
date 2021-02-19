@@ -18,7 +18,7 @@ public class Rent  implements CrudModel{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private int id;
+    private Integer id;
 
     //le début de la location
     @Column(name = "start", nullable = false)

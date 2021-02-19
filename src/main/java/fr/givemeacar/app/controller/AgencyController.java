@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import java.lang.reflect.InvocationTargetException;
 
@@ -22,42 +23,46 @@ public class AgencyController extends CrudControllerImpl<Agency>{
     AgencyService service;
 
     @RequestMapping("agencies/count")
+    @RolesAllowed({"ROLE_ADMIN","ROLE_MANAGER","ROLE_CLIENT"})
     @Override
     public ResponseEntity count() {
         return super.count();
     }
 
     @RequestMapping(value = "agencies", method = RequestMethod.GET)
+    @RolesAllowed({"ROLE_ADMIN","ROLE_MANAGER","ROLE_CLIENT"})
     @Override
     public ResponseEntity findAll(@RequestParam(required = false) String _order,
             @RequestParam(required = false) String _sort, @RequestParam(required = false) Integer _start,
             @RequestParam(required = false) Integer _end, @RequestParam(required = false) Integer id,
                                   @RequestParam(required = false) String q){
-
         return super.findAll(new Agency(),"agencies",_order, _sort, _start, _end, id,q);
     }
 
     @GetMapping("agencies/{id}")
+    @RolesAllowed({"ROLE_ADMIN","ROLE_MANAGER","ROLE_CLIENT"})
     @Override
-    public ResponseEntity findById(@PathVariable int id) {
+    public ResponseEntity findById(@PathVariable Integer id) {
         return super.findById(id);
     }
 
 
     @PostMapping("agencies")
+    @RolesAllowed("ROLE_ADMIN")
     public ResponseEntity create(@Valid @RequestBody Agency model) {
         return super.create(model);
     }
 
 
     @PutMapping("agencies/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody Agency model) {
+    @RolesAllowed("ROLE_ADMIN")
+    public ResponseEntity update(@PathVariable Integer id,@RequestBody Agency model) {
         return super.update(model);
     }
 
-
     @DeleteMapping("agencies/{id}")
-    public ResponseEntity deleteById(@PathVariable int id) {
+    @RolesAllowed("ROLE_ADMIN")
+    public ResponseEntity deleteById(@PathVariable Integer id) {
         return super.deleteById(id);
     }
 

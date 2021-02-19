@@ -32,15 +32,17 @@ public class CrudServiceImpl<T> implements CrudService<T> {
         return ((BaseCrudRepository)getRepository()).existsById(((CrudModel) model).getId()) ? (T)((BaseCrudRepository)getRepository()).save(model) : null;
     }
 
-    public T deleteById(int id){
-        return (T)((BaseCrudRepository)getRepository()).deleteById(id);
+    public Boolean deleteById(Integer id){
+        getRepository().deleteById(id);
+
+        return true;
     }
 
     public T findLast(){
         return (T)((BaseCrudRepository)getRepository()).findFirstByOrderByIdDesc();
     }
 
-    public Optional<T> findById(int id){
+    public Optional<T> findById(Integer id){
         return (Optional<T>)((BaseCrudRepository)getRepository()).findById(id);
     }
 

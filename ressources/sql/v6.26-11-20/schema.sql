@@ -237,7 +237,7 @@ CREATE TABLE `department` (
   PRIMARY KEY (`id`),
   KEY `department_region_code_foreign` (`region_code`),
   KEY `department_code_index` (`code`),
-  CONSTRAINT `department_region_code_foreign` FOREIGN KEY (`region_code`) REFERENCES `region` (`code`) ON DELETE CASCADE
+  CONSTRAint `department_region_code_foreign` FOREIGN KEY (`region_code`) REFERENCES `region` (`code`) ON DELETE CASCADE
 ) ENGINE=InnoDB AUTO_INCREMENT=110 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

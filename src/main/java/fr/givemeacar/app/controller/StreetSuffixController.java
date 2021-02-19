@@ -34,7 +34,7 @@ public class StreetSuffixController extends CrudControllerImpl<StreetSuffix>{
 
     @GetMapping("street_suffices/{id}")
     @Override
-    public ResponseEntity findById(@PathVariable int id) {
+    public ResponseEntity findById(@PathVariable Integer id) {
         return super.findById(id);
     }
 
@@ -46,13 +46,13 @@ public class StreetSuffixController extends CrudControllerImpl<StreetSuffix>{
 
 
     @PutMapping("street_suffices/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody StreetSuffix model) {
+    public ResponseEntity update(@PathVariable Integer id,@RequestBody StreetSuffix model) {
         return super.update(model);
     }
 
 
     @DeleteMapping("street_suffices/{id}")
-    public ResponseEntity deleteById(@PathVariable int id) {
+    public ResponseEntity deleteById(@PathVariable Integer id) {
         return super.deleteById(id);
     }
 

@@ -34,7 +34,7 @@ public class RegionController extends CrudControllerImpl<Region>{
 
     @GetMapping("regions/{id}")
     @Override
-    public ResponseEntity findById(@PathVariable int id) {
+    public ResponseEntity findById(@PathVariable Integer id) {
         return super.findById(id);
     }
 
@@ -46,13 +46,13 @@ public class RegionController extends CrudControllerImpl<Region>{
 
 
     @PutMapping("regions/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody Region model) {
+    public ResponseEntity update(@PathVariable Integer id,@RequestBody Region model) {
         return super.update(model);
     }
 
 
     @DeleteMapping("regions/{id}")
-    public ResponseEntity deleteById(@PathVariable int id) {
+    public ResponseEntity deleteById(@PathVariable Integer id) {
         return super.deleteById(id);
     }
 

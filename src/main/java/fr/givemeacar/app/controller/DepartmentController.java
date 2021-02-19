@@ -34,7 +34,7 @@ public class DepartmentController extends CrudControllerImpl<Department>{
 
     @GetMapping("departments/{id}")
     @Override
-    public ResponseEntity findById(@PathVariable int id) {
+    public ResponseEntity findById(@PathVariable Integer id) {
         return super.findById(id);
     }
 
@@ -46,13 +46,13 @@ public class DepartmentController extends CrudControllerImpl<Department>{
 
 
     @PutMapping("departments/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody Department model) {
+    public ResponseEntity update(@PathVariable Integer id,@RequestBody Department model) {
         return super.update(model);
     }
 
 
     @DeleteMapping("departments/{id}")
-    public ResponseEntity deleteById(@PathVariable int id) {
+    public ResponseEntity deleteById(@PathVariable Integer id) {
         return super.deleteById(id);
     }
 

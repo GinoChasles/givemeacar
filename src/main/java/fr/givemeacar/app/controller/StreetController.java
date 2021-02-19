@@ -34,7 +34,7 @@ public class StreetController extends CrudControllerImpl<Street>{
 
     @GetMapping("streets/{id}")
     @Override
-    public ResponseEntity findById(@PathVariable int id) {
+    public ResponseEntity findById(@PathVariable Integer id) {
         return super.findById(id);
     }
 
@@ -46,13 +46,13 @@ public class StreetController extends CrudControllerImpl<Street>{
 
 
     @PutMapping("streets/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody Street model) {
+    public ResponseEntity update(@PathVariable Integer id,@RequestBody Street model) {
         return super.update(model);
     }
 
 
     @DeleteMapping("streets/{id}")
-    public ResponseEntity deleteById(@PathVariable int id) {
+    public ResponseEntity deleteById(@PathVariable Integer id) {
         return super.deleteById(id);
     }
 

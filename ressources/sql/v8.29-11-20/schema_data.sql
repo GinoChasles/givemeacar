@@ -34,9 +34,9 @@ CREATE TABLE `address` (
   KEY `fk_address_street1_idx` (`street_id`),
   KEY `fk_address_street_suffix1_idx` (`street_suffix_id1`),
   KEY `FK76rad0kpw4hq0pch4p5pb42tg` (`street_suffix_id`),
-  CONSTRAINT `FK76rad0kpw4hq0pch4p5pb42tg` FOREIGN KEY (`street_suffix_id`) REFERENCES `street_suffix` (`id`),
-  CONSTRAINT `fk_address_street1` FOREIGN KEY (`street_id`) REFERENCES `street` (`id`),
-  CONSTRAINT `fk_address_street_suffix1` FOREIGN KEY (`street_suffix_id1`) REFERENCES `street_suffix` (`id`)
+  CONSTRAint `FK76rad0kpw4hq0pch4p5pb42tg` FOREIGN KEY (`street_suffix_id`) REFERENCES `street_suffix` (`id`),
+  CONSTRAint `fk_address_street1` FOREIGN KEY (`street_id`) REFERENCES `street` (`id`),
+  CONSTRAint `fk_address_street_suffix1` FOREIGN KEY (`street_suffix_id1`) REFERENCES `street_suffix` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -98,7 +98,7 @@ CREATE TABLE `administrator` (
   UNIQUE KEY `mail_UNIQUE` (`mail`),
   UNIQUE KEY `phone_UNIQUE` (`phone`),
   KEY `fk_administrator_user_status1_idx` (`user_status_id`),
-  CONSTRAINT `fk_administrator_user_status1` FOREIGN KEY (`user_status_id`) REFERENCES `user_status` (`id`)
+  CONSTRAint `fk_administrator_user_status1` FOREIGN KEY (`user_status_id`) REFERENCES `user_status` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -130,10 +130,10 @@ CREATE TABLE `agency` (
   KEY `fk_agency_client_idx` (`client_id`),
   KEY `fk_agency_bill_idx` (`bill_id`) /*!80000 INVISIBLE */,
   KEY `fk_agency_manager1_idx` (`manager_id`),
-  CONSTRAINT `fk_agency_address` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`),
-  CONSTRAINT `fk_agency_bill` FOREIGN KEY (`bill_id`) REFERENCES `bill` (`id`),
-  CONSTRAINT `fk_agency_client` FOREIGN KEY (`client_id`) REFERENCES `client` (`id`),
-  CONSTRAINT `fk_agency_manager1` FOREIGN KEY (`manager_id`) REFERENCES `manager` (`id`)
+  CONSTRAint `fk_agency_address` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`),
+  CONSTRAint `fk_agency_bill` FOREIGN KEY (`bill_id`) REFERENCES `bill` (`id`),
+  CONSTRAint `fk_agency_client` FOREIGN KEY (`client_id`) REFERENCES `client` (`id`),
+  CONSTRAint `fk_agency_manager1` FOREIGN KEY (`manager_id`) REFERENCES `manager` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -162,8 +162,8 @@ CREATE TABLE `bill` (
   PRIMARY KEY (`id`),
   KEY `fk_bill_rent1_idx` (`rent_id`),
   KEY `fk_bill_agency1_idx` (`agency_id`),
-  CONSTRAINT `fk_bill_agency1` FOREIGN KEY (`agency_id`) REFERENCES `agency` (`id`),
-  CONSTRAINT `fk_bill_rent1` FOREIGN KEY (`rent_id`) REFERENCES `rent` (`id`)
+  CONSTRAint `fk_bill_agency1` FOREIGN KEY (`agency_id`) REFERENCES `agency` (`id`),
+  CONSTRAint `fk_bill_rent1` FOREIGN KEY (`rent_id`) REFERENCES `rent` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -226,10 +226,10 @@ CREATE TABLE `car` (
   KEY `fk_car_color1_idx` (`color_id`),
   KEY `fk_car_energy_type1_idx` (`energy_type_id`),
   KEY `fk_car_address1_idx` (`address_id`),
-  CONSTRAINT `fk_car_address1` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`),
-  CONSTRAINT `fk_car_color1` FOREIGN KEY (`color_id`) REFERENCES `color` (`id`),
-  CONSTRAINT `fk_car_energy_type1` FOREIGN KEY (`energy_type_id`) REFERENCES `energy_type` (`id`),
-  CONSTRAINT `fk_car_model1` FOREIGN KEY (`model_id`) REFERENCES `model` (`id`)
+  CONSTRAint `fk_car_address1` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`),
+  CONSTRAint `fk_car_color1` FOREIGN KEY (`color_id`) REFERENCES `color` (`id`),
+  CONSTRAint `fk_car_energy_type1` FOREIGN KEY (`energy_type_id`) REFERENCES `energy_type` (`id`),
+  CONSTRAint `fk_car_model1` FOREIGN KEY (`model_id`) REFERENCES `model` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -300,11 +300,11 @@ CREATE TABLE `client` (
   KEY `fk_client_bill1_idx` (`bill_id`),
   KEY `fk_client_credit_card1_idx` (`credit_card_id`),
   KEY `fk_client_agency1_idx` (`agency_id`),
-  CONSTRAINT `fk_client_address1` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`),
-  CONSTRAINT `fk_client_agency1` FOREIGN KEY (`agency_id`) REFERENCES `agency` (`id`),
-  CONSTRAINT `fk_client_bill1` FOREIGN KEY (`bill_id`) REFERENCES `bill` (`id`),
-  CONSTRAINT `fk_client_credit_card1` FOREIGN KEY (`credit_card_id`) REFERENCES `credit_card` (`id`),
-  CONSTRAINT `fk_client_user_status1` FOREIGN KEY (`user_status_id`) REFERENCES `user_status` (`id`)
+  CONSTRAint `fk_client_address1` FOREIGN KEY (`address_id`) REFERENCES `address` (`id`),
+  CONSTRAint `fk_client_agency1` FOREIGN KEY (`agency_id`) REFERENCES `agency` (`id`),
+  CONSTRAint `fk_client_bill1` FOREIGN KEY (`bill_id`) REFERENCES `bill` (`id`),
+  CONSTRAint `fk_client_credit_card1` FOREIGN KEY (`credit_card_id`) REFERENCES `credit_card` (`id`),
+  CONSTRAint `fk_client_user_status1` FOREIGN KEY (`user_status_id`) REFERENCES `user_status` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -468,8 +468,8 @@ CREATE TABLE `manager` (
   UNIQUE KEY `phone_UNIQUE` (`phone`),
   KEY `fk_manager_user_status1_idx` (`user_status_id`),
   KEY `fk_manager_agency1_idx` (`agency_id`),
-  CONSTRAINT `fk_manager_agency1` FOREIGN KEY (`agency_id`) REFERENCES `agency` (`id`),
-  CONSTRAINT `fk_manager_user_status1` FOREIGN KEY (`user_status_id`) REFERENCES `user_status` (`id`)
+  CONSTRAint `fk_manager_agency1` FOREIGN KEY (`agency_id`) REFERENCES `agency` (`id`),
+  CONSTRAint `fk_manager_user_status1` FOREIGN KEY (`user_status_id`) REFERENCES `user_status` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -495,7 +495,7 @@ CREATE TABLE `model` (
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_model_brand1_idx` (`brand_id`),
-  CONSTRAINT `fk_model_brand1` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`id`)
+  CONSTRAint `fk_model_brand1` FOREIGN KEY (`brand_id`) REFERENCES `brand` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1315 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -549,8 +549,8 @@ CREATE TABLE `rent` (
   PRIMARY KEY (`id`),
   KEY `fk_rent_car1_idx` (`car_id`),
   KEY `fk_rent_client1_idx` (`client_id`),
-  CONSTRAINT `fk_rent_car1` FOREIGN KEY (`car_id`) REFERENCES `car` (`id`),
-  CONSTRAINT `fk_rent_client1` FOREIGN KEY (`client_id`) REFERENCES `client` (`id`)
+  CONSTRAint `fk_rent_car1` FOREIGN KEY (`car_id`) REFERENCES `car` (`id`),
+  CONSTRAint `fk_rent_client1` FOREIGN KEY (`client_id`) REFERENCES `client` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -577,8 +577,8 @@ CREATE TABLE `street` (
   PRIMARY KEY (`id`),
   KEY `fk_street_city1_idx` (`city_id`),
   KEY `fk_street_street_name1_idx` (`street_name_id`),
-  CONSTRAINT `fk_street_city1` FOREIGN KEY (`city_id`) REFERENCES `city` (`id`),
-  CONSTRAINT `fk_street_street_name1` FOREIGN KEY (`street_name_id`) REFERENCES `street_name` (`id`)
+  CONSTRAint `fk_street_city1` FOREIGN KEY (`city_id`) REFERENCES `city` (`id`),
+  CONSTRAint `fk_street_street_name1` FOREIGN KEY (`street_name_id`) REFERENCES `street_name` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 

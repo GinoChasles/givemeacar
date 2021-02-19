@@ -38,7 +38,7 @@ public interface CrudService<T> {
      * @param id l'id de l'entité en base de données
      * @return l'entité supprimée
      */
-     T deleteById(int id);
+     Boolean deleteById(Integer id);
 
 
     /**
@@ -47,7 +47,7 @@ public interface CrudService<T> {
      * @param id l'id de l'entité à chercher
      * @return l'entité trouvée
      */
-     Optional<T> findById(int id);
+     Optional<T> findById(Integer id);
 
     /**
      * @return la dernière entité dans la table selon son id

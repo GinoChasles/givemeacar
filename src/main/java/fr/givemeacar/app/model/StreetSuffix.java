@@ -19,7 +19,7 @@ public class StreetSuffix  implements CrudModel{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private int id;
+    private Integer id;
 
     //le nom du suffixe
     @Column(name = "name", nullable = true)

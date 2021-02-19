@@ -1,18 +1,15 @@
 package fr.givemeacar.app.errorHandler;
 
-import com.mysql.cj.jdbc.exceptions.MysqlDataTruncation;
 import org.hibernate.exception.ConstraintViolationException;
 import org.hibernate.exception.DataException;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.context.request.WebRequest;
 
-import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -34,6 +31,8 @@ public class ControllerAdvisorImpl implements ControllerAdvisor{
 
         return new ResponseEntity<>(constraintToMap(ex.getSQLException().getMessage()), HttpStatus.CONFLICT);
     }
+
+
 
 
 

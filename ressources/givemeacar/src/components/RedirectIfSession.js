@@ -11,7 +11,7 @@ import Cookies from 'js-cookie'
 export default function RedirectIfSession({ session, route }) {
     console.log("user", Cookies.get('user'), typeof Cookies.get('user') == "undefined");
 
-    if (session && Cookies.get('user')) {
+    if (session && Cookies.get('user') && Cookies.get('user').authorities) {
         console.log("truc : ", Cookies.get('user'));
         return <Redirect to={route} />
     }

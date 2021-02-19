@@ -20,7 +20,7 @@ public class Country  implements CrudModel{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private int id;
+    private Integer id;
 
     //le nom du pays
     @Column(name = "name", nullable = false)

@@ -25,15 +25,17 @@ public class RoleController extends CrudControllerImpl<Role>{
     @RequestMapping(value = "roles", method = RequestMethod.GET)
     @Override
         public ResponseEntity findAll(@RequestParam(required = false) String _order,
-            @RequestParam(required = false) String _sort, @RequestParam(required = false) Integer _start,
-                @RequestParam(required = false) Integer _end, @RequestParam(required = false) Integer id,
+            @RequestParam(required = false) String _sort,
+                                      @RequestParam(required = false) Integer _start,
+                @RequestParam(required = false) Integer _end,
+                                      @RequestParam(required = false) Integer id,
                 @RequestParam(required = false) String q) {
-            return super.findAll(new Role(),"user_statuses",_order, _sort, _start, _end, id, q);
+            return super.findAll(new Role(),"roles",_order, _sort, _start, _end, id, q);
     }
 
     @GetMapping("roles/{id}")
     @Override
-    public ResponseEntity findById(@PathVariable int id) {
+    public ResponseEntity findById(@PathVariable Integer id) {
         return super.findById(id);
     }
 
@@ -45,13 +47,13 @@ public class RoleController extends CrudControllerImpl<Role>{
 
 
     @PutMapping("roles/{id}")
-    public ResponseEntity update(@PathVariable int id,@RequestBody Role model) {
+    public ResponseEntity update(@PathVariable Integer id,@RequestBody Role model) {
         return super.update(model);
     }
 
 
     @DeleteMapping("roles/{id}")
-    public ResponseEntity deleteById(@PathVariable int id) {
+    public ResponseEntity deleteById(@PathVariable Integer id) {
         return super.deleteById(id);
     }
 
