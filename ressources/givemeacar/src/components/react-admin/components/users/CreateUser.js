@@ -8,7 +8,8 @@ import {
   TextInput,
   NumberInput,
   useTranslate,
-  SelectArrayInput
+  SelectArrayInput,
+  BooleanInput,
 } from "react-admin";
 
 let globalRoles;
@@ -40,7 +41,7 @@ const CreateUser = (props) => {
     data.roles = data.roleIds
     data.username = data.mail
     delete data.roleIds
-    
+
     Object.values(data.roles).forEach((dataRole, i) => {
       Object.values(globalRoles).forEach(role => {
         if (role.id === dataRole) {
@@ -84,6 +85,7 @@ const CreateUser = (props) => {
 
       <SelectArrayInput source="roleIds" choices={roles} />
 
+      <BooleanInput source="enabled" />
     </SimpleForm>
   </Create>
 }

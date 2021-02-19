@@ -26,7 +26,6 @@ const DisplayUser = (props) => {
 
             <TextField label={t('custom.roles')} source="joinedRoles" />
 
-            <BooleanField label={t('custom.enabled')} source="enabled" />
 
             <TextField label={t('custom.phone')} source="phone" />
 
@@ -34,6 +33,7 @@ const DisplayUser = (props) => {
 
             <TextField label={t('custom.agency')} source="agencyName" />
 
+            <BooleanField label={t('custom.enabled')} source="enabled" />
         </Datagrid>
     </List>
 }

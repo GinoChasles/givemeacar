@@ -1,4 +1,7 @@
-import { AutocompleteInput, Edit, PasswordInput, ReferenceInput, SimpleForm, TextInput, NumberInput, useTranslate, SelectArrayInput } from "react-admin";
+import {
+    AutocompleteInput, Edit, PasswordInput, ReferenceInput, SimpleForm,
+    TextInput, NumberInput, useTranslate, SelectArrayInput, BooleanInput
+} from "react-admin";
 import * as React from "react";
 
 let globalRoles;
@@ -72,6 +75,8 @@ const EditUser = (props) => {
             </ReferenceInput>
 
             <SelectArrayInput source="roleIds" choices={roles} />
+
+            <BooleanInput source="enabled" />
         </SimpleForm>
         {/* </TabbedShowLayout> */}
     </Edit>
