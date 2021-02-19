@@ -1,5 +1,5 @@
 import {
-    Datagrid, Filter, List, SearchInput, TextField, EmailField, BooleanField, ReferenceField, useTranslate
+    Datagrid, Filter, List, SearchInput, SingleFieldList, ChipField, ArrayField, TextField, EmailField, BooleanField, ReferenceField, useTranslate
 } from "react-admin";
 import * as React from "react";
 
@@ -24,7 +24,11 @@ const DisplayUser = (props) => {
 
             <EmailField label={t('custom.mail')} source="mail" />
 
-            <TextField label={t('custom.roles')} source="joinedRoles" />
+            <ArrayField label={t('custom.roles')} source="roles">
+                <SingleFieldList>
+                    <ChipField label={t('custom.name')} source="name" />
+                </SingleFieldList>
+            </ArrayField>
 
 
             <TextField label={t('custom.phone')} source="phone" />
