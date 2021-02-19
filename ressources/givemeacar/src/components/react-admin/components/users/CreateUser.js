@@ -7,16 +7,51 @@ import {
   AutocompleteInput,
   TextInput,
   NumberInput,
-  useTranslate
+  useTranslate,
+  SelectArrayInput
 } from "react-admin";
 
-
+let globalRoles;
 
 const CreateUser = (props) => {
 
   const t = useTranslate();
 
-  return <Create {...props} title={t('custom.creation')}>
+  const [roles, setRoles] = React.useState([]);
+
+  React.useEffect(() => {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'application/json');
+
+    fetch('http://localhost:8080/api/roles?_start=0&_end=25&_sort=id&order=asc', {
+      headers
+    }).then(res => {
+      if (res.ok) {
+        return res.json()
+      }
+    }).then(json => {
+      setRoles(json);
+      globalRoles = json;
+    })
+  }, []);
+
+  return <Create {...props} title={t('custom.creation')} transform={(data) => {
+    data.roles = data.roleIds
+    data.username = data.mail
+    delete data.roleIds
+
+    Object.values(data.roles).forEach((dataRole, i) => {
+      Object.values(globalRoles).forEach(role => {
+        if (role.id === dataRole) {
+          data.roles[i] = role;
+        }
+      })
+    })
+
+    return data;
+  }}>
+
     <SimpleForm>
 
       <TextInput label={t('custom.firstName')} source="firstName" />
@@ -47,9 +82,7 @@ const CreateUser = (props) => {
         <AutocompleteInput optionText="name" optionValue={"id"} />
       </ReferenceInput>
 
-      <ReferenceInput label={t('custom.roles')} source="roles" reference="roles">
-        <AutocompleteInput optionText="name" optionValue={"id"} />
-      </ReferenceInput>
+      <SelectArrayInput source="roleIds" choices={roles} />
 
     </SimpleForm>
   </Create>
