@@ -40,7 +40,7 @@ const CreateUser = (props) => {
     data.roles = data.roleIds
     data.username = data.mail
     delete data.roleIds
-
+    
     Object.values(data.roles).forEach((dataRole, i) => {
       Object.values(globalRoles).forEach(role => {
         if (role.id === dataRole) {

@@ -27,13 +27,18 @@ const EditUser = (props) => {
     }, []);
 
     return <Edit {...props} undoable={false} title={t('custom.edition')} transform={(data) => {
-        Object.values(data.roles).forEach((dataRole, i) => {
+        console.log(data.roleIds)
+
+        data.roles = []
+        Object.values(data.roleIds).forEach((id, i) => {
             Object.values(globalRoles).forEach(role => {
-                if (role.id === dataRole) {
-                    data.roles[i] = role;
+                if (role.id === id) {
+                    data.roles.push(role);
                 }
             })
         })
+
+        console.log(data);
 
         return data;
     }}>
