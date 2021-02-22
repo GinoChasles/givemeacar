@@ -7,6 +7,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.Objects;
 
 /**
  * Le modèle représentant les voitures
@@ -93,6 +94,135 @@ public class Car implements CrudModel {
     @Column(name = "color_id", nullable = false)
     private Integer color_id;
 
+    @Override public Integer getId() {
+        return id;
+    }
+
+    @Override public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public int getKilometers() {
+        return kilometers;
+    }
+
+    public void setKilometers(int kilometers) {
+        this.kilometers = kilometers;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    public boolean isAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+
+    public boolean isRented() {
+        return rented;
+    }
+
+    public void setRented(boolean rented) {
+        this.rented = rented;
+    }
+
+    public BigDecimal getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(BigDecimal longitude) {
+        this.longitude = longitude;
+    }
+
+    public BigDecimal getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(BigDecimal latitude) {
+        this.latitude = latitude;
+    }
+
+    public EnergyType getEnergyType() {
+        return energyType;
+    }
+
+    public void setEnergyType(EnergyType energyType) {
+        this.energyType = energyType;
+    }
+
+    public Integer getEnergy_type_id() {
+        return energy_type_id;
+    }
+
+    public void setEnergy_type_id(Integer energy_type_id) {
+        this.energy_type_id = energy_type_id;
+    }
+
+    public Double getEnergyMax() {
+        return energyMax;
+    }
+
+    public void setEnergyMax(Double energyMax) {
+        this.energyMax = energyMax;
+    }
+
+    public Double getEnergyCurrent() {
+        return energyCurrent;
+    }
+
+    public void setEnergyCurrent(Double energyCurrent) {
+        this.energyCurrent = energyCurrent;
+    }
+
+    public Model getModel() {
+        return model;
+    }
+
+    public void setModel(Model model) {
+        this.model = model;
+    }
+
+    public Integer getModel_id() {
+        return model_id;
+    }
+
+    public void setModel_id(Integer model_id) {
+        this.model_id = model_id;
+    }
+
+    public Color getColor() {
+        return color;
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
+    }
+
+    public Integer getColor_id() {
+        return color_id;
+    }
+
+    public void setColor_id(Integer color_id) {
+        this.color_id = color_id;
+    }
+
+
     //le nom du modèle de la voiture
     public String getModelName() {
         if (model != null) {
@@ -131,5 +261,33 @@ public class Car implements CrudModel {
             return energyType.getName();
         }
         return null;
+    }
+
+    @Override public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Car)) return false;
+        Car car = (Car) o;
+        return getKilometers() == car.getKilometers() &&
+                getYear() == car.getYear() &&
+                isAvailable() == car.isAvailable() &&
+                isRented() == car.isRented() &&
+                Objects.equals(getId(), car.getId()) &&
+                Objects.equals(getPrice(), car.getPrice()) &&
+                Objects.equals(getLongitude(), car.getLongitude()) &&
+                Objects.equals(getLatitude(), car.getLatitude()) &&
+                Objects.equals(getEnergyType(), car.getEnergyType()) &&
+                Objects.equals(getEnergy_type_id(), car.getEnergy_type_id()) &&
+                Objects.equals(getEnergyMax(), car.getEnergyMax()) &&
+                Objects.equals(getEnergyCurrent(), car.getEnergyCurrent()) &&
+                Objects.equals(getModel(), car.getModel()) &&
+                Objects.equals(getModel_id(), car.getModel_id()) &&
+                Objects.equals(getColor(), car.getColor()) &&
+                Objects.equals(getColor_id(), car.getColor_id());
+    }
+
+    @Override public int hashCode() {
+        return Objects.hash(getId(), getKilometers(), getPrice(), getYear(), isAvailable(), isRented(), getLongitude(),
+                getLatitude(), getEnergyType(), getEnergy_type_id(), getEnergyMax(), getEnergyCurrent(), getModel(),
+                getModel_id(), getColor(), getColor_id());
     }
 }

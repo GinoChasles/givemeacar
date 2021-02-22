@@ -1,4 +1,4 @@
-export default {
+const fr = {
     address: "adresse",
     addresses: "adresses",
 
@@ -95,7 +95,7 @@ export default {
     rentStart: "début de la location",
     rentEnd: "fin de la location",
 
-    roles: "roles",
+    role: "role",
     roles: "roles",
 
     street: "rue",
@@ -104,9 +104,11 @@ export default {
     suffix: "suffixe",
     suffices: "suffixes",
 
-    user: "user",
-    users: "users",
+    user: "utilisateur",
+    users: "utilisateurs",
 
     year: "année",
     zipcode: "code postal",
 }
+
+export default fr;

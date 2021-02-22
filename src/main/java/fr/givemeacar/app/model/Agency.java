@@ -1,17 +1,13 @@
 package fr.givemeacar.app.model;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Data;
-
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 
 /**
  * Le modèle représentant les agences de location
  */
-@Data
 @Entity
 @Table(name = "agencies", schema = "givemeacar")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})

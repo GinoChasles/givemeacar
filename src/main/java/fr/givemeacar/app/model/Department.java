@@ -6,11 +6,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Objects;
 
 /**
  * Représentation des départements
  */
-@Data
 @Entity
 @Table(name = "departments", schema = "givemeacar")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -46,5 +46,60 @@ public class Department implements CrudModel {
             return getRegion().getName();
         }
         return null;
+    }
+
+    @Override public Integer getId() {
+        return id;
+    }
+
+    @Override public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public Region getRegion() {
+        return region;
+    }
+
+    public void setRegion(Region region) {
+        this.region = region;
+    }
+
+    public int getRegion_id() {
+        return region_id;
+    }
+
+    public void setRegion_id(int region_id) {
+        this.region_id = region_id;
+    }
+
+    @Override public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Department)) return false;
+        Department that = (Department) o;
+        return getRegion_id() == that.getRegion_id() &&
+                Objects.equals(getId(), that.getId()) &&
+                Objects.equals(getName(), that.getName()) &&
+                Objects.equals(getCode(), that.getCode()) &&
+                Objects.equals(getRegion(), that.getRegion());
+    }
+
+    @Override public int hashCode() {
+        return Objects.hash(getId(), getName(), getCode(), getRegion(), getRegion_id());
     }
 }

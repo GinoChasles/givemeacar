@@ -56,8 +56,6 @@ const EditUser = (props) => {
 
             <TextInput label={t('custom.mail')} source="mail" />
 
-            <PasswordInput label={t('custom.password')} source="password" />
-
             <TextInput label={t('custom.phone')} source="phone" />
 
             <NumberInput label={t('custom.number')} source="streetNumber" />
@@ -74,9 +72,9 @@ const EditUser = (props) => {
                 <AutocompleteInput optionText="name" optionValue={"id"} />
             </ReferenceInput>
 
-            <SelectArrayInput source="roleIds" choices={roles} />
+            <SelectArrayInput label={t('custom.roles')} source="roleIds" choices={roles} />
 
-            <BooleanInput source="enabled" />
+            <BooleanInput label={t('custom.enabled')} source="enabled" />
         </SimpleForm>
         {/* </TabbedShowLayout> */}
     </Edit>

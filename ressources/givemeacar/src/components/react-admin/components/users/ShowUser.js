@@ -27,8 +27,6 @@ const ShowUser = (props) => {
 
             <EmailField label={t('custom.mail')} source="mail" />
 
-            <TextField label={t('custom.password')} source="password" />
-
             <TextField label={t('custom.phone')} source="phone" />
 
             <TextField label={t('custom.address')} source="address" />

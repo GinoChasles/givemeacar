@@ -83,9 +83,9 @@ const CreateUser = (props) => {
         <AutocompleteInput optionText="name" optionValue={"id"} />
       </ReferenceInput>
 
-      <SelectArrayInput source="roleIds" choices={roles} />
+      <SelectArrayInput label={t('custom.roles')} source="roleIds" choices={roles} />
 
-      <BooleanInput source="enabled" />
+      <BooleanInput label={t('custom.enabled')} source="enabled" />
     </SimpleForm>
   </Create>
 }

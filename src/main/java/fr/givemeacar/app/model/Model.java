@@ -7,6 +7,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
+import java.util.Objects;
 
 /**
  * Représentation du modèle de véhicule
@@ -44,5 +45,51 @@ public class Model implements CrudModel {
             return getBrand().getName();
         }
         return null;
+    }
+
+    @Override public Integer getId() {
+        return id;
+    }
+
+    @Override public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+
+    public int getBrand_id() {
+        return brand_id;
+    }
+
+    public void setBrand_id(int brand_id) {
+        this.brand_id = brand_id;
+    }
+
+    @Override public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Model)) return false;
+        Model model = (Model) o;
+        return getBrand_id() == model.getBrand_id() &&
+                Objects.equals(getId(), model.getId()) &&
+                Objects.equals(getName(), model.getName()) &&
+                Objects.equals(getBrand(), model.getBrand());
+    }
+
+    @Override public int hashCode() {
+        return Objects.hash(getId(), getName(), getBrand(), getBrand_id());
     }
 }

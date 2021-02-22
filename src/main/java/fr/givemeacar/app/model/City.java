@@ -8,11 +8,11 @@ import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import java.math.BigDecimal;
+import java.util.Objects;
 
 /**
  * Le modèle représentant les villes
  */
-@Data
 @Entity
 @Table(name = "cities", schema = "givemeacar")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -52,6 +52,62 @@ public class City implements CrudModel {
     @Column(name = "department_id", nullable = false)
     private int department_id;
 
+    @Override public Integer getId() {
+        return id;
+    }
+
+    @Override public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getZipcode() {
+        return zipcode;
+    }
+
+    public void setZipcode(String zipcode) {
+        this.zipcode = zipcode;
+    }
+
+    public BigDecimal getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(BigDecimal longitude) {
+        this.longitude = longitude;
+    }
+
+    public BigDecimal getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(BigDecimal latitude) {
+        this.latitude = latitude;
+    }
+
+    public Department getDepartment() {
+        return department;
+    }
+
+    public void setDepartment(Department department) {
+        this.department = department;
+    }
+
+    public int getDepartment_id() {
+        return department_id;
+    }
+
+    public void setDepartment_id(int department_id) {
+        this.department_id = department_id;
+    }
+
     //le nom du département dans lequel se situe la ville
     public String getDepartmentName() {
         if (getDepartment() != null) {
@@ -80,4 +136,22 @@ public class City implements CrudModel {
         return null;
     }
 
+    @Override public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof City)) return false;
+        City city = (City) o;
+        return getDepartment_id() == city.getDepartment_id() &&
+                Objects.equals(getId(), city.getId()) &&
+                Objects.equals(getName(), city.getName()) &&
+                Objects.equals(getZipcode(), city.getZipcode()) &&
+                Objects.equals(getLongitude(), city.getLongitude()) &&
+                Objects.equals(getLatitude(), city.getLatitude()) &&
+                Objects.equals(getDepartment(), city.getDepartment());
+    }
+
+    @Override public int hashCode() {
+        return Objects
+                .hash(getId(), getName(), getZipcode(), getLongitude(), getLatitude(), getDepartment(),
+                        getDepartment_id());
+    }
 }
