@@ -7,6 +7,9 @@ import fr.givemeacar.app.repository.StreetSuffixRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Le service des rues
+ */
 @Service
 public class StreetService extends CrudServiceImpl<Street> {
     @Autowired

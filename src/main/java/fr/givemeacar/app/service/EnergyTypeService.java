@@ -5,6 +5,9 @@ import fr.givemeacar.app.repository.EnergyTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Le service des types de carburants
+ */
 @Service
 public class EnergyTypeService extends CrudServiceImpl<EnergyType> {
     @Autowired

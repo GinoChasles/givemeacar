@@ -1,7 +1,5 @@
 package fr.givemeacar.app.repository;
 
-import fr.givemeacar.app.model.Agency;
-
 import java.util.Optional;
 
 public interface CrudRepository<T> {

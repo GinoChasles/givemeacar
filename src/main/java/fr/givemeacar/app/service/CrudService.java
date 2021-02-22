@@ -10,14 +10,14 @@ import javax.persistence.EntityManager;
 public interface CrudService<T> {
 
     /**
-     * Compte les entitées dnas la base de données
+     * Compte les entités dans la base de données
      *
      * @return le nombre d'entités dans la base de données
      */
      Long count();
 
     /**
-     * persiste une entité en base de données
+     * Persiste une entité en base de données
      *
      * @param t l'entité à persister
      * @return une réponse 200(ok) ou 409(conflict)
@@ -25,7 +25,7 @@ public interface CrudService<T> {
      T create(T t) ;
 
     /**
-     * met à jour une entité
+     * Met à jour une entité
      *
      * @param t l'objet à mettre à jour
      * @return une réponse 200(ok) ou 409(conflict)
@@ -50,13 +50,14 @@ public interface CrudService<T> {
      Optional<T> findById(Integer id);
 
     /**
-     * @return la dernière entité dans la table selon son id
+     * Cherche le dernier modèle en base de données basé sur son id
+     * @return le dernier modèle en base de données
      */
      T findLast();
 
 
     /**
-     *
+     * Cherche toutes les entitées dans l'interval donné
      * @param offset l'offset de recherce
      * @param limit  la limite de recherche
      * @param order  l'ordre de recherce (ASC ou DESC)
@@ -76,16 +77,18 @@ public interface CrudService<T> {
      * @param sort   le tri effectué (par id, name...)
      * @return a list of entities starting by the given name
      */
-     List<T> findByNameStartingWith(T clazz, String column,String name,String sort,String order,int offset,
+     List<T> findByNameLike(T clazz, String column,String name,String sort,String order,int offset,
                                           int limit);
 
     /**
-     * @return the repository of the service
+     * Le repository rattaché au service
+     * @return Le repository rattaché au service
      */
      BaseCrudRepository<?> getRepository();
 
     /**
-     * @return l'entityManager lié au servie
+     * L'entityManager lié au servie
+     * @return L'entityManager lié au servie
      */
      EntityManager getEntityManager();
 }

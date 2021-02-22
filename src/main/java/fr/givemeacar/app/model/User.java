@@ -2,7 +2,6 @@ package fr.givemeacar.app.model;
 
 import static java.util.stream.Collectors.joining;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import java.util.List;
@@ -56,7 +55,7 @@ public class User implements CrudModel{
     private String mail;
 
     //le mot de passe de l'utilisateur
-    @Column(name = "password", nullable = false, length = 64)
+    @Column(name = "password", length = 64)
     //@JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
@@ -121,6 +120,9 @@ public class User implements CrudModel{
     @Column(name = "agency_id", nullable = false)
     private Integer agency_id;
 
+    @OneToMany(mappedBy = "rent")
+    private Set<Rent> rents;
+
     @Override public Integer getId() {
         return id;
     }
@@ -169,7 +171,6 @@ public class User implements CrudModel{
         this.mail = mail;
     }
 
-    @JsonIgnore
     public String getPassword() {
         return password;
     }
@@ -302,6 +303,14 @@ public class User implements CrudModel{
         return enabled;
     }
 
+    public Set<Rent> getRents() {
+        return rents;
+    }
+
+    public void setRents(Set<Rent> rents) {
+        this.rents = rents;
+    }
+
     @Override public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof User)) return false;
@@ -326,13 +335,14 @@ public class User implements CrudModel{
                 Objects.equals(getCreditCard(), user.getCreditCard()) &&
                 Objects.equals(getCredit_card_id(), user.getCredit_card_id()) &&
                 Objects.equals(getAgency(), user.getAgency()) &&
-                Objects.equals(getAgency_id(), user.getAgency_id());
+                Objects.equals(getAgency_id(), user.getAgency_id()) &&
+                Objects.equals(getRents(), user.getRents());
     }
 
     @Override public int hashCode() {
         return Objects.hash(getId(), isEnabled(), getRoles(), getFirstName(), getLastName(), getUsername(), getMail(),
                 getPassword(), getPhone(), getStreetNumber(), getStreetSuffix(), getStreet_suffix_id(), getStreet(),
                 getStreet_id(), getCity(), getCity_id(), getBill(), getCreditCard(), getCredit_card_id(), getAgency(),
-                getAgency_id());
+                getAgency_id(), getRents());
     }
 }

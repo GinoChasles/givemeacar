@@ -1,7 +1,7 @@
 package fr.givemeacar.app.controller;
 
 import fr.givemeacar.app.model.Role;
-import fr.givemeacar.app.service.UserStatusService;
+import fr.givemeacar.app.service.RoleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,7 +14,7 @@ import javax.validation.Valid;
 public class RoleController extends CrudControllerImpl<Role>{
 
     @Autowired
-    UserStatusService service;
+    RoleService service;
 
     @RequestMapping("roles/count")
     @Override
@@ -58,7 +58,7 @@ public class RoleController extends CrudControllerImpl<Role>{
     }
 
     @Override
-    public UserStatusService getService() {
+    public RoleService getService() {
         return service;
     }
 }

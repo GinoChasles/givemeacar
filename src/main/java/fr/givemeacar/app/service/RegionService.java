@@ -5,6 +5,9 @@ import fr.givemeacar.app.repository.RegionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Le service des régions
+ */
 @Service
 public class RegionService extends CrudServiceImpl<Region> {
     @Autowired

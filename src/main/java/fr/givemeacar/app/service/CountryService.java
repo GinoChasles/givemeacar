@@ -5,6 +5,9 @@ import fr.givemeacar.app.repository.CountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Le service des pays
+ */
 @Service
 public class CountryService extends CrudServiceImpl<Country> {
     @Autowired

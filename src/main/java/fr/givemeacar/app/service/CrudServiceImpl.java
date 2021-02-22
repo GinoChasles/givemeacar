@@ -14,41 +14,49 @@ import javax.persistence.Query;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Classe abstraite pour chaque service effectuant des opérations CRUD de base.
+ * @param <T>
+ */
 @NoRepositoryBean
-public class CrudServiceImpl<T> implements CrudService<T> {
+public abstract class CrudServiceImpl<T> implements CrudService<T> {
 
+    /**
+     * L'entityManager permettant d'effectuer des requêtes natives
+     */
     @Autowired
     EntityManager entityManager;
 
     public Long count() {
-        return ((BaseCrudRepository)getRepository()).count();
+        return getRepository().count();
     }
 
     public T create(T model) {
-            return (T) getRepository().save(model);
+        return getRepository().save(model);
     }
 
     public T update(T model) {
-        return ((BaseCrudRepository)getRepository()).existsById(((CrudModel) model).getId()) ? (T)((BaseCrudRepository)getRepository()).save(model) : null;
+        if(getRepository().existsById(((CrudModel) model).getId())) {
+            return getRepository().save(model);
+        }
+        return null;
     }
 
     public Boolean deleteById(Integer id){
         getRepository().deleteById(id);
-
         return true;
     }
 
     public T findLast(){
-        return (T)((BaseCrudRepository)getRepository()).findFirstByOrderByIdDesc();
+        return getRepository().findFirstByOrderByIdDesc();
     }
 
     public Optional<T> findById(Integer id){
-        return (Optional<T>)((BaseCrudRepository)getRepository()).findById(id);
+        return getRepository().findById(id);
     }
 
     public List<T> findAll(int offset, int limit, String order, String sort) {
-
-        return ((BaseCrudRepository)getRepository()).findAll(
+        return getRepository().findAll(
                 PageRequest.of((int) Math.floor(offset / (limit-offset)),
                         limit-offset,
                         "DESC".equals(order) ? Sort.by(sort).descending() : Sort.by(sort).ascending()
@@ -56,16 +64,17 @@ public class CrudServiceImpl<T> implements CrudService<T> {
         ).toList();
     }
 
-    public List<T> findByNameStartingWith(T clazz,String column,String name,String sort,String order,int offset,
+    public List<T> findByNameLike(T clazz,String column,String name,String sort,String order,int offset,
                                           int limit){
-        Query q = getEntityManager().createNativeQuery("SELECT * FROM " + column + " WHERE name LIKE '" + name +
-                "%' " +
+        Query q =
+                getEntityManager().createNativeQuery("SELECT * FROM " + column + " WHERE LOWER(name) LIKE \"%" + name +
+                "%\" " +
                 "ORDER BY " + sort,clazz.getClass());
 
         return q.setFirstResult(offset).setMaxResults(limit).getResultList();
     }
 
-    public BaseCrudRepository getRepository(){
+    public BaseCrudRepository<T> getRepository(){
         return null;
     }
 

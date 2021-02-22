@@ -69,8 +69,7 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
 
 
     public ResponseEntity<?> findById(Integer id){
-        if(id == 0) return ResponseEntity.ok((getService()).findLast());
-
+        if(id == 0) return ResponseEntity.ok(getService().findLast());
         Optional<T> model = (getService()).findById(id);
 
         if(model.isPresent())
@@ -84,7 +83,7 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
     public ResponseEntity<?> findByNameStartingBy(T clazz,String column,String name,String sort,String order,
                                                   int offset,
                                                int limit){
-        List<T> res = getService().findByNameStartingWith(clazz,column,name,sort,order,offset,limit);
+        List<T> res = getService().findByNameLike(clazz,column,name,sort,order,offset,limit);
             responseHeaders = new HttpHeaders();
             responseHeaders.set("X-Total-Count", String.valueOf(res.size()));
             responseHeaders.set("Access-Control-Expose-Headers", "X-Total-Count");

@@ -41,8 +41,6 @@ const EditUser = (props) => {
             })
         })
 
-        console.log(data);
-
         return data;
     }}>
 
@@ -55,6 +53,8 @@ const EditUser = (props) => {
             <TextInput label={t('custom.lastName')} source="lastName" />
 
             <TextInput label={t('custom.mail')} source="mail" />
+
+            <PasswordInput label={t('custom.password')} source="password" style={{ display: 'none' }} />
 
             <TextInput label={t('custom.phone')} source="phone" />
 

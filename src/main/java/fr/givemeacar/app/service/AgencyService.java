@@ -5,6 +5,9 @@ import fr.givemeacar.app.repository.AgencyRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Le service des agences
+ */
 @Service
 public class AgencyService extends CrudServiceImpl<Agency> {
     @Autowired

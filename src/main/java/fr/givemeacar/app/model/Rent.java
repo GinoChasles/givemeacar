@@ -36,8 +36,8 @@ public class Rent  implements CrudModel{
     private Car car;
 
     //l'utilisateur qui a loué la voiture
-    @OneToOne
-    @JoinColumn(name = "client_id", referencedColumnName = "id",
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id",
             nullable = false,insertable = false,updatable = false)
     private User user;
 
@@ -46,8 +46,8 @@ public class Rent  implements CrudModel{
     private int car_id;
 
     //l'identifiant de l'utilisateur qui a loué la voiture
-    @Column(name = "client_id", nullable = false)
-    private int client_id;
+    @Column(name = "user_id", nullable = false)
+    private int user_id;
 
     @Override public Integer getId() {
         return id;
@@ -97,12 +97,12 @@ public class Rent  implements CrudModel{
         this.car_id = car_id;
     }
 
-    public int getClient_id() {
-        return client_id;
+    public int getUser_id() {
+        return user_id;
     }
 
-    public void setClient_id(int client_id) {
-        this.client_id = client_id;
+    public void setUser_id(int user_id) {
+        this.user_id = user_id;
     }
 
     @Override public boolean equals(Object o) {
@@ -110,7 +110,7 @@ public class Rent  implements CrudModel{
         if (!(o instanceof Rent)) return false;
         Rent rent = (Rent) o;
         return getCar_id() == rent.getCar_id() &&
-                getClient_id() == rent.getClient_id() &&
+                getUser_id() == rent.getUser_id() &&
                 Objects.equals(getId(), rent.getId()) &&
                 Objects.equals(getStart(), rent.getStart()) &&
                 Objects.equals(getEnd(), rent.getEnd()) &&
@@ -119,6 +119,6 @@ public class Rent  implements CrudModel{
     }
 
     @Override public int hashCode() {
-        return Objects.hash(getId(), getStart(), getEnd(), getCar(), getUser(), getCar_id(), getClient_id());
+        return Objects.hash(getId(), getStart(), getEnd(), getCar(), getUser(), getCar_id(), getUser_id());
     }
 }

@@ -5,6 +5,9 @@ import fr.givemeacar.app.repository.ColorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * Le service des couleurs
+ */
 @Service
 public class ColorService extends CrudServiceImpl<Color> {
     @Autowired
