@@ -23,7 +23,7 @@ public class StreetSuffix  implements CrudModel{
     private Integer id;
 
     //le nom du suffixe
-    @Column(name = "name", nullable = true)
+    @Column(name = "name")
     private String name;
 
     @Override public Integer getId() {

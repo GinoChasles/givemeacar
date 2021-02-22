@@ -1,9 +1,6 @@
 package fr.givemeacar.app.model;
 
-
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Data;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import java.util.Objects;

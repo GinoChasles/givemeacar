@@ -1,10 +1,7 @@
 package fr.givemeacar.app.model;
 
-
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Data;
-
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -22,11 +19,11 @@ public class Department implements CrudModel {
     private Integer id;
 
     //le nom du département
-    @Column(name = "name", nullable = true, length = 45)
+    @Column(name = "name", length = 45)
     private String name;
 
     //le code du département
-    @Column(name = "code", nullable = true, length = 45)
+    @Column(name = "code", length = 45)
     private String code;
 
     //la région dans laquelle se situe le département

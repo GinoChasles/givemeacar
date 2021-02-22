@@ -3,8 +3,6 @@ package fr.givemeacar.app.model;
 import static java.util.stream.Collectors.joining;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import javax.persistence.*;
 import javax.validation.constraints.Pattern;
 import java.util.List;
@@ -17,7 +15,6 @@ import java.util.stream.Collectors;
  */
 @Entity
 @Table(name = "users", schema = "givemeacar")
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class User implements CrudModel{
 
     @Id
@@ -40,13 +37,13 @@ public class User implements CrudModel{
     //le prénom de l'utilisateur
     @Column(name = "firstname", nullable = false)
     @Pattern(regexp = "[a-zA-Z" +
-            "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,32}")
+            "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆŠŽ∂ð ,.'-]{2,32}")
     private String firstName;
 
     //le nom de famile de l'utilisateur
     @Column(name = "lastname", nullable = false)
     @Pattern(regexp = "[a-zA-Z" +
-            "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]{2,32}")
+            "àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆŠŽ∂ð ,.'-]{2,32}")
     private String lastName;
 
     //le nom d'utilisateur de l'utilisateur
@@ -69,14 +66,13 @@ public class User implements CrudModel{
     private String phone;
 
     //le numéro de la rue de l'utilisateur
-    @Column(name = "street_number", nullable = true)
+    @Column(name = "street_number")
     private Integer streetNumber;
 
 
     //le suffixe de la rue de l'utilisateur
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "street_suffix_id", referencedColumnName = "id", nullable = true, insertable = false,
-            updatable = false)
+    @JoinColumn(name = "street_suffix_id", referencedColumnName = "id", insertable = false,updatable = false)
     private StreetSuffix streetSuffix;
 
     //l'id du suffixe de la rue de l'utilisateur
@@ -85,8 +81,7 @@ public class User implements CrudModel{
 
     //la rue de l'utilisateur
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "street_id", referencedColumnName = "id", nullable = true, insertable = false,
-            updatable = false)
+    @JoinColumn(name = "street_id", referencedColumnName = "id",  insertable = false,updatable = false)
     private Street street;
 
     //l'id de la rue de l'utilisateur
@@ -95,7 +90,7 @@ public class User implements CrudModel{
 
     //la ville de l'utilisateur
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "city_id", referencedColumnName = "id", nullable = true, insertable = false, updatable = false)
+    @JoinColumn(name = "city_id", referencedColumnName = "id",  insertable = false, updatable = false)
     private City city;
 
     //l'id de la ville de l'utilisateur
@@ -104,23 +99,22 @@ public class User implements CrudModel{
 
     //#TODO ManyToMany sur user et bills
     @OneToOne
-    @JoinColumn(name = "bill_id", referencedColumnName = "id", nullable = true, updatable = false, insertable = false)
+    @JoinColumn(name = "bill_id", referencedColumnName = "id",  updatable = false, insertable = false)
     private Bill bill;
 
     //la carte de crédit de l'utilisateur
     @OneToOne
-    @JoinColumn(name = "credit_card_id", referencedColumnName = "id", nullable = true, updatable = false,
-            insertable = false)
+    @JoinColumn(name = "credit_card_id", referencedColumnName = "id",  updatable = false,insertable = false)
     private CreditCard creditCard;
 
     //l'id de la carte de crédit de l'utilisateur
-    @Column(name = "credit_card_id", nullable = true)
+    @Column(name = "credit_card_id")
     private Integer credit_card_id;
 
     //l'agence rattachée à l'utilisateur
     @OneToOne
-    @JoinColumn(name = "agency_id", referencedColumnName = "id", nullable = false, updatable = false,
-            insertable = false)
+    @JoinColumn(name = "agency_id", referencedColumnName = "id", nullable = false, updatable = false, insertable =
+            false)
     private Agency agency;
 
     //l'id de l'agence rattachée à l'utilisateur
@@ -297,11 +291,11 @@ public class User implements CrudModel{
     }
 
     public String getJoinedRoles(){
-        return (String) roles.stream().map(role -> role.getName()).collect(joining(","));
+        return roles.stream().map(Role::getName).collect(joining(","));
     }
 
     public List<Integer> getRoleIds(){
-        return roles.stream().map(role->role.getId().intValue()).collect(Collectors.toList());
+        return roles.stream().map(Role::getId).collect(Collectors.toList());
     }
 
     public boolean isEnabled() {
