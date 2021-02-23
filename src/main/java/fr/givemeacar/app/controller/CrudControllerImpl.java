@@ -17,7 +17,6 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
     //l'instance de HttpHeaders pour les échanges avec le client
     HttpHeaders responseHeaders;
 
-
     public ResponseEntity<?> count() {
         try {
             return ResponseEntity.ok(getService().count());
@@ -41,7 +40,7 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
 
     public ResponseEntity<?> update(@RequestBody T model) {
         try {
-            return ResponseEntity.ok((getService()).update(model));
+            return ResponseEntity.ok(getService().update(model));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body(e);
         }
@@ -49,12 +48,14 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
 
 
 
-    public ResponseEntity<?> deleteById(Integer id){ return ResponseEntity.ok((getService()).deleteById(id)); }
+    public ResponseEntity<?> deleteById(Integer id){
+        return ResponseEntity.ok((getService()).deleteById(id)); }
 
 
 
     public ResponseEntity<?> listById(Integer id){
-        if(id == 0) return ResponseEntity.ok((getService()).findLast());
+        if(id == 0)
+            return ResponseEntity.ok((getService()).findLast());
 
         Optional<T> model = (getService()).findById(id);
 
@@ -69,8 +70,10 @@ public abstract class CrudControllerImpl<T> implements CrudController<T> {
 
 
     public ResponseEntity<?> findById(Integer id){
-        if(id == 0) return ResponseEntity.ok(getService().findLast());
-        Optional<T> model = (getService()).findById(id);
+        if(id == 0)
+            return ResponseEntity.ok(getService().findLast());
+
+        Optional<T> model = getService().findById(id);
 
         if(model.isPresent())
             return ResponseEntity.ok(model);

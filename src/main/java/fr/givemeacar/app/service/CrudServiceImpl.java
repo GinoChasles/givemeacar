@@ -66,6 +66,7 @@ public abstract class CrudServiceImpl<T> implements CrudService<T> {
 
     public List<T> findByNameLike(T clazz,String column,String name,String sort,String order,int offset,
                                           int limit){
+
         Query q =
                 getEntityManager().createNativeQuery("SELECT * FROM " + column + " WHERE LOWER(name) LIKE \"%" + name +
                 "%\" " +
@@ -74,11 +75,10 @@ public abstract class CrudServiceImpl<T> implements CrudService<T> {
         return q.setFirstResult(offset).setMaxResults(limit).getResultList();
     }
 
-    public BaseCrudRepository<T> getRepository(){
-        return null;
-    }
+    public abstract BaseCrudRepository<T> getRepository();
 
     public EntityManager getEntityManager(){
+
         return entityManager;
     }
 }

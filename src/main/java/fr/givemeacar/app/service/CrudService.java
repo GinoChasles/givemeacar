@@ -2,9 +2,7 @@ package fr.givemeacar.app.service;
 
 import java.util.List;
 import java.util.Optional;
-
 import fr.givemeacar.app.repository.BaseCrudRepository;
-
 import javax.persistence.EntityManager;
 
 public interface CrudService<T> {

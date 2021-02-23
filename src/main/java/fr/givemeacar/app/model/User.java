@@ -120,7 +120,7 @@ public class User implements CrudModel{
     @Column(name = "agency_id", nullable = false)
     private Integer agency_id;
 
-    @OneToMany(mappedBy = "rent")
+    @OneToMany(mappedBy = "user")
     private Set<Rent> rents;
 
     @Override public Integer getId() {
