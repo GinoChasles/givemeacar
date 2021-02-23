@@ -71,7 +71,6 @@ public abstract class CrudServiceImpl<T> implements CrudService<T> {
                 getEntityManager().createNativeQuery("SELECT * FROM " + column + " WHERE LOWER(name) LIKE \"%" + name +
                 "%\" " +
                 "ORDER BY " + sort,clazz.getClass());
-
         return q.setFirstResult(offset).setMaxResults(limit).getResultList();
     }
 

@@ -28,6 +28,5 @@
         <mapping class="fr.givemeacar.app.model.Street"/>
         <mapping class="fr.givemeacar.app.model.StreetSuffix"/>
         <mapping class="fr.givemeacar.app.model.Role"/>
-
     </session-factory>
 </hibernate-configuration>

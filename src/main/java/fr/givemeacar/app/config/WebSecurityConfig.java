@@ -98,9 +98,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         configuration.setAllowedOrigins(origins);
         configuration.setAllowedMethods(methods);
         configuration.setAllowedHeaders(headers);
-
         configuration.setAllowCredentials(true);
-
         configuration.setMaxAge(configCacheDuration);
 
         //L'URL sur laquelle s'applique la configuration

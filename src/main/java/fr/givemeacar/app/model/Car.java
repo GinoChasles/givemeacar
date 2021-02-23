@@ -81,8 +81,7 @@ public class Car implements CrudModel {
     //l'identifiant du modèle de la voiture
     @Column(name = "model_id", nullable = false)
     private Integer model_id;
-
-
+    
     //l'instance du modèle de la couleur de la voiture
     @OneToOne
     @JoinColumn(name = "color_id", referencedColumnName = "id",
@@ -178,9 +177,7 @@ public class Car implements CrudModel {
         return energyMax;
     }
 
-    public void setEnergyMax(Double energyMax) {
-        this.energyMax = energyMax;
-    }
+    public void setEnergyMax(Double energyMax) {this.energyMax = energyMax;}
 
     public Double getEnergyCurrent() {
         return energyCurrent;

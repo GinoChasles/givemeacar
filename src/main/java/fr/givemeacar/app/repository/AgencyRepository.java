@@ -1,9 +1,9 @@
 package fr.givemeacar.app.repository;
 
 import fr.givemeacar.app.model.Agency;
-import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Repository;
 
-import java.util.List;
 
+@Repository
 public interface AgencyRepository extends BaseCrudRepository<Agency> {
 }
