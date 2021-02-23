@@ -9,11 +9,11 @@ import Cookies from 'js-cookie'
  * @param {string} route la route de redirection
  */
 export default function RedirectIfSession({ session, route }) {
-    console.log("user", Cookies.get('user'), typeof Cookies.get('user') == "undefined");
 
-    if (session && Cookies.get('user') && Cookies.get('user').authorities) {
-        console.log("truc : ", Cookies.get('user'));
-        return <Redirect to={route} />
+    if (session && Cookies.get('user')) {
+        if (JSON.parse(Cookies.get('user')).authorities) {
+            return <Redirect to={route} />
+        }
     }
     else if (!session && !Cookies.get('user')) {
         return <Redirect to={route} />
